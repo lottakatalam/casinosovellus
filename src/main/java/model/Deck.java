@@ -14,6 +14,9 @@ public class Deck {
      */
     private Card[] deck = new Card[52];
 
+    /**
+     * Initializes a new Deck-object and creates 52 Card-objects for the deck.
+     */
     public Deck() {
         int rank = 1;
         int suit = 1;
@@ -27,6 +30,9 @@ public class Deck {
         }
     }
 
+    /**
+     * Prints all Card-objects in the deck by calling the toString()-method from the Card-class
+     */
     public void printDeck() {
         for (Card card: deck) {
             System.out.println(card.toString());
