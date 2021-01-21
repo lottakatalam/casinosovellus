@@ -26,6 +26,14 @@ public class Hand {
         this.hand = new Card[this.maxCards];
     }
 
+    /**
+     * Sets cards in hand
+     * @param cards array of cards
+     */
+    public void setHand(Card[] cards) {
+        this.hand = cards;
+    }
+
     public void printHand() {
         for (Card card: hand) {
             System.out.println(card.toString());
