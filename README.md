@@ -1,4 +1,4 @@
-# Casino-sovellus
+# Casino-sovellus - OTP1 / R02
 
 ## MUISTA
 - Koodi ja kommentit englanniksi
