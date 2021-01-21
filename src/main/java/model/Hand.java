@@ -1,8 +1,14 @@
 package model;
 
+/**
+ * Represents a hand of cards.
+ *
+ * @author
+ * @version
+ */
 public class Hand {
     /**
-     * Integer which represents the maximum amount of cards in hand.
+     * Integer which represents the maximum amount of cards in one hand.
      * Created so the concept of hand-object can be used in other card games as well.
      */
     private int maxCards;
@@ -11,9 +17,19 @@ public class Hand {
      */
     private Card[] hand;
 
+    /**
+     * Initializes a new Hand-object.
+     * @param maxCards determines the maximum amount of Card-objects the Hand-object can store.
+     */
     public Hand(int maxCards) {
         this.maxCards = maxCards;
         this.hand = new Card[this.maxCards];
+    }
+
+    public void printHand() {
+        for (Card card: hand) {
+            System.out.println(card.toString());
+        }
     }
 
 }
