@@ -31,6 +31,28 @@ public class Deck {
     }
 
     /**
+     * Returns cards in deck
+     * @return array of cards
+     */
+    public Card[] getCardsInDeck() {
+        return deck;
+    }
+
+    /**
+     * Shuffles cards in deck
+     *
+     */
+    public void shuffleDeck() {
+        for (int i=0;i<deck.length;i++) {
+            int rnd = (int) (Math.random() * 52);
+            Card cardToMove = deck[i];
+            deck[i] = deck[rnd];
+            deck[rnd] = cardToMove;
+
+        }
+    }
+
+    /**
      * Prints all Card-objects in the deck by calling the toString()-method from the Card-class
      */
     public void printDeck() {
