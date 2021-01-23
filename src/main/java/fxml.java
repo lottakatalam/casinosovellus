@@ -12,6 +12,7 @@ public class fxml extends Application{
             Parent root = FXMLLoader.load(getClass().getResource("InGameView.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setTitle("Blackjack");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
