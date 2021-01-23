@@ -18,7 +18,7 @@
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Menu" AnchorPane.bottomAnchor="590.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="735.0" AnchorPane.topAnchor="14.0">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menuButton" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Menu" AnchorPane.bottomAnchor="590.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="735.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
