@@ -26,7 +26,7 @@ public class Player {
      */
     public void setHand(Card[] cardsToHand) {
         hand.setHand(cardsToHand);
-        System.out.println("Players hand");
+        Logger.log(Logger.LogLevel.DEV, "Players hand:");
         hand.printHand();
     }
 }
