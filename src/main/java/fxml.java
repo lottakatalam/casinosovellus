@@ -9,9 +9,9 @@ public class fxml extends Application{
     @Override
     public void start(Stage primaryStage) {
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("InGameView.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
+            Parent root = FXMLLoader.load(getClass().getResource("/InGameView.fxml"));
+            Scene gameScene = new Scene(root);
+            primaryStage.setScene(gameScene);
             primaryStage.setTitle("Blackjack");
             primaryStage.show();
         } catch (Exception e) {

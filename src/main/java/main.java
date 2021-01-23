@@ -68,7 +68,7 @@ public class main extends Application {
         try {
             // Load the launcher's FXML file
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(main.class.getResource("Launcher.fxml"));
+            loader.setLocation(main.class.getResource("/Launcher.fxml"));
             AnchorPane launcher = loader.load();
 
 
@@ -88,7 +88,7 @@ public class main extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(main.class.getResource("RootLayout.fxml"));
+            loader.setLocation(main.class.getResource("/RootLayout.fxml"));
             rootLayout = loader.load();
             RootLayoutController controller = loader.getController();
 
