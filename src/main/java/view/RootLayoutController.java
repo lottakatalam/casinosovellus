@@ -13,6 +13,7 @@ import java.io.IOException;
 /**
  * Controller class for the root layout
  */
+
 public class RootLayoutController {
 
     public void playButton(ActionEvent actionEvent) throws IOException {
