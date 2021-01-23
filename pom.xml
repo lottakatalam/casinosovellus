@@ -21,6 +21,12 @@
             <version>11</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>11.0.1</version>
+        </dependency>
+
         <!-- MariaDB -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
