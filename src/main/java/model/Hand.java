@@ -42,10 +42,10 @@ public class Hand {
      * @param cards array of cards
      */
     public void setHand(Card [] cards) {
+
         this.hand = (ArrayList<Card>) Arrays.asList(cards);
     }
 
-    public Card[] getHand() { return hand; }
 
     public void printHand() {
         for (Card card : hand) {
