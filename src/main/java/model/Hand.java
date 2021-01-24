@@ -18,6 +18,14 @@ public class Hand {
     private Card[] hand;
 
     /**
+     * Initializes a new Hand-object which is an array of cards
+     * Hand-object can store maximum of ten cards
+     */
+    public Hand(){
+        this.hand = new Card[10];
+    }
+
+    /**
      * Initializes a new Hand-object.
      * @param maxCards determines the maximum amount of Card-objects the Hand-object can store.
      */
@@ -33,6 +41,8 @@ public class Hand {
     public void setHand(Card[] cards) {
         this.hand = cards;
     }
+
+    public Card[] getHand() { return hand; }
 
     public void printHand() {
         for (Card card: hand) {

@@ -16,7 +16,7 @@ public class Player {
      *
      */
     public Player() {
-        this.hand = new Hand(10);
+        this.hand = new Hand();
     }
 
     /**
