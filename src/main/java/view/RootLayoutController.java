@@ -27,4 +27,10 @@ public class RootLayoutController {
         window.show();
 
     }
+    @FXML private javafx.scene.control.Button quitButton;
+    public void quitButton(){
+
+        Stage stage = (Stage) quitButton.getScene().getWindow();
+        stage.close();
+    }
 }
