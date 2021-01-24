@@ -47,7 +47,7 @@ public class main extends Application {
                 }
             });
             this.primaryStage = primaryStage;
-            this.primaryStage.setTitle("Casinosovellus");
+            this.primaryStage.setTitle("The Grand Myllypuro");
 
             initRootLayout();
 

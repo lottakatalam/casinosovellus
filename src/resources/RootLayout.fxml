@@ -22,9 +22,9 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <ImageView fitHeight="325.0" fitWidth="615.0" layoutX="104.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="93.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/casinosovelluslogo.png" />
+            <Image url="@../images/thegrandmyllypurologo.png" />
          </image>
       </ImageView>
    </children>

@@ -22,7 +22,7 @@ public class ViewController {
         Scene menuScene = new Scene(menuParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Casinosovellus");
+        window.setTitle("The Grand Myllypuro");
         window.setScene(menuScene);
         window.show();
 
@@ -34,8 +34,32 @@ public class ViewController {
         Scene menuScene = new Scene(menuParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Casinosovellus");
+        window.setTitle("The Grand Myllypuro");
         window.setScene(menuScene);
+        window.show();
+
+    }
+
+    public void instructionsButton(ActionEvent actionEvent) throws IOException {
+
+        Parent insParent = FXMLLoader.load(getClass().getResource("/Instructions.fxml"));
+        Scene insScene = new Scene(insParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("Instructions");
+        window.setScene(insScene);
+        window.show();
+
+    }
+
+    public void backToGameButton(ActionEvent actionEvent) throws IOException {
+
+        Parent gameParent = FXMLLoader.load(getClass().getResource("/InGameView.fxml"));
+        Scene gameScene = new Scene(gameParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("Blackjack");
+        window.setScene(gameScene);
         window.show();
 
     }

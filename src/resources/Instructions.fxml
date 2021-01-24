@@ -5,16 +5,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewController">
    <children>
-      <Text layoutX="326.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Settings">
+      <Text layoutX="283.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Instructions">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="350.0" layoutY="490.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
+      <Button layoutX="326.0" layoutY="543.0" mnemonicParsing="false" onAction="#backToGameButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back to game">
          <font>
-            <Font name="Cooper Black" size="30.0" />
+            <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
    </children>
