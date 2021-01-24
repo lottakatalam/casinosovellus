@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a deck of cards
  *
@@ -12,7 +14,7 @@ public class Deck {
      * An array of cards which represents the deck.
      * Can contain maximum of 52 objects.
      */
-    private Card[] deck = new Card[52];
+    private ArrayList<Card> deck;
 
     /**
      * Initializes a new Deck-object and creates 52 Card-objects for the deck.
@@ -20,8 +22,9 @@ public class Deck {
     public Deck() {
         int rank = 1;
         int suit = 1;
+        this.deck = new ArrayList<>();
         for (int i = 0; i < 52; i++) {
-            this.deck[i] = new Card(rank, suit);
+            this.deck.add(new Card(rank, suit));
             rank++;
             if (rank > 13) {
                 rank = 1;
@@ -34,8 +37,17 @@ public class Deck {
      * Returns cards in deck
      * @return array of cards
      */
-    public Card[] getCardsInDeck() {
+
+    public ArrayList<Card> getDeck() {
         return deck;
+    }
+
+    /**
+     * Returns the first Card-object and removes it from the ArrayList
+     * @return the first card of the deck-array
+     */
+    public Card nextCard(){
+        return this.deck.remove(0);
     }
 
     /**
@@ -43,11 +55,11 @@ public class Deck {
      *
      */
     public void shuffleDeck() {
-        for (int i=0;i<deck.length;i++) {
+        for (int i=0;i<deck.size();i++) {
             int rnd = (int) (Math.random() * 52);
-            Card cardToMove = deck[i];
-            deck[i] = deck[rnd];
-            deck[rnd] = cardToMove;
+            Card cardToMove = deck.get(i);
+            deck.set(i, deck.get(rnd));
+            deck.set(rnd, cardToMove);
 
         }
     }
@@ -61,3 +73,4 @@ public class Deck {
         }
     }
 }
+
