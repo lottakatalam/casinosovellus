@@ -50,33 +50,12 @@ public class main extends Application {
             this.primaryStage.setTitle("Casinosovellus");
 
             initRootLayout();
-            showLauncher();
 
             // Set the application icon. (These can be used later)
 
             //Image icon = new Image(getClass().getResource("img/....png").toExternalForm());
             //this.primaryStage.getIcons().add(icon);
         } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Loads up the launcher view and sets the controller
-     */
-    public void showLauncher() {
-        try {
-            // Load the launcher's FXML file
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(main.class.getResource("/Launcher.fxml"));
-            AnchorPane launcher = loader.load();
-
-
-            //rootLayout.setCenter(launcher);
-
-            //LauncherController controller = loader.getController();
-
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }

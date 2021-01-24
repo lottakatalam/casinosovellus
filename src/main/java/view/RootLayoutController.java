@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller class for the root layout
+ * Controller class for RootLayout.fxml
  */
 
 public class RootLayoutController {
