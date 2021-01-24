@@ -27,6 +27,19 @@ public class RootLayoutController {
         window.show();
 
     }
+
+    public void settingsButton(ActionEvent actionEvent) throws IOException {
+
+        Parent settingsParent = FXMLLoader.load(getClass().getResource("/Settings.fxml"));
+        Scene settingsScene = new Scene(settingsParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("Settings");
+        window.setScene(settingsScene);
+        window.show();
+
+    }
+
     @FXML private javafx.scene.control.Button quitButton;
     public void quitButton(){
 
