@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class RootLayoutController {
 
+    // Menu's Play-Button loads to InGameView.fxml
     public void playButton(ActionEvent actionEvent) throws IOException {
 
         Parent gameParent = FXMLLoader.load(getClass().getResource("/InGameView.fxml"));
@@ -28,6 +29,7 @@ public class RootLayoutController {
 
     }
 
+    // Menu's Settings-Button loads to Settings.fxml
     public void settingsButton(ActionEvent actionEvent) throws IOException {
 
         Parent settingsParent = FXMLLoader.load(getClass().getResource("/Settings.fxml"));
@@ -40,6 +42,7 @@ public class RootLayoutController {
 
     }
 
+    // Menu's Quit-Button closes the program
     @FXML private javafx.scene.control.Button quitButton;
     public void quitButton(){
 
