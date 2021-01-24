@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a player of the game
  *
@@ -24,7 +26,7 @@ public class Player {
      * @param cardsToHand Array of cards
      *
      */
-    public void setHand(Card[] cardsToHand) {
+    public void setHand(Card [] cardsToHand) {
         hand.setHand(cardsToHand);
         System.out.println("Players hand");
         hand.printHand();

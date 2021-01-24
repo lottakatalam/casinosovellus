@@ -1,53 +1,90 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Represents a hand of cards.
  *
  * @author
- * @version
  */
 public class Hand {
     /**
-     * Integer which represents the maximum amount of cards in one hand.
-     * Created so the concept of hand-object can be used in other card games as well.
+     * An arraylist of Card-objects.
      */
-    private int maxCards;
-    /**
-     * An array of Card-objects.
-     */
-    private Card[] hand;
+    private ArrayList<Card> hand;
 
     /**
-     * Initializes a new Hand-object which is an array of cards
-     * Hand-object can store maximum of ten cards
+     * Integer which represents the amount of Card-objects in hand
      */
-    public Hand(){
-        this.hand = new Card[10];
+    private int numberOfCards;
+
+    /**
+     * Initializes a new Hand-object which stores Card-obejcts in an arraylist
+     */
+    public Hand() {
+        this.hand = new ArrayList<>();
+        this.numberOfCards = this.hand.size();
     }
 
-    /**
-     * Initializes a new Hand-object.
-     * @param maxCards determines the maximum amount of Card-objects the Hand-object can store.
-     */
-    public Hand(int maxCards) {
-        this.maxCards = maxCards;
-        this.hand = new Card[this.maxCards];
+
+    public int getNumberOfCards() {
+        return numberOfCards;
+    }
+
+    public ArrayList<Card> getHand() {
+        return hand;
     }
 
     /**
      * Sets cards in hand
+     *
      * @param cards array of cards
      */
-    public void setHand(Card[] cards) {
-        this.hand = cards;
+    public void setHand(Card [] cards) {
+        this.hand = (ArrayList<Card>) Arrays.asList(cards);
     }
 
     public Card[] getHand() { return hand; }
 
     public void printHand() {
-        for (Card card: hand) {
+        for (Card card : hand) {
             System.out.println(card.toString());
         }
     }
+
+    // Calculates the total of a hand and also decides whether ace is 1 or 11
+    public int calculateTotal() {
+        int total = 0;
+        boolean aceFlag = false;
+        for (int i = 0; i < numberOfCards; i++) {
+            //int value = theHand[i].getValue();
+            int value = hand.get(i).getRank();
+            if (value > 10) {
+                value = 10;
+            } else if (value == 1) {
+                aceFlag = true;
+            }
+            total += value;
+        }
+        if (aceFlag && total + 10 <= 21) {
+            total += 10;
+        }
+        return total;
+    }
+
+    public void addCard(Card card){
+        this.hand.add(card);
+    }
+
+    public void clearHand(){
+        this.hand.clear();
+    }
+
+    public boolean dealerPeek() {
+        int value = hand.get(1).getRank();
+        return value == 1 || value >= 10;
+    }
+
 
 }
