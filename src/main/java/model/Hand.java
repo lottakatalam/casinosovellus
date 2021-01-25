@@ -27,10 +27,14 @@ public class Hand {
         this.numberOfCards = this.hand.size();
     }
 
-
+    /**
+     *
+     * @return integer which represents the amount of Card-objects in hand
+     */
     public int getNumberOfCards() {
         return numberOfCards;
     }
+
 
     public ArrayList<Card> getHand() {
         return hand;
