@@ -31,7 +31,7 @@ public class BlackJack {
      *
      */
     public BlackJack() {
-
+        Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
         this.round = 0;
         this.deck = new Deck();
         this.player = new Player();
@@ -47,8 +47,9 @@ public class BlackJack {
      */
     public void initRound() {
         this.round++;
-        System.out.println("\n\n");
-        System.out.println(String.format("Round %d begins!\n", round));
+        Logger.log(Logger.LogLevel.DEV, String.format("Round %d begins!\n", round));
+
+
         deck.shuffleDeck();
         Card[] playerhand = {deck.getCardsInDeck()[0], deck.getCardsInDeck()[1]};
         //Card[] dealerhand = {deck.getCardsInDeck()[2]};
