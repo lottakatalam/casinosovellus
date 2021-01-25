@@ -16,7 +16,10 @@ import java.io.IOException;
 
 public class ViewController {
 
-    // Gamescreen's Menu-Button loads to RootLayout.fxml
+    /** Gamescreen's Menu-Button loads to RootLayout.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
     public void menuButton(ActionEvent actionEvent) throws IOException {
 
         Parent menuParent = FXMLLoader.load(getClass().getResource("/RootLayout.fxml"));
@@ -29,7 +32,10 @@ public class ViewController {
 
     }
 
-    // Settingscreen's Back-Button loads to RootLayout.fxml
+    /** Settingscreen's Back-Button loads to RootLayout.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
     public void settingsBackButton(ActionEvent actionEvent) throws IOException {
 
         Parent menuParent = FXMLLoader.load(getClass().getResource("/RootLayout.fxml"));
@@ -42,7 +48,10 @@ public class ViewController {
 
     }
 
-    // Gamescreen's Instructions-Button loads to Instructions.fxml
+    /** Gamescreen's Instructions-Button loads to Instructions.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
     public void instructionsButton(ActionEvent actionEvent) throws IOException {
 
         Parent insParent = FXMLLoader.load(getClass().getResource("/Instructions.fxml"));
@@ -55,7 +64,10 @@ public class ViewController {
 
     }
 
-    // Instructionscreen's Back to game-Button loads to InGameView.fxml
+    /** Instructionscreen's Back to game-Button loads to InGameView.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
     public void backToGameButton(ActionEvent actionEvent) throws IOException {
 
         Parent gameParent = FXMLLoader.load(getClass().getResource("/InGameView.fxml"));
