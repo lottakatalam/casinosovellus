@@ -47,10 +47,9 @@ public class main extends Application {
                 }
             });
             this.primaryStage = primaryStage;
-            this.primaryStage.setTitle("Casinosovellus");
+            this.primaryStage.setTitle("The Grand Myllypuro");
 
             initRootLayout();
-            showLauncher();
 
             // Set the application icon. (These can be used later)
 
@@ -62,33 +61,13 @@ public class main extends Application {
     }
 
     /**
-     * Loads up the launcher view and sets the controller
-     */
-    public void showLauncher() {
-        try {
-            // Load the launcher's FXML file
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(main.class.getResource("Launcher.fxml"));
-            AnchorPane launcher = loader.load();
-
-
-            //rootLayout.setCenter(launcher);
-
-            //LauncherController controller = loader.getController();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Loads up the root layout and sets the controller, shows the primary stage
      */
     public void initRootLayout() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(main.class.getResource("RootLayout.fxml"));
+            loader.setLocation(main.class.getResource("/RootLayout.fxml"));
             rootLayout = loader.load();
             RootLayoutController controller = loader.getController();
 
