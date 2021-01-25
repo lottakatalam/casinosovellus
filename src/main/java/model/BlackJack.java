@@ -51,7 +51,7 @@ public class BlackJack {
 
 
         deck.shuffleDeck();
-        Card[] playerhand = {deck.getCardsInDeck()[0], deck.getCardsInDeck()[1]};
+        Card[] playerhand = {deck.nextCard(), deck.nextCard()};
         //Card[] dealerhand = {deck.getCardsInDeck()[2]};
         this.player.setHand(playerhand);
         //this.dealer.setHand(dealerhand);
@@ -59,7 +59,7 @@ public class BlackJack {
 
     // NOTE: This is only for testing
     public void printDeckInGame() {
-        this.deck.printDeck();
+        this.deck.printCardsInDeck();
 
     }
 
