@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>model</OriginalElement>
+  <nodes>
+    <node x="321.93273809523805" y="972.0">model.testimain</node>
+    <node x="0.0" y="347.5">model.Logger</node>
+    <node x="352.93273809523805" y="756.0">model.BlackJack</node>
+    <node x="214.0" y="270.0">model.Hand</node>
+    <node x="238.425" y="596.0">model.Player</node>
+    <node x="395.52579365079373" y="0.0">model.Card</node>
+    <node x="429.0" y="325.0">model.Deck</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.4588910133843212" x="1110.84375" y="455.25208333333336" />
+  <SelectedNodes>
+    <node>model.Card</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
