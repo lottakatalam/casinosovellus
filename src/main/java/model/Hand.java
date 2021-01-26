@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Represents a hand of cards.
@@ -47,7 +49,7 @@ public class Hand {
      */
     public void setHand(Card [] cards) {
 
-        this.hand = (ArrayList<Card>) Arrays.asList(cards);
+        Collections.addAll(this.hand, cards);
     }
 
 
@@ -61,7 +63,7 @@ public class Hand {
     public int calculateTotal() {
         int total = 0;
         boolean aceFlag = false;
-        for (int i = 0; i < numberOfCards; i++) {
+        for (int i = 0; i < hand.size(); i++) {
             //int value = theHand[i].getValue();
             int value = hand.get(i).getRank();
             if (value > 10) {

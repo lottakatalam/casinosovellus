@@ -21,6 +21,10 @@ public class Player {
         this.hand = new Hand();
     }
 
+    public void addCard(Card card) {
+        hand.addCard(card);
+    }
+
     /**
      * Sets cards to players hand and prints the hand.
      * @param cardsToHand Array of cards
@@ -28,6 +32,15 @@ public class Player {
      */
     public void setHand(Card [] cardsToHand) {
         hand.setHand(cardsToHand);
+        Logger.log(Logger.LogLevel.DEV, "Players hand:");
+        hand.printHand();
+    }
+
+    public void clearHand() {
+        hand.clearHand();
+    }
+
+    public void printHand() {
         Logger.log(Logger.LogLevel.DEV, "Players hand:");
         hand.printHand();
     }

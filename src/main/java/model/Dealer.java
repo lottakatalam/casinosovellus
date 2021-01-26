@@ -17,32 +17,31 @@ public class Dealer implements Serializable {
 
     // This automates the dealer's play
     public void dealerPlay(Deck deck) {
-        System.out.println();
+        System.out.println("Dealer plays\n");
         while (hand.calculateTotal() <= 16) {
             System.out.println("Dealer has " + hand.calculateTotal() + " and hits");
             hand.addCard(deck.nextCard());
-            System.out.println("Dealer " + this.getHandString(true, false));
+            //System.out.println("Dealer " + this.getHandString(true, false));
         }
         if (hand.calculateTotal() > 21) {
-            System.out.println("Dealer busts. " + this.getHandString(true, false));
+            System.out.println("Dealer busts. ");// + this.getHandString(true, false));
         } else {
-            System.out.println("Dealer stands. " + this.getHandString(true, false));
+            System.out.println("Dealer stands at " + hand.calculateTotal());// + this.getHandString(true, false));
         }
     }
 
     // Adds a card o the dealer's hand
     public void addCard(Card card) {
         hand.addCard(card);
-
     }
-
+/*
     // Gets the dealer's hand as a string
     public String getHandString(boolean isDealer, boolean hideHoleCard) {
         String str = "Cards:" + hand.toString(isDealer, hideHoleCard);
 
         return str;
     }
-
+*/
     // Calculates the dealer's hand total
     public int calculateTotal() {
         return hand.calculateTotal();
