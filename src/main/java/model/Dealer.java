@@ -1,3 +1,4 @@
+/*
 package model;
 
 import java.io.Serializable;
@@ -58,4 +59,4 @@ public class Dealer implements Serializable {
         return hand.dealerPeek();
     }
 } //End class
-
+*/
