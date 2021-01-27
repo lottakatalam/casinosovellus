@@ -1,8 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -41,10 +39,10 @@ public class Hand {
      *
      * @param cards array of cards
      */
-    public void setHand(Card [] cards) {
+    /*public void setHand(Card [] cards) {
 
         Collections.addAll(this.hand, cards);
-    }
+    }*/
 
 
     public void printHand() {
@@ -53,7 +51,12 @@ public class Hand {
         }
     }
 
-    // Calculates the total of a hand and also decides whether ace is 1 or 11
+
+    /**
+     * Calculates the sum of card values in hand
+     * Decides whether ace is 1 or 11
+     * @return the total value of hand
+     */
     public int calculateTotal() {
         int total = 0;
         boolean aceFlag = false;
@@ -80,10 +83,10 @@ public class Hand {
         this.hand.clear();
     }
 
-    public boolean dealerPeek() {
+    /*public boolean dealerPeek() {
         int value = hand.get(1).getRank();
         return value == 1 || value >= 10;
-    }
+    }*/
 
 
 }

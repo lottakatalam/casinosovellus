@@ -57,9 +57,9 @@ public class Dealer implements Serializable {
     }
 
     // Peeks the dealer's face-down card
-    public boolean peek() {
+    /*public boolean peek() {
         return hand.dealerPeek();
-    }
+    }*/
 
     public int calculateHand() {
         return hand.calculateTotal();
