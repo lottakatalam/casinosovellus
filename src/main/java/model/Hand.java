@@ -17,16 +17,10 @@ public class Hand {
     private ArrayList<Card> hand;
 
     /**
-     * Integer which represents the amount of Card-objects in hand
-     */
-    private int numberOfCards;
-
-    /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
      */
     public Hand() {
         this.hand = new ArrayList<>();
-        this.numberOfCards = this.hand.size();
     }
 
     /**
@@ -34,7 +28,7 @@ public class Hand {
      * @return integer which represents the amount of Card-objects in hand
      */
     public int getNumberOfCards() {
-        return numberOfCards;
+        return this.hand.size();
     }
 
 
@@ -64,7 +58,6 @@ public class Hand {
         int total = 0;
         boolean aceFlag = false;
         for (int i = 0; i < hand.size(); i++) {
-            //int value = theHand[i].getValue();
             int value = hand.get(i).getRank();
             if (value > 10) {
                 value = 10;

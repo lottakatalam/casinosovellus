@@ -3,9 +3,7 @@ package model;
 import java.util.Scanner;
 
 /**
- *
- *  Logic of Blackjack game
- *
+ * Logic of Blackjack game
  */
 
 public class BlackJack {
@@ -14,13 +12,11 @@ public class BlackJack {
 
     /**
      * Deck used in a blackjack game
-     *
      */
     private Deck deck;
 
     /**
      * Player playing in a blackjack game
-     *
      */
     private Player player;
 
@@ -28,9 +24,7 @@ public class BlackJack {
 
 
     /**
-     *
      * Initializes new Blackjack game
-     *
      */
     public BlackJack() {
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
@@ -45,7 +39,6 @@ public class BlackJack {
     /**
      * Initializes new round in a blackjack game:
      * Shuffles deck and deals two cards for player and one for dealer.
-     *
      */
     public void initRound() {
         this.round++;
@@ -55,7 +48,13 @@ public class BlackJack {
         this.player.addCard(deck.nextCard());
         this.player.addCard(deck.nextCard());
         this.dealer.addCard(deck.nextCard());
+
+
         player.printHand();
+        System.out.println("Players hands total: " + player.calculateHand()+"\n");
+        dealer.printHand();
+        System.out.println("Dealers hands total: " + dealer.calculateHand());
+
         getUserInput();
     }
 
@@ -65,28 +64,63 @@ public class BlackJack {
         int valinta = Integer.parseInt(scanner.nextLine());
         if (valinta == 1) {
             playerHit();
-        } else if(valinta == 2) {
+        } else if (valinta == 2) {
             playerStay();
-        }else {
+        } else {
             Logger.log(Logger.LogLevel.ALL, "Error");
         }
     }
 
     public void playerHit() {
         player.addCard(deck.nextCard());
+
         player.printHand();
+        System.out.println("Players hands total: " + player.calculateHand()+"\n");
+        dealer.printHand();
+        System.out.println("Dealers hands total: " + dealer.calculateHand());
+
         getUserInput();
+
+        /*Pitää tehdä toimintaa jossa metodissa katsotaan:
+         - meneekö pelaajan käsi > 21? Nyt peli ei pysähdy vaikka bustaisi
+         - voiko tuplata?
+         */
     }
 
     public void playerStay() {
         dealer.dealerPlay(deck);
+
+        System.out.println("\nPlayers hands total: " + player.calculateHand()+"\n");
+        dealer.printHand();
+        System.out.println("\nDealers hands total: " + dealer.calculateHand()+"\n");
         endRound();
     }
 
     private void endRound() {
+
+        int playerTotal = player.calculateHand();
+        int dealerTotal = dealer.calculateTotal();
+        boolean playerWins = false;
+
+        if (playerTotal == dealerTotal) { //Even if they both get a blackjack
+            Logger.log(Logger.LogLevel.PROD, "No one wins");
+        } else if (playerTotal < 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
+            playerWins = true;
+            Logger.log(Logger.LogLevel.PROD, "Player wins");
+        }
+        else {
+            playerWins = false;
+            Logger.log(Logger.LogLevel.PROD, "Dealer wins");
+        }
+
+        if (playerWins == true) {
+            player.addWin();
+        }
+
         Logger.log(Logger.LogLevel.PROD, "Round ended");
         player.clearHand();
         dealer.clearHand();
+        Logger.log(Logger.LogLevel.PROD, "The amount of wins: "+player.getWins());
         initRound();
     }
 

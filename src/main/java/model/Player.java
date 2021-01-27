@@ -13,6 +13,8 @@ public class Player {
      */
     private Hand hand;
 
+    private int amountOfWins = 0;
+
     /**
      * Initializes new Player-object
      *
@@ -41,7 +43,19 @@ public class Player {
     }
 
     public void printHand() {
-        Logger.log(Logger.LogLevel.DEV, "Players hand:");
+        Logger.log(Logger.LogLevel.DEV, "Players hand: ");
         hand.printHand();
+    }
+
+    public int calculateHand() {
+        return hand.calculateTotal();
+    }
+
+    public void addWin() {
+        amountOfWins++;
+    }
+
+    public int getWins() {
+        return amountOfWins;
     }
 }

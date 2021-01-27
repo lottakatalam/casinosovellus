@@ -34,6 +34,10 @@ public class Dealer implements Serializable {
     public void addCard(Card card) {
         hand.addCard(card);
     }
+    public void printHand() {
+        Logger.log(Logger.LogLevel.DEV, "Dealers hand:");
+        hand.printHand();
+    }
 /*
     // Gets the dealer's hand as a string
     public String getHandString(boolean isDealer, boolean hideHoleCard) {
@@ -55,6 +59,10 @@ public class Dealer implements Serializable {
     // Peeks the dealer's face-down card
     public boolean peek() {
         return hand.dealerPeek();
+    }
+
+    public int calculateHand() {
+        return hand.calculateTotal();
     }
 } //End class
 
