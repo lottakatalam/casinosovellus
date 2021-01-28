@@ -56,7 +56,9 @@ public class BlackJack {
         this.player.addCard(deck.nextCard());
         this.dealer.addCard(deck.nextCard());
         player.printHand();
-        getUserInput();
+        System.out.println("");
+        dealer.printHand();
+        //getUserInput();
     }
 
     private void getUserInput() {
@@ -75,7 +77,7 @@ public class BlackJack {
     public void playerHit() {
         player.addCard(deck.nextCard());
         player.printHand();
-        getUserInput();
+        //getUserInput();
     }
 
     public void playerStay() {

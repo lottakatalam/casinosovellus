@@ -1,7 +1,7 @@
 package view;
 
+import controller.BlackjackController;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,15 +14,17 @@ import java.io.IOException;
  * Controller class for the InGameView.fxml and Settings.fxml
  */
 
-public class ViewController {
+public class InGameViewController {
 
-    /** Gamescreen's Menu-Button loads to RootLayout.fxml
+    private BlackjackController gameController;
+
+    /** Gamescreen's Menu-Button loads to MainMenu.fxml
      * @param actionEvent
      * @throws IOException
      */
     public void menuButton(ActionEvent actionEvent) throws IOException {
 
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/RootLayout.fxml"));
+        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -32,13 +34,13 @@ public class ViewController {
 
     }
 
-    /** Settingscreen's Back-Button loads to RootLayout.fxml
+    /** Settingscreen's Back-Button loads to MainMenu.fxml
      * @param actionEvent
      * @throws IOException
      */
     public void settingsBackButton(ActionEvent actionEvent) throws IOException {
 
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/RootLayout.fxml"));
+        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -78,5 +80,16 @@ public class ViewController {
         window.setScene(gameScene);
         window.show();
 
+    }
+
+    public void hit() {
+        gameController.hit();
+    }
+    public void stand() {
+        gameController.stand();
+    }
+
+    public void setGameController(BlackjackController blackjackController) {
+        gameController = blackjackController;
     }
 }

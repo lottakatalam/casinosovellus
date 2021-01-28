@@ -23,6 +23,7 @@ public class Hand {
 
     /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
+     *
      */
     public Hand() {
         this.hand = new ArrayList<>();
@@ -64,7 +65,6 @@ public class Hand {
         int total = 0;
         boolean aceFlag = false;
         for (int i = 0; i < hand.size(); i++) {
-            //int value = theHand[i].getValue();
             int value = hand.get(i).getRank();
             if (value > 10) {
                 value = 10;
@@ -73,7 +73,7 @@ public class Hand {
             }
             total += value;
         }
-        if (aceFlag && total + 10 <= 21) {
+        if (aceFlag && total + 10 <= 21) { // Only for dealer. Player decides the value of ace.
             total += 10;
         }
         return total;
