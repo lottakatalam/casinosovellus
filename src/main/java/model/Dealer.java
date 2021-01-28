@@ -1,3 +1,4 @@
+
 package model;
 
 import java.io.Serializable;
@@ -42,14 +43,15 @@ public class Dealer implements Serializable {
     public void addCard(Card card) {
         hand.addCard(card);
     }
-/*
+    /*
     // Gets the dealer's hand as a string
     public String getHandString(boolean isDealer, boolean hideHoleCard) {
         String str = "Cards:" + hand.toString(isDealer, hideHoleCard);
 
         return str;
     }
-*/
+    */
+
     // Calculates the dealer's hand total
     public int calculateTotal() {
         return hand.calculateTotal();
@@ -67,4 +69,3 @@ public class Dealer implements Serializable {
 
 
 } //End class
-

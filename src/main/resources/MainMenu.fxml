@@ -12,12 +12,17 @@
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font></Button>
-      <Button layoutX="352.0" layoutY="458.0" mnemonicParsing="false" onAction="#settingsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Settings">
+      <Button layoutX="325.0" layoutY="451.0" mnemonicParsing="false" onAction="#settingsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Game History">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="quitButton" layoutX="371.0" layoutY="523.0" mnemonicParsing="false" onAction="#quitButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Quit">
+      <Button layoutX="352.0" layoutY="510.0" mnemonicParsing="false" onAction="#settingsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Settings">
+         <font>
+            <Font name="Cooper Black" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="quitButton" layoutX="372.0" layoutY="571.0" mnemonicParsing="false" onAction="#quitButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Quit">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
