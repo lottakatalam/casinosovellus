@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Scanner;
+
 /**
  *
  *  Logic of Blackjack game
@@ -22,7 +24,7 @@ public class BlackJack {
      */
     private Player player;
 
-    //private Dealer dealer;
+    private Dealer dealer;
 
 
     /**
@@ -35,7 +37,7 @@ public class BlackJack {
         this.round = 0;
         this.deck = new Deck();
         this.player = new Player();
-        //this.dealer = new Dealer();
+        this.dealer = new Dealer();
 
     }
 
@@ -47,14 +49,45 @@ public class BlackJack {
      */
     public void initRound() {
         this.round++;
-        Logger.log(Logger.LogLevel.DEV, String.format("Round %d begins!\n", round));
-
+        Logger.log(Logger.LogLevel.DEV, String.format("\nRound %d begins!\n", round));
 
         deck.shuffleDeck();
-        Card[] playerhand = {deck.nextCard(), deck.nextCard()};
-        //Card[] dealerhand = {deck.getCardsInDeck()[2]};
-        this.player.setHand(playerhand);
-        //this.dealer.setHand(dealerhand);
+        this.player.addCard(deck.nextCard());
+        this.player.addCard(deck.nextCard());
+        this.dealer.addCard(deck.nextCard());
+        player.printHand();
+        getUserInput();
+    }
+
+    private void getUserInput() {
+        System.out.println("\n1. hit, 2. stay\n");
+        Scanner scanner = new Scanner(System.in);
+        int valinta = Integer.parseInt(scanner.nextLine());
+        if (valinta == 1) {
+            playerHit();
+        } else if(valinta == 2) {
+            playerStay();
+        }else {
+            Logger.log(Logger.LogLevel.ALL, "Error");
+        }
+    }
+
+    public void playerHit() {
+        player.addCard(deck.nextCard());
+        player.printHand();
+        getUserInput();
+    }
+
+    public void playerStay() {
+        dealer.dealerPlay(deck);
+        endRound();
+    }
+
+    private void endRound() {
+        Logger.log(Logger.LogLevel.PROD, "Round ended");
+        player.clearHand();
+        dealer.clearHand();
+        initRound();
     }
 
     // NOTE: This is only for testing

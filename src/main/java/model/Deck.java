@@ -56,7 +56,7 @@ public class Deck {
      */
     public void shuffleDeck() {
         for (int i=0;i<deck.size();i++) {
-            int rnd = (int) (Math.random() * 52);
+            int rnd = (int) (Math.random() * deck.size());
             Card cardToMove = deck.get(i);
             deck.set(i, deck.get(rnd));
             deck.set(rnd, cardToMove);
