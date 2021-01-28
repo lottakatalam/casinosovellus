@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a player of the game
  *
@@ -30,30 +32,24 @@ public class Player {
      * @param cardsToHand Array of cards
      *
      */
-   /* public void setHand(Card [] cardsToHand) {
+    public void setHand(Card [] cardsToHand) {
         hand.setHand(cardsToHand);
         Logger.log(Logger.LogLevel.DEV, "Players hand:");
         hand.printHand();
-    }*/
+    }
 
     public void clearHand() {
         hand.clearHand();
     }
 
     public void printHand() {
-        Logger.log(Logger.LogLevel.DEV, "Players hand: ");
+        Logger.log(Logger.LogLevel.DEV, "Players hand:");
         hand.printHand();
     }
 
-    public int calculateHand() {
-        return hand.calculateTotal();
-    }
+    public int calculateHand() { return hand.calculateTotal();}
 
-    public void addWin() {
-        amountOfWins++;
-    }
+    public void addWin() { amountOfWins++;}
 
-    public int getWins() {
-        return amountOfWins;
-    }
+    public int getWins() { return amountOfWins;}
 }

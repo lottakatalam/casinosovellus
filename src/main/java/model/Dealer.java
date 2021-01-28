@@ -1,3 +1,4 @@
+
 package model;
 
 import java.io.Serializable;
@@ -30,22 +31,27 @@ public class Dealer implements Serializable {
         }
     }
 
-    // Adds a card o the dealer's hand
-    public void addCard(Card card) {
-        hand.addCard(card);
-    }
+    /**
+     * Prints Dealers hand
+     */
     public void printHand() {
         Logger.log(Logger.LogLevel.DEV, "Dealers hand:");
         hand.printHand();
     }
-/*
+
+    // Adds a card o the dealer's hand
+    public void addCard(Card card) {
+        hand.addCard(card);
+    }
+    /*
     // Gets the dealer's hand as a string
     public String getHandString(boolean isDealer, boolean hideHoleCard) {
         String str = "Cards:" + hand.toString(isDealer, hideHoleCard);
 
         return str;
     }
-*/
+    */
+
     // Calculates the dealer's hand total
     public int calculateTotal() {
         return hand.calculateTotal();
@@ -57,12 +63,9 @@ public class Dealer implements Serializable {
     }
 
     // Peeks the dealer's face-down card
-    /*public boolean peek() {
+    public boolean peek() {
         return hand.dealerPeek();
-    }*/
-
-    public int calculateHand() {
-        return hand.calculateTotal();
     }
-} //End class
 
+
+} //End class
