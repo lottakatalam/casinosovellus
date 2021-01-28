@@ -86,9 +86,30 @@ public class BlackJack {
     }
 
     private void endRound() {
+
+        int playerTotal = player.calculateHand();
+        int dealerTotal = dealer.calculateTotal();
+        boolean playerWins = false;
+
+        if (playerTotal == dealerTotal) { //Even if they both get a blackjack
+            Logger.log(Logger.LogLevel.PROD, "No one wins");
+        } else if (playerTotal < 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
+            playerWins = true;
+            Logger.log(Logger.LogLevel.PROD, "Player wins");
+        }
+        else {
+            playerWins = false;
+            Logger.log(Logger.LogLevel.PROD, "Dealer wins");
+        }
+
+        if (playerWins == true) {
+            player.addWin();
+        }
+
         Logger.log(Logger.LogLevel.PROD, "Round ended");
         player.clearHand();
         dealer.clearHand();
+        Logger.log(Logger.LogLevel.PROD, "The amount of wins: "+player.getWins());
         initRound();
     }
 
