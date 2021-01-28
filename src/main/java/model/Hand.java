@@ -40,10 +40,10 @@ public class Hand {
      *
      * @param cards array of cards
      */
-    /*public void setHand(Card [] cards) {
+    public void setHand(Card [] cards) {
 
         Collections.addAll(this.hand, cards);
-    }*/
+    }
 
 
     public void printHand() {
@@ -84,10 +84,10 @@ public class Hand {
         this.hand.clear();
     }
 
-    /*public boolean dealerPeek() {
+    public boolean dealerPeek() {
         int value = hand.get(1).getRank();
         return value == 1 || value >= 10;
-    }*/
+    }
 
 
 }
