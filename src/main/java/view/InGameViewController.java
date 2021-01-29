@@ -107,14 +107,6 @@ public class InGameViewController {
             case 4: playerCard4.setText(playersCards.get(3).toString());
             break;
         }
-        printHand();
-    }
-
-    public void printHand() {
-        //this.playersCards = gameController.getPlayersCards();
-        for (Card card : playersCards) {
-            System.out.println(card.toString());
-        }
     }
 
     public void bet() {
