@@ -38,7 +38,6 @@ public class BlackJack {
         this.deck = new Deck();
         this.player = new Player();
         this.dealer = new Dealer();
-
     }
 
 
@@ -117,6 +116,10 @@ public class BlackJack {
     public void printDeckInGame() {
         this.deck.printCardsInDeck();
 
+    }
+
+    public Player getPlayer() {
+        return this.player;
     }
 
 }

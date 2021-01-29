@@ -14,7 +14,7 @@ public class Hand {
     /**
      * An arraylist of Card-objects.
      */
-    private ArrayList<Card> hand;
+    private ArrayList<Card> hand = new ArrayList<>();
 
     /**
      * Integer which represents the amount of Card-objects in hand
@@ -26,7 +26,7 @@ public class Hand {
      *
      */
     public Hand() {
-        this.hand = new ArrayList<>();
+        //this.hand = new ArrayList<>();
         this.numberOfCards = this.hand.size();
     }
 
@@ -49,7 +49,6 @@ public class Hand {
      * @param cards array of cards
      */
     public void setHand(Card [] cards) {
-
         Collections.addAll(this.hand, cards);
     }
 

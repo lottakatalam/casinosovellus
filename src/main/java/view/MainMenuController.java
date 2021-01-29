@@ -25,7 +25,6 @@ public class MainMenuController {
      */
     public void playButton(ActionEvent actionEvent) throws IOException {
 
-        gameController.newBlackjackGame();
         gameController.nextRound();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));

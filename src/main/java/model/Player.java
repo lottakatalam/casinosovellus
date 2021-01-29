@@ -52,4 +52,8 @@ public class Player {
     public void addWin() { amountOfWins++;}
 
     public int getWins() { return amountOfWins;}
+
+    public Hand getHand() {
+        return this.hand;
+    }
 }
