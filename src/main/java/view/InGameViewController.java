@@ -29,10 +29,13 @@ public class InGameViewController {
     public Text dealerCard2;
     public Text dealerCard3;
     public Text dealerCard4;
-    public Label playerCurrency;
+    public Text playerCurrency;
+    public Text playerTotal;
+    public Text dealerTotal;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
+    private boolean started;
 
 
     /** Gamescreen's Menu-Button loads to MainMenu.fxml
@@ -101,37 +104,52 @@ public class InGameViewController {
     }
 
     public void hit() {
-        gameController.hit();
-        this.playersCards = gameController.getPlayersCards();
-        switch(playersCards.size()) {
-            case 3: playerCard3.setText(playersCards.get(2).toString());
-            break;
-            case 4: playerCard4.setText(playersCards.get(3).toString());
-            break;
+        if (started) {
+            gameController.hit();
+            this.playersCards = gameController.getPlayersCards();
+            switch(playersCards.size()) {
+                case 3: playerCard3.setText(playersCards.get(2).toString());
+                    break;
+                case 4: playerCard4.setText(playersCards.get(3).toString());
+                    break;
+            }
+            updateTotalResult();
+        } else {
+            System.out.println("Place the bet first!");
         }
     }
 
     public void bet() {
+        started = true;
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
         dealerCard1.setText(dealerCards.get(0).toString());
+        updateTotalResult();
     }
 
     public void stand() {
         gameController.stand();
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();
-        playerCard1.setText("");
+        dealerCard2.setText(dealerCards.get(1).toString());
+
+        updateTotalResult();
+        /*playerCard1.setText("");
         playerCard2.setText("");
         playerCard3.setText("");
         playerCard4.setText("");
         dealerCard1.setText("");
         dealerCard2.setText("");
         dealerCard3.setText("");
-        dealerCard4.setText("");
+        dealerCard4.setText("");*/
 
+    }
+
+    public void updateTotalResult() {
+        playerTotal.setText(""+gameController.getPlayer().calculateHand());
+        dealerTotal.setText(""+gameController.getDealer().getHand().calculateTotal());
     }
 
     public void setGameController(BlackjackController blackjackController) {

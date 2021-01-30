@@ -50,4 +50,8 @@ public class BlackjackController {
     public Player getPlayer() {
         return this.player;
     }
+
+    public Dealer getDealer() {
+        return this.dealer;
+    }
 }
