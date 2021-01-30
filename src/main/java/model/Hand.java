@@ -16,6 +16,7 @@ public class Hand {
 
     /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
+     *
      */
     public Hand() {
         this.hand = new ArrayList<>();
@@ -69,7 +70,7 @@ public class Hand {
             }
             total += value;
         }
-        if (aceFlag && total + 10 <= 21) {
+        if (aceFlag && total + 10 <= 21) { // Only for dealer. Player decides the value of ace.
             total += 10;
         }
         return total;

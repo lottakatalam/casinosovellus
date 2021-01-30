@@ -1,5 +1,6 @@
 package view;
 
+import controller.BlackjackController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +12,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller class for RootLayout.fxml
+ * Controller class for MainMenu.fxml
  */
 
-public class RootLayoutController {
+public class MainMenuController {
+
+    private BlackjackController gameController;
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @param actionEvent
@@ -22,9 +25,15 @@ public class RootLayoutController {
      */
     public void playButton(ActionEvent actionEvent) throws IOException {
 
-        Parent gameParent = FXMLLoader.load(getClass().getResource("/InGameView.fxml"));
-        Scene gameScene = new Scene(gameParent);
+        gameController.newBlackjackGame();
+        gameController.nextRound();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));
+        Parent gameParent = loader.load();
 
+        InGameViewController controller = loader.getController();
+        controller.setGameController(gameController);
+        Scene gameScene = new Scene(gameParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Blackjack");
         window.setScene(gameScene);
@@ -55,5 +64,9 @@ public class RootLayoutController {
 
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void setGameController(BlackjackController blackjackController) {
+        gameController = blackjackController;
     }
 }
