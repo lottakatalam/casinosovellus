@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -12,14 +14,20 @@ public class Hand {
     /**
      * An arraylist of Card-objects.
      */
-    private ArrayList<Card> hand;
+    private ArrayList<Card> hand = new ArrayList<>();
+
+    /**
+     * Integer which represents the amount of Card-objects in hand
+     */
+    private int numberOfCards;
 
     /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
      *
      */
     public Hand() {
-        this.hand = new ArrayList<>();
+        //this.hand = new ArrayList<>();
+        this.numberOfCards = this.hand.size();
     }
 
     /**
@@ -27,7 +35,7 @@ public class Hand {
      * @return integer which represents the amount of Card-objects in hand
      */
     public int getNumberOfCards() {
-        return this.hand.size();
+        return numberOfCards;
     }
 
 
@@ -40,10 +48,9 @@ public class Hand {
      *
      * @param cards array of cards
      */
-    /*public void setHand(Card [] cards) {
-
+    public void setHand(Card [] cards) {
         Collections.addAll(this.hand, cards);
-    }*/
+    }
 
 
     public void printHand() {
@@ -52,12 +59,7 @@ public class Hand {
         }
     }
 
-
-    /**
-     * Calculates the sum of card values in hand
-     * Decides whether ace is 1 or 11
-     * @return the total value of hand
-     */
+    // Calculates the total of a hand and also decides whether ace is 1 or 11
     public int calculateTotal() {
         int total = 0;
         boolean aceFlag = false;
@@ -84,10 +86,10 @@ public class Hand {
         this.hand.clear();
     }
 
-    /*public boolean dealerPeek() {
+    public boolean dealerPeek() {
         int value = hand.get(1).getRank();
         return value == 1 || value >= 10;
-    }*/
+    }
 
 
 }
