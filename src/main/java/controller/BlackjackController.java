@@ -16,9 +16,6 @@ public class BlackjackController {
     private Hand handObjectDealer;
     private ArrayList<Card> handDealer;
 
-    /**
-     * Initializes the controller and game objects for it's usage
-     */
     public BlackjackController() {
         this.blackJackGame = new BlackJack();
         this.player = blackJackGame.getPlayer();
@@ -41,9 +38,6 @@ public class BlackjackController {
     public void stand() {
         this.blackJackGame.playerStay();
     }
-    public Player getPlayer() {
-        return this.player;
-    }
 
     public ArrayList<Card> getPlayersCards() {
         return this.handPlayer;
@@ -51,5 +45,9 @@ public class BlackjackController {
 
     public ArrayList<Card> getDealersCards() {
         return this.handDealer;
+    }
+
+    public Player getPlayer() {
+        return this.player;
     }
 }
