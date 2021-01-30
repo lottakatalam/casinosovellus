@@ -130,20 +130,23 @@ public class InGameViewController {
     }
 
     public void stand() {
-        gameController.stand();
-        this.playersCards = gameController.getPlayersCards();
-        this.dealerCards = gameController.getDealersCards();
-        dealerCard2.setText(dealerCards.get(1).toString());
+        if (started) {
+            gameController.stand();
+            this.playersCards = gameController.getPlayersCards();
+            this.dealerCards = gameController.getDealersCards();
+            switch(dealerCards.size()) {
+                case 2: dealerCard2.setText(dealerCards.get(1).toString()); break;
+                case 3: dealerCard2.setText(dealerCards.get(1).toString());
+                    dealerCard3.setText(dealerCards.get(2).toString()); break;
+                case 4: dealerCard2.setText(dealerCards.get(1).toString());
+                    dealerCard3.setText(dealerCards.get(2).toString());
+                    dealerCard4.setText(dealerCards.get(3).toString());
+            }
 
-        updateTotalResult();
-        /*playerCard1.setText("");
-        playerCard2.setText("");
-        playerCard3.setText("");
-        playerCard4.setText("");
-        dealerCard1.setText("");
-        dealerCard2.setText("");
-        dealerCard3.setText("");
-        dealerCard4.setText("");*/
+            updateTotalResult();
+        } else {
+            System.out.println("Set the bet first!");
+        }
 
     }
 
