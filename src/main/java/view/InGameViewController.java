@@ -119,7 +119,7 @@ public class InGameViewController {
         }
     }
 
-    public void bet() {
+    public void deal() {
         started = true;
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();

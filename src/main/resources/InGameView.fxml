@@ -63,12 +63,12 @@
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <TextField alignment="CENTER" layoutX="306.0" layoutY="442.0" promptText="Place your bet" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" AnchorPane.bottomAnchor="166.0" AnchorPane.leftAnchor="306.0" AnchorPane.rightAnchor="304.0" AnchorPane.topAnchor="440.0">
+      <TextField alignment="CENTER" layoutX="306.0" layoutY="433.0" prefHeight="40.0" prefWidth="210.0" promptText="Place your bet" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" AnchorPane.bottomAnchor="166.0" AnchorPane.leftAnchor="306.0" AnchorPane.rightAnchor="304.0" AnchorPane.topAnchor="440.0">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
       </TextField>
-      <Button layoutX="367.0" layoutY="480.0" mnemonicParsing="false" onAction="#bet" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Bet" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="368.0" AnchorPane.topAnchor="480.0">
+      <Button layoutX="360.0" layoutY="480.0" mnemonicParsing="false" onAction="#deal" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Deal" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="480.0">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
