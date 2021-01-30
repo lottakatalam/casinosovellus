@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
 
@@ -20,27 +21,19 @@ import java.util.ArrayList;
 
 public class InGameViewController {
 
+    public Text playerCard1;
+    public Text playerCard2;
+    public Text playerCard3;
+    public Text playerCard4;
+    public Text dealerCard1;
+    public Text dealerCard2;
+    public Text dealerCard3;
+    public Text dealerCard4;
+    public Label playerCurrency;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
+    private ArrayList<Card> dealerCards;
 
-    @FXML
-    private Label playerCard1;
-    @FXML
-    private Label playerCard2;
-    @FXML
-    private Label playerCard3;
-    @FXML
-    private Label playerCard4;
-    @FXML
-    private Label playerCurrency;
-
-
-    /**
-     * General initialization method to setup the in-game view
-     */
-    public void init() {
-        showCurrency();
-    }
 
     /** Gamescreen's Menu-Button loads to MainMenu.fxml
      * @param actionEvent
@@ -107,9 +100,6 @@ public class InGameViewController {
 
     }
 
-    /**
-     * Method for the "Hit" button. Draws a new card and shows it in the application.
-     */
     public void hit() {
         gameController.hit();
         this.playersCards = gameController.getPlayersCards();
@@ -121,35 +111,37 @@ public class InGameViewController {
         }
     }
 
-    /**
-     * Method that is called upon pressing the "Bet" button. Places the bet and draws the first cards
-     */
     public void bet() {
         this.playersCards = gameController.getPlayersCards();
+        this.dealerCards = gameController.getDealersCards();
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
-        showCurrency();
+        dealerCard1.setText(dealerCards.get(0).toString());
     }
 
-    /**
-     * Method for the "Stand" button
-     */
     public void stand() {
         gameController.stand();
+        this.playersCards = gameController.getPlayersCards();
+        this.dealerCards = gameController.getDealersCards();
+        playerCard1.setText("");
+        playerCard2.setText("");
+        playerCard3.setText("");
+        playerCard4.setText("");
+        dealerCard1.setText("");
+        dealerCard2.setText("");
+        dealerCard3.setText("");
+        dealerCard4.setText("");
+
     }
 
-    /**
-     * Initializes the starting currency
-     */
-    public void showCurrency() {
-        playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
-    }
-
-    /**
-     * Sets up the controller to allow communication into model with it.
-     * @param blackjackController
-     */
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
     }
+    public void showCurrency() {
+        playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
+    }
+    public void init() {
+        showCurrency();
+    }
+    //
 }

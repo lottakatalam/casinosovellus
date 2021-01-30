@@ -122,4 +122,8 @@ public class BlackJack {
         return this.player;
     }
 
+    public Dealer getDealer() {
+        return this.dealer;
+    }
+
 }
