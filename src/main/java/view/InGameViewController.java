@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
 
@@ -20,17 +21,17 @@ import java.util.ArrayList;
 
 public class InGameViewController {
 
+    public Text playerCard1;
+    public Text playerCard2;
+    public Text playerCard3;
+    public Text playerCard4;
+    public Text dealerCard1;
+    public Text dealerCard2;
+    public Text dealerCard3;
+    public Text dealerCard4;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
-
-    @FXML
-    private Label playerCard1;
-    @FXML
-    private Label playerCard2;
-    @FXML
-    private Label playerCard3;
-    @FXML
-    private Label playerCard4;
+    private ArrayList<Card> dealerCards;
 
 
     /** Gamescreen's Menu-Button loads to MainMenu.fxml
@@ -111,12 +112,25 @@ public class InGameViewController {
 
     public void bet() {
         this.playersCards = gameController.getPlayersCards();
+        this.dealerCards = gameController.getDealersCards();
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
+        dealerCard1.setText(dealerCards.get(0).toString());
     }
 
     public void stand() {
         gameController.stand();
+        this.playersCards = gameController.getPlayersCards();
+        this.dealerCards = gameController.getDealersCards();
+        playerCard1.setText("");
+        playerCard2.setText("");
+        playerCard3.setText("");
+        playerCard4.setText("");
+        dealerCard1.setText("");
+        dealerCard2.setText("");
+        dealerCard3.setText("");
+        dealerCard4.setText("");
+
     }
 
     public void setGameController(BlackjackController blackjackController) {

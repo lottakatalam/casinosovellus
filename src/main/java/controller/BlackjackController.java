@@ -1,9 +1,6 @@
 package controller;
 
-import model.BlackJack;
-import model.Card;
-import model.Hand;
-import model.Player;
+import model.*;
 import view.InGameViewController;
 
 import java.sql.SQLOutput;
@@ -13,14 +10,20 @@ public class BlackjackController {
 
     private BlackJack blackJackGame;
     private Player player;
-    private Hand handObject;
-    private ArrayList<Card> hand;
+    private Hand handObjectPlayer;
+    private ArrayList<Card> handPlayer;
+    private Dealer dealer;
+    private Hand handObjectDealer;
+    private ArrayList<Card> handDealer;
 
     public BlackjackController() {
         this.blackJackGame = new BlackJack();
         this.player = blackJackGame.getPlayer();
-        this.handObject = player.getHand();
-        this.hand = handObject.getHand();
+        this.handObjectPlayer = player.getHand();
+        this.handPlayer = handObjectPlayer.getHand();
+        this.dealer = blackJackGame.getDealer();
+        this.handObjectDealer = dealer.getHand();
+        this.handDealer = handObjectDealer.getHand();
     }
 
 
@@ -37,7 +40,10 @@ public class BlackjackController {
     }
 
     public ArrayList<Card> getPlayersCards() {
-        return this.hand;
+        return this.handPlayer;
     }
 
+    public ArrayList<Card> getDealersCards() {
+        return this.handDealer;
+    }
 }

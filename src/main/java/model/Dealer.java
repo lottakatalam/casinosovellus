@@ -5,7 +5,11 @@ import java.io.Serializable;
 
 public class Dealer implements Serializable {
 
-    private Hand hand = new Hand();
+    private Hand hand;
+
+    public Dealer() {
+        this.hand = new Hand();
+    }
 
     // Determines if dealer has a blackjack
     public boolean isBlackjack() {
@@ -65,6 +69,10 @@ public class Dealer implements Serializable {
     // Peeks the dealer's face-down card
     public boolean peek() {
         return hand.dealerPeek();
+    }
+
+    public Hand getHand() {
+        return this.hand;
     }
 
 
