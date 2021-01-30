@@ -164,4 +164,5 @@ public class InGameViewController {
     public void init() {
         showCurrency();
     }
+    //
 }
