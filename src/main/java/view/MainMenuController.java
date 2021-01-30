@@ -32,6 +32,7 @@ public class MainMenuController {
 
         InGameViewController controller = loader.getController();
         controller.setGameController(gameController);
+        controller.init();
         Scene gameScene = new Scene(gameParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("Blackjack");

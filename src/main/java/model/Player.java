@@ -15,12 +15,15 @@ public class Player {
 
     private int amountOfWins = 0;
 
+    private int currency = 0;
+
     /**
      * Initializes new Player-object
      *
      */
-    public Player() {
+    public Player(int currency) {
         this.hand = new Hand();
+        this.currency = currency;
     }
 
     public void addCard(Card card) {
@@ -52,4 +55,12 @@ public class Player {
     public void addWin() { amountOfWins++;}
 
     public int getWins() { return amountOfWins;}
+
+    public Hand getHand() {
+        return this.hand;
+    }
+
+    public int getCurrency() {
+        return this.currency;
+    }
 }

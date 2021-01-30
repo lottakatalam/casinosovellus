@@ -36,7 +36,7 @@ public class BlackJack {
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
         this.round = 0;
         this.deck = new Deck();
-        this.player = new Player();
+        this.player = new Player(2500);
         this.dealer = new Dealer();
     }
 
