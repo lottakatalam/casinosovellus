@@ -81,7 +81,7 @@ public class BlackJack {
 
     public void playerStay() {
         dealer.dealerPlay(deck);
-        endRound();
+        //endRound();
     }
 
     private void endRound() {
