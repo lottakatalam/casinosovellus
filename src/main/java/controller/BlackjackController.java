@@ -39,7 +39,7 @@ public class BlackjackController {
         this.blackJackGame.playerStay();
     }
 
-    public void placeBet(int b) { this.player.setBet(b);}
+    public void setBet(int b) { this.player.setBet(b);}
 
     public int getBet() { return player.getBet();}
 
@@ -58,4 +58,5 @@ public class BlackjackController {
     public Dealer getDealer() {
         return this.dealer;
     }
+
 }

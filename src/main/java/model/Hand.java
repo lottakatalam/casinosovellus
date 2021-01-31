@@ -88,6 +88,4 @@ public class Hand {
         int value = hand.get(1).getRank();
         return value == 1 || value >= 10;
     }
-
-
 }

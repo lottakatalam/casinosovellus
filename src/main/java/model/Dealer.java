@@ -21,7 +21,7 @@ public class Dealer implements Serializable {
     }
 
     // This automates the dealer's play
-    public void dealerPlay(Deck deck) {
+    /*public void dealerPlay(Deck deck) {
         System.out.println("Dealer plays\n");
         while (hand.calculateTotal() <= 16) {
             System.out.println("Dealer has " + hand.calculateTotal() + " and hits");
@@ -33,7 +33,7 @@ public class Dealer implements Serializable {
         } else {
             System.out.println("Dealer stands at " + hand.calculateTotal());// + this.getHandString(true, false));
         }
-    }
+    }*/
 
     /**
      * Prints Dealers hand

@@ -49,11 +49,10 @@ public class BlackJack {
     public void initRound() {
         player.clearHand();
         dealer.clearHand();
-        System.out.println("Set the bet:");
+        /*System.out.println("Set the bet:");
         Scanner scanner = new Scanner(System.in);
         int bet = Integer.parseInt(scanner.nextLine());
-        System.out.println("Your bet: "+bet);
-        player.setBet(bet);
+        System.out.println("Your bet: "+bet);*/
 
         this.round++;
         Logger.log(Logger.LogLevel.DEV, String.format("\nRound %d begins!\n", round));
@@ -94,9 +93,23 @@ public class BlackJack {
     }
 
     public void playerStay() {
-        dealer.dealerPlay(deck);
+        //dealer.dealerPlay(deck);
+        //testi 31.1. alkaa
+        System.out.println("Dealer plays\n");
+        while (dealer.calculateTotal() <= 16) {
+            System.out.println("Dealer has " + dealer.calculateTotal()+ " and hits");
+            dealer.addCard(deck.nextCard());
+            //System.out.println("Dealer " + this.getHandString(true, false));
+        }
+        if (dealer.calculateTotal() > 21) {
+            System.out.println("Dealer busts. ");// + this.getHandString(true, false));
+        } else {
+            System.out.println("Dealer stands at " + dealer.calculateTotal());// + this.getHandString(true, false));
+        }
+        //testi 31.1. loppuu
         endRound();
     }
+
 
     private void endRound() {
 
@@ -105,8 +118,8 @@ public class BlackJack {
         System.out.println("");
         dealer.printHand();
 
-
-        System.out.println("The winner is: "+whoWins().toString());
+        Object winner = whoWins();
+        System.out.println("The winner is: "+winner.toString());
 
         System.out.println("Your saldo: "+player.getCurrency());
 
