@@ -76,4 +76,6 @@ public class Player {
     public void setBet(int b) {
         bet = b;
     }
+
+    public int getBet() { return bet; }
 }

@@ -39,6 +39,10 @@ public class BlackjackController {
         this.blackJackGame.playerStay();
     }
 
+    public void placeBet(int b) { this.player.setBet(b);}
+
+    public int getBet() { return player.getBet();}
+
     public ArrayList<Card> getPlayersCards() {
         return this.handPlayer;
     }
