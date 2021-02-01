@@ -15,7 +15,9 @@ public class Player {
 
     private int amountOfWins = 0;
 
-    private int currency = 0;
+    private int currency;
+
+    private int bet;
 
     /**
      * Initializes new Player-object
@@ -52,7 +54,14 @@ public class Player {
 
     public int calculateHand() { return hand.calculateTotal();}
 
-    public void addWin() { amountOfWins++;}
+    public void win() {
+        amountOfWins++;
+        currency += bet;
+    }
+
+    public void lose() {
+        currency -= bet;
+    }
 
     public int getWins() { return amountOfWins;}
 
@@ -63,4 +72,10 @@ public class Player {
     public int getCurrency() {
         return this.currency;
     }
+
+    public void setBet(int b) {
+        bet = b;
+    }
+
+    public int getBet() { return bet; }
 }

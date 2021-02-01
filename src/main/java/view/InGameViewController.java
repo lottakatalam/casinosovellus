@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
@@ -32,6 +33,7 @@ public class InGameViewController {
     public Text playerCurrency;
     public Text playerTotal;
     public Text dealerTotal;
+    public TextField betField;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
@@ -103,6 +105,7 @@ public class InGameViewController {
 
     }
 
+
     public void hit() {
         if (started) {
             gameController.hit();
@@ -119,14 +122,19 @@ public class InGameViewController {
         }
     }
 
-    public void bet() {
+    public void deal() {
+        setBet();
+        gameController.nextRound();
         started = true;
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();
+        /*
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
         dealerCard1.setText(dealerCards.get(0).toString());
         updateTotalResult();
+
+         */
     }
 
     public void stand() {
@@ -137,10 +145,10 @@ public class InGameViewController {
             switch(dealerCards.size()) {
                 case 2: dealerCard2.setText(dealerCards.get(1).toString()); break;
                 case 3: dealerCard2.setText(dealerCards.get(1).toString());
-                    dealerCard3.setText(dealerCards.get(2).toString()); break;
+                        dealerCard3.setText(dealerCards.get(2).toString()); break;
                 case 4: dealerCard2.setText(dealerCards.get(1).toString());
-                    dealerCard3.setText(dealerCards.get(2).toString());
-                    dealerCard4.setText(dealerCards.get(3).toString());
+                        dealerCard3.setText(dealerCards.get(2).toString());
+                        dealerCard4.setText(dealerCards.get(3).toString());
             }
 
             updateTotalResult();
@@ -165,4 +173,16 @@ public class InGameViewController {
         showCurrency();
     }
     //
+
+    public void setBet() {
+        int bet = Integer.parseInt(betField.getText());
+        gameController.setBet(bet);
+    }
+
+    public void setPlayersCards(ArrayList<Card> playersCards) {
+        playerCard1.setText(playersCards.get(0).toString());
+        playerCard2.setText(playersCards.get(1).toString());
+        updateTotalResult();
+    }
 }
+

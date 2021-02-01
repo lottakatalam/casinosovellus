@@ -1,8 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -14,20 +12,14 @@ public class Hand {
     /**
      * An arraylist of Card-objects.
      */
-    private ArrayList<Card> hand = new ArrayList<>();
-
-    /**
-     * Integer which represents the amount of Card-objects in hand
-     */
-    private int numberOfCards;
+    private ArrayList<Card> hand;
 
     /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
      *
      */
     public Hand() {
-        //this.hand = new ArrayList<>();
-        this.numberOfCards = this.hand.size();
+        this.hand = new ArrayList<>();
     }
 
     /**
@@ -35,7 +27,7 @@ public class Hand {
      * @return integer which represents the amount of Card-objects in hand
      */
     public int getNumberOfCards() {
-        return numberOfCards;
+        return this.hand.size();
     }
 
 
@@ -49,6 +41,7 @@ public class Hand {
      * @param cards array of cards
      */
     public void setHand(Card [] cards) {
+
         Collections.addAll(this.hand, cards);
     }
 
@@ -59,7 +52,12 @@ public class Hand {
         }
     }
 
-    // Calculates the total of a hand and also decides whether ace is 1 or 11
+
+    /**
+     * Calculates the sum of card values in hand
+     * Decides whether ace is 1 or 11
+     * @return the total value of hand
+     */
     public int calculateTotal() {
         int total = 0;
         boolean aceFlag = false;
@@ -90,6 +88,4 @@ public class Hand {
         int value = hand.get(1).getRank();
         return value == 1 || value >= 10;
     }
-
-
 }

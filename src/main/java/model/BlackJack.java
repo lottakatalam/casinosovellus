@@ -1,5 +1,7 @@
 package model;
 
+import controller.BlackjackController;
+
 import java.util.Scanner;
 
 /**
@@ -26,18 +28,22 @@ public class BlackJack {
 
     private Dealer dealer;
 
+    private BlackjackController gameController;
+
 
     /**
      *
      * Initializes new Blackjack game
      *
      */
-    public BlackJack() {
+    public BlackJack(BlackjackController gameController) {
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
         this.round = 0;
         this.deck = new Deck();
         this.player = new Player(2500);
         this.dealer = new Dealer();
+        this.gameController = gameController;
+
     }
 
 
@@ -47,6 +53,13 @@ public class BlackJack {
      *
      */
     public void initRound() {
+        player.clearHand();
+        dealer.clearHand();
+        /*System.out.println("Set the bet:");
+        Scanner scanner = new Scanner(System.in);
+        int bet = Integer.parseInt(scanner.nextLine());
+        System.out.println("Your bet: "+bet);*/
+
         this.round++;
         Logger.log(Logger.LogLevel.DEV, String.format("\nRound %d begins!\n", round));
 
@@ -57,10 +70,11 @@ public class BlackJack {
         player.printHand();
         System.out.println("");
         dealer.printHand();
+        gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         //getUserInput();
     }
 
-    private void getUserInput() {
+    /*private void getUserInput() {
         System.out.println("\n1. hit, 2. stay\n");
         Scanner scanner = new Scanner(System.in);
         int valinta = Integer.parseInt(scanner.nextLine());
@@ -71,43 +85,51 @@ public class BlackJack {
         }else {
             Logger.log(Logger.LogLevel.ALL, "Error");
         }
-    }
+    }*/
 
+    //30.1.
     public void playerHit() {
         player.addCard(deck.nextCard());
         player.printHand();
+
+        int total = player.calculateHand();
+        if (total > 21) {
+            endRound();
+        }
         //getUserInput();
     }
 
     public void playerStay() {
-        dealer.dealerPlay(deck);
-        //endRound();
+        //dealer.dealerPlay(deck);
+        //testi 31.1. alkaa
+        System.out.println("Dealer plays\n");
+        while (dealer.calculateTotal() <= 16) {
+            System.out.println("Dealer has " + dealer.calculateTotal()+ " and hits");
+            dealer.addCard(deck.nextCard());
+            //System.out.println("Dealer " + this.getHandString(true, false));
+        }
+        if (dealer.calculateTotal() > 21) {
+            System.out.println("Dealer busts. ");// + this.getHandString(true, false));
+        } else {
+            System.out.println("Dealer stands at " + dealer.calculateTotal());// + this.getHandString(true, false));
+        }
+        //testi 31.1. loppuu
+        endRound();
     }
+
 
     private void endRound() {
 
-        int playerTotal = player.calculateHand();
-        int dealerTotal = dealer.calculateTotal();
-        boolean playerWins = false;
-
-        if (playerTotal == dealerTotal) { //Even if they both get a blackjack
-            Logger.log(Logger.LogLevel.PROD, "No one wins");
-        } else if (playerTotal < 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
-            playerWins = true;
-            Logger.log(Logger.LogLevel.PROD, "Player wins");
-        }
-        else {
-            playerWins = false;
-            Logger.log(Logger.LogLevel.PROD, "Dealer wins");
-        }
-
-        if (playerWins == true) {
-            player.addWin();
-        }
-
         Logger.log(Logger.LogLevel.PROD, "Round ended");
-        player.clearHand();
-        dealer.clearHand();
+        player.printHand();
+        System.out.println("");
+        dealer.printHand();
+
+        Object winner = whoWins();
+        System.out.println("The winner is: "+winner.toString());
+
+        System.out.println("Your saldo: "+player.getCurrency());
+
         Logger.log(Logger.LogLevel.PROD, "The amount of wins: "+player.getWins());
         initRound();
     }
@@ -124,6 +146,34 @@ public class BlackJack {
 
     public Dealer getDealer() {
         return this.dealer;
+    }
+
+    public Object whoWins() {
+        Object winner = null;
+
+        int playerTotal = player.calculateHand();
+        int dealerTotal = dealer.calculateTotal();
+        boolean playerWins = false;
+
+        if (playerTotal == dealerTotal) { //Even if they both get a blackjack
+            Logger.log(Logger.LogLevel.PROD, "No one wins");
+        } else if (playerTotal <= 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
+            playerWins = true;
+            winner = player;
+            Logger.log(Logger.LogLevel.PROD, "Player wins");
+        }
+        else {
+            playerWins = false;
+            winner = dealer;
+            Logger.log(Logger.LogLevel.PROD, "Dealer wins");
+        }
+
+        if (playerWins == true) {
+            player.win();
+        } else {
+            player.lose();
+        }
+        return winner;
     }
 
 }
