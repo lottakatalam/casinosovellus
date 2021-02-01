@@ -1,5 +1,7 @@
 package model;
 
+import controller.BlackjackController;
+
 import java.util.Scanner;
 
 /**
@@ -26,18 +28,22 @@ public class BlackJack {
 
     private Dealer dealer;
 
+    private BlackjackController gameController;
+
 
     /**
      *
      * Initializes new Blackjack game
      *
      */
-    public BlackJack() {
+    public BlackJack(BlackjackController gameController) {
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
         this.round = 0;
         this.deck = new Deck();
         this.player = new Player(2500);
         this.dealer = new Dealer();
+        this.gameController = gameController;
+
     }
 
 
@@ -64,6 +70,7 @@ public class BlackJack {
         player.printHand();
         System.out.println("");
         dealer.printHand();
+        gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         //getUserInput();
     }
 

@@ -124,13 +124,17 @@ public class InGameViewController {
 
     public void deal() {
         setBet();
+        gameController.nextRound();
         started = true;
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();
+        /*
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
         dealerCard1.setText(dealerCards.get(0).toString());
         updateTotalResult();
+
+         */
     }
 
     public void stand() {
@@ -174,4 +178,11 @@ public class InGameViewController {
         int bet = Integer.parseInt(betField.getText());
         gameController.setBet(bet);
     }
+
+    public void setPlayersCards(ArrayList<Card> playersCards) {
+        playerCard1.setText(playersCards.get(0).toString());
+        playerCard2.setText(playersCards.get(1).toString());
+        updateTotalResult();
+    }
 }
+

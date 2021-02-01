@@ -25,13 +25,14 @@ public class MainMenuController {
      */
     public void playButton(ActionEvent actionEvent) throws IOException {
 
-        gameController.nextRound();
+        //gameController.nextRound();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));
         Parent gameParent = loader.load();
 
         InGameViewController controller = loader.getController();
         controller.setGameController(gameController);
+        gameController.setInGameViewController(controller);
         controller.init();
         Scene gameScene = new Scene(gameParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

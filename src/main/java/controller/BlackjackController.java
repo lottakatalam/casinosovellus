@@ -15,9 +15,10 @@ public class BlackjackController {
     private Dealer dealer;
     private Hand handObjectDealer;
     private ArrayList<Card> handDealer;
+    private InGameViewController inGameViewController;
 
     public BlackjackController() {
-        this.blackJackGame = new BlackJack();
+        this.blackJackGame = new BlackJack(this);
         this.player = blackJackGame.getPlayer();
         this.handObjectPlayer = player.getHand();
         this.handPlayer = handObjectPlayer.getHand();
@@ -47,6 +48,10 @@ public class BlackjackController {
         return this.handPlayer;
     }
 
+    public void setPlayersCardsToUI(ArrayList<Card> playersCards) {
+        inGameViewController.setPlayersCards(playersCards);
+    }
+
     public ArrayList<Card> getDealersCards() {
         return this.handDealer;
     }
@@ -59,4 +64,7 @@ public class BlackjackController {
         return this.dealer;
     }
 
+    public void setInGameViewController(InGameViewController inGameViewController) {
+        this.inGameViewController = inGameViewController;
+    }
 }
