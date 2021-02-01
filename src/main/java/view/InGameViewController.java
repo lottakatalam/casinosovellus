@@ -17,6 +17,8 @@ import model.Card;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Controller class for the InGameView.fxml and Settings.fxml
  */
@@ -42,7 +44,7 @@ public class InGameViewController {
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
-    private boolean started;
+    private Object winner;
 
 
     /** Gamescreen's Menu-Button loads to MainMenu.fxml
@@ -111,42 +113,36 @@ public class InGameViewController {
     }
 
 
-    public void hit() {
-        if (started) {
+    public void hit() throws InterruptedException {
             gameController.hit();
             this.playersCards = gameController.getPlayersCards();
             switch(playersCards.size()) {
                 case 3: playerCard3.setText(playersCards.get(2).toString());
                     break;
-                case 4: playerCard4.setText(playersCards.get(3).toString());
+                case 4:
+                    playerCard3.setText(playersCards.get(2).toString());
+                    playerCard4.setText(playersCards.get(3).toString());
                     break;
             }
             updateTotalResult();
-        } else {
-            System.out.println("Place the bet first!");
-        }
     }
 
     public void deal() {
         setBet();
+        gameController.initRound();
         gameController.nextRound();
-        started = true;
+        dealButton.setDisable(true);
         hitButton.setDisable(false);
         standButton.setDisable(false);
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();
-        /*
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
         dealerCard1.setText(dealerCards.get(0).toString());
         updateTotalResult();
-
-         */
-
     }
 
-    public void stand() {
-        if (started) {
+    public void stand() throws InterruptedException {
             gameController.stand();
             this.playersCards = gameController.getPlayersCards();
             this.dealerCards = gameController.getDealersCards();
@@ -156,14 +152,17 @@ public class InGameViewController {
                         dealerCard3.setText(dealerCards.get(2).toString()); break;
                 case 4: dealerCard2.setText(dealerCards.get(1).toString());
                         dealerCard3.setText(dealerCards.get(2).toString());
-                        dealerCard4.setText(dealerCards.get(3).toString());
+                        dealerCard4.setText(dealerCards.get(3).toString()); break;
             }
 
             updateTotalResult();
-        } else {
-            System.out.println("Set the bet first!");
-        }
+    }
 
+    public void declareWinner() throws InterruptedException {
+        this.winner = gameController.getWinner();
+        System.out.println("Winner: " + this.winner);
+        sleep(3000);
+        clearTable();
     }
 
     public void updateTotalResult() {
@@ -187,10 +186,31 @@ public class InGameViewController {
         gameController.setBet(bet);
     }
 
-    public void setPlayersCards(ArrayList<Card> playersCards) {
+    /*public void setPlayersCards(ArrayList<Card> playersCards) {
         playerCard1.setText(playersCards.get(0).toString());
         playerCard2.setText(playersCards.get(1).toString());
         updateTotalResult();
+    }
+
+    public void setDealersCards(ArrayList<Card> dealerCards) {
+        dealerCard1.setText(dealerCards.get(0).toString());
+        updateTotalResult();
+    }*/
+
+    public void clearTable() {
+        hitButton.setDisable(true);
+        standButton.setDisable(true);
+        dealButton.setDisable(false);
+        dealerCard1.setText("");
+        dealerCard2.setText("");
+        dealerCard3.setText("");
+        dealerCard4.setText("");
+        playerCard1.setText("");
+        playerCard2.setText("");
+        playerCard3.setText("");
+        playerCard4.setText("");
+        dealerTotal.setText("?");
+        playerTotal.setText("?");
     }
 }
 

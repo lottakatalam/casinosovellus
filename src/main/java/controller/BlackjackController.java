@@ -16,6 +16,7 @@ public class BlackjackController {
     private Hand handObjectDealer;
     private ArrayList<Card> handDealer;
     private InGameViewController inGameViewController;
+    private String winner;
 
     public BlackjackController() {
         this.blackJackGame = new BlackJack(this);
@@ -33,10 +34,10 @@ public class BlackjackController {
 
     }
 
-    public void hit() {
+    public void hit() throws InterruptedException {
         this.blackJackGame.playerHit();
     }
-    public void stand() {
+    public void stand() throws InterruptedException {
         this.blackJackGame.playerStay();
     }
 
@@ -49,7 +50,11 @@ public class BlackjackController {
     }
 
     public void setPlayersCardsToUI(ArrayList<Card> playersCards) {
-        inGameViewController.setPlayersCards(playersCards);
+        //inGameViewController.setPlayersCards(playersCards);
+    }
+
+    public void setDealersCardsToUI(ArrayList<Card> dealersCards) {
+        //inGameViewController.setDealersCards(dealersCards);
     }
 
     public ArrayList<Card> getDealersCards() {
@@ -66,5 +71,18 @@ public class BlackjackController {
 
     public void setInGameViewController(InGameViewController inGameViewController) {
         this.inGameViewController = inGameViewController;
+    }
+
+    public void declareWinner() throws InterruptedException {
+        inGameViewController.declareWinner();
+    }
+
+    public String getWinner() {
+        this.winner = blackJackGame.whoWins();
+        return this.winner;
+    }
+
+    public void initRound() {
+        blackJackGame.initRound();
     }
 }

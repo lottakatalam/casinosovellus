@@ -4,6 +4,8 @@ import controller.BlackjackController;
 
 import java.util.Scanner;
 
+import static java.lang.Thread.sleep;
+
 /**
  *
  *  Logic of Blackjack game
@@ -29,6 +31,7 @@ public class BlackJack {
     private Dealer dealer;
 
     private BlackjackController gameController;
+    private String winner;
 
 
     /**
@@ -71,6 +74,7 @@ public class BlackJack {
         System.out.println("");
         dealer.printHand();
         gameController.setPlayersCardsToUI(this.player.getHand().getHand());
+        gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
         //getUserInput();
     }
 
@@ -88,7 +92,7 @@ public class BlackJack {
     }*/
 
     //30.1.
-    public void playerHit() {
+    public void playerHit() throws InterruptedException {
         player.addCard(deck.nextCard());
         player.printHand();
 
@@ -99,7 +103,7 @@ public class BlackJack {
         //getUserInput();
     }
 
-    public void playerStay() {
+    public void playerStay() throws InterruptedException {
         //dealer.dealerPlay(deck);
         //testi 31.1. alkaa
         System.out.println("Dealer plays\n");
@@ -118,20 +122,21 @@ public class BlackJack {
     }
 
 
-    private void endRound() {
-
+    private void endRound() throws InterruptedException {
+        declareWinner();
         Logger.log(Logger.LogLevel.PROD, "Round ended");
         player.printHand();
         System.out.println("");
         dealer.printHand();
 
-        Object winner = whoWins();
+        String winner = whoWins();
         System.out.println("The winner is: "+winner.toString());
 
         System.out.println("Your saldo: "+player.getCurrency());
 
         Logger.log(Logger.LogLevel.PROD, "The amount of wins: "+player.getWins());
-        initRound();
+
+        //initRound();
     }
 
     // NOTE: This is only for testing
@@ -148,8 +153,8 @@ public class BlackJack {
         return this.dealer;
     }
 
-    public Object whoWins() {
-        Object winner = null;
+    public String whoWins() {
+        String winner = "";
 
         int playerTotal = player.calculateHand();
         int dealerTotal = dealer.calculateTotal();
@@ -157,14 +162,15 @@ public class BlackJack {
 
         if (playerTotal == dealerTotal) { //Even if they both get a blackjack
             Logger.log(Logger.LogLevel.PROD, "No one wins");
+            winner = "nobody";
         } else if (playerTotal <= 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
             playerWins = true;
-            winner = player;
+            winner = "player";
             Logger.log(Logger.LogLevel.PROD, "Player wins");
         }
         else {
             playerWins = false;
-            winner = dealer;
+            winner = "dealer";
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         }
 
@@ -174,6 +180,10 @@ public class BlackJack {
             player.lose();
         }
         return winner;
+    }
+
+    public void declareWinner() throws InterruptedException {
+        gameController.declareWinner();
     }
 
 }
