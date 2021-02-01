@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -34,6 +35,10 @@ public class InGameViewController {
     public Text playerTotal;
     public Text dealerTotal;
     public TextField betField;
+    public Button splitButton;
+    public Button standButton;
+    public Button hitButton;
+    public Button dealButton;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
@@ -126,6 +131,8 @@ public class InGameViewController {
         setBet();
         gameController.nextRound();
         started = true;
+        hitButton.setDisable(false);
+        standButton.setDisable(false);
         this.playersCards = gameController.getPlayersCards();
         this.dealerCards = gameController.getDealersCards();
         /*
@@ -135,6 +142,7 @@ public class InGameViewController {
         updateTotalResult();
 
          */
+
     }
 
     public void stand() {

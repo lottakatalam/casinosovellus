@@ -8,12 +8,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
    <children>
-      <Button layoutX="125.0" layoutY="480.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="607.0" AnchorPane.topAnchor="480.0">
+      <Button fx:id="hitButton" disable="true" layoutX="125.0" layoutY="480.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="607.0" AnchorPane.topAnchor="480.0">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Button layoutX="606.0" layoutY="480.0" mnemonicParsing="false" onAction="#stand" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Stand" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="602.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="480.0">
+      <Button fx:id="standButton" disable="true" layoutX="606.0" layoutY="480.0" mnemonicParsing="false" onAction="#stand" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Stand" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="602.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="480.0">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button disable="true" layoutX="368.0" layoutY="570.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Split" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="368.0" AnchorPane.rightAnchor="368.0" AnchorPane.topAnchor="570.0">
+      <Button fx:id="splitButton" disable="true" layoutX="368.0" layoutY="570.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Split" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="368.0" AnchorPane.rightAnchor="368.0" AnchorPane.topAnchor="570.0">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
@@ -68,7 +68,7 @@
             <Font name="Cooper Black" size="15.0" />
          </font>
       </TextField>
-      <Button layoutX="360.0" layoutY="480.0" mnemonicParsing="false" onAction="#deal" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Deal" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="480.0">
+      <Button fx:id="dealButton" layoutX="360.0" layoutY="480.0" mnemonicParsing="false" onAction="#deal" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Deal" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="480.0">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
