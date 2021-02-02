@@ -47,7 +47,9 @@ public class InGameViewController {
     private Object winner;
 
 
-    /** Gamescreen's Menu-Button loads to MainMenu.fxml
+    /**
+     * Gamescreen's Menu-Button loads to MainMenu.fxml
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -64,7 +66,9 @@ public class InGameViewController {
     }
 
 
-    /** Settingscreen's Back-Button loads to MainMenu.fxml
+    /**
+     * Settingscreen's Back-Button loads to MainMenu.fxml
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -80,7 +84,9 @@ public class InGameViewController {
 
     }
 
-    /** Gamescreen's Instructions-Button loads to Instructions.fxml
+    /**
+     * Gamescreen's Instructions-Button loads to Instructions.fxml
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -96,7 +102,9 @@ public class InGameViewController {
 
     }
 
-    /** Instructionscreen's Back to game-Button loads to InGameView.fxml
+    /**
+     * Instructionscreen's Back to game-Button loads to InGameView.fxml
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -114,22 +122,23 @@ public class InGameViewController {
 
 
     public void hit() throws InterruptedException {
-            gameController.hit();
-            this.playersCards = gameController.getPlayersCards();
-            switch(playersCards.size()) {
-                case 3: playerCard3.setText(playersCards.get(2).toString());
-                    break;
-                case 4:
-                    playerCard3.setText(playersCards.get(2).toString());
-                    playerCard4.setText(playersCards.get(3).toString());
-                    break;
-            }
-            updateTotalResult();
+        gameController.hit();
+        /*
+        this.playersCards = gameController.getPlayersCards();
+        switch (playersCards.size()) {
+            case 3:
+                playerCard3.setText(playersCards.get(2).toString());
+                break;
+            case 4:
+                playerCard3.setText(playersCards.get(2).toString());
+                playerCard4.setText(playersCards.get(3).toString());
+                break;
+        }*/
+        updateTotalResult();
     }
 
     public void deal() {
         setBet();
-        gameController.initRound();
         gameController.nextRound();
         dealButton.setDisable(true);
         hitButton.setDisable(false);
@@ -143,19 +152,27 @@ public class InGameViewController {
     }
 
     public void stand() throws InterruptedException {
-            gameController.stand();
-            this.playersCards = gameController.getPlayersCards();
-            this.dealerCards = gameController.getDealersCards();
-            switch(dealerCards.size()) {
-                case 2: dealerCard2.setText(dealerCards.get(1).toString()); break;
-                case 3: dealerCard2.setText(dealerCards.get(1).toString());
-                        dealerCard3.setText(dealerCards.get(2).toString()); break;
-                case 4: dealerCard2.setText(dealerCards.get(1).toString());
-                        dealerCard3.setText(dealerCards.get(2).toString());
-                        dealerCard4.setText(dealerCards.get(3).toString()); break;
-            }
+        gameController.stand();
+        /*
+        this.playersCards = gameController.getPlayersCards();
+        this.dealerCards = gameController.getDealersCards();
 
-            updateTotalResult();
+        switch (dealerCards.size()) {
+            case 2:
+                dealerCard2.setText(dealerCards.get(1).toString());
+                break;
+            case 3:
+                dealerCard2.setText(dealerCards.get(1).toString());
+                dealerCard3.setText(dealerCards.get(2).toString());
+                break;
+            case 4:
+                dealerCard2.setText(dealerCards.get(1).toString());
+                dealerCard3.setText(dealerCards.get(2).toString());
+                dealerCard4.setText(dealerCards.get(3).toString());
+                break;
+        }
+*/
+        updateTotalResult();
     }
 
     public void declareWinner() throws InterruptedException {
@@ -166,16 +183,18 @@ public class InGameViewController {
     }
 
     public void updateTotalResult() {
-        playerTotal.setText(""+gameController.getPlayer().calculateHand());
-        dealerTotal.setText(""+gameController.getDealer().getHand().calculateTotal());
+        playerTotal.setText("" + gameController.getPlayer().calculateHand());
+        dealerTotal.setText("" + gameController.getDealer().getHand().calculateTotal());
     }
 
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
     }
+
     public void showCurrency() {
         playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
     }
+
     public void init() {
         showCurrency();
     }
@@ -186,16 +205,62 @@ public class InGameViewController {
         gameController.setBet(bet);
     }
 
-    /*public void setPlayersCards(ArrayList<Card> playersCards) {
-        playerCard1.setText(playersCards.get(0).toString());
-        playerCard2.setText(playersCards.get(1).toString());
+    public void setPlayersCards(ArrayList<Card> playersCards) {
+        switch (playersCards.size()) {
+            case 1:
+                playerCard1.setText(playersCards.get(0).toString());
+                break;
+            case 2:
+                playerCard1.setText(playersCards.get(0).toString());
+                playerCard2.setText(playersCards.get(1).toString());
+                break;
+            case 3:
+                playerCard1.setText(playersCards.get(0).toString());
+                playerCard2.setText(playersCards.get(1).toString());
+                playerCard3.setText(playersCards.get(2).toString());
+                break;
+            case 4:
+                playerCard1.setText(playersCards.get(0).toString());
+                playerCard2.setText(playersCards.get(1).toString());
+                playerCard3.setText(playersCards.get(2).toString());
+                playerCard4.setText(playersCards.get(3).toString());
+                break;
+        }
+
         updateTotalResult();
     }
 
     public void setDealersCards(ArrayList<Card> dealerCards) {
-        dealerCard1.setText(dealerCards.get(0).toString());
+        switch (dealerCards.size()) {
+            case 1:
+                System.out.println("yksi kortti");
+                dealerCard1.setText(dealerCards.get(0).toString());
+                break;
+            case 2:
+                System.out.println("2 korttia" + dealerCards.get(1).toString());
+                dealerCard1.setText(dealerCards.get(0).toString());
+                dealerCard2.setText(dealerCards.get(1).toString());
+                System.out.println(dealerCard2.getText());
+                break;
+            case 3:
+                dealerCard1.setText(dealerCards.get(0).toString());
+                dealerCard2.setText(dealerCards.get(1).toString());
+                dealerCard3.setText(dealerCards.get(2).toString());
+                break;
+            case 4:
+                dealerCard1.setText(dealerCards.get(0).toString());
+                dealerCard2.setText(dealerCards.get(1).toString());
+                dealerCard3.setText(dealerCards.get(2).toString());
+                dealerCard4.setText(dealerCards.get(3).toString());
+                break;
+        }
         updateTotalResult();
-    }*/
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void clearTable() {
         hitButton.setDisable(true);
@@ -209,8 +274,8 @@ public class InGameViewController {
         playerCard2.setText("");
         playerCard3.setText("");
         playerCard4.setText("");
-        dealerTotal.setText("?");
-        playerTotal.setText("?");
+        dealerTotal.setText("");
+        playerTotal.setText("");
     }
 }
 

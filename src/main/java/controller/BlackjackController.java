@@ -3,12 +3,11 @@ package controller;
 import model.*;
 import view.InGameViewController;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class BlackjackController {
 
-    private BlackJack blackJackGame;
+    private BlackjackGame blackJackGame;
     private Player player;
     private Hand handObjectPlayer;
     private ArrayList<Card> handPlayer;
@@ -19,7 +18,7 @@ public class BlackjackController {
     private String winner;
 
     public BlackjackController() {
-        this.blackJackGame = new BlackJack(this);
+        this.blackJackGame = new BlackjackGame(this);
         this.player = blackJackGame.getPlayer();
         this.handObjectPlayer = player.getHand();
         this.handPlayer = handObjectPlayer.getHand();
@@ -50,11 +49,11 @@ public class BlackjackController {
     }
 
     public void setPlayersCardsToUI(ArrayList<Card> playersCards) {
-        //inGameViewController.setPlayersCards(playersCards);
+        inGameViewController.setPlayersCards(playersCards);
     }
 
     public void setDealersCardsToUI(ArrayList<Card> dealersCards) {
-        //inGameViewController.setDealersCards(dealersCards);
+        inGameViewController.setDealersCards(dealersCards);
     }
 
     public ArrayList<Card> getDealersCards() {
@@ -82,7 +81,4 @@ public class BlackjackController {
         return this.winner;
     }
 
-    public void initRound() {
-        blackJackGame.initRound();
-    }
 }
