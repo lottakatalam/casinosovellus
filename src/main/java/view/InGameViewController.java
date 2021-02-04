@@ -123,17 +123,6 @@ public class InGameViewController {
 
     public void hit() throws InterruptedException {
         gameController.hit();
-        /*
-        this.playersCards = gameController.getPlayersCards();
-        switch (playersCards.size()) {
-            case 3:
-                playerCard3.setText(playersCards.get(2).toString());
-                break;
-            case 4:
-                playerCard3.setText(playersCards.get(2).toString());
-                playerCard4.setText(playersCards.get(3).toString());
-                break;
-        }*/
         updateTotalResult();
     }
 
@@ -153,25 +142,6 @@ public class InGameViewController {
 
     public void stand() throws InterruptedException {
         gameController.stand();
-        /*
-        this.playersCards = gameController.getPlayersCards();
-        this.dealerCards = gameController.getDealersCards();
-
-        switch (dealerCards.size()) {
-            case 2:
-                dealerCard2.setText(dealerCards.get(1).toString());
-                break;
-            case 3:
-                dealerCard2.setText(dealerCards.get(1).toString());
-                dealerCard3.setText(dealerCards.get(2).toString());
-                break;
-            case 4:
-                dealerCard2.setText(dealerCards.get(1).toString());
-                dealerCard3.setText(dealerCards.get(2).toString());
-                dealerCard4.setText(dealerCards.get(3).toString());
-                break;
-        }
-*/
         updateTotalResult();
     }
 
@@ -200,7 +170,7 @@ public class InGameViewController {
     }
     //
 
-    public void setBet() {
+    public void setBet() { // TODO: Asetetun panoksen validointi
         int bet = Integer.parseInt(betField.getText());
         gameController.setBet(bet);
     }

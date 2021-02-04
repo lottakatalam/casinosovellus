@@ -2,7 +2,7 @@ package model;
 
 import controller.BlackjackController;
 
-public class BlackjackRound extends Thread{
+public class BlackjackRound extends Thread {
 
     private static int roundNumber = 0;
 
@@ -66,8 +66,7 @@ public class BlackjackRound extends Thread{
             playerWins = true;
             winner = "player";
             Logger.log(Logger.LogLevel.PROD, "Player wins");
-        }
-        else {
+        } else {
             playerWins = false;
             winner = "dealer";
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
@@ -82,20 +81,19 @@ public class BlackjackRound extends Thread{
     }
 
 
-    public void run()  {
+    public void run() {// end round
         if (!playerBusted) {
             System.out.println("Dealer plays\n");
             while (dealer.calculateTotal() <= 16) {
                 System.out.println("Dealer has " + dealer.calculateTotal() + " and hits");
                 dealer.addCard(deck.nextCard());
                 gameController.setDealersCardsToUI(dealer.getHand().getHand());
-                //System.out.println("Dealer " + this.getHandString(true, false));
 
             }
             if (dealer.calculateTotal() > 21) {
-                System.out.println("Dealer busts. ");// + this.getHandString(true, false));
+                System.out.println("Dealer busts. ");
             } else {
-                System.out.println("Dealer stands at " + dealer.calculateTotal());// + this.getHandString(true, false));
+                System.out.println("Dealer stands at " + dealer.calculateTotal());
             }
         }
         try {
@@ -109,10 +107,10 @@ public class BlackjackRound extends Thread{
         dealer.printHand();
 
         String winner = whoWins();
-        System.out.println("The winner is: "+winner.toString());
+        Logger.log(Logger.LogLevel.PROD, String.format("The winner is: %s", winner));
 
-        System.out.println("Your saldo: "+player.getCurrency());
+        System.out.println("Your saldo: " + player.getCurrency());
 
-        Logger.log(Logger.LogLevel.PROD, "The amount of wins: "+player.getWins());
+        Logger.log(Logger.LogLevel.PROD, "The amount of wins: " + player.getWins());
     }
 }

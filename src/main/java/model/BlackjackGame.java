@@ -5,9 +5,7 @@ import controller.BlackjackController;
 import static java.lang.Thread.sleep;
 
 /**
- *
- *  Logic of Blackjack game
- *
+ * Logic of Blackjack game
  */
 
 public class BlackjackGame extends Thread {
@@ -16,27 +14,23 @@ public class BlackjackGame extends Thread {
 
     /**
      * Deck used in a blackjack game
-     *
      */
     private Deck deck;
 
     /**
      * Player playing in a blackjack game
-     *
      */
     private Player player;
 
     private Dealer dealer;
 
     private BlackjackController gameController;
-    private String winner;
 
+    //private String winner;
 
 
     /**
-     *
      * Initializes new Blackjack game
-     *
      */
     public BlackjackGame(BlackjackController gameController) {
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
@@ -51,7 +45,6 @@ public class BlackjackGame extends Thread {
     /**
      * Initializes new round in a blackjack game:
      * Shuffles deck and deals two cards for player and one for dealer.
-     *
      */
     public void initRound() {
         player.clearHand();
@@ -68,6 +61,7 @@ public class BlackjackGame extends Thread {
             e.printStackTrace();
         }
     }
+
     public void playerStay() {
         round.playerStay();
     }

@@ -25,7 +25,6 @@ public class MainMenuController {
      */
     public void playButton(ActionEvent actionEvent) throws IOException {
 
-        //gameController.nextRound();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));
         Parent gameParent = loader.load();

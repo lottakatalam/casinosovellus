@@ -36,16 +36,25 @@ public class BlackjackController {
     public void hit() throws InterruptedException {
         this.blackJackGame.playerHit();
     }
+
     public void stand() throws InterruptedException {
         this.blackJackGame.playerStay();
     }
 
-    public void setBet(int b) { this.player.setBet(b);}
+    public void setBet(int b) {
+        this.player.setBet(b);
+    }
 
-    public int getBet() { return player.getBet();}
+    public int getBet() {
+        return player.getBet();
+    }
 
     public ArrayList<Card> getPlayersCards() {
         return this.handPlayer;
+    }
+
+    public ArrayList<Card> getDealersCards() {
+        return this.handDealer;
     }
 
     public void setPlayersCardsToUI(ArrayList<Card> playersCards) {
@@ -56,9 +65,6 @@ public class BlackjackController {
         inGameViewController.setDealersCards(dealersCards);
     }
 
-    public ArrayList<Card> getDealersCards() {
-        return this.handDealer;
-    }
 
     public Player getPlayer() {
         return this.player;
