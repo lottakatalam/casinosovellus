@@ -56,11 +56,11 @@ public class Player {
 
     public void win() {
         amountOfWins++;
-        currency += bet;
+        this.currency += (bet * 2);
     }
 
     public void lose() {
-        currency -= bet;
+        this.currency = currency;
     }
 
     public int getWins() { return amountOfWins;}
@@ -74,7 +74,8 @@ public class Player {
     }
 
     public void setBet(int b) {
-        bet = b;
+        this.bet = b;
+        this.currency -= bet;
     }
 
     public int getBet() { return bet; }

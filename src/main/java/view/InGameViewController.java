@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
+import model.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class InGameViewController {
     public Text playerCurrency;
     public Text playerTotal;
     public Text dealerTotal;
+    public Text currentBet;
     public TextField betField;
     public Button splitButton;
     public Button standButton;
@@ -45,6 +47,8 @@ public class InGameViewController {
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
     private Object winner;
+    public Player player;
+    private int bet;
 
 
     /**
@@ -128,6 +132,7 @@ public class InGameViewController {
 
     public void deal() {
         setBet();
+        updateBalance();
         gameController.nextRound();
         dealButton.setDisable(true);
         hitButton.setDisable(false);
@@ -147,8 +152,8 @@ public class InGameViewController {
 
     public void declareWinner() throws InterruptedException {
         this.winner = gameController.getWinner();
-        System.out.println("Winner: " + this.winner);
         sleep(3000);
+        updateBalance();
         clearTable();
     }
 
@@ -168,11 +173,16 @@ public class InGameViewController {
     public void init() {
         showCurrency();
     }
-    //
 
     public void setBet() { // TODO: Asetetun panoksen validointi
-        int bet = Integer.parseInt(betField.getText());
+        bet = Integer.parseInt(betField.getText());
+        currentBet.setText("\uD83D\uDCB2"+bet);
         gameController.setBet(bet);
+        updateBalance();
+    }
+
+    public void updateBalance() {
+        playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
     }
 
     public void setPlayersCards(ArrayList<Card> playersCards) {

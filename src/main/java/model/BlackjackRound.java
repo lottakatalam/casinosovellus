@@ -11,6 +11,7 @@ public class BlackjackRound extends Thread {
     private Player player;
     private Dealer dealer;
     private boolean playerBusted = false;
+    private String winner;
 
 
     public BlackjackRound(BlackjackController gameController, Deck deck, Player player, Dealer dealer) {
@@ -61,18 +62,18 @@ public class BlackjackRound extends Thread {
 
         if (playerTotal == dealerTotal) { //Even if they both get a blackjack
             Logger.log(Logger.LogLevel.PROD, "No one wins");
-            winner = "nobody";
+            this.winner = "nobody";
         } else if (playerTotal <= 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
             playerWins = true;
-            winner = "player";
+            this.winner = "player";
             Logger.log(Logger.LogLevel.PROD, "Player wins");
         } else {
             playerWins = false;
-            winner = "dealer";
+            this.winner = "dealer";
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         }
 
-        if (playerWins == true) {
+        if (playerWins) {
             player.win();
         } else {
             player.lose();
@@ -106,10 +107,9 @@ public class BlackjackRound extends Thread {
         System.out.println("");
         dealer.printHand();
 
-        String winner = whoWins();
         Logger.log(Logger.LogLevel.PROD, String.format("The winner is: %s", winner));
 
-        System.out.println("Your saldo: " + player.getCurrency());
+        Logger.log(Logger.LogLevel.PROD, String.format("Your saldo: %d", player.getCurrency()));
 
         Logger.log(Logger.LogLevel.PROD, "The amount of wins: " + player.getWins());
     }
