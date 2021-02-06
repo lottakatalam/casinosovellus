@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
@@ -43,6 +44,9 @@ public class InGameViewController {
     public Button standButton;
     public Button hitButton;
     public Button dealButton;
+    public ImageView playerWins;
+    public ImageView dealerWins;
+    public ImageView nobodyWins;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
@@ -151,10 +155,12 @@ public class InGameViewController {
     }
 
     public void declareWinner() throws InterruptedException {
+        playerWins.setVisible(true);
         this.winner = gameController.getWinner();
         sleep(3000);
         updateBalance();
         clearTable();
+        playerWins.setVisible(false);
     }
 
     public void updateTotalResult() {
