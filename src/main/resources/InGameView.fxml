@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -136,6 +138,16 @@
       <Text fx:id="currentBet" layoutX="369.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="84.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="winnerScreen" fitHeight="645.0" fitWidth="843.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@WinnerScreen.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="declareWinner" layoutX="236.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" visible="false" wrappingWidth="344.0">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
    </children>

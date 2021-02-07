@@ -78,13 +78,8 @@ public class BlackjackController {
         this.inGameViewController = inGameViewController;
     }
 
-    public void declareWinner() throws InterruptedException {
-        inGameViewController.declareWinner();
-    }
-
-    public String getWinner() {
-        this.winner = blackJackGame.whoWins();
-        return this.winner;
+    public void declareWinner(String winner) throws InterruptedException {
+        inGameViewController.declareWinner(winner);
     }
 
 }

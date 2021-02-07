@@ -15,20 +15,20 @@ public class BlackjackGame extends Thread {
     /**
      * Deck used in a blackjack game
      */
-    private Deck deck;
+    private final Deck deck;
 
     /**
      * Player playing in a blackjack game
      */
-    private Player player;
+    private final Player player;
     /**
      * Dealer in a BlackJack-game
      */
-    private Dealer dealer;
+    private final Dealer dealer;
     /**
      * Controller of the application (MVC-model)
      */
-    private BlackjackController gameController;
+    private final BlackjackController gameController;
 
     //private String winner;
 
@@ -59,11 +59,7 @@ public class BlackjackGame extends Thread {
     }
 
     public void playerHit() {
-        try {
             round.playerHit();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void playerStay() {
@@ -77,10 +73,6 @@ public class BlackjackGame extends Thread {
 
     public Dealer getDealer() {
         return this.dealer;
-    }
-
-    public String whoWins() {
-        return round.whoWins();
     }
 
 }

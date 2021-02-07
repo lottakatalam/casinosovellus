@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
@@ -19,7 +19,6 @@ import model.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.function.UnaryOperator;
 
 import static java.lang.Thread.sleep;
 
@@ -46,10 +45,11 @@ public class InGameViewController {
     public Button standButton;
     public Button hitButton;
     public Button dealButton;
+    public ImageView winnerScreen;
+    public Text declareWinner;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
-    private Object winner;
     public Player player;
     private int bet;
 
@@ -153,11 +153,30 @@ public class InGameViewController {
         updateTotalResult();
     }
 
-    public void declareWinner() throws InterruptedException {
-        this.winner = gameController.getWinner();
-        sleep(3000);
+    public void declareWinner(String winner) throws InterruptedException {
+        winnerScreen.setVisible(true);
+        declareWinner.setVisible(true);
+        switch (winner) {
+            case "player":
+                declareWinner.setText("You win!");
+                break;
+            case "dealer":
+                declareWinner.setText("Dealer wins");
+                break;
+            case "nobody":
+                declareWinner.setText("Draw");
+                break;
+            case "Blackjack":
+                declareWinner.setText("BLACKJACK!");
+                break;
+            case "busted":
+                declareWinner.setText("Busted! Dealer wins.");
+                break;
+        }
         updateBalance();
+        sleep(4000);
         clearTable();
+        winnerScreen.setVisible(false);
     }
 
     public void updateTotalResult() {
@@ -243,7 +262,7 @@ public class InGameViewController {
         }
         updateTotalResult();
         try {
-            sleep(3000);
+            sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -263,6 +282,7 @@ public class InGameViewController {
         playerCard4.setText("");
         dealerTotal.setText("");
         playerTotal.setText("");
+        declareWinner.setText("");
     }
 }
 
