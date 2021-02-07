@@ -140,20 +140,25 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Text>
-      <ImageView fx:id="playerWins" fitHeight="645.0" fitWidth="843.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="winnerScreen" fitHeight="645.0" fitWidth="843.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@PlayerWins.png" />
+            <Image url="@WinnerScreen.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="dealerWins" fitHeight="645.0" fitWidth="830.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@DealerWins.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="nobodyWins" fitHeight="645.0" fitWidth="843.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@NobodyWins.png" />
-         </image>
-      </ImageView>
+      <Text fx:id="playerWins" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Player won the round!" visible="false">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
+      <Text fx:id="dealerWins" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Dealer won the round!" visible="false">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
+      <Text fx:id="nobodyWins" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Nobody won the round!" visible="false">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

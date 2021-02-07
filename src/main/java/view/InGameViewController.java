@@ -44,9 +44,10 @@ public class InGameViewController {
     public Button standButton;
     public Button hitButton;
     public Button dealButton;
-    public ImageView playerWins;
-    public ImageView dealerWins;
-    public ImageView nobodyWins;
+    public ImageView winnerScreen;
+    public Text playerWins;
+    public Text dealerWins;
+    public Text nobodyWins;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
@@ -155,12 +156,14 @@ public class InGameViewController {
     }
 
     public void declareWinner() throws InterruptedException {
+        winnerScreen.setVisible(true);
         playerWins.setVisible(true);
         this.winner = gameController.getWinner();
-        sleep(3000);
+        sleep(4000);
         updateBalance();
         clearTable();
         playerWins.setVisible(false);
+        winnerScreen.setVisible(false);
     }
 
     public void updateTotalResult() {
