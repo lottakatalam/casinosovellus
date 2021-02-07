@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
+import model.Logger;
 import model.Player;
 
 import java.io.IOException;
@@ -45,13 +46,10 @@ public class InGameViewController {
     public Button hitButton;
     public Button dealButton;
     public ImageView winnerScreen;
-    public Text playerWins;
-    public Text dealerWins;
-    public Text nobodyWins;
+    public Text declareWinner;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
-    private Object winner;
     public Player player;
     private int bet;
 
@@ -155,14 +153,20 @@ public class InGameViewController {
         updateTotalResult();
     }
 
-    public void declareWinner() throws InterruptedException {
+    public void declareWinner(String winner) throws InterruptedException {
         winnerScreen.setVisible(true);
-        playerWins.setVisible(true);
-        this.winner = gameController.getWinner();
+        declareWinner.setVisible(true);
+        Logger.log(Logger.LogLevel.PROD, String.format("The winner isasd: %s", winner));
+        if (winner.equals("player")) {
+            declareWinner.setText("You win!");
+        } else if (winner.equals("dealer")) {
+            declareWinner.setText("Dealer wins");
+        } else if (winner.equals("nobody")) {
+            declareWinner.setText("Draw");
+        }
         sleep(4000);
         updateBalance();
         clearTable();
-        playerWins.setVisible(false);
         winnerScreen.setVisible(false);
     }
 
@@ -245,7 +249,7 @@ public class InGameViewController {
         }
         updateTotalResult();
         try {
-            sleep(3000);
+            sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -265,6 +269,7 @@ public class InGameViewController {
         playerCard4.setText("");
         dealerTotal.setText("");
         playerTotal.setText("");
+        declareWinner.setText("");
     }
 }
 

@@ -53,8 +53,8 @@ public class BlackjackRound extends Thread {
         this.start();
     }
 
-    public String whoWins() {
-        String winner = "";
+    public String whoWins() throws InterruptedException {
+        String winner = "?";
 
         int playerTotal = player.calculateHand();
         int dealerTotal = dealer.calculateTotal();
@@ -78,6 +78,7 @@ public class BlackjackRound extends Thread {
         } else {
             player.lose();
         }
+        gameController.declareWinner(this.winner);
         return winner;
     }
 
@@ -98,7 +99,7 @@ public class BlackjackRound extends Thread {
             }
         }
         try {
-            gameController.declareWinner();
+            winner = whoWins();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

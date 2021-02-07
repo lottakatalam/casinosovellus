@@ -75,8 +75,4 @@ public class BlackjackGame extends Thread {
         return this.dealer;
     }
 
-    public String whoWins() {
-        return round.whoWins();
-    }
-
 }

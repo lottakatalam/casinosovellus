@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
    <children>
       <Button fx:id="hitButton" disable="true" layoutX="125.0" layoutY="480.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="607.0" AnchorPane.topAnchor="480.0">
          <font>
@@ -145,17 +145,7 @@
             <Image url="@WinnerScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="playerWins" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Player won the round!" visible="false">
-         <font>
-            <Font name="Cooper Black" size="35.0" />
-         </font>
-      </Text>
-      <Text fx:id="dealerWins" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Dealer won the round!" visible="false">
-         <font>
-            <Font name="Cooper Black" size="35.0" />
-         </font>
-      </Text>
-      <Text fx:id="nobodyWins" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Nobody won the round!" visible="false">
+      <Text fx:id="declareWinner" layoutX="236.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" visible="false" wrappingWidth="344.0">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
