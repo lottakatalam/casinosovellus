@@ -16,14 +16,12 @@ public class Hand {
 
     /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
-     *
      */
     public Hand() {
         this.hand = new ArrayList<>();
     }
 
     /**
-     *
      * @return integer which represents the amount of Card-objects in hand
      */
     public int getNumberOfCards() {
@@ -40,12 +38,14 @@ public class Hand {
      *
      * @param cards array of cards
      */
-    public void setHand(Card [] cards) {
+    public void setHand(Card[] cards) {
 
         Collections.addAll(this.hand, cards);
     }
 
-
+    /**
+     * Prints all of the card-objects (in their own rows) in a hand by calling the toString()-method in Card-class
+     */
     public void printHand() {
         for (Card card : hand) {
             System.out.println(card.toString());
@@ -56,6 +56,7 @@ public class Hand {
     /**
      * Calculates the sum of card values in hand
      * Decides whether ace is 1 or 11
+     *
      * @return the total value of hand
      */
     public int calculateTotal() {
@@ -76,11 +77,19 @@ public class Hand {
         return total;
     }
 
-    public void addCard(Card card){
+    /**
+     * Adds a card-object to a hand
+     *
+     * @param card the object to be added to a hand
+     */
+    public void addCard(Card card) {
         this.hand.add(card);
     }
 
-    public void clearHand(){
+    /**
+     * Clears the hand-object / deletes all the card-objects in a hand
+     */
+    public void clearHand() {
         this.hand.clear();
     }
 
