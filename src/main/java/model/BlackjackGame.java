@@ -15,16 +15,16 @@ public class BlackjackGame extends Thread {
     /**
      * Deck used in a blackjack game
      */
-    private Deck deck;
+    private final Deck deck;
 
     /**
      * Player playing in a blackjack game
      */
-    private Player player;
+    private final Player player;
 
-    private Dealer dealer;
+    private final Dealer dealer;
 
-    private BlackjackController gameController;
+    private final BlackjackController gameController;
 
     //private String winner;
 

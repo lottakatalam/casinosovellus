@@ -6,12 +6,13 @@ public class BlackjackRound extends Thread {
 
     private static int roundNumber = 0;
 
-    private BlackjackController gameController;
-    private Deck deck;
-    private Player player;
-    private Dealer dealer;
+    private final BlackjackController gameController;
+    private final Deck deck;
+    private final Player player;
+    private final Dealer dealer;
     private boolean playerBusted = false;
     private String winner;
+
 
 
     public BlackjackRound(BlackjackController gameController, Deck deck, Player player, Dealer dealer) {
@@ -35,13 +36,11 @@ public class BlackjackRound extends Thread {
 
     public void playerHit() {
         player.addCard(deck.nextCard());
+        this.gameController.setPlayersCardsToUI(player.getHand().getHand());
         player.printHand();
-        gameController.setPlayersCardsToUI(this.player.getHand().getHand());
-
         int total = player.calculateHand();
         if (total > 21) {
             playerBusted = true;
-            System.out.println(this.getState());
             this.start();
         } else if (total == 21) {
             playerBusted = false;
@@ -51,7 +50,6 @@ public class BlackjackRound extends Thread {
 
     public void playerStay() {
         playerBusted = false;
-        System.out.println(this.getState());
         this.start();
     }
 
@@ -74,7 +72,7 @@ public class BlackjackRound extends Thread {
             Logger.log(Logger.LogLevel.PROD, "Player wins");
         } else {
             playerWins = false;
-            this.winner = "dealer";
+            this.winner = "busted";
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         }
 
@@ -102,6 +100,8 @@ public class BlackjackRound extends Thread {
             } else {
                 System.out.println("Dealer stands at " + dealer.calculateTotal());
             }
+        } else {
+            gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         }
         try {
             winner = whoWins();

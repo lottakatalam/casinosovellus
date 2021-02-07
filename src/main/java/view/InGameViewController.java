@@ -169,9 +169,12 @@ public class InGameViewController {
             case "Blackjack":
                 declareWinner.setText("BLACKJACK!");
                 break;
+            case "busted":
+                declareWinner.setText("Busted! Dealer wins.");
+                break;
         }
-        sleep(4000);
         updateBalance();
+        sleep(4000);
         clearTable();
         winnerScreen.setVisible(false);
     }
