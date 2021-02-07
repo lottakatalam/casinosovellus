@@ -156,13 +156,19 @@ public class InGameViewController {
     public void declareWinner(String winner) throws InterruptedException {
         winnerScreen.setVisible(true);
         declareWinner.setVisible(true);
-        Logger.log(Logger.LogLevel.PROD, String.format("The winner isasd: %s", winner));
-        if (winner.equals("player")) {
-            declareWinner.setText("You win!");
-        } else if (winner.equals("dealer")) {
-            declareWinner.setText("Dealer wins");
-        } else if (winner.equals("nobody")) {
-            declareWinner.setText("Draw");
+        switch (winner) {
+            case "player":
+                declareWinner.setText("You win!");
+                break;
+            case "dealer":
+                declareWinner.setText("Dealer wins");
+                break;
+            case "nobody":
+                declareWinner.setText("Draw");
+                break;
+            case "Blackjack":
+                declareWinner.setText("BLACKJACK!");
+                break;
         }
         sleep(4000);
         updateBalance();

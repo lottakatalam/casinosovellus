@@ -33,16 +33,18 @@ public class BlackjackRound extends Thread {
         this.gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
     }
 
-    public void playerHit() throws InterruptedException {
+    public void playerHit() {
         player.addCard(deck.nextCard());
         player.printHand();
         gameController.setPlayersCardsToUI(this.player.getHand().getHand());
-
 
         int total = player.calculateHand();
         if (total > 21) {
             playerBusted = true;
             System.out.println(this.getState());
+            this.start();
+        } else if (total == 21) {
+            playerBusted = false;
             this.start();
         }
     }
@@ -54,7 +56,7 @@ public class BlackjackRound extends Thread {
     }
 
     public String whoWins() throws InterruptedException {
-        String winner = "?";
+        String winner = "";
 
         int playerTotal = player.calculateHand();
         int dealerTotal = dealer.calculateTotal();
@@ -63,7 +65,10 @@ public class BlackjackRound extends Thread {
         if (playerTotal == dealerTotal) { //Even if they both get a blackjack
             Logger.log(Logger.LogLevel.PROD, "No one wins");
             this.winner = "nobody";
-        } else if (playerTotal <= 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
+        } else if (playerTotal == 21){
+            playerWins = true;
+            this.winner = "Blackjack";
+        } else if (playerTotal < 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
             playerWins = true;
             this.winner = "player";
             Logger.log(Logger.LogLevel.PROD, "Player wins");

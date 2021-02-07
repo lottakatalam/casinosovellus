@@ -55,11 +55,7 @@ public class BlackjackGame extends Thread {
     }
 
     public void playerHit() {
-        try {
             round.playerHit();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void playerStay() {
