@@ -10,13 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
+import model.Logger;
 import model.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.UnaryOperator;
 
 import static java.lang.Thread.sleep;
 
@@ -176,9 +179,13 @@ public class InGameViewController {
 
     public void setBet() { // TODO: Asetetun panoksen validointi
         bet = Integer.parseInt(betField.getText());
-        currentBet.setText("\uD83D\uDCB2"+bet);
-        gameController.setBet(bet);
-        updateBalance();
+        if (gameController.setBet(bet)) {
+            currentBet.setText("\uD83D\uDCB2" + bet);
+            updateBalance();
+        } else {
+
+            //Jos saldo ei riitä, mitä tehdään käyttöliittymässä?
+        }
     }
 
     public void updateBalance() {

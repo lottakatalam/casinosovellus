@@ -73,9 +73,15 @@ public class Player {
         return this.currency;
     }
 
-    public void setBet(int b) {
+    public boolean setBet(int b) {
         this.bet = b;
-        this.currency -= bet;
+        if (this.currency >= b) {
+            this.currency -= bet;
+            return true;
+        } else {
+            Logger.log(Logger.LogLevel.PROD, "Saldo ei riitä panoksen asettamiseen.");
+            return false;
+        }
     }
 
     public int getBet() { return bet; }

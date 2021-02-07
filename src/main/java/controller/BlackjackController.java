@@ -41,8 +41,8 @@ public class BlackjackController {
         this.blackJackGame.playerStay();
     }
 
-    public void setBet(int b) {
-        this.player.setBet(b);
+    public boolean setBet(int b) {
+        return this.player.setBet(b);
     }
 
     public int getBet() {
