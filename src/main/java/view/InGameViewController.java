@@ -198,9 +198,13 @@ public class InGameViewController {
 
     public void setBet() { // TODO: Asetetun panoksen validointi
         bet = Integer.parseInt(betField.getText());
-        currentBet.setText("\uD83D\uDCB2"+bet);
-        gameController.setBet(bet);
-        updateBalance();
+        if (gameController.setBet(bet)) {
+            currentBet.setText("\uD83D\uDCB2" + bet);
+            updateBalance();
+        } else {
+
+            //Jos saldo ei riitä, mitä tehdään käyttöliittymässä?
+        }
     }
 
     public void updateBalance() {

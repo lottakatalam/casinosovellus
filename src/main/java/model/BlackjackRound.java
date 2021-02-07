@@ -70,9 +70,14 @@ public class BlackjackRound extends Thread {
             playerWins = true;
             this.winner = "player";
             Logger.log(Logger.LogLevel.PROD, "Player wins");
-        } else {
-            playerWins = false;
+        } else if (playerTotal > 21) {
             this.winner = "busted";
+            Logger.log(Logger.LogLevel.PROD, "Dealer wins");
+        } else if (dealerTotal == 21) {
+            this.winner = "dealer";
+            Logger.log(Logger.LogLevel.PROD, "Dealer wins");
+        } else {
+            this.winner = "dealer";
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         }
 

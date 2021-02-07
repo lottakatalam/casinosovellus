@@ -73,9 +73,21 @@ public class Player {
         return this.currency;
     }
 
-    public void setBet(int b) {
+    /**
+     * Sets the bet-attribute to a player if the player has enough online cash
+     *
+     * @param b integer which describes the value of a bet
+     * @return true if the bet is set, false if the player doesn't have enough online cash for setting the bet
+     */
+    public boolean setBet(int b) {
         this.bet = b;
-        this.currency -= bet;
+        if (this.currency >= b) {
+            this.currency -= bet;
+            return true;
+        } else {
+            Logger.log(Logger.LogLevel.PROD, "Saldo ei riitä panoksen asettamiseen.");
+            return false;
+        }
     }
 
     public int getBet() { return bet; }
