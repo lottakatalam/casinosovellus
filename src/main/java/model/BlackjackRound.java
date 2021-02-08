@@ -44,6 +44,7 @@ public class BlackjackRound extends Thread {
             this.start();
         } else if (total == 21) {
             playerBusted = false;
+            gameController.disableHit();
             this.start();
         }
     }

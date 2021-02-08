@@ -196,6 +196,11 @@ public class InGameViewController {
         showCurrency();
     }
 
+    // In case of hitting Blackjack from the first two cards
+    public void disableHit() {
+        hitButton.setDisable(true);
+    }
+
     public void setBet() { // TODO: Asetetun panoksen validointi
         bet = Integer.parseInt(betField.getText());
         if (gameController.setBet(bet)) {
