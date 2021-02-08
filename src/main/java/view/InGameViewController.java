@@ -127,12 +127,19 @@ public class InGameViewController {
 
     }
 
-
+    /**
+     * Player hits and updates the total counter
+     * @throws InterruptedException
+     */
     public void hit() throws InterruptedException {
         gameController.hit();
         updateTotalResult();
     }
 
+    /**
+     * Deal-button sets bet, updates player's currency, Sets round to start, enables hit and stand buttons,
+     * shows first cards in UI and updates the total counter
+     */
     public void deal() {
         setBet();
         updateBalance();
@@ -148,11 +155,23 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    /**
+     * Player stands and updates the total counter
+     * @throws InterruptedException
+     */
     public void stand() throws InterruptedException {
         gameController.stand();
         updateTotalResult();
     }
 
+    /**
+     * Declares winner of the round and enables winnerScreen, where winner is displayed in UI
+     * Switch case defines which String is set to the UI
+     * Updates player's currency
+     * Clears the table
+     * @param winner - Winner of the round
+     * @throws InterruptedException
+     */
     public void declareWinner(String winner) throws InterruptedException {
         winnerScreen.setVisible(true);
         declareWinner.setVisible(true);
@@ -179,14 +198,25 @@ public class InGameViewController {
         winnerScreen.setVisible(false);
     }
 
+    /**
+     * Updates the total counter
+     */
     public void updateTotalResult() {
         playerTotal.setText("" + gameController.getPlayer().calculateHand());
         dealerTotal.setText("" + gameController.getDealer().getHand().calculateTotal());
     }
 
+    /**
+     * Set gameController as the object of class BlackjackController
+     * @param blackjackController - Object of the BlackjackController
+     */
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
     }
+
+    /**
+     * Sets starting currency to the player in UI
+     */
 
     public void showCurrency() {
         playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
