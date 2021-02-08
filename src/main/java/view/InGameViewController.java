@@ -222,15 +222,24 @@ public class InGameViewController {
         playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
     }
 
+    /**
+     * Initializes the starting currency to the UI
+     */
     public void init() {
         showCurrency();
     }
 
-    // In case of hitting Blackjack from the first two cards
+
+    /**
+     * Disables the 'Hit' button if Blackjack has been gained immediately from the first two cards
+     */
     public void disableHit() {
         hitButton.setDisable(true);
     }
 
+    /**
+     * Sets the bet from a textfield in the UI. Validates that the amount doesn't exceed player's balance.
+     */
     public void setBet() { // TODO: Asetetun panoksen validointi
         bet = Integer.parseInt(betField.getText());
         if (gameController.setBet(bet)) {
@@ -242,10 +251,17 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Updates the balance shown in the UI
+     */
     public void updateBalance() {
         playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
     }
 
+    /**
+     * Sets players cards to the UI based on the amount of cards.
+     * @param playersCards is an array that contains objects of the player's cards
+     */
     public void setPlayersCards(ArrayList<Card> playersCards) {
         switch (playersCards.size()) {
             case 1:
@@ -271,6 +287,10 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    /**
+     * Sets dealers cards to the UI based on the amount of cards.
+     * @param dealerCards is an array that contains objects of the dealer's cards
+     */
     public void setDealersCards(ArrayList<Card> dealerCards) {
         switch (dealerCards.size()) {
             case 1:
@@ -303,6 +323,9 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Clears the table to end the round
+     */
     public void clearTable() {
         hitButton.setDisable(true);
         standButton.setDisable(true);
