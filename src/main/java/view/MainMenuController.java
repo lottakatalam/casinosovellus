@@ -67,7 +67,7 @@ public class MainMenuController {
     }
 
     /**
-     * Set gameController as the object of class BlackjackController
+     * Sets gameController as the object of class BlackjackController
      * @param blackjackController object of the BlackjackController
      */
     public void setGameController(BlackjackController blackjackController) {
