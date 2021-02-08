@@ -66,6 +66,10 @@ public class MainMenuController {
         stage.close();
     }
 
+    /**
+     * Set gameController as the object of class BlackjackController
+     * @param blackjackController object of the BlackjackController
+     */
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
     }

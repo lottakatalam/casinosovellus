@@ -33,11 +33,11 @@ public class BlackjackController {
 
     }
 
-    public void hit() throws InterruptedException {
+    public void hit() {
         this.blackJackGame.playerHit();
     }
 
-    public void stand() throws InterruptedException {
+    public void stand() {
         this.blackJackGame.playerStay();
     }
 
@@ -80,6 +80,10 @@ public class BlackjackController {
 
     public void declareWinner(String winner) throws InterruptedException {
         inGameViewController.declareWinner(winner);
+    }
+
+    public void disableHit() {
+        inGameViewController.disableHit();
     }
 
 }
