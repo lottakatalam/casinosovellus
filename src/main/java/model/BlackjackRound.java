@@ -14,7 +14,13 @@ public class BlackjackRound extends Thread {
     private String winner;
 
 
-
+    /**
+     * Constructor of the round. Draws the first cards and adds them to UI. Sets needed objects for the use of BlackjackRound.
+     * @param gameController is the controller to allow communication between view and model.
+     * @param deck is used to generate and draw cards.
+     * @param player represents the user. It's methods are called from the UI activity. Wins or loses currency.
+     * @param dealer draws and stands through algorithm.
+     */
     public BlackjackRound(BlackjackController gameController, Deck deck, Player player, Dealer dealer) {
         Logger.log(Logger.LogLevel.PROD, String.format("Round %d started", ++roundNumber));
         this.deck = deck;
@@ -34,6 +40,9 @@ public class BlackjackRound extends Thread {
         this.gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
     }
 
+    /**
+     * Called from the UI and controller when player presses "Hit". Adds drawn cards to UI, checks if the player has busted and starts dealer's turn.
+     */
     public void playerHit() {
         player.addCard(deck.nextCard());
         this.gameController.setPlayersCardsToUI(player.getHand().getHand());
@@ -49,11 +58,19 @@ public class BlackjackRound extends Thread {
         }
     }
 
+    /**
+     * Called from the UI and controller when player presses "Stand". Sets 'busted' status to false and starts the main thread.
+     */
     public void playerStay() {
         playerBusted = false;
         this.start();
     }
 
+    /**
+     * Method to determine the winner and/or the way of winning. Calls the methods to influence player's currency.
+     * @return winner/end result of the round in String
+     * @throws InterruptedException when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity.
+     */
     public String whoWins() throws InterruptedException {
         String winner = "";
 
@@ -92,6 +109,9 @@ public class BlackjackRound extends Thread {
     }
 
 
+    /**
+     * This thread is started when the user's turn ends. It starts and plays the dealer's turn if needed and starts checking who won the round.
+     */
     public void run() {// end round
         if (!playerBusted) {
             System.out.println("Dealer plays\n");
