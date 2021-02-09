@@ -86,7 +86,7 @@ public class Player {
      * Decreases the amount of online cash the player has
      */
     public void lose() {
-        this.currency -= bet;
+        //this.currency -= bet;
     }
 
     public int getWins() {
@@ -108,8 +108,8 @@ public class Player {
      * @return true if the bet is set, false if the player doesn't have enough online cash for setting the bet
      */
     public boolean setBet(int b) {
-        this.bet = b;
         if (this.currency >= b) {
+            this.bet = b;
             this.currency -= bet;
             return true;
         } else {
