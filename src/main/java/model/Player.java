@@ -108,13 +108,13 @@ public class Player {
      * @return true if the bet is set, false if the player doesn't have enough online cash for setting the bet
      */
     public boolean setBet(int b) {
-        if (this.currency >= b) {
+        if (this.currency < b) {
+            Logger.log(Logger.LogLevel.PROD, "Saldo ei riitä panoksen asettamiseen.");
+            return false;
+        } else {
             this.bet = b;
             this.currency -= bet;
             return true;
-        } else {
-            Logger.log(Logger.LogLevel.PROD, "Saldo ei riitä panoksen asettamiseen.");
-            return false;
         }
     }
 
