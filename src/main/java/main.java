@@ -4,7 +4,7 @@ import view.GUImain;
 import static javafx.application.Application.launch;
 
 /**
- * Main class of the app. Initializes the views, variables and controller
+ * Main class of the app.
  */
 public class main {
 

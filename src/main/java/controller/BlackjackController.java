@@ -5,6 +5,9 @@ import view.InGameViewController;
 
 import java.util.ArrayList;
 
+/**
+ * Used to control GUI from model and model from GUI
+ */
 public class BlackjackController {
 
     private BlackjackGame blackJackGame;
@@ -76,7 +79,6 @@ public class BlackjackController {
      * Gets the hand of the Dealer
      * @return
      */
-
     public ArrayList<Card> getDealersCards() {
         return this.handDealer;
     }

@@ -14,7 +14,7 @@ import java.io.IOException;
 import static javafx.application.Application.launch;
 
 /**
- * Main class of the app. Initializes the views, variables and controller
+ * Main class of the app GUI. Initializes the views, variables and controller
  */
 public class GUImain extends Application {
     public Stage primaryStage;

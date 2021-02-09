@@ -1,7 +1,9 @@
 package model;
 
 import java.io.Serializable;
-
+/**
+ * Represents a dealer of the game
+ */
 public class Dealer implements Serializable {
 
     private Hand hand;

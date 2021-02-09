@@ -2,6 +2,9 @@ package model;
 
 import controller.BlackjackController;
 
+/**
+ * Logic of Blackjack single round
+ */
 public class BlackjackRound extends Thread {
 
     private static int roundNumber = 0;

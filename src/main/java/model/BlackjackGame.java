@@ -2,7 +2,7 @@ package model;
 
 import controller.BlackjackController;
 
-import static java.lang.Thread.sleep;
+
 
 /**
  * Logic of Blackjack game
@@ -30,8 +30,6 @@ public class BlackjackGame extends Thread {
      */
     private final BlackjackController gameController;
 
-    //private String winner;
-
 
     /**
      * Initializes new Blackjack game
@@ -58,19 +56,33 @@ public class BlackjackGame extends Thread {
 
     }
 
+    /**
+     * Passes call of a playerHit method to ongoing round
+     */
     public void playerHit() {
             round.playerHit();
     }
 
+    /**
+     * Passes call of a playerStay method to ongoing round
+     */
     public void playerStay() {
         round.playerStay();
     }
 
 
+    /**
+     * Returns player of the game
+     * @return Player-object
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * Returns dealer of the game
+     * @return Dealer-object
+     */
     public Dealer getDealer() {
         return this.dealer;
     }
