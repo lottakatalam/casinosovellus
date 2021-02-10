@@ -41,6 +41,21 @@ public class MainMenuController {
 
     }
 
+    /**
+     * Menu's Game History-button loads to GameHistory.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void gameHistoryButton(ActionEvent actionEvent) throws IOException {
+        Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/GameHistory.fxml"));
+        Scene gameHistoryScene = new Scene(gameHistoryParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("Game History");
+        window.setScene(gameHistoryScene);
+        window.show();
+    }
+
     /** Menu's Settings-Button loads to Settings.fxml
      * @param actionEvent
      * @throws IOException
@@ -73,4 +88,5 @@ public class MainMenuController {
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
     }
+
 }
