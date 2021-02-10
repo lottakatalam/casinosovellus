@@ -17,7 +17,7 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="352.0" layoutY="510.0" mnemonicParsing="false" onAction="#settingsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Settings">
+      <Button layoutX="352.0" layoutY="509.0" mnemonicParsing="false" onAction="#settingsButton" prefHeight="42.0" prefWidth="116.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Settings">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
