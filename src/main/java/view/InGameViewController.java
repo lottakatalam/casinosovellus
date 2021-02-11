@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Card;
 import model.Logger;
 import model.Player;
@@ -50,6 +51,7 @@ public class InGameViewController {
     public Text areYouSure;
     public Button yesButton;
     public Button noButton;
+    public Button closebutton;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
@@ -96,7 +98,7 @@ public class InGameViewController {
 
 
     /**
-     * Settingscreen's Back-Button loads to MainMenu.fxml
+     * Setting screen's Back-Button loads to MainMenu.fxml
      *
      * @param actionEvent
      * @throws IOException
@@ -114,38 +116,28 @@ public class InGameViewController {
     }
 
     /**
-     * Gamescreen's Instructions-Button loads to Instructions.fxml
+     * Game screen's Instructions-Button loads to Instructions.fxml (Opens another window)
      *
-     * @param actionEvent
      * @throws IOException
      */
-    public void instructionsButton(ActionEvent actionEvent) throws IOException {
+    public void instructionsButton() throws IOException {
 
-        Parent insParent = FXMLLoader.load(getClass().getResource("/Instructions.fxml"));
-        Scene insScene = new Scene(insParent);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Instructions");
-        window.setScene(insScene);
-        window.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Instructions.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Instructions");
+        stage.setScene(new Scene(root1));
+        stage.show();
 
     }
 
     /**
-     * Instructionscreen's Back to game-Button loads to InGameView.fxml
-     *
-     * @param actionEvent
-     * @throws IOException
+     * Instruction screen's Close-Button closes the instructions window
      */
-    public void backToGameButton(ActionEvent actionEvent) throws IOException {
+    public void closeButton() {
 
-        Parent gameParent = FXMLLoader.load(getClass().getResource("/InGameView.fxml"));
-        Scene gameScene = new Scene(gameParent);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Blackjack");
-        window.setScene(gameScene);
-        window.show();
+        Stage stage = (Stage) closebutton.getScene().getWindow();
+        stage.close();
 
     }
 
