@@ -47,20 +47,33 @@ public class InGameViewController {
     public Button dealButton;
     public ImageView winnerScreen;
     public Text declareWinner;
+    public Text areYouSure;
+    public Button yesButton;
+    public Button noButton;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
-    public Player player;
     private int bet;
 
 
     /**
-     * Gamescreen's Menu-Button loads to MainMenu.fxml
-     *
+     * Sets Are you sure-screen visible to get back to Menu
+     */
+    public void menuButton(){
+
+        winnerScreen.setVisible(true);
+        yesButton.setVisible(true);
+        noButton.setVisible(true);
+        areYouSure.setVisible(true);
+
+    }
+
+    /**
+     * Loads to MainMenu.fxml
      * @param actionEvent
      * @throws IOException
      */
-    public void menuButton(ActionEvent actionEvent) throws IOException {
+    public void yesAction(ActionEvent actionEvent) throws IOException {
 
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
@@ -69,7 +82,16 @@ public class InGameViewController {
         window.setTitle("The Grand Myllypuro");
         window.setScene(menuScene);
         window.show();
+    }
 
+    /**
+     * Closes Are you sure-screen
+     */
+    public void noAction() {
+        winnerScreen.setVisible(false);
+        yesButton.setVisible(false);
+        noButton.setVisible(false);
+        areYouSure.setVisible(false);
     }
 
 
@@ -342,5 +364,6 @@ public class InGameViewController {
         playerTotal.setText("");
         declareWinner.setText("");
     }
+
 }
 

@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +20,10 @@ import java.io.IOException;
 
 public class MainMenuController {
 
+    public ImageView blackScreen;
+    public Text areYouSure;
+    public Button noButton;
+    public Button yesButton;
     private BlackjackController gameController;
 
     /** Menu's Play-Button loads to InGameView.fxml
@@ -72,13 +79,33 @@ public class MainMenuController {
 
     }
 
-    /** Menu's Quit-Button closes the program
+    /** Sets Are you sure-screen visible to close the program
      */
     @FXML private javafx.scene.control.Button quitButton;
     public void quitButton(){
+        blackScreen.setVisible(true);
+        areYouSure.setVisible(true);
+        yesButton.setVisible(true);
+        noButton.setVisible(true);
 
+    }
+
+    /**
+     * Closes the program
+     */
+    public void yesAction() {
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
+    }
+
+    /**
+     * Closes Are you sure-screen
+     */
+    public void noAction() {
+        blackScreen.setVisible(false);
+        areYouSure.setVisible(false);
+        yesButton.setVisible(false);
+        noButton.setVisible(false);
     }
 
     /**
@@ -88,5 +115,6 @@ public class MainMenuController {
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
     }
+
 
 }
