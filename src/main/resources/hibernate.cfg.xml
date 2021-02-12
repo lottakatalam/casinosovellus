@@ -1,0 +1,12 @@
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect"> org.hibernate.dialect.MySQL5Dialect </property>
+		<property name="hibernate.connection.url">jdbc:mysql://10.114.32.141/casinosovellus</property>
+		<property name="hibernate.connection.username"/>
+		<property name="hibernate.connection.password"/>
+		<property name="hbm2ddl.auto">validate</property>
+		<property name="show_sql">true</property>
+		<mapping class="model.PeliTulos"/>
+
+	</session-factory>
+</hibernate-configuration>

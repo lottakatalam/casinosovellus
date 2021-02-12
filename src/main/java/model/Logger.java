@@ -16,7 +16,7 @@ public class Logger {
     /**
      * Levels of logging
      */
-    public enum LogLevel{ALL, DEV, PROD};
+    public enum LogLevel{ALL, DEV, PROD, NONE};
 
 
     private static LogLevel logLevel;
