@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
+    <children>
+        <ImageView fitHeight="161.0" fitWidth="446.0" layoutX="199.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@thegrandmyllypurologo.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="logInButton" layoutX="365.0" layoutY="458.0" mnemonicParsing="false" onAction="#logInButton" prefHeight="48.0" prefWidth="106.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log in">
+            <font>
+                <Font name="Cooper Black" size="20.0" />
+            </font>
+        </Button>
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="313.0" layoutY="255.0" prefHeight="34.0" prefWidth="210.0" promptText="Username" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="passwordTextField" alignment="CENTER" layoutX="313.0" layoutY="374.0" prefHeight="34.0" prefWidth="210.0" promptText="Password" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+         <font>
+            <Font name="Cooper Black" size="15.0" />
+         </font>
+      </TextField>
+      <Text fx:id="usernameText" layoutX="324.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Username:">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
+      <Text fx:id="passwordText" layoutX="326.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Password:">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
+      <Button fx:id="backButton" layoutX="377.0" layoutY="539.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
+         <font>
+            <Font name="Cooper Black" size="20.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

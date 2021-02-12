@@ -48,6 +48,18 @@ public class MainMenuController {
 
     }
 
+    public void backToMainMenu(ActionEvent actionEvent) throws IOException {
+
+        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        Scene menuScene = new Scene(menuParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("The Grand Myllypuro");
+        window.setScene(menuScene);
+        window.show();
+
+    }
+
     /**
      * Menu's Game History-button loads to GameHistory.fxml
      * @param actionEvent
@@ -88,6 +100,26 @@ public class MainMenuController {
         yesButton.setVisible(true);
         noButton.setVisible(true);
 
+    }
+
+    public void logInButton(ActionEvent actionEvent) throws IOException {
+        Parent logInParent = FXMLLoader.load(getClass().getResource("/LogInView.fxml"));
+        Scene logInScene = new Scene(logInParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("Log In");
+        window.setScene(logInScene);
+        window.show();
+    }
+
+    public void registerButton(ActionEvent actionEvent) throws IOException {
+        Parent registerParent = FXMLLoader.load(getClass().getResource("/RegisterView.fxml"));
+        Scene registerScene = new Scene(registerParent);
+
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setTitle("Register");
+        window.setScene(registerScene);
+        window.show();
     }
 
     /**
