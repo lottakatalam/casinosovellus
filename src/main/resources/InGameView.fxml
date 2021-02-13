@@ -125,12 +125,12 @@
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="playerTotal" layoutX="157.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="29.0">
+      <Text fx:id="playerTotal" layoutX="175.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="29.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="dealerTotal" layoutX="647.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="29.0">
+      <Text fx:id="dealerTotal" layoutX="639.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="29.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
