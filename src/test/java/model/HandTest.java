@@ -21,9 +21,14 @@ class HandTest {
 
     @Test
     void addCard() {
+        hand.addCard(new Card(1,1));
+        assertEquals(1, hand.getNumberOfCards(), "Adding the card did not succeed");
     }
 
     @Test
     void clearHand() {
+        hand.addCard(new Card(1,1));
+        hand.clearHand();
+        assertEquals(0, hand.getNumberOfCards(), "Hand was not cleared correctly");
     }
 }
