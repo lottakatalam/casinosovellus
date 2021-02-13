@@ -38,7 +38,7 @@ public class Hand {
      *
      * @param cards array of cards
      */
-    public void setHand(Card[] cards) {
+    public void setHand(Card[] cards) { //Tätä ei taideta tarvita?
 
         Collections.addAll(this.hand, cards);
     }

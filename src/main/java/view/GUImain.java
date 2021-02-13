@@ -17,17 +17,21 @@ import static javafx.application.Application.launch;
  * Main class of the app GUI. Initializes the views, variables and controller
  */
 public class GUImain extends Application {
-    public Stage primaryStage;
+    private Stage primaryStage;
     private AnchorPane rootLayout;
-    private BlackjackController ctrl = new BlackjackController();
+    private BlackjackController ctrl;
+    private StageManager stageManager;
 
     /**
      * main function to launch the app
      * @param args
      */
     public static void main(String[] args) {
-
         launch(args);
+    }
+
+    public GUImain() {
+
     }
 
     /**
@@ -47,6 +51,8 @@ public class GUImain extends Application {
             });
             this.primaryStage = primaryStage;
             this.primaryStage.setTitle("The Grand Myllypuro");
+            stageManager = StageManager.getInstance();
+            stageManager.setPrimaryStage(primaryStage);
 
             initRootLayout();
 
@@ -69,7 +75,9 @@ public class GUImain extends Application {
             loader.setLocation(GUImain.class.getResource("/MainMenu.fxml"));
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
+            BlackjackController ctrl = new BlackjackController();
             controller.setGameController(ctrl);
+            controller.setStageManager(this.stageManager);
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -79,5 +87,4 @@ public class GUImain extends Application {
             e.printStackTrace();
         }
     }
-
 }

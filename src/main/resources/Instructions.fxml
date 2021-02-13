@@ -88,9 +88,9 @@
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="326.0" layoutY="559.0" mnemonicParsing="false" onAction="#backToGameButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back to game">
+      <Button fx:id="closebutton" layoutX="357.0" layoutY="561.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
          <font>
-            <Font name="Cooper Black" size="20.0" />
+            <Font name="Cooper Black" size="25.0" />
          </font>
       </Button>
    </children>

@@ -9,6 +9,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.Logger;
 
@@ -27,6 +30,14 @@ public class LoginController {
 
     @FXML
     private Button submitButton;
+
+    public ImageView blackScreen;
+    public Text areYouSure;
+    public Button noButton;
+    public Button yesButton;
+    public Button logInButton;
+
+    @FXML private javafx.scene.control.Button quitButton;
 
     @FXML
     public void login(ActionEvent event) throws SQLException {
@@ -55,8 +66,6 @@ public class LoginController {
 
 
 
-
-
         // TODO: JDBCDao for Database operations
 
         /*JdbcDao jdbcDao = new JdbcDao();
@@ -78,6 +87,29 @@ public class LoginController {
         } else {
             infoBox("Login Successful!", null, "Failed");
         }
+    }
+
+    public void quitButton(){
+        blackScreen.setVisible(true);
+        areYouSure.setVisible(true);
+        yesButton.setVisible(true);
+        noButton.setVisible(true);
+
+    }
+
+    public void yesAction() {
+        Stage stage = (Stage) quitButton.getScene().getWindow();
+        stage.close();
+    }
+
+    /**
+     * Closes Are you sure-screen
+     */
+    public void noAction() {
+        blackScreen.setVisible(false);
+        areYouSure.setVisible(false);
+        yesButton.setVisible(false);
+        noButton.setVisible(false);
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {
