@@ -25,6 +25,8 @@ public class MainMenuController {
     public Button noButton;
     public Button yesButton;
     private BlackjackController gameController;
+    public Stage primaryStage;
+    private StageManager stageManager;
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @param actionEvent
@@ -37,14 +39,16 @@ public class MainMenuController {
         Parent gameParent = loader.load();
 
         InGameViewController controller = loader.getController();
+        BlackjackController gameController = new BlackjackController();
         controller.setGameController(gameController);
         gameController.setInGameViewController(controller);
         controller.init();
         Scene gameScene = new Scene(gameParent);
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Blackjack");
-        window.setScene(gameScene);
-        window.show();
+
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(gameScene);
+        stageManager.getPrimaryStage().show();
 
     }
 
@@ -52,11 +56,10 @@ public class MainMenuController {
 
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("The Grand Myllypuro");
-        window.setScene(menuScene);
-        window.show();
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(menuScene);
+        stageManager.getPrimaryStage().show();
 
     }
 
@@ -69,10 +72,10 @@ public class MainMenuController {
         Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/GameHistory.fxml"));
         Scene gameHistoryScene = new Scene(gameHistoryParent);
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Game History");
-        window.setScene(gameHistoryScene);
-        window.show();
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("Game History");
+        stageManager.getPrimaryStage().setScene(gameHistoryScene);
+        stageManager.getPrimaryStage().show();
     }
 
     /** Menu's Settings-Button loads to Settings.fxml
@@ -80,15 +83,13 @@ public class MainMenuController {
      * @throws IOException
      */
     public void settingsButton(ActionEvent actionEvent) throws IOException {
-
         Parent settingsParent = FXMLLoader.load(getClass().getResource("/Settings.fxml"));
         Scene settingsScene = new Scene(settingsParent);
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Settings");
-        window.setScene(settingsScene);
-        window.show();
-
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("Settings");
+        stageManager.getPrimaryStage().setScene(settingsScene);
+        stageManager.getPrimaryStage().show();
     }
 
     /** Sets Are you sure-screen visible to close the program
@@ -106,20 +107,22 @@ public class MainMenuController {
         Parent logInParent = FXMLLoader.load(getClass().getResource("/LogInView.fxml"));
         Scene logInScene = new Scene(logInParent);
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Log In");
-        window.setScene(logInScene);
-        window.show();
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("Log In");
+        stageManager.getPrimaryStage().setScene(logInScene);
+        stageManager.getPrimaryStage().show();
+
+
     }
 
     public void registerButton(ActionEvent actionEvent) throws IOException {
         Parent registerParent = FXMLLoader.load(getClass().getResource("/RegisterView.fxml"));
         Scene registerScene = new Scene(registerParent);
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("Register");
-        window.setScene(registerScene);
-        window.show();
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("Register");
+        stageManager.getPrimaryStage().setScene(registerScene);
+        stageManager.getPrimaryStage().show();
     }
 
     /**
@@ -148,5 +151,7 @@ public class MainMenuController {
         gameController = blackjackController;
     }
 
-
+    public void setStageManager(StageManager stageManager) {
+        this.stageManager = stageManager;
+    }
 }

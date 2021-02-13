@@ -56,6 +56,7 @@ public class InGameViewController {
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
     private int bet;
+    private StageManager stageManager;
 
 
     /**
@@ -76,7 +77,6 @@ public class InGameViewController {
      * @throws IOException
      */
     public void yesAction(ActionEvent actionEvent) throws IOException {
-
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
 
@@ -104,14 +104,13 @@ public class InGameViewController {
      * @throws IOException
      */
     public void settingsBackButton(ActionEvent actionEvent) throws IOException {
-
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
 
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("The Grand Myllypuro");
-        window.setScene(menuScene);
-        window.show();
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(menuScene);
+        stageManager.getPrimaryStage().show();
 
     }
 
@@ -121,24 +120,35 @@ public class InGameViewController {
      * @throws IOException
      */
     public void instructionsButton() throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Instructions.fxml"));
-        Parent root1 = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Instructions");
-        stage.setScene(new Scene(root1));
-        stage.show();
+        Parent instructionsParent = fxmlLoader.load();
+        Scene instructionsScene = new Scene(instructionsParent);
 
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("Instructions");
+        stageManager.getPrimaryStage().setScene(instructionsScene);
+        stageManager.getPrimaryStage().show();
     }
 
     /**
      * Instruction screen's Close-Button closes the instructions window
      */
-    public void closeButton() {
+    public void closeButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));
+        Parent gameParent = loader.load();
 
-        Stage stage = (Stage) closebutton.getScene().getWindow();
-        stage.close();
+        InGameViewController controller = loader.getController();
+        BlackjackController gameController = new BlackjackController();
+        controller.setGameController(gameController);
+        gameController.setInGameViewController(controller);
+        controller.init();
+        Scene gameScene = new Scene(gameParent);
 
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(gameScene);
+        stageManager.getPrimaryStage().show();
     }
 
     /**
