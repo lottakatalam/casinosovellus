@@ -23,9 +23,6 @@ public class RegisterController {
     private TextField usernameField;
 
     @FXML
-    private TextField emailIdField;
-
-    @FXML
     private PasswordField passwordField;
 
     @FXML
@@ -37,7 +34,6 @@ public class RegisterController {
         Window owner = submitButton.getScene().getWindow();
 
         System.out.println(usernameField.getText());
-        System.out.println(emailIdField.getText());
         System.out.println(passwordField.getText());
         if(usernameField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
@@ -45,11 +41,6 @@ public class RegisterController {
             return;
         }
 
-        if(emailIdField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                    "Please enter your email id");
-            return;
-        }
         if(passwordField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter a password");
@@ -57,7 +48,6 @@ public class RegisterController {
         }
 
         String username = usernameField.getText();
-        String emailId = emailIdField.getText();
         String password = passwordField.getText();
 
 
