@@ -14,9 +14,12 @@ public class testimain {
 
         //game.initRound();
         */
+        Hand hand = new Hand();
+        hand.addCard(new Card(1, 1));
+        hand.addCard(new Card(2, 2));
+        hand.addCard(new Card(13, 3));
 
-        Card kortti = new Card(0, 2);
-        System.out.println(kortti.toString());
+        hand.calculateTotal();
 
     }
 }

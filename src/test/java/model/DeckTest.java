@@ -25,7 +25,7 @@ class DeckTest {
         assertEquals(card.getSuit(), deck.nextCard().getSuit(), "The next cards suit wasn't correct");
     }
 
-    @Test
+    @Test //En keksi tähän ratkaisua, equals ei toimi korttiolioiden takia
     void testShuffleDeck() {
         
     }
