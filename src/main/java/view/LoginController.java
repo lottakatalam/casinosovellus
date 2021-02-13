@@ -10,7 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Window;
+import model.Logger;
 
+/**
+ *
+ * Login Controller for fxml ui
+ *
+ */
 public class LoginController {
 
     @FXML

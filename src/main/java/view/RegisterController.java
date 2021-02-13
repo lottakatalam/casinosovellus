@@ -11,6 +11,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Window;
 
+/**
+ *
+ * Register Controller for fxml ui
+ *
+ */
+
 public class RegisterController {
 
     @FXML
