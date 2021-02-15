@@ -104,16 +104,16 @@ public class CasinoDAO {
 
     }
 
-    public PeliTulos[] lueKaikkiPeliTulokset() {
+    public History[] getAllHistoryRows() {
         Session istunto = istuntotehdas.openSession();
 
         @SuppressWarnings("unchecked")
-        List<PeliTulos> list = istunto.createQuery("from PeliTulos").getResultList();
+        List<History> list = istunto.createQuery("from History").getResultList();
 
         istunto.close();
-        PeliTulos[] returnArray = new PeliTulos[list.size()];
+        History[] returnArray = new History[list.size()];
 
-        return (PeliTulos[]) list.toArray(returnArray);
+        return (History[]) list.toArray(returnArray);
     }
 
 

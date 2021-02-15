@@ -18,6 +18,9 @@ public class History {
     private int gameNumber;
 
     @Column
+    private int playerID;
+
+    @Column
     private gameResults result;
 
     @Column
@@ -89,5 +92,13 @@ public class History {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
     }
 }

@@ -9,7 +9,9 @@ public class testimain {
         History h = new History();
         h.setResult(History.gameResults.PLAYERLOST);
         h.setBet(2000);
+        h.setPlayerID(1);
         casinoDAO.addHistoryRow(h);
+        System.out.println("Player id: " + casinoDAO.getAllHistoryRows()[0].getPlayerID());
         //BlackJack game = new BlackJack();
 
         //game.initRound();

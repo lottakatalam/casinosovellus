@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.CasinoDAO;
 import model.History;
 
 import java.io.IOException;
@@ -78,16 +79,17 @@ public class GameHistoryController {
         areYouSure.setVisible(false);
         historyTable.getItems().clear();
     }
-/*
+
     public ObservableList<History> getHistory() {
         ObservableList<History> history = FXCollections.observableArrayList();
-        history.add(new History(1,"Won",100,2600));
-        history.add(new History(2,"Lost",100,2500));
-        history.add(new History(3,"Doubled",100,2900));
-        history.add(new History(4,"Insured",200,2900));
+        CasinoDAO casinoDAO = new CasinoDAO();
+        History h = casinoDAO.getAllHistoryRows()[0];
+
+        history.add(h);
+
         return history;
     }
-    */
+
 
 
     public void refresh() {
@@ -95,7 +97,7 @@ public class GameHistoryController {
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        //historyTable.setItems(getHistory());
+        historyTable.setItems(getHistory());
 
     }
 }
