@@ -68,12 +68,12 @@ public class CasinoDAO {
         }
     }
 
-    public boolean lisaaPeliTulos(PeliTulos peliTulos) {
+    public boolean addHistoryRow(History history) {
         Transaction transaktio = null;
 
         try (Session istunto = istuntotehdas.openSession()) {
             transaktio = istunto.beginTransaction();
-            istunto.saveOrUpdate(peliTulos);
+            istunto.saveOrUpdate(history);
             transaktio.commit();
             return true;
         } catch (Exception e) {

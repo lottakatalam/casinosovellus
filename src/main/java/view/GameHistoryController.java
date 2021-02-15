@@ -78,7 +78,7 @@ public class GameHistoryController {
         areYouSure.setVisible(false);
         historyTable.getItems().clear();
     }
-
+/*
     public ObservableList<History> getHistory() {
         ObservableList<History> history = FXCollections.observableArrayList();
         history.add(new History(1,"Won",100,2600));
@@ -87,13 +87,15 @@ public class GameHistoryController {
         history.add(new History(4,"Insured",200,2900));
         return history;
     }
+    */
+
 
     public void refresh() {
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        historyTable.setItems(getHistory());
+        //historyTable.setItems(getHistory());
 
     }
 }

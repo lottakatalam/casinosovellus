@@ -1,28 +1,52 @@
 package model;
 
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name="history")
 public class History {
 
+    public enum gameResults{
+        PLAYERWON,
+        PLAYERLOST
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int gameNumber;
-    private String result;
+
+    @Column
+    private gameResults result;
+
+    @Column
     private String method;
+
+    @Column
     private int bet;
+
+    @Column
     private int balance;
 
+    @Column
+    private Date date;
 
+/*
     public History(int gameNumber, String result, int bet, int balance) {
         this.gameNumber = gameNumber;
         this.result = result;
         this.bet = bet;
         this.balance = balance;
     }
-
+*/
     //GETTERS
 
     public int getGameNumber() {
         return gameNumber;
     }
 
-    public String getResult() {
+    public gameResults getResult() {
         return result;
     }
 
@@ -43,7 +67,7 @@ public class History {
         this.gameNumber = gameNumber;
     }
 
-    public void setResult(String result) {
+    public void setResult(gameResults result) {
         this.result = result;
     }
 
@@ -57,5 +81,13 @@ public class History {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

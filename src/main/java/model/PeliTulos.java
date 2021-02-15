@@ -13,6 +13,10 @@ public class PeliTulos {
     @Column
     private boolean pelaajaVoitti;
 
+    @Column
+    private int panos;
+
+
     public int getId() {
         return id;
     }
@@ -23,5 +27,13 @@ public class PeliTulos {
 
     public void setPelaajaVoitti(boolean pelaajaVoitti) {
         this.pelaajaVoitti = pelaajaVoitti;
+    }
+
+    public int getPanos() {
+        return panos;
+    }
+
+    public void setPanos(int panos) {
+        this.panos = panos;
     }
 }
