@@ -20,7 +20,7 @@ import javafx.stage.Window;
 public class RegisterController {
 
     @FXML
-    private TextField passwordTextField;
+    private TextField usernameTextField;
 
     @FXML
     private PasswordField passwordField;
@@ -33,9 +33,9 @@ public class RegisterController {
 
         Window owner = submitButton.getScene().getWindow();
 
-        System.out.println(passwordTextField.getText());
+        System.out.println(usernameTextField.getText());
         System.out.println(passwordField.getText());
-        if(passwordTextField.getText().isEmpty()) {
+        if(usernameTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your name");
             return;
@@ -47,7 +47,7 @@ public class RegisterController {
             return;
         }
 
-        String username = passwordTextField.getText();
+        String username = usernameTextField.getText();
         String password = passwordField.getText();
 
 
@@ -67,7 +67,7 @@ public class RegisterController {
 
 
         showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
-                "Welcome " + passwordTextField.getText());
+                "Welcome " + usernameTextField.getText());
     }
 
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {

@@ -23,7 +23,7 @@ import model.Logger;
 public class LoginController {
 
     @FXML
-    private TextField passwordTextField;
+    private TextField usernameTextField;
 
     @FXML
     private PasswordField passwordField;
@@ -44,10 +44,10 @@ public class LoginController {
 
         Window owner = submitButton.getScene().getWindow();
 
-        System.out.println(passwordTextField.getText());
+        System.out.println(usernameTextField.getText());
         System.out.println(passwordField.getText());
 
-        if (passwordTextField.getText().isEmpty()) {
+        if (usernameTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your email id");
             return;
@@ -58,7 +58,7 @@ public class LoginController {
             return;
         }
 
-        String userid = passwordTextField.getText();
+        String userid = usernameTextField.getText();
         String password = passwordField.getText();
 
 
@@ -71,7 +71,7 @@ public class LoginController {
         /*JdbcDao jdbcDao = new JdbcDao();
         boolean flag = jdbcDao.validate(emailId, password);
         */
-        boolean flag = passwordTextField.deleteNextChar(); // temporary so errors dont show up
+        boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
 
 
 
