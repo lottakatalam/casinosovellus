@@ -28,20 +28,20 @@ public class LoginController {
     private PasswordField passwordTextField;
 
     @FXML
-    private Button submitButton;
+    private Button logInButton;
 
     public ImageView blackScreen;
     public Text areYouSure;
     public Button noButton;
     public Button yesButton;
-    public Button logInButton;
+    //public Button logInButton;
 
     @FXML private javafx.scene.control.Button quitButton;
 
     @FXML
-    public void login(ActionEvent event) throws SQLException {
+    public void logInButton(ActionEvent event) throws SQLException {
 
-        Window owner = submitButton.getScene().getWindow();
+        Window owner = logInButton.getScene().getWindow();
 
         System.out.println(usernameTextField.getText());
         System.out.println(passwordTextField.getText());
@@ -64,16 +64,12 @@ public class LoginController {
 
 
 
-
         // TODO: JDBCDao for Database operations
 
         /*JdbcDao jdbcDao = new JdbcDao();
         boolean flag = jdbcDao.validate(emailId, password);
         */
         boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
-
-
-
 
 
 
@@ -127,4 +123,6 @@ public class LoginController {
         alert.initOwner(owner);
         alert.show();
     }
+
+
 }

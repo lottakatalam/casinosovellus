@@ -20,13 +20,13 @@ import javafx.stage.Window;
 public class RegisterController {
 
     @FXML
-    private TextField usernameTextField;
+    public TextField usernameTextField;
 
     @FXML
-    private PasswordField passwordTextField;
+    public PasswordField passwordTextField;
 
     @FXML
-    private Button submitButton;
+    public Button submitButton;
 
     @FXML
     public void register(ActionEvent event) throws SQLException{
