@@ -3,10 +3,9 @@ package model;
 
 public class testimain {
     public static void main(String[] args) {
-
-        Deck d = new Deck();
-        Deck b = new Deck();
-        b.shuffleDeck();
-        System.out.println(d.equals(b));
+    Logger.log(Logger.)
+        Player p = new Player(2500);
+        System.out.println(p.getBet());
+        System.out.println(p.getHand());
     }
 }
