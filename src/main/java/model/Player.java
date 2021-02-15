@@ -109,7 +109,7 @@ public class Player {
      */
     public boolean setBet(int b) {
         if (this.currency < b) {
-            Logger.log(Logger.LogLevel.PROD, "Saldo ei riitä panoksen asettamiseen.");
+            Logger.log(Logger.LogLevel.PROD, "Saldo ("+currency+") ei riitä panoksen ("+b+") asettamiseen.");
             return false;
         } else {
             this.bet = b;

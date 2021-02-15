@@ -16,6 +16,7 @@ class PlayerTest {
 
     @BeforeEach
     public void initalizeTests() {
+        Logger.setLogLevel(Logger.LogLevel.ALL);
         currency = 1000;
         p = new Player(currency);
     }
@@ -30,34 +31,21 @@ class PlayerTest {
 
 
 
-    /*@ParameterizedTest
-    @CsvSource({"1, 1020", "2, 1040"})
-    void win() {
-        p.setBet(10);
-        p.win();
-        assertEquals(1, );
-    }*/
-
-    @Test
-    void lose() {
+    @ParameterizedTest
+    @CsvSource({"10, 1010", "200, 1200", "1000, 2000"})
+    void win(int bet, int amountOfCurrency) {
+            p.setBet(bet);
+            p.win();
+            assertEquals(1, p.getWins(), "The amount of wins isn't correct");
+            assertEquals(amountOfCurrency, p.getCurrency(), "The currency didn't change correctly after a win");
     }
 
-    @Test
-    void getWins() {
-    }
 
-    @Test
-    void getHand() {
-    }
-
-    @Test
-    void getCurrency() {
-    }
 
     @ParameterizedTest
-    @ValueSource(ints = {10, 25, 5000, 250, 87, 23000})
+    @ValueSource(ints = {1111, 25, 5000, 250, 87, 23000})
     void setBet(int b) {
-        boolean enoughCurrency = p.setBet(b); //miks tässä tulee nullpointerException
+        boolean enoughCurrency = p.setBet(b); //Testi toimii jos Player-luokan rivi 112-loggerviestin kommentoi
         if (b <= p.getCurrency()) {
             assertTrue(enoughCurrency, "The bet couldn't be set");
             assertEquals(b, p.getBet(), "The bet was not set correctly");
@@ -67,7 +55,4 @@ class PlayerTest {
 
     }
 
-    @Test
-    void getBet() {
-    }
 }
