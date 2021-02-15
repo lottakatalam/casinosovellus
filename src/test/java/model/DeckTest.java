@@ -27,7 +27,9 @@ class DeckTest {
 
     @Test //En keksi tähän ratkaisua, equals ei toimi korttiolioiden takia
     void testShuffleDeck() {
-        
+        Deck anotherDeck = new Deck();
+        deck.shuffleDeck();
+        assertFalse(deck.equals(anotherDeck), "The deck was not shuffled");
     }
 
     @Test
