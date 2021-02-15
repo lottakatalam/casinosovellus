@@ -23,7 +23,7 @@ public class RegisterController {
     private TextField usernameTextField;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordTextField;
 
     @FXML
     private Button submitButton;
@@ -34,21 +34,21 @@ public class RegisterController {
         Window owner = submitButton.getScene().getWindow();
 
         System.out.println(usernameTextField.getText());
-        System.out.println(passwordField.getText());
+        System.out.println(passwordTextField.getText());
         if(usernameTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your name");
             return;
         }
 
-        if(passwordField.getText().isEmpty()) {
+        if(passwordTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter a password");
             return;
         }
 
         String username = usernameTextField.getText();
-        String password = passwordField.getText();
+        String password = passwordTextField.getText();
 
 
 

@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import model.Logger;
 
 /**
  *
@@ -26,7 +25,7 @@ public class LoginController {
     private TextField usernameTextField;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField passwordTextField;
 
     @FXML
     private Button submitButton;
@@ -45,21 +44,21 @@ public class LoginController {
         Window owner = submitButton.getScene().getWindow();
 
         System.out.println(usernameTextField.getText());
-        System.out.println(passwordField.getText());
+        System.out.println(passwordTextField.getText());
 
         if (usernameTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your email id");
             return;
         }
-        if (passwordField.getText().isEmpty()) {
+        if (passwordTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter a password");
             return;
         }
 
         String userid = usernameTextField.getText();
-        String password = passwordField.getText();
+        String password = passwordTextField.getText();
 
 
 
