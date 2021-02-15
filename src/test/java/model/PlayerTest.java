@@ -57,7 +57,7 @@ class PlayerTest {
     @ParameterizedTest
     @ValueSource(ints = {10, 25, 5000, 250, 87, 23000})
     void setBet(int b) {
-        boolean enoughCurrency = p.setBet(b);
+        boolean enoughCurrency = p.setBet(b); //miks tässä tulee nullpointerException
         if (b <= p.getCurrency()) {
             assertTrue(enoughCurrency, "The bet couldn't be set");
             assertEquals(b, p.getBet(), "The bet was not set correctly");
