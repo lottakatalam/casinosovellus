@@ -1,7 +1,6 @@
 package model;
 
 
-
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +14,7 @@ import java.util.Properties;
 
 public class CasinoDAO {
 
-    private SessionFactory istuntotehdas = null;
+    private SessionFactory sessionFactory = null;
 
     public CasinoDAO() {
 
@@ -48,7 +47,7 @@ public class CasinoDAO {
 
             cfg.getProperties().setProperty("hibernate.connection.password", passwd);
             cfg.getProperties().setProperty("hibernate.connection.username", uname);
-            istuntotehdas = cfg.buildSessionFactory();
+            sessionFactory = cfg.buildSessionFactory();
         } catch (Exception e) {
             System.err.println("Istuntotehtaan luonti ei onnistunut: " + e.getMessage());
             System.exit(-1);
@@ -60,25 +59,26 @@ public class CasinoDAO {
     protected void finalize() {
 
         try {
-            if (istuntotehdas != null) {
-                istuntotehdas.close();
+            if (sessionFactory != null) {
+                sessionFactory.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    // HISTORY
     public boolean addHistoryRow(History history) {
-        Transaction transaktio = null;
+        Transaction transaction = null;
 
-        try (Session istunto = istuntotehdas.openSession()) {
-            transaktio = istunto.beginTransaction();
-            istunto.saveOrUpdate(history);
-            transaktio.commit();
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(history);
+            transaction.commit();
             return true;
         } catch (Exception e) {
-            if (transaktio != null) {
-                transaktio.rollback();
+            if (transaction != null) {
+                transaction.rollback();
                 throw e;
 
             }
@@ -86,26 +86,26 @@ public class CasinoDAO {
         }
     }
 
-    public PeliTulos luePeliTulos(String tunnus) {
-        Session istunto = istuntotehdas.openSession();
-        istunto.beginTransaction();
+    public History getHistoryRow(int gameNumber) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        PeliTulos tulos = new PeliTulos();
+        History historyRow = new History();
 
         try {
-            istunto.load(tulos, tunnus);
-            istunto.getTransaction().commit();
+            session.load(historyRow, gameNumber);
+            session.getTransaction().commit();
         } catch (ObjectNotFoundException e) {
             System.out.println("Haettua pelitulosta ei löytynyt!");
         } finally {
-            istunto.close();
+            session.close();
         }
-        return tulos;
+        return historyRow;
 
     }
 
     public History[] getAllHistoryRows() {
-        Session istunto = istuntotehdas.openSession();
+        Session istunto = sessionFactory.openSession();
 
         @SuppressWarnings("unchecked")
         List<History> list = istunto.createQuery("from History").getResultList();
@@ -117,31 +117,31 @@ public class CasinoDAO {
     }
 
 
-    public boolean paivitaPeliTulos(PeliTulos peliTulosData) {
+    public boolean updateHistoryRow(History historyData) {
         boolean out;
-        Session istunto = istuntotehdas.openSession();
-        istunto.beginTransaction();
-        PeliTulos peliTulos = (PeliTulos) istunto.get(PeliTulos.class, peliTulosData.getId());
-        if (peliTulos != null) {
-            peliTulos.setPelaajaVoitti(peliTulosData.isPelaajaVoitti());
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        History history = (History) session.get(History.class, historyData.getGameNumber());
+        if (history != null) {
+            history.setBet(historyData.getBalance());
             out = true;
         } else {
             System.out.println("Ei löytynyt päivitettävää");
             out = false;
         }
-        istunto.getTransaction().commit();
-        istunto.close();
+        session.getTransaction().commit();
+        session.close();
         return out;
     }
 
 
-    public boolean poistaTulos(int id) {
+    public boolean deleteHistoryRow(int gameNumber) {
         boolean out;
-        Session istunto = istuntotehdas.openSession();
+        Session istunto = sessionFactory.openSession();
         istunto.beginTransaction();
-        PeliTulos tulos = (PeliTulos) istunto.get(PeliTulos.class, id);
-        if (tulos != null) {
-            istunto.delete(tulos);
+        History historyRow = (History) istunto.get(History.class, gameNumber);
+        if (historyRow != null) {
+            istunto.delete(historyRow);
             out = true;
         } else {
             System.out.println("Ei löytynyt poistettavaa");
@@ -150,5 +150,41 @@ public class CasinoDAO {
         istunto.getTransaction().commit();
         istunto.close();
         return out;
+    }
+
+    // USER
+    public boolean addUserRow(User user) {
+        Transaction transaction = null;
+
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(user);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                throw e;
+
+            }
+            return false;
+        }
+    }
+    public User getUser(int userID) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        User user = new User();
+
+        try {
+            session.load(user, userID);
+            session.getTransaction().commit();
+        } catch (ObjectNotFoundException e) {
+            System.out.println("Haettua pelitulosta ei löytynyt!");
+        } finally {
+            session.close();
+        }
+        return user;
+
     }
 }

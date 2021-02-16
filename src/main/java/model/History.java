@@ -1,6 +1,9 @@
 package model;
 
 
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -14,11 +17,14 @@ public class History {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "gameid", strategy = "increment")
+    @GeneratedValue(generator = "gameid")
     private int gameNumber;
 
-    @Column
-    private int playerID;
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    @NotNull
+    private User user;
 
     @Column
     private gameResults result;
@@ -94,11 +100,11 @@ public class History {
         this.date = date;
     }
 
-    public int getPlayerID() {
-        return playerID;
+    public User getPlayerID() {
+        return user;
     }
 
-    public void setPlayerID(int playerID) {
-        this.playerID = playerID;
+    public void setPlayerID(User user) {
+        this.user = user;
     }
 }
