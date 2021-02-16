@@ -31,15 +31,18 @@ public class LoginController {
 
     @FXML
     private Button logInButton;
-
+/*
     public ImageView blackScreen;
     public Text areYouSure;
     public Button noButton;
     public Button yesButton;
-    //public Button logInButton;
+    public Button logInButton;
+    */
     private StageManager stageManager;
 
-    @FXML private javafx.scene.control.Button quitButton;
+
+
+    @FXML private javafx.scene.control.Button backButton;
 
     @FXML
     public void logInButton(ActionEvent event) throws SQLException {
@@ -66,7 +69,7 @@ public class LoginController {
         // TODO: JDBCDao for Database operations
 
         /*JdbcDao jdbcDao = new JdbcDao();
-        boolean flag = jdbcDao.validate(emailId, password);
+        boolean flag = jdbcDao.validate(username, password);
         */
         boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
 
