@@ -69,6 +69,8 @@ public class RegisterController {
                 "Welcome " + usernameTextField.getText());
     }
 
+    // TODO: Password reapeat (check)
+
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
