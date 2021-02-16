@@ -1,14 +1,19 @@
 package view;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 /**
@@ -27,6 +32,8 @@ public class RegisterController {
 
     @FXML
     public Button submitButton;
+
+    private StageManager stageManager;
 
     @FXML
     public void register(ActionEvent event) throws SQLException{
@@ -77,5 +84,15 @@ public class RegisterController {
         alert.setContentText(message);
         alert.initOwner(owner);
         alert.show();
+    }
+
+    public void backToMainMenu(ActionEvent actionEvent) throws IOException {
+        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        Scene menuScene = new Scene(menuParent);
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(menuScene);
+        stageManager.getPrimaryStage().show();
+
     }
 }

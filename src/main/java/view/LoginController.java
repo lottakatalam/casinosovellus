@@ -1,9 +1,13 @@
 package view;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -25,7 +29,7 @@ public class LoginController {
     private TextField usernameTextField;
 
     @FXML
-    private PasswordField passwordTextField;
+    private TextField passwordTextField;
 
     @FXML
     private Button logInButton;
@@ -35,6 +39,7 @@ public class LoginController {
     public Button noButton;
     public Button yesButton;
     //public Button logInButton;
+    private StageManager stageManager;
 
     @FXML private javafx.scene.control.Button quitButton;
 
@@ -60,10 +65,6 @@ public class LoginController {
         String userid = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-
-
-
-
         // TODO: JDBCDao for Database operations
 
         /*JdbcDao jdbcDao = new JdbcDao();
@@ -71,40 +72,11 @@ public class LoginController {
         */
         boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
 
-
-
-
-
-
-
         if (!flag) {
             infoBox("Please enter correct Email and Password", null, "Failed");
         } else {
             infoBox("Login Successful!", null, "Failed");
         }
-    }
-
-    public void quitButton(){
-        blackScreen.setVisible(true);
-        areYouSure.setVisible(true);
-        yesButton.setVisible(true);
-        noButton.setVisible(true);
-
-    }
-
-    public void yesAction() {
-        Stage stage = (Stage) quitButton.getScene().getWindow();
-        stage.close();
-    }
-
-    /**
-     * Closes Are you sure-screen
-     */
-    public void noAction() {
-        blackScreen.setVisible(false);
-        areYouSure.setVisible(false);
-        yesButton.setVisible(false);
-        noButton.setVisible(false);
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {
@@ -122,6 +94,16 @@ public class LoginController {
         alert.setContentText(message);
         alert.initOwner(owner);
         alert.show();
+    }
+
+    public void backToMainMenu(ActionEvent actionEvent) throws IOException {
+        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        Scene menuScene = new Scene(menuParent);
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(menuScene);
+        stageManager.getPrimaryStage().show();
+
     }
 
 

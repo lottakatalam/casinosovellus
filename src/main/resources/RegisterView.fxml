@@ -6,19 +6,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RegisterController">
     <children>
-        <Button layoutX="357.0" layoutY="461.0" mnemonicParsing="false" onAction="#logInButton" prefHeight="48.0" prefWidth="122.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Register">
+        <Button layoutX="357.0" layoutY="461.0" mnemonicParsing="false" onAction="#register" prefHeight="48.0" prefWidth="122.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Register">
             <font>
                 <Font name="Cooper Black" size="20.0" />
             </font>
         </Button>
-        <TextField fx:id="betField" alignment="CENTER" layoutX="313.0" layoutY="152.0" prefHeight="34.0" prefWidth="210.0" promptText="Username" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+        <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="313.0" layoutY="152.0" prefHeight="34.0" prefWidth="210.0" promptText="Username" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
             <font>
                 <Font name="Cooper Black" size="15.0" />
             </font>
         </TextField>
-        <TextField fx:id="betField1" alignment="CENTER" layoutX="313.0" layoutY="262.0" prefHeight="34.0" prefWidth="210.0" promptText="Password" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+        <TextField fx:id="passwordTextField" alignment="CENTER" layoutX="313.0" layoutY="262.0" prefHeight="34.0" prefWidth="210.0" promptText="Password" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
             <font>
                 <Font name="Cooper Black" size="15.0" />
             </font>
@@ -43,7 +43,7 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <TextField fx:id="betField11" alignment="CENTER" layoutX="313.0" layoutY="380.0" prefHeight="34.0" prefWidth="210.0" promptText="Repeat Password" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+      <TextField fx:id="repeatTextField" alignment="CENTER" layoutX="313.0" layoutY="380.0" prefHeight="34.0" prefWidth="210.0" promptText="Repeat Password" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
