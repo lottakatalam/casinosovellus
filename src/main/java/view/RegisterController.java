@@ -28,6 +28,9 @@ public class RegisterController {
     public TextField passwordTextField;
 
     @FXML
+    public TextField repeatTextField;
+
+    @FXML
     public Button submitButton;
 
     private StageManager stageManager;
@@ -51,8 +54,10 @@ public class RegisterController {
             return;
         }
 
+
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
+        String passwordconfirm = repeatTextField.getText();
 
 
         // TODO: JDBCDao for Database operations
