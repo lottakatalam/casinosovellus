@@ -33,6 +33,8 @@ public class GameHistoryController {
     public TableColumn balanceColumn;
     public Button refreshButton;
 
+    CasinoDAO casinoDAO = new CasinoDAO();
+
     /**
      * Loads back to MainMenu.fxml
      * @param actionEvent
@@ -78,11 +80,11 @@ public class GameHistoryController {
         noButton.setVisible(false);
         areYouSure.setVisible(false);
         historyTable.getItems().clear();
+        casinoDAO.deleteHistoryRow(1);
     }
 
     public ObservableList<History> getHistory() {
         ObservableList<History> history = FXCollections.observableArrayList();
-        CasinoDAO casinoDAO = new CasinoDAO();
         History h = casinoDAO.getAllHistoryRows()[0];
 
         history.add(h);

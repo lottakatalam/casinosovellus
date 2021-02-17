@@ -20,8 +20,11 @@ public class testimain {
         History h = new History();
 
         h.setPlayerID(casinoDAO.getUser(1));
-        h.setBet(2000);
+        h.setResult(History.gameResults.PLAYERLOST);
+        h.setBet(1000);
+        h.setBalance(2500);
         casinoDAO.addHistoryRow(h);
+
     }
 
 }

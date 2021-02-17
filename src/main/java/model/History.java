@@ -41,14 +41,7 @@ public class History {
     @Column
     private Date date;
 
-/*
-    public History(int gameNumber, String result, int bet, int balance) {
-        this.gameNumber = gameNumber;
-        this.result = result;
-        this.bet = bet;
-        this.balance = balance;
-    }
-*/
+
     //GETTERS
 
     public int getGameNumber() {
