@@ -2,6 +2,8 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 
@@ -25,11 +27,18 @@ class DeckTest {
         assertEquals(card.getSuit(), deck.nextCard().getSuit(), "The next cards suit wasn't correct");
     }
 
-    @Test
-    void testShuffleDeck() {
+    //@Test //tähän voisi tehdä toisen vaihtoehdon
+    @ParameterizedTest
+    @ValueSource (ints = {1,2})
+    void testShuffleDeck(int number) {
         Deck anotherDeck = new Deck();
-        deck.shuffleDeck();
-        assertFalse(deck.equals(anotherDeck), "The deck was not shuffled");
+        if (number ==1) {
+            deck.shuffleDeck();
+            assertFalse(deck.equals(anotherDeck), "The deck was not shuffled");
+        } else {
+            assertTrue(deck.equals(anotherDeck), "The deck was shuffled");
+        }
+
     }
 
     @Test
