@@ -81,17 +81,18 @@ public class GameHistoryController {
         noButton.setVisible(false);
         areYouSure.setVisible(false);
         historyTable.getItems().clear();
-        for (int i = 0; i < 10; i++) {
-            casinoDAO.deleteHistoryRow(i);
+        History[] h = casinoDAO.getAllHistoryRows();
+        for (int i = 0; i < h.length; i++) {
+            casinoDAO.deleteHistoryRow(h[i].getGameNumber());
         }
     }
 
     public ObservableList<History> getHistory() {
         ObservableList<History> history = FXCollections.observableArrayList();
-        for (int i = 0; i < 4; i++) {
-            History h = casinoDAO.getAllHistoryRows()[i];
+        History[] h = casinoDAO.getAllHistoryRows();
+        for (int i = 0; i < h.length; i++) {
 
-            history.add(h);
+            history.add(h[i]);
         }
 
         return history;
