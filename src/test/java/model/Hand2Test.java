@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HandTest2 {
+class Hand2Test {
 
     private static Hand hand = new Hand();
     private static Hand hand2 = new Hand();
