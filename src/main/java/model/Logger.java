@@ -9,6 +9,8 @@ package model;
 public class Logger {
 
     /**
+     *
+     * TODO: Delete this
      * Instance of Logger singleton
      */
     public static Logger instance;

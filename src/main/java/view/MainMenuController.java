@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,7 @@ public class MainMenuController {
     public Button noButton;
     public Button yesButton;
     private BlackjackController gameController;
+    private UserController userController;
     public Stage primaryStage;
     private StageManager stageManager;
 
@@ -116,9 +118,13 @@ public class MainMenuController {
     }
 
     public void registerButton(ActionEvent actionEvent) throws IOException {
-        Parent registerParent = FXMLLoader.load(getClass().getResource("/RegisterView.fxml"));
-        Scene registerScene = new Scene(registerParent);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/RegisterView.fxml"));
 
+        Parent registerParent = loader.load();
+        RegisterController controller = loader.getController();
+
+        Scene registerScene = new Scene(registerParent);
         stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("Register");
         stageManager.getPrimaryStage().setScene(registerScene);
@@ -149,6 +155,10 @@ public class MainMenuController {
      */
     public void setGameController(BlackjackController blackjackController) {
         gameController = blackjackController;
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 
     public void setStageManager(StageManager stageManager) {

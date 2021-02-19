@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,8 @@ import javafx.stage.Window;
 
 public class RegisterController {
 
+    private UserController userController = new UserController();
+
     @FXML
     public TextField usernameTextField;
 
@@ -38,7 +41,7 @@ public class RegisterController {
     @FXML
     public void register(ActionEvent event) throws SQLException{
 
-        Window owner = submitButton.getScene().getWindow();
+        Window owner = usernameTextField.getScene().getWindow();
 
         System.out.println(usernameTextField.getText());
         System.out.println(passwordTextField.getText());
@@ -70,6 +73,8 @@ public class RegisterController {
 
         */
 
+        userController.createNewUser(username, password);
+
         showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
                 "Welcome " + usernameTextField.getText());
     }
@@ -93,5 +98,9 @@ public class RegisterController {
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();
 
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 }

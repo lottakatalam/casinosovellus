@@ -1,5 +1,6 @@
 package view;
 import controller.BlackjackController;
+import controller.UserController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -20,6 +21,7 @@ public class GUImain extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private BlackjackController ctrl;
+    private UserController userController;
     private StageManager stageManager;
 
     /**
@@ -76,7 +78,10 @@ public class GUImain extends Application {
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
             BlackjackController ctrl = new BlackjackController();
+            userController = new UserController();
+
             controller.setGameController(ctrl);
+            controller.setUserController(userController);
             controller.setStageManager(this.stageManager);
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
