@@ -31,6 +31,9 @@ public class GameHistoryController {
     public TableColumn resultColumn;
     public TableColumn betColumn;
     public TableColumn balanceColumn;
+    public TableColumn useridColumn;
+    public TableColumn methodColumn;
+    public TableColumn dateColumn;
     public Button refreshButton;
 
     CasinoDAO casinoDAO = new CasinoDAO();
@@ -73,7 +76,7 @@ public class GameHistoryController {
     }
 
     /**
-     * Clears user's game history
+     * Clears user's game history (Gets every row and deletes every one of them in the loop)
      */
     public void yesAction() {
         blackScreen.setVisible(false);
@@ -87,6 +90,10 @@ public class GameHistoryController {
         }
     }
 
+    /**
+     * Gets every row from Database to Observablelist
+     * @return - Returns Observablelist
+     */
     public ObservableList<History> getHistory() {
         ObservableList<History> history = FXCollections.observableArrayList();
         History[] h = casinoDAO.getAllHistoryRows();
@@ -99,12 +106,31 @@ public class GameHistoryController {
     }
 
 
-
+    /**
+     * Refresh-button makes database visible in the TableView
+     */
     public void refresh() {
+
+        // For Testing
+        History h = new History();
+
+        h.setPlayerID(casinoDAO.getUserByUsername("Pelaaja"));
+        h.setResult(History.gameResults.WON);
+        h.setMethod("Basic");
+        h.setBet(1000);
+        h.setBalance(2500);
+        //h.setDate("2013-09-04");
+        casinoDAO.addHistoryRow(h);
+
+        ////////////////////////////////////////
+
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
+        //useridColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
+        methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         historyTable.setItems(getHistory());
 
     }

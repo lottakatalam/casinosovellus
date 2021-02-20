@@ -18,7 +18,7 @@ public class testimain {
         History h = new History();
 
         h.setPlayerID(casinoDAO.getUserByUsername("pelaaja"));
-        h.setResult(History.gameResults.PLAYERWON);
+        h.setResult(History.gameResults.WON);
         h.setBet(10000);
         h.setBalance(25000);
         casinoDAO.addHistoryRow(h);

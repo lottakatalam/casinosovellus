@@ -12,8 +12,8 @@ import java.util.Date;
 public class History {
 
     public enum gameResults{
-        PLAYERWON,
-        PLAYERLOST
+        WON,
+        LOST
     }
 
     @Id
