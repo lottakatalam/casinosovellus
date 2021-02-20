@@ -11,15 +11,13 @@ public class testimain {
 */
         CasinoDAO casinoDAO = new CasinoDAO();
 
-        User newUser = new User();
-        newUser.setUserName("testi");
-        newUser.setPassword("testisalasana");
-        newUser.setBalance(2500);
-        casinoDAO.addUserRow(newUser);
+
+
+        UserCredentialHandler.getInstance().createNewUser("testi", "salasana");
 
         History h = new History();
 
-        h.setPlayerID(casinoDAO.getUser(1));
+        h.setPlayerID(casinoDAO.getUserByUsername("pelaaja"));
         h.setResult(History.gameResults.PLAYERWON);
         h.setBet(10000);
         h.setBalance(25000);

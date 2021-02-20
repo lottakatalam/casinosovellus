@@ -1,11 +1,9 @@
 package model;
 
 
-import org.hibernate.ObjectNotFoundException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -170,21 +168,14 @@ public class CasinoDAO {
             return false;
         }
     }
-    public User getUser(int userID) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-
-        User user = new User();
-
+    public User getUserByUsername(String username) {
+        Criteria criteria = sessionFactory.openSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq("username", username));
         try {
-            session.load(user, userID);
-            session.getTransaction().commit();
-        } catch (ObjectNotFoundException e) {
-            System.out.println("Haettua pelitulosta ei löytynyt!");
-        } finally {
-            session.close();
+            return (User) criteria.list().get(0);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
         }
-        return user;
 
     }
 }

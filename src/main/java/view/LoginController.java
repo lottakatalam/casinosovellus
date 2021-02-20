@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
+import model.User;
 
 /**
  *
@@ -39,7 +41,7 @@ public class LoginController {
     public Button logInButton;
     */
     private StageManager stageManager;
-
+    private UserController userController = new UserController();
 
 
     @FXML private javafx.scene.control.Button backButton;
@@ -71,9 +73,9 @@ public class LoginController {
         /*JdbcDao jdbcDao = new JdbcDao();
         boolean flag = jdbcDao.validate(username, password);
         */
-        boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
+        //boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
 
-        if (!flag) {
+        if (!userController.login(username,password)) {
             infoBox("Please enter correct Email and Password", null, "Failed");
         } else {
             infoBox("Login Successful!", null, "Failed");
