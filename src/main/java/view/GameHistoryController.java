@@ -111,19 +111,6 @@ public class GameHistoryController {
      */
     public void refresh() {
 
-        // For Testing
-        History h = new History();
-
-        h.setPlayerID(casinoDAO.getUserByUsername("Pelaaja"));
-        h.setResult(History.gameResults.WON);
-        h.setMethod("Basic");
-        h.setBet(1000);
-        h.setBalance(2500);
-        //h.setDate("2013-09-04");
-        casinoDAO.addHistoryRow(h);
-
-        ////////////////////////////////////////
-
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
         //useridColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));

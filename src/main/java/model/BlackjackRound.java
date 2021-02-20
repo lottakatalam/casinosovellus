@@ -16,6 +16,8 @@ public class BlackjackRound extends Thread {
     private boolean playerBusted = false;
     private String winner;
 
+    CasinoDAO casinoDAO = new CasinoDAO();
+
 
     /**
      * Constructor of the round. Draws the first cards and adds them to UI. Sets needed objects for the use of BlackjackRound.
@@ -71,10 +73,12 @@ public class BlackjackRound extends Thread {
 
     /**
      * Method to determine the winner and/or the way of winning. Calls the methods to influence player's currency.
+     * Also sets data from the round and adds a row of the round to the history table
      * @return winner/end result of the round in String
      * @throws InterruptedException when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity.
      */
     public String whoWins() throws InterruptedException {
+        History h = new History();
         String winner = "";
 
         int playerTotal = player.calculateHand();
@@ -84,21 +88,33 @@ public class BlackjackRound extends Thread {
         if (playerTotal == dealerTotal) { //Even if they both get a blackjack
             Logger.log(Logger.LogLevel.PROD, "No one wins");
             this.winner = "nobody";
+            h.setResult(History.gameResults.DRAW);
+            h.setMethod("Draw");
         } else if (playerTotal == 21){
             playerWins = true;
             this.winner = "Blackjack";
+            h.setResult(History.gameResults.WON);
+            h.setMethod("Blackjack");
         } else if (playerTotal < 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
             playerWins = true;
             this.winner = "player";
+            h.setResult(History.gameResults.WON);
+            h.setMethod("Basic");
             Logger.log(Logger.LogLevel.PROD, "Player wins");
         } else if (playerTotal > 21) {
             this.winner = "busted";
+            h.setResult(History.gameResults.LOST);
+            h.setMethod("Busted");
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         } else if (dealerTotal == 21) {
             this.winner = "dealer";
+            h.setResult(History.gameResults.LOST);
+            h.setMethod("Blackjack");
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         } else {
             this.winner = "dealer";
+            h.setResult(History.gameResults.LOST);
+            h.setMethod("Basic");
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         }
 
@@ -108,6 +124,10 @@ public class BlackjackRound extends Thread {
             player.lose();
         }
         gameController.declareWinner(this.winner);
+
+        h.setBet(player.getBet());
+        h.setBalance(player.getCurrency());
+        casinoDAO.addHistoryRow(h);
         return winner;
     }
 
