@@ -133,4 +133,7 @@ public class UserCredentialHandler {
         return bytes;
     }
 
+    public static User getLoggedInUser() {
+        return loggedInUser;
+    }
 }

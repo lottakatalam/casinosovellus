@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -22,10 +23,8 @@ public class History {
     @GeneratedValue(generator = "gameid")
     private int gameNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "userID")
-    @NotNull
-    private User user;
+    @Column
+    private int userID;
 
     @Column
     private gameResults result;
@@ -40,7 +39,7 @@ public class History {
     private int balance;
 
     @Column
-    private Date date;
+    private LocalDateTime date;
 
 
     //GETTERS
@@ -86,19 +85,19 @@ public class History {
         this.balance = balance;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public User getPlayerID() {
-        return user;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setPlayerID(User user) {
-        this.user = user;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

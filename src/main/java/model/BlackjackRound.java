@@ -2,6 +2,9 @@ package model;
 
 import controller.BlackjackController;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
+
 /**
  * Logic of Blackjack single round
  */
@@ -125,7 +128,13 @@ public class BlackjackRound extends Thread {
         }
         gameController.declareWinner(this.winner);
 
+        if (UserCredentialHandler.getLoggedInUser() != null) {
+            System.out.println("Pelaaja ID: " + UserCredentialHandler.getLoggedInUser().getUserID());
+            h.setUserID(UserCredentialHandler.getLoggedInUser().getUserID());
+        }
+        h.setDate(LocalDateTime.now());
         h.setBet(player.getBet());
+        System.out.println("Pelaaja ID: " + h.getUserID());
         h.setBalance(player.getCurrency());
         casinoDAO.addHistoryRow(h);
         return winner;

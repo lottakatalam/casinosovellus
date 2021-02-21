@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.CasinoDAO;
 import model.History;
+import model.UserCredentialHandler;
 
 import java.io.IOException;
 
@@ -99,7 +100,10 @@ public class GameHistoryController {
         History[] h = casinoDAO.getAllHistoryRows();
         for (int i = 0; i < h.length; i++) {
 
-            history.add(h[i]);
+            if (h[i].getUserID() == UserCredentialHandler.getLoggedInUser().getUserID()) {
+
+                history.add(h[i]);
+            }
         }
 
         return history;
@@ -112,13 +116,17 @@ public class GameHistoryController {
     public void refresh() {
 
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
-        //useridColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
+        useridColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        historyTable.setItems(getHistory());
+
+        if (UserCredentialHandler.getLoggedInUser() != null) {
+
+            historyTable.setItems(getHistory());
+        }
 
     }
 }
