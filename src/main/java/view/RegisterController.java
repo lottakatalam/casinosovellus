@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -38,6 +39,8 @@ public class RegisterController {
 
     private StageManager stageManager;
 
+    
+
     @FXML
     public void register(ActionEvent event) throws SQLException{
 
@@ -57,10 +60,16 @@ public class RegisterController {
             return;
         }
 
+        if(passwordTextField.matches(repeatTextField)){
+            System.out.println("Password successfully created.");
+        } else {
+            System.out.println("Passwords do not match.");
+        }
+
 
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-        String passwordconfirm = repeatTextField.getText();
+        String confirmpassword = repeatTextField.getText();
 
 
         // TODO: JDBCDao for Database operations
@@ -103,4 +112,7 @@ public class RegisterController {
     public void setUserController(UserController userController) {
         this.userController = userController;
     }
+   
+    
+    
 }
