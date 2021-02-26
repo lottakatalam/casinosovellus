@@ -50,7 +50,7 @@ public class BlackjackGame extends Thread {
      */
     public void initRound() {
         player.getHand().clearHand();
-        dealer.clearHand();
+        dealer.getHand().clearHand();
 
         this.round = new BlackjackRound(this.gameController, this.deck, this.player, this.dealer);
 

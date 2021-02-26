@@ -35,10 +35,10 @@ public class BlackjackRound extends Thread {
 
         this.player.getHand().addCard(deck.nextCard());
         this.player.getHand().addCard(deck.nextCard());
-        this.dealer.addCard(deck.nextCard());
+        this.dealer.getHand().addCard(deck.nextCard());
         player.getHand().printHand();
         System.out.println("");
-        dealer.printHand();
+        dealer.getHand().printHand();
         this.gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         this.gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
     }
@@ -78,7 +78,7 @@ public class BlackjackRound extends Thread {
         String winner = "";
 
         int playerTotal = player.getHand().calculateTotal();
-        int dealerTotal = dealer.calculateTotal();
+        int dealerTotal = dealer.getHand().calculateTotal();
         boolean playerWins = false;
 
         if (playerTotal == dealerTotal) { //Even if they both get a blackjack
@@ -118,16 +118,16 @@ public class BlackjackRound extends Thread {
     public void run() {// end round
         if (!playerBusted) {
             System.out.println("Dealer plays\n");
-            while (dealer.calculateTotal() <= 16) {
-                System.out.println("Dealer has " + dealer.calculateTotal() + " and hits");
-                dealer.addCard(deck.nextCard());
+            while (dealer.getHand().calculateTotal() <= 16) {
+                System.out.println("Dealer has " + dealer.getHand().calculateTotal() + " and hits");
+                dealer.getHand().addCard(deck.nextCard());
                 gameController.setDealersCardsToUI(dealer.getHand().getHand());
 
             }
-            if (dealer.calculateTotal() > 21) {
+            if (dealer.getHand().calculateTotal() > 21) {
                 System.out.println("Dealer busts. ");
             } else {
-                System.out.println("Dealer stands at " + dealer.calculateTotal());
+                System.out.println("Dealer stands at " + dealer.getHand().calculateTotal());
             }
         } else {
             gameController.setPlayersCardsToUI(this.player.getHand().getHand());
@@ -140,7 +140,7 @@ public class BlackjackRound extends Thread {
         Logger.log(Logger.LogLevel.PROD, "Round ended");
         player.getHand().printHand();
         System.out.println("");
-        dealer.printHand();
+        dealer.getHand().printHand();
 
         Logger.log(Logger.LogLevel.PROD, String.format("The winner is: %s", winner));
 
