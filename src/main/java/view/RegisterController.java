@@ -60,7 +60,7 @@ public class RegisterController {
             return;
         }
 
-        if(passwordTextField.matches(repeatTextField)){
+        if(passwordTextField.getText().equals(repeatTextField.getText())){
             System.out.println("Password successfully created.");
         } else {
             System.out.println("Passwords do not match.");
