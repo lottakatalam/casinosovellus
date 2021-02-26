@@ -226,7 +226,7 @@ public class InGameViewController {
      * Updates the total counter
      */
     public void updateTotalResult() {
-        playerTotal.setText("" + gameController.getPlayer().calculateHand());
+        playerTotal.setText("" + gameController.getPlayer().getHand().calculateTotal());
         dealerTotal.setText("" + gameController.getDealer().getHand().calculateTotal());
     }
 

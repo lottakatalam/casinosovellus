@@ -33,10 +33,10 @@ public class BlackjackRound extends Thread {
 
         deck.shuffleDeck();
 
-        this.player.addCard(deck.nextCard());
-        this.player.addCard(deck.nextCard());
+        this.player.getHand().addCard(deck.nextCard());
+        this.player.getHand().addCard(deck.nextCard());
         this.dealer.addCard(deck.nextCard());
-        player.printHand();
+        player.getHand().printHand();
         System.out.println("");
         dealer.printHand();
         this.gameController.setPlayersCardsToUI(this.player.getHand().getHand());
@@ -47,10 +47,10 @@ public class BlackjackRound extends Thread {
      * Called from the UI and controller when player presses "Hit". Adds drawn cards to UI, checks if the player has busted and starts dealer's turn.
      */
     public void playerHit() {
-        player.addCard(deck.nextCard());
+        this.player.getHand().addCard(deck.nextCard());
         this.gameController.setPlayersCardsToUI(player.getHand().getHand());
-        player.printHand();
-        int total = player.calculateHand();
+        player.getHand().printHand();
+        int total = player.getHand().calculateTotal();
         if (total > 21) {
             playerBusted = true;
             this.start();
@@ -77,7 +77,7 @@ public class BlackjackRound extends Thread {
     public String whoWins() throws InterruptedException {
         String winner = "";
 
-        int playerTotal = player.calculateHand();
+        int playerTotal = player.getHand().calculateTotal();
         int dealerTotal = dealer.calculateTotal();
         boolean playerWins = false;
 
@@ -138,7 +138,7 @@ public class BlackjackRound extends Thread {
             e.printStackTrace();
         }
         Logger.log(Logger.LogLevel.PROD, "Round ended");
-        player.printHand();
+        player.getHand().printHand();
         System.out.println("");
         dealer.printHand();
 

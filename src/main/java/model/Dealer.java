@@ -17,11 +17,7 @@ public class Dealer implements Serializable {
      */
 
     public boolean isBlackjack() {
-        if (hand.calculateTotal() == 21) {
-            return true;
-        } else {
-            return false;
-        }
+        return hand.calculateTotal() == 21;
     }
 
     /**
@@ -56,9 +52,9 @@ public class Dealer implements Serializable {
     /**
      * Peeks the dealer's face-down card
      */
-    public boolean peek() {
+    /*public boolean peek() {
         return hand.dealerPeek();
-    }
+    }*/
 
     public Hand getHand() {
         return this.hand;
