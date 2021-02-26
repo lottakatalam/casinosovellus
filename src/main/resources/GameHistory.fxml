@@ -57,7 +57,17 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
+      <Button fx:id="okButton" layoutX="373.0" layoutY="320.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="OK" visible="false">
+         <font>
+            <Font name="Cooper Black" size="23.0" />
+         </font>
+      </Button>
       <Text fx:id="areYouSure" layoutX="271.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure?" visible="false">
+         <font>
+            <Font name="Cooper Black" size="40.0" />
+         </font>
+      </Text>
+      <Text fx:id="errorText" layoutX="80.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please log in to view game history" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>

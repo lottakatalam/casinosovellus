@@ -36,6 +36,8 @@ public class GameHistoryController {
     public TableColumn methodColumn;
     public TableColumn dateColumn;
     public Button refreshButton;
+    public Button okButton;
+    public Text errorText;
 
     CasinoDAO casinoDAO = new CasinoDAO();
 
@@ -77,17 +79,27 @@ public class GameHistoryController {
     }
 
     /**
-     * Clears user's game history (Gets every row and deletes every one of them in the loop)
+     * Clears user's game history if user is logged in (Gets every row and deletes every one of them in the loop)
      */
     public void yesAction() {
-        blackScreen.setVisible(false);
-        yesButton.setVisible(false);
-        noButton.setVisible(false);
-        areYouSure.setVisible(false);
-        historyTable.getItems().clear();
-        History[] h = casinoDAO.getAllHistoryRows();
-        for (int i = 0; i < h.length; i++) {
-            casinoDAO.deleteHistoryRow(h[i].getGameNumber());
+        if (UserCredentialHandler.getLoggedInUser() != null) {
+            blackScreen.setVisible(false);
+            yesButton.setVisible(false);
+            noButton.setVisible(false);
+            areYouSure.setVisible(false);
+            historyTable.getItems().clear();
+            History[] h = casinoDAO.getAllHistoryRows();
+            for (int i = 0; i < h.length; i++) {
+                casinoDAO.deleteHistoryRow(h[i].getGameNumber());
+            }
+        }else {
+            yesButton.setVisible(false);
+            noButton.setVisible(false);
+            areYouSure.setVisible(false);
+            errorText.setText("Please log in to clear game history");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
         }
     }
 
@@ -111,7 +123,7 @@ public class GameHistoryController {
 
 
     /**
-     * Refresh-button makes database visible in the TableView
+     * Refresh-button makes database visible in the TableView if user is logged in
      */
     public void refresh() {
 
@@ -126,7 +138,22 @@ public class GameHistoryController {
         if (UserCredentialHandler.getLoggedInUser() != null) {
 
             historyTable.setItems(getHistory());
+
+        }else {
+            errorText.setText("Please log in to view game history");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
         }
 
+    }
+
+    /**
+     * okButton disables "error" message, that you should log in to view game history
+     */
+    public void okButton() {
+        blackScreen.setVisible(false);
+        errorText.setVisible(false);
+        okButton.setVisible(false);
     }
 }

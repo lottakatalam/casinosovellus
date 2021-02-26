@@ -78,7 +78,7 @@ public class LoginController {
         if (!userController.login(username,password)) {
             infoBox("Please enter correct Email and Password", null, "Failed");
         } else {
-            infoBox("Login Successful!", null, "Failed");
+            infoBox("Login Successful!", null, "Success");
         }
     }
 
