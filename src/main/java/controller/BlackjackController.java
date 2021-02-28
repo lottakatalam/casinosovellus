@@ -20,6 +20,7 @@ public class BlackjackController {
     private InGameViewController inGameViewController;
     private String winner;
 
+
     /**
      * Constructor of BlackjackController
      */
@@ -139,6 +140,14 @@ public class BlackjackController {
      */
     public void disableHit() {
         inGameViewController.disableHit();
+    }
+
+    /**
+     * For testing purposes only
+     * @return BlackJackGame-object created in the constructor
+     */
+    public BlackjackGame getBlackJackGame() {
+        return blackJackGame;
     }
 
 }

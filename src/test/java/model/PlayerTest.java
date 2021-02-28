@@ -15,7 +15,7 @@ class PlayerTest {
     private static Player p;
 
     @BeforeEach
-    public void initalizeTests() {
+    public void initializeTests() {
         Logger.setLogLevel(Logger.LogLevel.ALL);
         currency = 1000;
         p = new Player(currency);

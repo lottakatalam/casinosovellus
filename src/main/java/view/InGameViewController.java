@@ -264,7 +264,7 @@ public class InGameViewController {
     /**
      * Sets the bet from a textfield in the UI. Validates that the amount doesn't exceed player's balance.
      */
-    public void setBet() { // TODO: Asetetun panoksen validointi
+    public void setBet() { // TODO: Asetetun panoksen validointi ja ilmoitus ettei peliä voi aloittaa ilman panoksen asettamista
         bet = Integer.parseInt(betField.getText());
         if (gameController.setBet(bet)) {
             currentBet.setText("\uD83D\uDCB2" + bet);
