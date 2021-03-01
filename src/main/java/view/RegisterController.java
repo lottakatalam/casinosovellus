@@ -86,6 +86,10 @@ public class RegisterController {
 
         showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
                 "Welcome " + usernameTextField.getText());
+
+        usernameTextField.setText("");
+        passwordTextField.setText("");
+        repeatTextField.setText("");
     }
 
     // TODO: Password reapeat (check)

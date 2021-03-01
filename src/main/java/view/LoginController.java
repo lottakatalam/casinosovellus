@@ -80,6 +80,10 @@ public class LoginController {
         } else {
             infoBox("Login Successful!", null, "Success");
         }
+
+        usernameTextField.setText("");
+        passwordTextField.setText("");
+
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {
