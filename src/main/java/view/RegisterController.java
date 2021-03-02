@@ -128,11 +128,6 @@ public class RegisterController {
             System.out.println("Password must have atleast one number");
             isValid = false;
         }
-        String specialChars = "(.*[@,#,$,%].*$)";
-        if (!password.matches(specialChars)) {
-            System.out.println("Password must have atleast one special character among @#$%");
-            isValid = false;
-        }
         return isValid;
     }
 }
