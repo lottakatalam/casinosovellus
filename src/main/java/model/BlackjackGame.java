@@ -25,6 +25,7 @@ public class BlackjackGame extends Thread {
      * Dealer in a BlackJack-game
      */
     private final Dealer dealer;
+
     /**
      * Controller of the application (MVC-model)
      */
@@ -87,4 +88,16 @@ public class BlackjackGame extends Thread {
         return this.dealer;
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public BlackjackRound getRound() {
+        return round;
+    }
+
+
+    public BlackjackController getGameController() {
+        return gameController;
+    }
 }
