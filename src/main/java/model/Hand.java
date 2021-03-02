@@ -38,10 +38,11 @@ public class Hand {
      *
      * @param cards array of cards
      */
+    /*
     public void setHand(Card[] cards) { //Tätä ei taideta tarvita?
 
         Collections.addAll(this.hand, cards);
-    }
+    }*/
 
     /**
      * Prints all of the card-objects (in their own rows) in a hand by calling the toString()-method in Card-class
@@ -93,8 +94,9 @@ public class Hand {
         this.hand.clear();
     }
 
+    /*
     public boolean dealerPeek() {
         int value = hand.get(1).getRank();
         return value == 1 || value >= 10;
-    }
+    }*/
 }

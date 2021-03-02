@@ -30,49 +30,57 @@ public class Player {
         this.currency = currency;
     }
 
+    public Hand getHand() {
+        return this.hand;
+    }
+
     /**
      * A method which adds a card-object to players hand-object
      *
      * @param card the card-object to be added
      */
-    public void addCard(Card card) {
+    /*public void addCard(Card card) {
         hand.addCard(card);
-    }
+    }*/
 
     /**
      * Sets cards to players hand and prints the hand.
      *
      * @param cardsToHand Array of cards
      */
-    public void setHand(Card[] cardsToHand) {
+    /*
+    public void setHand(Card[] cardsToHand) { //tätäkään ei taideta tarvita?
         hand.setHand(cardsToHand);
         Logger.log(Logger.LogLevel.DEV, "Players hand:");
         hand.printHand();
-    }
+    }*/
 
     /**
      * Clears the players hand-object completely
      */
+    /*
     public void clearHand() {
         hand.clearHand();
-    }
+    }*/
 
     /**
      * Prints the players hand-object by calling the printHand-method from Hand-class
      */
+    /*
     public void printHand() {
         Logger.log(Logger.LogLevel.DEV, "Players hand:");
         hand.printHand();
-    }
+    }*/
 
     /**
      * Calculates the total value (sum of card ranks) of the players hand-object
      *
      * @return the total sum of card-objects ranks in a hand
      */
+    /*
     public int calculateHand() {
         return hand.calculateTotal();
-    }
+    }*/
 
     /**
      * Adds one win to players amountOfWins-attribute and increases the amount of online cash the player has
@@ -93,9 +101,6 @@ public class Player {
         return amountOfWins;
     }
 
-    public Hand getHand() {
-        return this.hand;
-    }
 
     public int getCurrency() {
         return this.currency;
