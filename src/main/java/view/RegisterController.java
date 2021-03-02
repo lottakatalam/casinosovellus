@@ -72,16 +72,6 @@ public class RegisterController {
         String confirmpassword = repeatTextField.getText();
 
 
-        // TODO: JDBCDao for Database operations
-
-
-         /*
-
-        JdbcDao jdbcDao = new JdbcDao();
-        jdbcDao.insertRecord(username, emailId, password);
-
-        */
-
         userController.createNewUser(username, password);
 
         showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",

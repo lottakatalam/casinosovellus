@@ -33,13 +33,6 @@ public class LoginController {
 
     @FXML
     private Button logInButton;
-/*
-    public ImageView blackScreen;
-    public Text areYouSure;
-    public Button noButton;
-    public Button yesButton;
-    public Button logInButton;
-    */
     private StageManager stageManager;
     private UserController userController = new UserController();
 
@@ -67,13 +60,6 @@ public class LoginController {
 
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-
-        // TODO: JDBCDao for Database operations
-
-        /*JdbcDao jdbcDao = new JdbcDao();
-        boolean flag = jdbcDao.validate(username, password);
-        */
-        //boolean flag = usernameTextField.deleteNextChar(); // temporary so errors dont show up
 
         if (!userController.login(username,password)) {
             infoBox("Please enter correct Email and Password", null, "Failed");
