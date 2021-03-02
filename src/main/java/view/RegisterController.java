@@ -109,7 +109,7 @@ public class RegisterController {
 
     public static boolean isValidPassword(String password) {
         boolean isValid = true;
-        if (password.length() > 15 || password.length() < 8) {
+        if (password.length() > 20 || password.length() < 6) {
             System.out.println("Password must be less than 20 and more than 8 characters in length.");
             isValid = false;
         }
