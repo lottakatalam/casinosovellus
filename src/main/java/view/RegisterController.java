@@ -81,8 +81,6 @@ public class RegisterController {
         repeatTextField.setText("");
     }
 
-    // TODO: Password reapeat (check)
-
     private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
