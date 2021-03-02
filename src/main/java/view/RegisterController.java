@@ -39,28 +39,27 @@ public class RegisterController {
 
     private StageManager stageManager;
 
-    
 
     @FXML
-    public void register(ActionEvent event) throws SQLException{
+    public void register(ActionEvent event) throws SQLException {
 
         Window owner = usernameTextField.getScene().getWindow();
 
         System.out.println(usernameTextField.getText());
         System.out.println(passwordTextField.getText());
-        if(usernameTextField.getText().isEmpty()) {
+        if (usernameTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter your name");
             return;
         }
 
-        if(passwordTextField.getText().isEmpty()) {
+        if (passwordTextField.getText().isEmpty()) {
             showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                     "Please enter a password");
             return;
         }
 
-        if(passwordTextField.getText().equals(repeatTextField.getText())){
+        if (passwordTextField.getText().equals(repeatTextField.getText())) {
             System.out.println("Password successfully created.");
         } else {
             System.out.println("Passwords do not match.");
@@ -106,7 +105,34 @@ public class RegisterController {
     public void setUserController(UserController userController) {
         this.userController = userController;
     }
-   
-    
-    
+
+
+    public static boolean isValidPassword(String password) {
+        boolean isValid = true;
+        if (password.length() > 15 || password.length() < 8) {
+            System.out.println("Password must be less than 20 and more than 8 characters in length.");
+            isValid = false;
+        }
+        String upperCaseChars = "(.*[A-Z].*)";
+        if (!password.matches(upperCaseChars)) {
+            System.out.println("Password must have atleast one uppercase character");
+            isValid = false;
+        }
+        String lowerCaseChars = "(.*[a-z].*)";
+        if (!password.matches(lowerCaseChars)) {
+            System.out.println("Password must have atleast one lowercase character");
+            isValid = false;
+        }
+        String numbers = "(.*[0-9].*)";
+        if (!password.matches(numbers)) {
+            System.out.println("Password must have atleast one number");
+            isValid = false;
+        }
+        String specialChars = "(.*[@,#,$,%].*$)";
+        if (!password.matches(specialChars)) {
+            System.out.println("Password must have atleast one special character among @#$%");
+            isValid = false;
+        }
+        return isValid;
+    }
 }
