@@ -106,11 +106,19 @@ public class RegisterController {
         this.userController = userController;
     }
 
+    public static boolean isValidUsername(String username) {
+        boolean isValid = true;
+        if (username.length() > 20 || username.length() < 6) {
+            System.out.println("Username must be less than 20 and more than 6 characters in length.");
+            isValid = false;
+        }
+        return isValid;
+    }
 
     public static boolean isValidPassword(String password) {
         boolean isValid = true;
         if (password.length() > 20 || password.length() < 6) {
-            System.out.println("Password must be less than 20 and more than 8 characters in length.");
+            System.out.println("Password must be less than 20 and more than 6 characters in length.");
             isValid = false;
         }
         String upperCaseChars = "(.*[A-Z].*)";
