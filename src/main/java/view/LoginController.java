@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
 import model.User;
+import model.UserCredentialHandler;
 
 /**
  *
@@ -69,7 +70,6 @@ public class LoginController {
 
         usernameTextField.setText("");
         passwordTextField.setText("");
-
     }
 
     public static void infoBox(String infoMessage, String headerText, String title) {

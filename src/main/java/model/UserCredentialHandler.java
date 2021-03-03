@@ -15,6 +15,8 @@ public class UserCredentialHandler {
 
     private static User loggedInUser;
 
+    public boolean isLoggedIn = false;
+
 
     private UserCredentialHandler() {
         casinoDAO = new CasinoDAO();
@@ -31,12 +33,14 @@ public class UserCredentialHandler {
         this.casinoDAO = casinoDAO;
     }
 
+
     public boolean login(String username, String password) {
         User user = casinoDAO.getUserByUsername(username);
         if (user != null ) {
             if (validatePassword(password, user.getPassword())) {
-                user.setPassword("");
+                //user.setPassword("");
                 loggedInUser = user;
+                isLoggedIn = true;
                 return true;
             }
         }
@@ -51,6 +55,7 @@ public class UserCredentialHandler {
         User newUser = new User();
         newUser.setUserName(username);
         newUser.setPassword(hashPassword(password));
+        newUser.setBalance(2500);
 
         casinoDAO.addUserRow(newUser);
 
@@ -135,5 +140,9 @@ public class UserCredentialHandler {
 
     public static User getLoggedInUser() {
         return loggedInUser;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
     }
 }

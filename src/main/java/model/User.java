@@ -22,6 +22,7 @@ public class User {
     @Column
     private int balance;
 
+
     public int getUserID() {
         return userID;
     }
@@ -52,5 +53,8 @@ public class User {
 
     public void setBalance(int balance) {
         this.balance = balance;
+        //UserCredentialHandler.getInstance().getCasinoDAO().updateBalance(this);
+        CasinoDAO casinoDAO = new CasinoDAO();
+        casinoDAO.updateBalance(this);
     }
 }

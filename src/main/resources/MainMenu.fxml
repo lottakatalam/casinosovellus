@@ -63,5 +63,10 @@
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
+      <Text fx:id="loggedUser" layoutX="41.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
+         <font>
+            <Font name="Cooper Black" size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

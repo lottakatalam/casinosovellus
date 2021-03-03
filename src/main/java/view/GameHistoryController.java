@@ -148,6 +148,27 @@ public class GameHistoryController {
 
     }
 
+    public void initialize() {
+        gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
+        useridColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
+        methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
+        betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
+        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        if (UserCredentialHandler.getLoggedInUser() != null) {
+
+            historyTable.setItems(getHistory());
+
+        }else {
+            errorText.setText("Please log in to view game history");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
+        }
+    }
+
     /**
      * okButton disables "error" message, that you should log in to view game history
      */

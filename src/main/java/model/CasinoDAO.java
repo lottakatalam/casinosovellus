@@ -168,6 +168,24 @@ public class CasinoDAO {
             return false;
         }
     }
+
+    public boolean updateBalance(User user) {
+        Transaction transaction = null;
+
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(user);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                throw e;
+            }
+            return false;
+        }
+    }
+
     public User getUserByUsername(String username) {
         Criteria criteria = sessionFactory.openSession().createCriteria(User.class);
         criteria.add(Restrictions.eq("username", username));
@@ -176,6 +194,5 @@ public class CasinoDAO {
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
-
     }
 }

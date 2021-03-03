@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.UserCredentialHandler;
 
 import java.io.IOException;
 
@@ -25,10 +26,12 @@ public class MainMenuController {
     public Text areYouSure;
     public Button noButton;
     public Button yesButton;
+    public Text loggedUser;
     private BlackjackController gameController;
     private UserController userController;
     public Stage primaryStage;
     private StageManager stageManager;
+    public UserCredentialHandler userCredentialHandler;
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @param actionEvent
@@ -52,6 +55,12 @@ public class MainMenuController {
         stageManager.getPrimaryStage().setScene(gameScene);
         stageManager.getPrimaryStage().show();
 
+    }
+
+    public void initialize() {
+        if (UserCredentialHandler.getInstance().isLoggedIn()) {
+            loggedUser.setText("Welcome, \n" + userCredentialHandler.getLoggedInUser().getUserName());
+        }
     }
 
     public void backToMainMenu(ActionEvent actionEvent) throws IOException {
