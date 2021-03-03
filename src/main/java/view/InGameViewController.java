@@ -108,24 +108,6 @@ public class InGameViewController {
         areYouSure.setVisible(false);
     }
 
-
-    /**
-     * Setting screen's Back-Button loads to MainMenu.fxml
-     *
-     * @param actionEvent
-     * @throws IOException
-     */
-    public void settingsBackButton(ActionEvent actionEvent) throws IOException {
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
-        Scene menuScene = new Scene(menuParent);
-
-        stageManager = StageManager.getInstance();
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
-    }
-
     /**
      * Game screen's Instructions-Button loads to Instructions.fxml (Opens another window)
      *
