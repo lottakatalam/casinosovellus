@@ -18,6 +18,7 @@ public class BlackjackRound extends Thread {
     private final Dealer dealer;
     private boolean playerBusted = false;
     private String winner;
+    boolean doublePossibility;
 
     CasinoDAO casinoDAO = new CasinoDAO();
 
@@ -46,6 +47,9 @@ public class BlackjackRound extends Thread {
         dealer.getHand().printHand();
         this.gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         this.gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
+        int total = this.player.getHand().calculateTotal();
+        doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
+        this.gameController.setDoublePossibility(doublePossibility);
     }
 
     /**
@@ -63,6 +67,14 @@ public class BlackjackRound extends Thread {
             playerBusted = false;
             gameController.disableHit();
             this.start();
+        }
+    }
+
+    public void playerDouble() {
+        this.player.doubleBet();
+        playerHit();
+        if (!this.isAlive()) {
+            playerStay();
         }
     }
 

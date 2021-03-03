@@ -19,6 +19,7 @@ public class BlackjackController {
     private ArrayList<Card> handDealer;
     private InGameViewController inGameViewController;
     private String winner;
+    private boolean doublePossibility;
 
 
     /**
@@ -66,10 +67,6 @@ public class BlackjackController {
 
     public boolean setBet(int b) {
         return this.player.setBet(b);
-    }
-
-    public void doubleBet() {
-        this.player.doubleBet();
     }
 
     /**
@@ -152,6 +149,18 @@ public class BlackjackController {
      */
     public BlackjackGame getBlackJackGame() {
         return blackJackGame;
+    }
+
+    public boolean getDoublePossibility() {
+        return this.doublePossibility;
+    }
+
+    public void setDoublePossibility(boolean doublePossibility) {
+        this.doublePossibility = doublePossibility;
+    }
+
+    public void playerDouble() {
+        this.blackJackGame.playerDouble();
     }
 
 }

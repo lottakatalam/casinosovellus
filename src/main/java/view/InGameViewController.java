@@ -319,18 +319,15 @@ public class InGameViewController {
         hitButton.setDisable(true);
     }
 
-    public void doublePressed() throws InterruptedException {
+    public void doublePressed() {
         doubleButton.setDisable(true);
-        gameController.doubleBet();
-        currentBet.setText("\uD83D\uDCB2" + bet*2);
+        gameController.playerDouble();
+        currentBet.setText("\uD83D\uDCB2" + gameController.getPlayer().getBet());
         updateBalance();
-        hit();
-        stand();
     }
 
     public void checkForDouble() {
-        int total = gameController.getPlayer().getHand().calculateTotal();
-        if (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > bet) {
+        if (gameController.getDoublePossibility()) {
             doubleButton.setDisable(false);
         }
     }

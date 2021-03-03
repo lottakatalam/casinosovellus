@@ -65,7 +65,11 @@ public class BlackjackGame extends Thread {
      * Passes call of a playerHit method to ongoing round
      */
     public void playerHit() {
-            round.playerHit();
+        round.playerHit();
+    }
+
+    public void playerDouble() {
+        round.playerDouble();
     }
 
     /**
