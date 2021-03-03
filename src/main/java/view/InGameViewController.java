@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -52,12 +53,23 @@ public class InGameViewController {
     public Button yesButton;
     public Button noButton;
     public Button closebutton;
+    public Button instructionsButton;
+    public Button menuButton;
+    public Text currencyText;
+    public Text yourHandText;
+    public Text dealersHandText;
+    public Button doubleButton;
+    public Button surrenderButton;
+    public Button insuranceButton;
+    public Button evenMoneyButton;
+    public Text instructionsText;
+    public VBox instructionsBox;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
     private int bet;
     private StageManager stageManager;
-
+    boolean instructionsOn;
 
     /**
      * Sets Are you sure-screen visible to get back to Menu
@@ -119,36 +131,75 @@ public class InGameViewController {
      *
      * @throws IOException
      */
-    public void instructionsButton() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Instructions.fxml"));
-        Parent instructionsParent = fxmlLoader.load();
-        Scene instructionsScene = new Scene(instructionsParent);
+    public void instructionsButton() {
+        instructionsOn = true;
+        playerCard1.setVisible(false);
+        playerCard2.setVisible(false);
+        playerCard3.setVisible(false);
+        playerCard4.setVisible(false);
+        dealerCard1.setVisible(false);
+        dealerCard2.setVisible(false);
+        dealerCard3.setVisible(false);
+        dealerCard4.setVisible(false);
+        playerCurrency.setVisible(false);
+        playerTotal.setVisible(false);
+        dealerTotal.setVisible(false);
+        currentBet.setVisible(false);
+        betField.setVisible(false);
+        splitButton.setVisible(false);
+        standButton.setVisible(false);
+        hitButton.setVisible(false);
+        dealButton.setVisible(false);
+        instructionsButton.setVisible(false);
+        menuButton.setVisible(false);
+        currencyText.setVisible(false);
+        yourHandText.setVisible(false);
+        dealersHandText.setVisible(false);
+        doubleButton.setVisible(false);
+        surrenderButton.setVisible(false);
+        insuranceButton.setVisible(false);
+        evenMoneyButton.setVisible(false);
 
-        stageManager = StageManager.getInstance();
-        stageManager.getPrimaryStage().setTitle("Instructions");
-        stageManager.getPrimaryStage().setScene(instructionsScene);
-        stageManager.getPrimaryStage().show();
+        instructionsText.setVisible(true);
+        instructionsBox.setVisible(true);
+        closebutton.setVisible(true);
     }
 
     /**
      * Instruction screen's Close-Button closes the instructions window
      */
-    public void closeButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));
-        Parent gameParent = loader.load();
+    public void closeButton() {
+        instructionsOn = false;
+        playerCard1.setVisible(true);
+        playerCard2.setVisible(true);
+        playerCard3.setVisible(true);
+        playerCard4.setVisible(true);
+        dealerCard1.setVisible(true);
+        dealerCard2.setVisible(true);
+        dealerCard3.setVisible(true);
+        dealerCard4.setVisible(true);
+        playerCurrency.setVisible(true);
+        playerTotal.setVisible(true);
+        dealerTotal.setVisible(true);
+        currentBet.setVisible(true);
+        betField.setVisible(true);
+        splitButton.setVisible(true);
+        standButton.setVisible(true);
+        hitButton.setVisible(true);
+        dealButton.setVisible(true);
+        instructionsButton.setVisible(true);
+        menuButton.setVisible(true);
+        currencyText.setVisible(true);
+        yourHandText.setVisible(true);
+        dealersHandText.setVisible(true);
+        doubleButton.setVisible(true);
+        surrenderButton.setVisible(true);
+        insuranceButton.setVisible(true);
+        evenMoneyButton.setVisible(true);
 
-        InGameViewController controller = loader.getController();
-        BlackjackController gameController = new BlackjackController();
-        controller.setGameController(gameController);
-        gameController.setInGameViewController(controller);
-        controller.init();
-        Scene gameScene = new Scene(gameParent);
-
-        stageManager = StageManager.getInstance();
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(gameScene);
-        stageManager.getPrimaryStage().show();
+        instructionsText.setVisible(false);
+        instructionsBox.setVisible(false);
+        closebutton.setVisible(false);
     }
 
     /**
@@ -197,8 +248,10 @@ public class InGameViewController {
      * @throws InterruptedException
      */
     public void declareWinner(String winner) throws InterruptedException {
-        winnerScreen.setVisible(true);
-        declareWinner.setVisible(true);
+        if (!instructionsOn) {
+            winnerScreen.setVisible(true);
+            declareWinner.setVisible(true);
+        }
         switch (winner) {
             case "player":
                 declareWinner.setText("You win!");
@@ -251,6 +304,9 @@ public class InGameViewController {
      */
     public void init() {
         showCurrency();
+        instructionsBox.setVisible(false);
+        instructionsText.setVisible(false);
+        closebutton.setVisible(false);
     }
 
 
