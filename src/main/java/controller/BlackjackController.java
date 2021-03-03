@@ -68,6 +68,10 @@ public class BlackjackController {
         return this.player.setBet(b);
     }
 
+    public void doubleBet() {
+        this.player.doubleBet();
+    }
+
     /**
      * Gets the hand of the Player
      * @return

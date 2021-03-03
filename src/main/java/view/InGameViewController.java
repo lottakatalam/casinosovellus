@@ -228,6 +228,7 @@ public class InGameViewController {
         playerCard2.setText(playersCards.get(1).toString());
         dealerCard1.setText(dealerCards.get(0).toString());
         updateTotalResult();
+        checkForDouble();
     }
 
     /**
@@ -273,6 +274,7 @@ public class InGameViewController {
         sleep(4000);
         clearTable();
         winnerScreen.setVisible(false);
+        currentBet.setText("\uD83D\uDCB2" + bet);
     }
 
     /**
@@ -315,6 +317,22 @@ public class InGameViewController {
      */
     public void disableHit() {
         hitButton.setDisable(true);
+    }
+
+    public void doublePressed() throws InterruptedException {
+        doubleButton.setDisable(true);
+        gameController.doubleBet();
+        currentBet.setText("\uD83D\uDCB2" + bet*2);
+        updateBalance();
+        hit();
+        stand();
+    }
+
+    public void checkForDouble() {
+        int total = gameController.getPlayer().getHand().calculateTotal();
+        if (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > bet) {
+            doubleButton.setDisable(false);
+        }
     }
 
     /**

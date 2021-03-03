@@ -42,7 +42,7 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Button fx:id="doubleButton" disable="true" layoutX="144.0" layoutY="570.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Double">
+      <Button fx:id="doubleButton" disable="true" layoutX="144.0" layoutY="570.0" mnemonicParsing="false" onAction="#doublePressed" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Double">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>

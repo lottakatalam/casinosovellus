@@ -129,6 +129,11 @@ public class Player {
         }
     }
 
+    public void doubleBet() {
+        this.currency -= bet;
+        this.bet = bet * 2;
+    }
+
     public int getBet() {
         return bet;
     }
