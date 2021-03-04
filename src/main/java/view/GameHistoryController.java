@@ -32,12 +32,12 @@ public class GameHistoryController {
     public TableColumn resultColumn;
     public TableColumn betColumn;
     public TableColumn balanceColumn;
-    public TableColumn useridColumn;
     public TableColumn methodColumn;
     public TableColumn dateColumn;
     public Button refreshButton;
     public Button okButton;
     public Text errorText;
+    public Text loggedUser;
     private StageManager stageManager;
 
     CasinoDAO casinoDAO = new CasinoDAO();
@@ -127,7 +127,6 @@ public class GameHistoryController {
     public void refresh() {
 
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
-        useridColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
@@ -148,8 +147,10 @@ public class GameHistoryController {
     }
 
     public void initialize() {
+        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
+            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
+        }
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
-        useridColumn.setCellValueFactory(new PropertyValueFactory<>("userID"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
@@ -171,9 +172,10 @@ public class GameHistoryController {
     /**
      * okButton disables "error" message, that you should log in to view game history
      */
-    public void okButton() {
+    public void okButton() throws IOException {
         blackScreen.setVisible(false);
         errorText.setVisible(false);
         okButton.setVisible(false);
+        gameHistoryBackButton();
     }
 }

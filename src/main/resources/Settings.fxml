@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsController">
    <children>
-      <Text layoutX="326.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Settings">
+      <Text layoutX="326.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Settings">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
@@ -44,5 +44,10 @@
          </font>
       </Text>
       <Slider fx:id="volumeSlider" layoutX="320.0" layoutY="309.0" prefHeight="18.0" prefWidth="218.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0" />
+      <Text fx:id="loggedUser" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
+         <font>
+            <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

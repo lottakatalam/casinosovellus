@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
    <children>
       <Button fx:id="hitButton" disable="true" layoutX="145.0" layoutY="480.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER">
          <font>
@@ -22,12 +22,12 @@
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Button fx:id="menuButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menuButton" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Menu">
+      <Button fx:id="menuButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#menuButton" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Exit to menu">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="instructionsButton" layoutX="95.0" layoutY="14.0" mnemonicParsing="false" onAction="#instructionsButton" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Instructions">
+      <Button fx:id="instructionsButton" layoutX="154.0" layoutY="14.0" mnemonicParsing="false" onAction="#instructionsButton" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Instructions">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
@@ -157,12 +157,12 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Button fx:id="OKBetButton" layoutX="365.0" layoutY="291.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK">
+      <Button fx:id="OKBetButton" layoutX="365.0" layoutY="291.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="272.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure?" visible="false">
+      <Text fx:id="areYouSure" layoutX="10.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to exit to menu?" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
@@ -182,7 +182,7 @@
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="closebutton" layoutX="367.0" layoutY="571.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
+      <Button fx:id="closebutton" layoutX="359.0" layoutY="570.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>

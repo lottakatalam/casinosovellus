@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
+import javafx.scene.text.Text;
+import model.UserCredentialHandler;
 
 import java.io.IOException;
 
@@ -14,6 +16,7 @@ public class SettingsController {
     public RadioButton onRadio;
     public RadioButton offRadio;
     public Slider volumeSlider;
+    public Text loggedUser;
     private StageManager stageManager;
 
     /**
@@ -31,5 +34,11 @@ public class SettingsController {
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();
 
+    }
+
+    public void initialize() {
+        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
+            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
+        }
     }
 }
