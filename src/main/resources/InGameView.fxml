@@ -152,6 +152,16 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
+      <Text fx:id="setValidBet" layoutX="179.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please enter a valid bet" visible="false">
+         <font>
+            <Font name="Cooper Black" size="40.0" />
+         </font>
+      </Text>
+      <Button fx:id="OKBetButton" layoutX="365.0" layoutY="291.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK" visible="false">
+         <font>
+            <Font name="Cooper Black" size="23.0" />
+         </font>
+      </Button>
       <Text fx:id="areYouSure" layoutX="272.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure?" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
