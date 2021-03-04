@@ -20,6 +20,7 @@ public class BlackjackController {
     private InGameViewController inGameViewController;
     private String winner;
     private boolean doublePossibility;
+    private boolean splitPossibility;
 
 
     /**
@@ -165,6 +166,14 @@ public class BlackjackController {
 
     public void disableStand() {
         inGameViewController.disableStand();
+    }
+
+    public void setSplitPossibility(boolean splitPossibility) {
+        this.splitPossibility = splitPossibility;
+    }
+
+    public boolean getSplitPossibility() {
+        return this.splitPossibility;
     }
 
 }

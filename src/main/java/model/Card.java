@@ -28,6 +28,8 @@ public class Card {
      */
     private int suit;
 
+    private String value;
+
     /**
      * Initializes a new Card-object.
      * Note that this constructor takes all integers as parameters.
@@ -38,6 +40,17 @@ public class Card {
     public Card(int rank, int suit) {
         this.rank = rank;
         this.suit = suit;
+    }
+
+    public String getRankString() {
+        if (ranks[this.rank].equals("10") || ranks[this.rank].equals("Jack") || ranks[this.rank].equals("Queen") || ranks[this.rank].equals("King")) {
+            value = "10";
+        } else if (ranks[this.rank].equals("Ace")) {
+            value = "Ace";
+        } else {
+            value = ranks[this.rank];
+        }
+        return value;
     }
 
     public int getRank() {
