@@ -152,12 +152,12 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Text fx:id="setValidBet" layoutX="179.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please enter a valid bet" visible="false">
+      <Text fx:id="setValidBet" layoutX="108.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Your bet can not be greater than your balance" textAlignment="CENTER" visible="false">
          <font>
-            <Font name="Cooper Black" size="40.0" />
+            <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Button fx:id="OKBetButton" layoutX="365.0" layoutY="291.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK" visible="false">
+      <Button fx:id="OKBetButton" layoutX="365.0" layoutY="291.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
@@ -187,7 +187,7 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Button>
-      <VBox fx:id="instructionsBox" layoutX="170.0" layoutY="164.0" prefHeight="368.0" prefWidth="520.0" style="-fx-background-color: rgba(0,0,0,0.2);">
+      <VBox fx:id="instructionsBox" layoutX="170.0" layoutY="164.0" prefHeight="368.0" prefWidth="520.0" style="-fx-background-color: rgba(0,0,0,0.2);" visible="false">
          <children>
             <Text fill="#191919" strokeType="OUTSIDE" strokeWidth="0.0" text="-Each player is dealt 2 cards. The dealer is dealt 2 cards with one face-up and one face-down." wrappingWidth="500.0">
                <font>

@@ -203,19 +203,20 @@ public class InGameViewController {
      * shows first cards in UI and updates the total counter
      */
     public void deal() {
-        setBet();
-        updateBalance();
-        gameController.nextRound();
-        dealButton.setDisable(true);
-        hitButton.setDisable(false);
-        standButton.setDisable(false);
-        this.playersCards = gameController.getPlayersCards();
-        this.dealerCards = gameController.getDealersCards();
-        playerCard1.setText(playersCards.get(0).toString());
-        playerCard2.setText(playersCards.get(1).toString());
-        dealerCard1.setText(dealerCards.get(0).toString());
-        updateTotalResult();
-        checkForDouble();
+        if (setBet() == true) {
+            updateBalance();
+            gameController.nextRound();
+            dealButton.setDisable(true);
+            hitButton.setDisable(false);
+            standButton.setDisable(false);
+            this.playersCards = gameController.getPlayersCards();
+            this.dealerCards = gameController.getDealersCards();
+            playerCard1.setText(playersCards.get(0).toString());
+            playerCard2.setText(playersCards.get(1).toString());
+            dealerCard1.setText(dealerCards.get(0).toString());
+            updateTotalResult();
+            checkForDouble();
+        }
     }
 
     /**
@@ -336,12 +337,13 @@ public class InGameViewController {
     /**
      * Sets the bet from a textfield in the UI. Validates that the amount doesn't exceed player's balance.
      */
-    public void setBet() { // TODO: Asetetun panoksen validointi ja ilmoitus ettei peliä voi aloittaa ilman panoksen asettamista
+    public boolean setBet() { // TODO: Asetetun panoksen validointi ja ilmoitus ettei peliä voi aloittaa ilman panoksen asettamista
         try {
             bet = Integer.parseInt(betField.getText());
             if (gameController.setBet(bet)) {
                 currentBet.setText("\uD83D\uDCB2" + bet);
                 updateBalance();
+                return true;
             } else {
                 String message = "Your bet can not be greater than your balance";
                 setValidBetView(message);
@@ -350,6 +352,7 @@ public class InGameViewController {
             String message = "Place a valid bet";
             setValidBetView(message);
         }
+        return false;
 
     }
 
@@ -358,7 +361,6 @@ public class InGameViewController {
         setValidBet.setText(message);
         setValidBet.setVisible(true);
         OKBetButton.setVisible(true);
-        deal();
     }
 
     /*public void OKBetButton() {
@@ -375,7 +377,6 @@ public class InGameViewController {
         winnerScreen.setVisible(false);
         setValidBet.setVisible(false);
         OKBetButton.setVisible(false);
-        //setBet();
     }
 
     /**
