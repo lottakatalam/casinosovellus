@@ -343,17 +343,17 @@ public class InGameViewController {
                 currentBet.setText("\uD83D\uDCB2" + bet);
                 updateBalance();
             } else {
-
-                //Jos saldo ei riitä, mitä tehdään käyttöliittymässä?
+                String message = "Your bet can not be greater than your balance";
+                setValidBetView(message);
             }
         } catch (NumberFormatException e) {
-            setValidBetView();
+            String message = "Place a valid bet";
+            setValidBetView(message);
         }
 
     }
 
-    private void setValidBetView() {
-        String message = "Place a valid bet";
+    private void setValidBetView(String message) {
         winnerScreen.setVisible(true);
         setValidBet.setText(message);
         setValidBet.setVisible(true);
