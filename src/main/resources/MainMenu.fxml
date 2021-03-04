@@ -53,12 +53,12 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button layoutX="28.0" layoutY="572.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log in">
+      <Button fx:id="loginButton" layoutX="28.0" layoutY="572.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log in">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="126.0" layoutY="572.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Register">
+      <Button fx:id="registerButton" layoutX="126.0" layoutY="572.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Register">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
@@ -68,5 +68,10 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Text>
+      <Button fx:id="logoutButton" layoutX="22.0" layoutY="571.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log out" visible="false">
+         <font>
+            <Font name="Cooper Black" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

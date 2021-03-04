@@ -39,7 +39,7 @@ public class BlackjackGame extends Thread {
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
         this.deck = new Deck();
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            this.player = new Player(UserCredentialHandler.getLoggedInUser().getBalance());
+            this.player = new Player(UserCredentialHandler.getInstance().getLoggedInUser().getBalance());
         } else {
             this.player = new Player(2500);
         }

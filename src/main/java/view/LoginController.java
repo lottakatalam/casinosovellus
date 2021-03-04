@@ -18,9 +18,7 @@ import model.User;
 import model.UserCredentialHandler;
 
 /**
- *
  * Login Controller for fxml ui
- *
  */
 public class LoginController {
 
@@ -48,7 +46,7 @@ public class LoginController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-        if (!userController.login(username,password)) {
+        if (!userController.login(username, password)) {
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
@@ -60,10 +58,20 @@ public class LoginController {
 
         usernameTextField.setText("");
         passwordTextField.setText("");
+
+
     }
 
     public void backToMainMenu() throws IOException {
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        Parent menuParent = loader.load();
+        MainMenuController controller = loader.getController();
+        if (userController.isUserLoggedIn()) {
+            controller.loginButton.setVisible(false);
+            controller.registerButton.setVisible(false);
+            controller.logoutButton.setVisible(true);
+        }
         Scene menuScene = new Scene(menuParent);
         stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
@@ -74,7 +82,7 @@ public class LoginController {
 
 
     public void okButton() throws IOException {
-        if(loginText.isVisible()) {
+        if (loginText.isVisible()) {
             backToMainMenu();
         }
         blackScreen.setVisible(false);

@@ -147,9 +147,9 @@ public class BlackjackRound extends Thread {
         }
         gameController.declareWinner(this.winner);
 
-        if (UserCredentialHandler.getLoggedInUser() != null) {
-            System.out.println("Pelaaja ID: " + UserCredentialHandler.getLoggedInUser().getUserID());
-            h.setUserID(UserCredentialHandler.getLoggedInUser().getUserID());
+        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
+            System.out.println("Pelaaja ID: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserID());
+            h.setUserID(UserCredentialHandler.getInstance().getLoggedInUser().getUserID());
         }
         h.setDate(LocalDateTime.now());
         h.setBet(player.getBet());

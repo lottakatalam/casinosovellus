@@ -17,4 +17,11 @@ public class UserController {
         return UserCredentialHandler.getInstance().login(username, password);
     }
 
+    public void logout() {
+        UserCredentialHandler.getInstance().logout();
+    }
+
+    public boolean isUserLoggedIn() {
+        return UserCredentialHandler.getInstance().isLoggedIn();
+    }
 }

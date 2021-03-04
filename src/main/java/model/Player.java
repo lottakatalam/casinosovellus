@@ -89,7 +89,7 @@ public class Player {
         amountOfWins++;
         this.currency += (bet * 2);
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            UserCredentialHandler.getLoggedInUser().setBalance(this.currency);
+            UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
         }
     }
 
@@ -99,7 +99,7 @@ public class Player {
     public void lose() {
         //this.currency -= bet;
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            UserCredentialHandler.getLoggedInUser().setBalance(this.currency);
+            UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
         }
     }
 

@@ -138,11 +138,16 @@ public class UserCredentialHandler {
         return bytes;
     }
 
-    public static User getLoggedInUser() {
+    public User getLoggedInUser() {
         return loggedInUser;
     }
 
     public boolean isLoggedIn() {
         return isLoggedIn;
+    }
+
+    public void logout() {
+        loggedInUser = null;
+        isLoggedIn = false;
     }
 }

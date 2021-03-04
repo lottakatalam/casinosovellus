@@ -27,11 +27,13 @@ public class MainMenuController {
     public Button noButton;
     public Button yesButton;
     public Text loggedUser;
+    public Button loginButton;
+    public Button logoutButton;
+    public Button registerButton;
     private BlackjackController gameController;
-    private UserController userController;
+    private static UserController userController;
     public Stage primaryStage;
     private StageManager stageManager;
-    public UserCredentialHandler userCredentialHandler;
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @param actionEvent
@@ -59,7 +61,7 @@ public class MainMenuController {
 
     public void initialize() {
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            loggedUser.setText("Welcome, \n" + userCredentialHandler.getLoggedInUser().getUserName());
+            loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
     }
 
@@ -124,6 +126,14 @@ public class MainMenuController {
         stageManager.getPrimaryStage().show();
 
 
+    }
+
+    public void logOutButton(ActionEvent actionEvent) {
+        userController.logout();
+        logoutButton.setVisible(false);
+        loginButton.setVisible(true);
+        registerButton.setVisible(true);
+        loggedUser.setText("Logged out");
     }
 
     public void registerButton(ActionEvent actionEvent) throws IOException {

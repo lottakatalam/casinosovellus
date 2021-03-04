@@ -81,7 +81,7 @@ public class GameHistoryController {
      * Clears user's game history if user is logged in (Gets every row and deletes every one of them in the loop)
      */
     public void yesAction() {
-        if (UserCredentialHandler.getLoggedInUser() != null) {
+        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             blackScreen.setVisible(false);
             yesButton.setVisible(false);
             noButton.setVisible(false);
@@ -111,7 +111,7 @@ public class GameHistoryController {
         History[] h = casinoDAO.getAllHistoryRows();
         for (int i = 0; i < h.length; i++) {
 
-            if (h[i].getUserID() == UserCredentialHandler.getLoggedInUser().getUserID()) {
+            if (h[i].getUserID() == UserCredentialHandler.getInstance().getLoggedInUser().getUserID()) {
 
                 history.add(h[i]);
             }
@@ -134,7 +134,7 @@ public class GameHistoryController {
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        if (UserCredentialHandler.getLoggedInUser() != null) {
+        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
 
             historyTable.setItems(getHistory());
 
@@ -156,7 +156,7 @@ public class GameHistoryController {
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        if (UserCredentialHandler.getLoggedInUser() != null) {
+        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
 
             historyTable.setItems(getHistory());
 
