@@ -42,6 +42,8 @@ public class InGameViewController {
     public Text playerTotal;
     public Text dealerTotal;
     public Text currentBet;
+    public Text setValidBet;
+    public Button OKBetButton;
     public TextField betField;
     public Button splitButton;
     public Button standButton;
@@ -74,7 +76,7 @@ public class InGameViewController {
     /**
      * Sets Are you sure-screen visible to get back to Menu
      */
-    public void menuButton(){
+    public void menuButton() {
 
         winnerScreen.setVisible(true);
         yesButton.setVisible(true);
@@ -85,6 +87,7 @@ public class InGameViewController {
 
     /**
      * Loads to MainMenu.fxml
+     *
      * @param actionEvent
      * @throws IOException
      */
@@ -186,6 +189,7 @@ public class InGameViewController {
 
     /**
      * Player hits and updates the total counter
+     *
      * @throws InterruptedException
      */
     public void hit() throws InterruptedException {
@@ -199,23 +203,25 @@ public class InGameViewController {
      * shows first cards in UI and updates the total counter
      */
     public void deal() {
-        setBet();
-        updateBalance();
-        gameController.nextRound();
-        dealButton.setDisable(true);
-        hitButton.setDisable(false);
-        standButton.setDisable(false);
-        this.playersCards = gameController.getPlayersCards();
-        this.dealerCards = gameController.getDealersCards();
-        playerCard1.setText(playersCards.get(0).toString());
-        playerCard2.setText(playersCards.get(1).toString());
-        dealerCard1.setText(dealerCards.get(0).toString());
-        updateTotalResult();
-        checkForDouble();
+        if (setBet() == true) {
+            updateBalance();
+            gameController.nextRound();
+            dealButton.setDisable(true);
+            hitButton.setDisable(false);
+            standButton.setDisable(false);
+            this.playersCards = gameController.getPlayersCards();
+            this.dealerCards = gameController.getDealersCards();
+            playerCard1.setText(playersCards.get(0).toString());
+            playerCard2.setText(playersCards.get(1).toString());
+            dealerCard1.setText(dealerCards.get(0).toString());
+            updateTotalResult();
+            checkForDouble();
+        }
     }
 
     /**
      * Player stands and updates the total counter
+     *
      * @throws InterruptedException
      */
     public void stand() throws InterruptedException {
@@ -230,6 +236,7 @@ public class InGameViewController {
      * Switch case defines which String is set to the UI
      * Updates player's currency
      * Clears the table
+     *
      * @param winner - Winner of the round
      * @throws InterruptedException
      */
@@ -272,6 +279,7 @@ public class InGameViewController {
 
     /**
      * Set gameController as the object of class BlackjackController
+     *
      * @param blackjackController - Object of the BlackjackController
      */
     public void setGameController(BlackjackController blackjackController) {
@@ -329,15 +337,46 @@ public class InGameViewController {
     /**
      * Sets the bet from a textfield in the UI. Validates that the amount doesn't exceed player's balance.
      */
-    public void setBet() { // TODO: Asetetun panoksen validointi ja ilmoitus ettei peliä voi aloittaa ilman panoksen asettamista
-        bet = Integer.parseInt(betField.getText());
-        if (gameController.setBet(bet)) {
-            currentBet.setText("\uD83D\uDCB2" + bet);
-            updateBalance();
-        } else {
-
-            //Jos saldo ei riitä, mitä tehdään käyttöliittymässä?
+    public boolean setBet() {
+        try {
+            bet = Integer.parseInt(betField.getText());
+            if (gameController.setBet(bet)) {
+                currentBet.setText("\uD83D\uDCB2" + bet);
+                updateBalance();
+                return true;
+            } else {
+                String message = "Your bet can not be greater than your balance";
+                setValidBetView(message);
+            }
+        } catch (NumberFormatException e) {
+            String message = "Place a valid bet";
+            setValidBetView(message);
         }
+        return false;
+
+    }
+
+    private void setValidBetView(String message) {
+        winnerScreen.setVisible(true);
+        setValidBet.setText(message);
+        setValidBet.setVisible(true);
+        OKBetButton.setVisible(true);
+    }
+
+    /*public void OKBetButton() {
+        winnerScreen.setVisible(false);
+        setValidBet.setVisible(false);
+        setBet();
+
+    }*/
+
+    /**
+     * OKBetButton-action
+     */
+    public void backToSettingBetAction() {
+        winnerScreen.setVisible(false);
+        setValidBet.setVisible(false);
+        OKBetButton.setVisible(false);
     }
 
     /**
@@ -349,6 +388,7 @@ public class InGameViewController {
 
     /**
      * Sets players cards to the UI based on the amount of cards.
+     *
      * @param playersCards is an array that contains objects of the player's cards
      */
     public void setPlayersCards(ArrayList<Card> playersCards) {
@@ -378,6 +418,7 @@ public class InGameViewController {
 
     /**
      * Sets dealers cards to the UI based on the amount of cards.
+     *
      * @param dealerCards is an array that contains objects of the dealer's cards
      */
     public void setDealersCards(ArrayList<Card> dealerCards) {
