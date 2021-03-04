@@ -63,7 +63,7 @@ public class LoginController {
         String password = passwordTextField.getText();
 
         if (!userController.login(username,password)) {
-            infoBox("Please enter correct Email and Password", null, "Failed");
+            infoBox("Please enter correct Username and Password", null, "Failed");
         } else {
             infoBox("Login Successful!", null, "Success");
         }
