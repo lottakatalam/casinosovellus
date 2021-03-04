@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Window;
 
 /**
@@ -23,6 +25,10 @@ import javafx.stage.Window;
 
 public class RegisterController {
 
+    public ImageView blackScreen;
+    public Text errorText;
+    public Button okButton;
+    public Text registerText;
     private UserController userController = new UserController();
 
     @FXML
@@ -48,49 +54,47 @@ public class RegisterController {
         System.out.println(usernameTextField.getText());
         System.out.println(passwordTextField.getText());
         if (usernameTextField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                    "Please enter your name");
-            return;
+            errorText.setText("Please enter username");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
         }
-
-        if (passwordTextField.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                    "Please enter a password");
-            return;
+        else if (passwordTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty()) {
+            errorText.setText("Please enter password");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
         }
+        else if (repeatTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty() && !passwordTextField.getText().isEmpty()) {
+            errorText.setText("Please repeat password");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
+        }
+        else if (passwordTextField.getText().equals(repeatTextField.getText()) && !passwordTextField.getText().isEmpty() && !repeatTextField.getText().isEmpty()) {
+            blackScreen.setVisible(true);
+            registerText.setVisible(true);
+            okButton.setVisible(true);
+            String username = usernameTextField.getText();
+            String password = passwordTextField.getText();
 
-        if (passwordTextField.getText().equals(repeatTextField.getText())) {
-            System.out.println("Password successfully created.");
+            userController.createNewUser(username, password);
+            userController.login(username,password);
         } else {
-            System.out.println("Passwords do not match.");
+            errorText.setText("Password does not match");
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
         }
 
-
-        String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
-        String confirmpassword = repeatTextField.getText();
-
-
-        userController.createNewUser(username, password);
-
-        showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
-                "Welcome " + usernameTextField.getText());
 
         usernameTextField.setText("");
         passwordTextField.setText("");
         repeatTextField.setText("");
     }
 
-    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
-    }
 
-    public void backToMainMenu(ActionEvent actionEvent) throws IOException {
+    public void backToMainMenu() throws IOException {
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
         stageManager = StageManager.getInstance();
@@ -135,5 +139,14 @@ public class RegisterController {
             isValid = false;
         }
         return isValid;
+    }
+
+    public void okButton() throws IOException {
+        if (registerText.isVisible()) {
+            backToMainMenu();
+        }
+        blackScreen.setVisible(false);
+        errorText.setVisible(false);
+        okButton.setVisible(false);
     }
 }

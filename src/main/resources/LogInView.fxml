@@ -46,5 +46,25 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
+      <ImageView fx:id="blackScreen" fitHeight="639.0" fitWidth="828.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@WinnerScreen.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="errorText" layoutX="130.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Incorrect username or password!" visible="false">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
+      <Button fx:id="okButton" layoutX="386.0" layoutY="379.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="OK" visible="false">
+         <font>
+            <Font name="Cooper Black" size="20.0" />
+         </font>
+      </Button>
+      <Text fx:id="loginText" layoutX="270.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Login successful!" visible="false">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

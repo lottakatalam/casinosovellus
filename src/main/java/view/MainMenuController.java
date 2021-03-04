@@ -51,7 +51,7 @@ public class MainMenuController {
         Scene gameScene = new Scene(gameParent);
 
         stageManager = StageManager.getInstance();
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setTitle("Blackjack");
         stageManager.getPrimaryStage().setScene(gameScene);
         stageManager.getPrimaryStage().show();
 
