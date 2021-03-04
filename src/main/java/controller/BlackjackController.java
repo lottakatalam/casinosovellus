@@ -163,4 +163,8 @@ public class BlackjackController {
         this.blackJackGame.playerDouble();
     }
 
+    public void disableStand() {
+        inGameViewController.disableStand();
+    }
+
 }

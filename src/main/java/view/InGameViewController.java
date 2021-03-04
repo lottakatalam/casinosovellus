@@ -190,6 +190,7 @@ public class InGameViewController {
      */
     public void hit() throws InterruptedException {
         gameController.hit();
+        disableDouble();
         updateTotalResult();
     }
 
@@ -218,6 +219,8 @@ public class InGameViewController {
      * @throws InterruptedException
      */
     public void stand() throws InterruptedException {
+        disableHit();
+        disableStand();
         gameController.stand();
         updateTotalResult();
     }
@@ -299,6 +302,15 @@ public class InGameViewController {
      */
     public void disableHit() {
         hitButton.setDisable(true);
+    }
+
+    public void disableStand() {
+        standButton.setDisable(true);
+        disableDouble();
+    }
+
+    public void disableDouble() {
+        doubleButton.setDisable(true);
     }
 
     public void doublePressed() {
