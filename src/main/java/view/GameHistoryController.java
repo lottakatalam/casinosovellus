@@ -38,24 +38,23 @@ public class GameHistoryController {
     public Button refreshButton;
     public Button okButton;
     public Text errorText;
+    private StageManager stageManager;
 
     CasinoDAO casinoDAO = new CasinoDAO();
 
 
     /**
      * Loads back to MainMenu.fxml
-     * @param actionEvent
      * @throws IOException
      */
-    public void gameHistoryBackButton(ActionEvent actionEvent) throws IOException {
+    public void gameHistoryBackButton() throws IOException {
 
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("The Grand Myllypuro");
-        window.setScene(menuScene);
-        window.show();
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(menuScene);
+        stageManager.getPrimaryStage().show();
     }
 
     /**
