@@ -110,8 +110,8 @@ public class RegisterController {
 
     public static boolean isValidUsername(String username) {
         boolean isValid = true;
-        if (username.length() > 20 || username.length() < 6) {
-            System.out.println("Username must be less than 20 and more than 6 characters in length.");
+        if (username.length() > 20 || username.length() < 4) {
+            System.out.println("Username must be less than 20 and more than 4 characters in length.");
             isValid = false;
         }
         return isValid;

@@ -7,68 +7,68 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
    <children>
-      <Button layoutX="275.0" layoutY="376.0" mnemonicParsing="false" onAction="#playButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Play Blackjack">
+      <Button layoutX="362.0" layoutY="405.0" mnemonicParsing="false" onAction="#playButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Play Blackjack">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font></Button>
-      <Button layoutX="325.0" layoutY="451.0" mnemonicParsing="false" onAction="#gameHistoryButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Game History">
+      <Button layoutX="412.0" layoutY="479.0" mnemonicParsing="false" onAction="#gameHistoryButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Game History">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="353.0" layoutY="510.0" mnemonicParsing="false" onAction="#settingsButton" prefHeight="42.0" prefWidth="116.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Settings">
+      <Button layoutX="440.0" layoutY="533.0" mnemonicParsing="false" onAction="#settingsButton" prefHeight="42.0" prefWidth="116.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Settings">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="quitButton" layoutX="372.0" layoutY="569.0" mnemonicParsing="false" onAction="#quitButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Quit">
+      <Button fx:id="quitButton" layoutX="459.0" layoutY="587.0" mnemonicParsing="false" onAction="#quitButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Quit">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="loginButton" layoutX="28.0" layoutY="572.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log in">
+      <Button fx:id="loginButton" layoutX="22.0" layoutY="686.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log in">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" layoutX="126.0" layoutY="572.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Register">
+      <Button fx:id="registerButton" layoutX="120.0" layoutY="686.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Register">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="logoutButton" layoutX="22.0" layoutY="571.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log out" visible="false">
+      <Button fx:id="logoutButton" layoutX="22.0" layoutY="686.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Log out" visible="false">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="90.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="181.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@thegrandmyllypurologo.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="blackScreen" fitHeight="656.0" fitWidth="830.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="blackScreen" fitHeight="798.0" fitWidth="1109.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@WinnerScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="areYouSure" layoutX="95.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to quit?" visible="false">
+      <Text fx:id="areYouSure" layoutX="182.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to quit?" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="noButton" layoutX="450.0" layoutY="296.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="No" visible="false">
+      <Button fx:id="noButton" layoutX="537.0" layoutY="357.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="No" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="yesButton" layoutX="313.0" layoutY="296.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Yes" visible="false">
+      <Button fx:id="yesButton" layoutX="390.0" layoutY="357.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Yes" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="loggedUser" layoutX="22.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
+      <Text fx:id="loggedUser" layoutX="22.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>

@@ -8,24 +8,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsController">
    <children>
-      <Text layoutX="326.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Settings">
+      <Text layoutX="429.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Settings">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="349.0" layoutY="545.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
+      <Button layoutX="453.0" layoutY="607.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Button>
-      <Text fx:id="usernameText" layoutX="196.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Tips:">
+      <Text fx:id="usernameText" layoutX="261.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Tips:">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <RadioButton fx:id="onRadio" layoutX="326.0" layoutY="204.0" mnemonicParsing="false" text="ON" textFill="WHITE">
+      <RadioButton fx:id="onRadio" layoutX="410.0" layoutY="203.0" mnemonicParsing="false" text="ON" textFill="WHITE">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -33,17 +33,17 @@
             <ToggleGroup fx:id="tips" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="offRadio" layoutX="459.0" layoutY="204.0" mnemonicParsing="false" text="OFF" textFill="WHITE" toggleGroup="$tips">
+      <RadioButton fx:id="offRadio" layoutX="557.0" layoutY="202.0" mnemonicParsing="false" text="OFF" textFill="WHITE" toggleGroup="$tips">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </RadioButton>
-      <Text fx:id="usernameText1" layoutX="134.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Volume:">
+      <Text fx:id="usernameText1" layoutX="200.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Volume:">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Slider fx:id="volumeSlider" layoutX="320.0" layoutY="309.0" prefHeight="18.0" prefWidth="218.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0" />
+      <Slider fx:id="volumeSlider" layoutX="398.0" layoutY="304.0" prefHeight="45.0" prefWidth="248.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0" />
       <Text fx:id="loggedUser" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
          <font>
             <Font name="Cooper Black" size="25.0" />

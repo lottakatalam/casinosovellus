@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
    <children>
       <ImageView fx:id="playerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="132.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="playerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="182.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
@@ -95,12 +95,12 @@
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Text fx:id="playerCurrency" layoutX="755.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
+      <Text fx:id="playerCurrency" layoutX="820.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="currencyText" layoutX="578.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Currency:">
+      <Text fx:id="currencyText" layoutX="649.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Currency:">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
@@ -120,7 +120,7 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <ImageView fx:id="winnerScreen" fitHeight="774.0" fitWidth="996.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="winnerScreen" fitHeight="801.0" fitWidth="1068.0" layoutX="-4.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@WinnerScreen.png" />
          </image>
@@ -135,22 +135,22 @@
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="OKBetButton" layoutX="459.0" layoutY="415.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK" visible="false">
+      <Button fx:id="OKBetButton" layoutX="459.0" layoutY="415.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="OK" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="110.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to exit to menu?" visible="false">
+      <Text fx:id="areYouSure" layoutX="110.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to exit to menu?" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="yesButton" layoutX="354.0" layoutY="434.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Yes" textAlignment="CENTER" visible="false">
+      <Button fx:id="yesButton" layoutX="354.0" layoutY="353.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Yes" textAlignment="CENTER" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="noButton" layoutX="554.0" layoutY="434.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="No" textAlignment="CENTER" visible="false">
+      <Button fx:id="noButton" layoutX="554.0" layoutY="353.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="No" textAlignment="CENTER" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
