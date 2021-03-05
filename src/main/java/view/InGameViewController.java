@@ -592,6 +592,8 @@ public class InGameViewController {
         playerCardImage4.setImage(null);
         playerCardImage5.setImage(null);
         playerCardImage6.setImage(null);
+        playerTotal.setText("");
+        dealerTotal.setText("");
     }
 
 }
