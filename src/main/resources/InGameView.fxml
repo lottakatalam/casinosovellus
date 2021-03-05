@@ -10,26 +10,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="820.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
    <children>
-      <ImageView fx:id="playerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="70.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="120.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="170.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="220.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="270.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="320.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="433.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="483.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="533.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="583.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="633.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="683.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="hitButton" disable="true" layoutX="145.0" layoutY="480.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER">
+      <ImageView fx:id="playerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="132.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="182.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="232.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="282.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="332.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="382.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="555.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="605.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="655.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="705.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="755.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="805.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit1" fitHeight="151.0" fitWidth="99.0" layoutX="58.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit2" fitHeight="151.0" fitWidth="99.0" layoutX="108.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit3" fitHeight="151.0" fitWidth="99.0" layoutX="158.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit4" fitHeight="151.0" fitWidth="99.0" layoutX="208.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit5" fitHeight="151.0" fitWidth="99.0" layoutX="258.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit6" fitHeight="151.0" fitWidth="99.0" layoutX="308.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="hitButton" disable="true" layoutX="263.0" layoutY="572.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Button fx:id="standButton" disable="true" layoutX="594.0" layoutY="480.0" mnemonicParsing="false" onAction="#stand" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Stand" textAlignment="CENTER">
+      <Button fx:id="standButton" disable="true" layoutX="608.0" layoutY="572.0" mnemonicParsing="false" onAction="#stand" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Stand" textAlignment="CENTER">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
@@ -44,162 +50,122 @@
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Text fx:id="dealersHandText" layoutX="482.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Dealer's hand:">
+      <Text fx:id="dealersHandText" layoutX="582.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Dealer's hand:">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Text fx:id="yourHandText" layoutX="103.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Your hand:">
+      <Text fx:id="yourHandText" layoutX="152.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Your hand:">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Button fx:id="doubleButton" disable="true" layoutX="144.0" layoutY="570.0" mnemonicParsing="false" onAction="#doublePressed" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Double">
+      <Button fx:id="doubleButton" disable="true" layoutX="220.0" layoutY="662.0" mnemonicParsing="false" onAction="#doublePressed" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Double">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="splitButton" disable="true" layoutX="370.0" layoutY="570.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Split">
+      <Button fx:id="splitButton" disable="true" layoutX="445.0" layoutY="662.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Split">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="surrenderButton" disable="true" layoutX="244.0" layoutY="570.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Surrender">
+      <Button fx:id="surrenderButton" disable="true" layoutX="320.0" layoutY="662.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Surrender">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="insuranceButton" disable="true" layoutX="469.0" layoutY="570.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Insurance">
+      <Button fx:id="insuranceButton" disable="true" layoutX="545.0" layoutY="662.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Insurance">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="evenMoneyButton" disable="true" layoutX="591.0" layoutY="570.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Even money">
+      <Button fx:id="evenMoneyButton" disable="true" layoutX="667.0" layoutY="662.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Even money">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <TextField fx:id="betField" alignment="CENTER" layoutX="306.0" layoutY="439.0" prefHeight="34.0" prefWidth="210.0" promptText="Place your bet" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+      <TextField fx:id="betField" alignment="CENTER" layoutX="382.0" layoutY="531.0" prefHeight="34.0" prefWidth="210.0" promptText="Place your bet" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="dealButton" layoutX="362.0" layoutY="480.0" mnemonicParsing="false" onAction="#deal" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Deal" textAlignment="CENTER">
+      <Button fx:id="dealButton" layoutX="438.0" layoutY="572.0" mnemonicParsing="false" onAction="#deal" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Deal" textAlignment="CENTER">
          <font>
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Text fx:id="playerCard1" layoutX="93.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="190.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="playerCard2" layoutX="93.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="240.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="playerCard3" layoutX="95.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="290.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="playerCard4" layoutX="93.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="340.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="dealerCard1" layoutX="539.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="190.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="dealerCard2" layoutX="539.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="240.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="dealerCard3" layoutX="539.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="290.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="dealerCard4" layoutX="539.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" AnchorPane.topAnchor="340.0">
-         <font>
-            <Font name="Cooper Black" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="playerCurrency" layoutX="674.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
+      <Text fx:id="playerCurrency" layoutX="755.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="currencyText" layoutX="500.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Currency:">
+      <Text fx:id="currencyText" layoutX="578.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Currency:">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="playerTotal" layoutX="316.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="39.0">
+      <Text fx:id="playerTotal" layoutX="365.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="125.0">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="dealerTotal" layoutX="745.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="48.0">
+      <Text fx:id="dealerTotal" layoutX="845.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="48.0">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="currentBet" layoutX="369.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="84.0">
+      <Text fx:id="currentBet" layoutX="446.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="84.0">
          <font>
-            <Font name="Cooper Black" size="20.0" />
+            <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <ImageView fx:id="winnerScreen" fitHeight="645.0" fitWidth="843.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="winnerScreen" fitHeight="774.0" fitWidth="996.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@WinnerScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="declareWinner" layoutX="236.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" visible="false" wrappingWidth="344.0">
+      <Text fx:id="declareWinner" layoutX="327.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" visible="false" wrappingWidth="344.0">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Text fx:id="setValidBet" layoutX="108.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Your bet can not be greater than your balance" textAlignment="CENTER" visible="false">
+      <Text fx:id="setValidBet" layoutX="347.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Your bet can not be greater than your balance" textAlignment="CENTER" visible="false" wrappingWidth="303.0">
          <font>
-            <Font name="Cooper Black" size="25.0" />
+            <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Button fx:id="OKBetButton" layoutX="365.0" layoutY="291.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK" visible="false">
+      <Button fx:id="OKBetButton" layoutX="459.0" layoutY="415.0" mnemonicParsing="false" onAction="#backToSettingBetAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-image-width: 2; -fx-border-color: dimgrey; -fx-border-insets: -1.4;" text="OK" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="10.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to exit to menu?" visible="false">
+      <Text fx:id="areYouSure" layoutX="110.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to exit to menu?" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="yesButton" layoutX="306.0" layoutY="299.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Yes" textAlignment="CENTER" visible="false">
+      <Button fx:id="yesButton" layoutX="354.0" layoutY="434.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Yes" textAlignment="CENTER" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="noButton" layoutX="447.0" layoutY="299.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="No" textAlignment="CENTER" visible="false">
+      <Button fx:id="noButton" layoutX="554.0" layoutY="434.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="No" textAlignment="CENTER" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="instructionsText" layoutX="293.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Instructions">
+      <Text fx:id="instructionsText" layoutX="373.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Instructions">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="closebutton" layoutX="359.0" layoutY="570.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
+      <Button fx:id="closebutton" layoutX="435.0" layoutY="654.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Button>
-      <VBox fx:id="instructionsBox" layoutX="170.0" layoutY="164.0" prefHeight="368.0" prefWidth="520.0" style="-fx-background-color: rgba(0,0,0,0.2);" visible="false">
+      <VBox fx:id="instructionsBox" layoutX="250.0" layoutY="189.0" prefHeight="368.0" prefWidth="520.0" style="-fx-background-color: rgba(0,0,0,0.2);" visible="false">
          <children>
             <Text fill="#191919" strokeType="OUTSIDE" strokeWidth="0.0" text="-Each player is dealt 2 cards. The dealer is dealt 2 cards with one face-up and one face-down." wrappingWidth="500.0">
                <font>
