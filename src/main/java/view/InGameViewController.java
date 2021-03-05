@@ -2,22 +2,18 @@ package view;
 
 import controller.BlackjackController;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.Card;
-import model.Logger;
-import model.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,6 +68,14 @@ public class InGameViewController {
     private int bet;
     private StageManager stageManager;
     boolean instructionsOn;
+    public ImageView playerCardImage1;
+    public ImageView playerCardImage2;
+    public ImageView playerCardImage3;
+    public ImageView playerCardImage4;
+    public ImageView dealerCardImage1;
+    public ImageView dealerCardImage2;
+    public ImageView dealerCardImage3;
+    public ImageView dealerCardImage4;
 
     /**
      * Sets Are you sure-screen visible to get back to Menu
@@ -118,14 +122,14 @@ public class InGameViewController {
      */
     public void instructionsButton() {
         instructionsOn = true;
-        playerCard1.setVisible(false);
-        playerCard2.setVisible(false);
-        playerCard3.setVisible(false);
-        playerCard4.setVisible(false);
-        dealerCard1.setVisible(false);
-        dealerCard2.setVisible(false);
-        dealerCard3.setVisible(false);
-        dealerCard4.setVisible(false);
+        playerCardImage1.setVisible(false);
+        playerCardImage2.setVisible(false);
+        playerCardImage3.setVisible(false);
+        playerCardImage4.setVisible(false);
+        dealerCardImage1.setVisible(false);
+        dealerCardImage2.setVisible(false);
+        dealerCardImage3.setVisible(false);
+        dealerCardImage4.setVisible(false);
         playerCurrency.setVisible(false);
         playerTotal.setVisible(false);
         dealerTotal.setVisible(false);
@@ -144,7 +148,6 @@ public class InGameViewController {
         surrenderButton.setVisible(false);
         insuranceButton.setVisible(false);
         evenMoneyButton.setVisible(false);
-
         instructionsText.setVisible(true);
         instructionsBox.setVisible(true);
         closebutton.setVisible(true);
@@ -155,14 +158,14 @@ public class InGameViewController {
      */
     public void closeButton() {
         instructionsOn = false;
-        playerCard1.setVisible(true);
-        playerCard2.setVisible(true);
-        playerCard3.setVisible(true);
-        playerCard4.setVisible(true);
-        dealerCard1.setVisible(true);
-        dealerCard2.setVisible(true);
-        dealerCard3.setVisible(true);
-        dealerCard4.setVisible(true);
+        playerCardImage1.setVisible(true);
+        playerCardImage2.setVisible(true);
+        playerCardImage3.setVisible(true);
+        playerCardImage4.setVisible(true);
+        dealerCardImage1.setVisible(true);
+        dealerCardImage2.setVisible(true);
+        dealerCardImage3.setVisible(true);
+        dealerCardImage4.setVisible(true);
         playerCurrency.setVisible(true);
         playerTotal.setVisible(true);
         dealerTotal.setVisible(true);
@@ -181,7 +184,6 @@ public class InGameViewController {
         surrenderButton.setVisible(true);
         insuranceButton.setVisible(true);
         evenMoneyButton.setVisible(true);
-
         instructionsText.setVisible(false);
         instructionsBox.setVisible(false);
         closebutton.setVisible(false);
@@ -203,7 +205,7 @@ public class InGameViewController {
      * shows first cards in UI and updates the total counter
      */
     public void deal() {
-        if (setBet() == true) {
+        if (setBet()) {
             updateBalance();
             gameController.nextRound();
             dealButton.setDisable(true);
@@ -211,12 +213,80 @@ public class InGameViewController {
             standButton.setDisable(false);
             this.playersCards = gameController.getPlayersCards();
             this.dealerCards = gameController.getDealersCards();
-            playerCard1.setText(playersCards.get(0).toString());
-            playerCard2.setText(playersCards.get(1).toString());
-            dealerCard1.setText(dealerCards.get(0).toString());
             updateTotalResult();
             checkForDouble();
         }
+    }
+
+    public void setCardImage(String card, int cardNumber) {
+        Image cardImage= new Image(getClass().getResource(card).toExternalForm());
+
+        switch(cardNumber) {
+            case 1:
+                playerCardImage1.setImage(cardImage);
+                break;
+            case 2:
+                playerCardImage2.setImage(cardImage);
+                break;
+            case 3:
+                playerCardImage3.setImage(cardImage);
+                break;
+            case 4:
+                playerCardImage4.setImage(cardImage);
+                break;
+        }
+    }
+
+    public void setDealerCardImage(String card, int cardNumber) {
+        Image cardImage= new Image(getClass().getResource(card).toExternalForm());
+
+        switch(cardNumber) {
+            case 1:
+                dealerCardImage1.setImage(cardImage);
+                break;
+            case 2:
+                dealerCardImage2.setImage(cardImage);
+                break;
+            case 3:
+                dealerCardImage3.setImage(cardImage);
+                break;
+            case 4:
+                dealerCardImage4.setImage(cardImage);
+                break;
+        }
+    }
+
+    public String getImage(Card card) {
+        String suit = "";
+        String value = "";
+        String file = "";
+        switch (card.getSuit()) {
+            case 1:
+                suit = "C";
+                break;
+            case 2:
+                suit = "D";
+                break;
+            case 3:
+                suit = "S";
+                break;
+            case 4:
+                suit = "H";
+                break;
+        }
+        if (card.getRank() <= 10 && card.getRank() != 1) {
+            value = ""+card.getRank();
+        } else {
+            switch (card.getRank()) {
+                case 11: value = "J"; break;
+                case 12: value = "Q"; break;
+                case 13: value = "K"; break;
+                case 1: value = "A"; break;
+            }
+        }
+        file = value + suit + ".png";
+
+        return file;
     }
 
     /**
@@ -263,9 +333,10 @@ public class InGameViewController {
                 break;
         }
         updateBalance();
-        sleep(4000);
         clearTable();
+        sleep(4000);
         winnerScreen.setVisible(false);
+        declareWinner.setText("");
         currentBet.setText("\uD83D\uDCB2" + bet);
     }
 
@@ -394,25 +465,24 @@ public class InGameViewController {
     public void setPlayersCards(ArrayList<Card> playersCards) {
         switch (playersCards.size()) {
             case 1:
-                playerCard1.setText(playersCards.get(0).toString());
+                setCardImage(getImage(playersCards.get(0)), 1);
                 break;
             case 2:
-                playerCard1.setText(playersCards.get(0).toString());
-                playerCard2.setText(playersCards.get(1).toString());
+                setCardImage(getImage(playersCards.get(0)), 1);
+                setCardImage(getImage(playersCards.get(1)), 2);
                 break;
             case 3:
-                playerCard1.setText(playersCards.get(0).toString());
-                playerCard2.setText(playersCards.get(1).toString());
-                playerCard3.setText(playersCards.get(2).toString());
+                setCardImage(getImage(playersCards.get(0)), 1);
+                setCardImage(getImage(playersCards.get(1)), 2);
+                setCardImage(getImage(playersCards.get(2)), 3);
                 break;
             case 4:
-                playerCard1.setText(playersCards.get(0).toString());
-                playerCard2.setText(playersCards.get(1).toString());
-                playerCard3.setText(playersCards.get(2).toString());
-                playerCard4.setText(playersCards.get(3).toString());
+                setCardImage(getImage(playersCards.get(0)), 1);
+                setCardImage(getImage(playersCards.get(1)), 2);
+                setCardImage(getImage(playersCards.get(2)), 3);
+                setCardImage(getImage(playersCards.get(3)), 4);
                 break;
         }
-
         updateTotalResult();
     }
 
@@ -424,25 +494,22 @@ public class InGameViewController {
     public void setDealersCards(ArrayList<Card> dealerCards) {
         switch (dealerCards.size()) {
             case 1:
-                System.out.println("yksi kortti");
-                dealerCard1.setText(dealerCards.get(0).toString());
+                setDealerCardImage(getImage(dealerCards.get(0)), 1);
                 break;
             case 2:
-                System.out.println("2 korttia" + dealerCards.get(1).toString());
-                dealerCard1.setText(dealerCards.get(0).toString());
-                dealerCard2.setText(dealerCards.get(1).toString());
-                System.out.println(dealerCard2.getText());
+                setDealerCardImage(getImage(dealerCards.get(0)), 1);
+                setDealerCardImage(getImage(dealerCards.get(1)), 2);
                 break;
             case 3:
-                dealerCard1.setText(dealerCards.get(0).toString());
-                dealerCard2.setText(dealerCards.get(1).toString());
-                dealerCard3.setText(dealerCards.get(2).toString());
+                setDealerCardImage(getImage(dealerCards.get(0)), 1);
+                setDealerCardImage(getImage(dealerCards.get(1)), 2);
+                setDealerCardImage(getImage(dealerCards.get(2)), 3);
                 break;
             case 4:
-                dealerCard1.setText(dealerCards.get(0).toString());
-                dealerCard2.setText(dealerCards.get(1).toString());
-                dealerCard3.setText(dealerCards.get(2).toString());
-                dealerCard4.setText(dealerCards.get(3).toString());
+                setDealerCardImage(getImage(dealerCards.get(0)), 1);
+                setDealerCardImage(getImage(dealerCards.get(1)), 2);
+                setDealerCardImage(getImage(dealerCards.get(2)), 3);
+                setDealerCardImage(getImage(dealerCards.get(3)), 4);
                 break;
         }
         updateTotalResult();
@@ -460,17 +527,14 @@ public class InGameViewController {
         hitButton.setDisable(true);
         standButton.setDisable(true);
         dealButton.setDisable(false);
-        dealerCard1.setText("");
-        dealerCard2.setText("");
-        dealerCard3.setText("");
-        dealerCard4.setText("");
-        playerCard1.setText("");
-        playerCard2.setText("");
-        playerCard3.setText("");
-        playerCard4.setText("");
-        dealerTotal.setText("");
-        playerTotal.setText("");
-        declareWinner.setText("");
+        dealerCardImage1.setImage(null);
+        dealerCardImage2.setImage(null);
+        dealerCardImage3.setImage(null);
+        dealerCardImage4.setImage(null);
+        playerCardImage1.setImage(null);
+        playerCardImage2.setImage(null);
+        playerCardImage3.setImage(null);
+        playerCardImage4.setImage(null);
     }
 
 }
