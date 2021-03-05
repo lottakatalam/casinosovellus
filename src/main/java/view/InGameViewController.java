@@ -72,10 +72,14 @@ public class InGameViewController {
     public ImageView playerCardImage2;
     public ImageView playerCardImage3;
     public ImageView playerCardImage4;
+    public ImageView playerCardImage5;
+    public ImageView playerCardImage6;
     public ImageView dealerCardImage1;
     public ImageView dealerCardImage2;
     public ImageView dealerCardImage3;
     public ImageView dealerCardImage4;
+    public ImageView dealerCardImage5;
+    public ImageView dealerCardImage6;
 
     /**
      * Sets Are you sure-screen visible to get back to Menu
@@ -126,10 +130,14 @@ public class InGameViewController {
         playerCardImage2.setVisible(false);
         playerCardImage3.setVisible(false);
         playerCardImage4.setVisible(false);
+        playerCardImage5.setVisible(false);
+        playerCardImage6.setVisible(false);
         dealerCardImage1.setVisible(false);
         dealerCardImage2.setVisible(false);
         dealerCardImage3.setVisible(false);
         dealerCardImage4.setVisible(false);
+        dealerCardImage5.setVisible(false);
+        dealerCardImage6.setVisible(false);
         playerCurrency.setVisible(false);
         playerTotal.setVisible(false);
         dealerTotal.setVisible(false);
@@ -162,10 +170,14 @@ public class InGameViewController {
         playerCardImage2.setVisible(true);
         playerCardImage3.setVisible(true);
         playerCardImage4.setVisible(true);
+        playerCardImage5.setVisible(true);
+        playerCardImage6.setVisible(true);
         dealerCardImage1.setVisible(true);
         dealerCardImage2.setVisible(true);
         dealerCardImage3.setVisible(true);
         dealerCardImage4.setVisible(true);
+        dealerCardImage5.setVisible(true);
+        dealerCardImage6.setVisible(true);
         playerCurrency.setVisible(true);
         playerTotal.setVisible(true);
         dealerTotal.setVisible(true);
@@ -234,6 +246,12 @@ public class InGameViewController {
             case 4:
                 playerCardImage4.setImage(cardImage);
                 break;
+            case 5:
+                playerCardImage5.setImage(cardImage);
+                break;
+            case 6:
+                playerCardImage6.setImage(cardImage);
+                break;
         }
     }
 
@@ -252,6 +270,12 @@ public class InGameViewController {
                 break;
             case 4:
                 dealerCardImage4.setImage(cardImage);
+                break;
+            case 5:
+                dealerCardImage5.setImage(cardImage);
+                break;
+            case 6:
+                dealerCardImage6.setImage(cardImage);
                 break;
         }
     }
@@ -482,6 +506,20 @@ public class InGameViewController {
                 setCardImage(getImage(playersCards.get(2)), 3);
                 setCardImage(getImage(playersCards.get(3)), 4);
                 break;
+            case 5:
+                setCardImage(getImage(playersCards.get(0)), 1);
+                setCardImage(getImage(playersCards.get(1)), 2);
+                setCardImage(getImage(playersCards.get(2)), 3);
+                setCardImage(getImage(playersCards.get(3)), 4);
+                setCardImage(getImage(playersCards.get(4)), 5);
+                break;
+            case 6:
+                setCardImage(getImage(playersCards.get(0)), 1);
+                setCardImage(getImage(playersCards.get(1)), 2);
+                setCardImage(getImage(playersCards.get(2)), 3);
+                setCardImage(getImage(playersCards.get(3)), 4);
+                setCardImage(getImage(playersCards.get(4)), 5);
+                setCardImage(getImage(playersCards.get(5)), 6);
         }
         updateTotalResult();
     }
@@ -511,6 +549,21 @@ public class InGameViewController {
                 setDealerCardImage(getImage(dealerCards.get(2)), 3);
                 setDealerCardImage(getImage(dealerCards.get(3)), 4);
                 break;
+            case 5:
+                setDealerCardImage(getImage(dealerCards.get(0)), 1);
+                setDealerCardImage(getImage(dealerCards.get(1)), 2);
+                setDealerCardImage(getImage(dealerCards.get(2)), 3);
+                setDealerCardImage(getImage(dealerCards.get(3)), 4);
+                setDealerCardImage(getImage(dealerCards.get(4)), 5);
+                break;
+            case 6:
+                setDealerCardImage(getImage(dealerCards.get(0)), 1);
+                setDealerCardImage(getImage(dealerCards.get(1)), 2);
+                setDealerCardImage(getImage(dealerCards.get(2)), 3);
+                setDealerCardImage(getImage(dealerCards.get(3)), 4);
+                setDealerCardImage(getImage(dealerCards.get(4)), 5);
+                setDealerCardImage(getImage(dealerCards.get(5)), 6);
+                break;
         }
         updateTotalResult();
         try {
@@ -531,10 +584,14 @@ public class InGameViewController {
         dealerCardImage2.setImage(null);
         dealerCardImage3.setImage(null);
         dealerCardImage4.setImage(null);
+        dealerCardImage5.setImage(null);
+        dealerCardImage6.setImage(null);
         playerCardImage1.setImage(null);
         playerCardImage2.setImage(null);
         playerCardImage3.setImage(null);
         playerCardImage4.setImage(null);
+        playerCardImage5.setImage(null);
+        playerCardImage6.setImage(null);
     }
 
 }
