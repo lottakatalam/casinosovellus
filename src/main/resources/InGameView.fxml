@@ -12,24 +12,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InGameViewController">
    <children>
-      <ImageView fx:id="playerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="132.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="182.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="232.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="282.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="332.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="382.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="110.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="160.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="210.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="260.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="310.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="360.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerCardImage1" fitHeight="151.0" fitWidth="99.0" layoutX="555.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerCardImage2" fitHeight="151.0" fitWidth="99.0" layoutX="605.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerCardImage3" fitHeight="151.0" fitWidth="99.0" layoutX="655.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerCardImage4" fitHeight="151.0" fitWidth="99.0" layoutX="705.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerCardImage5" fitHeight="151.0" fitWidth="99.0" layoutX="755.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerCardImage6" fitHeight="151.0" fitWidth="99.0" layoutX="805.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerSplit1" fitHeight="151.0" fitWidth="99.0" layoutX="58.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerSplit2" fitHeight="151.0" fitWidth="99.0" layoutX="108.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerSplit3" fitHeight="151.0" fitWidth="99.0" layoutX="158.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerSplit4" fitHeight="151.0" fitWidth="99.0" layoutX="208.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerSplit5" fitHeight="151.0" fitWidth="99.0" layoutX="258.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="playerSplit6" fitHeight="151.0" fitWidth="99.0" layoutX="308.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit1" fitHeight="151.0" fitWidth="99.0" layoutX="107.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit2" fitHeight="151.0" fitWidth="99.0" layoutX="157.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit3" fitHeight="151.0" fitWidth="99.0" layoutX="207.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit4" fitHeight="151.0" fitWidth="99.0" layoutX="257.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit5" fitHeight="151.0" fitWidth="99.0" layoutX="307.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerSplit6" fitHeight="151.0" fitWidth="99.0" layoutX="357.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="hitButton" disable="true" layoutX="263.0" layoutY="572.0" mnemonicParsing="false" onAction="#hit" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Hit" textAlignment="CENTER">
          <font>
             <Font name="Cooper Black" size="26.0" />
@@ -65,7 +65,7 @@
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="splitButton" disable="true" layoutX="445.0" layoutY="662.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Split">
+      <Button fx:id="splitButton" disable="true" layoutX="445.0" layoutY="662.0" mnemonicParsing="false" onAction="#split" prefHeight="35.0" prefWidth="84.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Split">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
@@ -105,7 +105,7 @@
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="playerTotal" layoutX="365.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="125.0">
+      <Text fx:id="playerTotal" layoutX="365.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" wrappingWidth="174.0">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
@@ -115,7 +115,7 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="currentBet" layoutX="446.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="95.0">
+      <Text fx:id="currentBet" layoutX="420.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="140.0">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
@@ -160,7 +160,7 @@
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="closebutton" layoutX="435.0" layoutY="654.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
+      <Button fx:id="closebutton" layoutX="434.0" layoutY="654.0" mnemonicParsing="false" onAction="#closeButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Close">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>

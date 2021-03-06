@@ -55,6 +55,7 @@ public class BlackjackGame extends Thread {
      */
     public void initRound() {
         player.getHand().clearHand();
+        player.getHand().clearSplittedHand();
         dealer.getHand().clearHand();
 
         this.round = new BlackjackRound(this.gameController, this.deck, this.player, this.dealer);
@@ -68,8 +69,16 @@ public class BlackjackGame extends Thread {
         round.playerHit();
     }
 
+    public void playerSplit() {
+        round.playerSplit();
+    }
+
     public void playerDouble() {
         round.playerDouble();
+    }
+
+    public void hitToSplittedHand() {
+        round.hitToSplittedHand();
     }
 
     /**

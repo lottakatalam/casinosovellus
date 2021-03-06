@@ -74,12 +74,19 @@ public class InGameViewController {
     public ImageView playerCardImage4;
     public ImageView playerCardImage5;
     public ImageView playerCardImage6;
+    public ImageView playerSplit1;
+    public ImageView playerSplit2;
+    public ImageView playerSplit3;
+    public ImageView playerSplit4;
+    public ImageView playerSplit5;
+    public ImageView playerSplit6;
     public ImageView dealerCardImage1;
     public ImageView dealerCardImage2;
     public ImageView dealerCardImage3;
     public ImageView dealerCardImage4;
     public ImageView dealerCardImage5;
     public ImageView dealerCardImage6;
+    private boolean splitted = false;
 
     /**
      * Sets Are you sure-screen visible to get back to Menu
@@ -138,6 +145,12 @@ public class InGameViewController {
         dealerCardImage4.setVisible(false);
         dealerCardImage5.setVisible(false);
         dealerCardImage6.setVisible(false);
+        playerSplit1.setVisible(false);
+        playerSplit2.setVisible(false);
+        playerSplit3.setVisible(false);
+        playerSplit4.setVisible(false);
+        playerSplit5.setVisible(false);
+        playerSplit6.setVisible(false);
         playerCurrency.setVisible(false);
         playerTotal.setVisible(false);
         dealerTotal.setVisible(false);
@@ -178,6 +191,12 @@ public class InGameViewController {
         dealerCardImage4.setVisible(true);
         dealerCardImage5.setVisible(true);
         dealerCardImage6.setVisible(true);
+        playerSplit1.setVisible(true);
+        playerSplit2.setVisible(true);
+        playerSplit3.setVisible(true);
+        playerSplit4.setVisible(true);
+        playerSplit5.setVisible(true);
+        playerSplit6.setVisible(true);
         playerCurrency.setVisible(true);
         playerTotal.setVisible(true);
         dealerTotal.setVisible(true);
@@ -207,7 +226,11 @@ public class InGameViewController {
      * @throws InterruptedException
      */
     public void hit() throws InterruptedException {
-        gameController.hit();
+        if (gameController.getSplitStatus()) {
+            gameController.hitToSplittedHand();
+        } else {
+            gameController.hit();
+        }
         disableDouble();
         updateTotalResult();
     }
@@ -252,6 +275,31 @@ public class InGameViewController {
                 break;
             case 6:
                 playerCardImage6.setImage(cardImage);
+                break;
+        }
+    }
+
+    public void setSplittedCardImage(String card, int cardNumber) {
+        Image cardImage= new Image(getClass().getResource(card).toExternalForm());
+
+        switch(cardNumber) {
+            case 1:
+                playerSplit1.setImage(cardImage);
+                break;
+            case 2:
+                playerSplit2.setImage(cardImage);
+                break;
+            case 3:
+                playerSplit3.setImage(cardImage);
+                break;
+            case 4:
+                playerSplit4.setImage(cardImage);
+                break;
+            case 5:
+                playerSplit5.setImage(cardImage);
+                break;
+            case 6:
+                playerSplit6.setImage(cardImage);
                 break;
         }
     }
@@ -326,6 +374,19 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    public void split() {
+        this.splitted = true;
+        gameController.playerSplit();
+        splitHandInUI();
+        updateTotalResult();
+        splitButton.setDisable(true);
+    }
+
+    public void splitHandInUI() {
+        playerCardImage2.setImage(null);
+        setSplittedCardImage(getImage(gameController.getPlayersSplittedCards().get(0)), 1);
+    }
+
     /**
      * Declares winner of the round and enables winnerScreen, where winner is displayed in UI
      * Switch case defines which String is set to the UI
@@ -363,13 +424,19 @@ public class InGameViewController {
         winnerScreen.setVisible(false);
         declareWinner.setText("");
         currentBet.setText("\uD83D\uDCB2" + bet);
+        gameController.setSplitStatus(false);
+        splitted = false;
     }
 
     /**
      * Updates the total counter
      */
     public void updateTotalResult() {
-        playerTotal.setText("" + gameController.getPlayer().getHand().calculateTotal());
+        if (splitted) {
+            playerTotal.setText("" + gameController.getPlayer().getHand().calculateTotal() + " & " + gameController.getPlayer().getHand().calculateSplittedTotal());
+        } else {
+            playerTotal.setText("" + gameController.getPlayer().getHand().calculateTotal());
+        }
         dealerTotal.setText("" + gameController.getDealer().getHand().calculateTotal());
     }
 
@@ -531,6 +598,44 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    public void setPlayersSplittedCards(ArrayList<Card> playersSplittedCards) {
+        switch (playersSplittedCards.size()) {
+            case 1:
+                setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
+                break;
+            case 2:
+                setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
+                setSplittedCardImage(getImage(playersSplittedCards.get(1)), 2);
+                break;
+            case 3:
+                setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
+                setSplittedCardImage(getImage(playersSplittedCards.get(1)), 2);
+                setSplittedCardImage(getImage(playersSplittedCards.get(2)), 3);
+                break;
+            case 4:
+                setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
+                setSplittedCardImage(getImage(playersSplittedCards.get(1)), 2);
+                setSplittedCardImage(getImage(playersSplittedCards.get(2)), 3);
+                setSplittedCardImage(getImage(playersSplittedCards.get(3)), 4);
+                break;
+            case 5:
+                setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
+                setSplittedCardImage(getImage(playersSplittedCards.get(1)), 2);
+                setSplittedCardImage(getImage(playersSplittedCards.get(2)), 3);
+                setSplittedCardImage(getImage(playersSplittedCards.get(3)), 4);
+                setSplittedCardImage(getImage(playersSplittedCards.get(4)), 5);
+                break;
+            case 6:
+                setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
+                setSplittedCardImage(getImage(playersSplittedCards.get(1)), 2);
+                setSplittedCardImage(getImage(playersSplittedCards.get(2)), 3);
+                setSplittedCardImage(getImage(playersSplittedCards.get(3)), 4);
+                setSplittedCardImage(getImage(playersSplittedCards.get(4)), 5);
+                setSplittedCardImage(getImage(playersSplittedCards.get(5)), 6);
+        }
+        updateTotalResult();
+    }
+
     /**
      * Sets dealers cards to the UI based on the amount of cards.
      *
@@ -599,6 +704,14 @@ public class InGameViewController {
         playerCardImage4.setImage(null);
         playerCardImage5.setImage(null);
         playerCardImage6.setImage(null);
+
+        playerSplit1.setImage(null);
+        playerSplit2.setImage(null);
+        playerSplit3.setImage(null);
+        playerSplit4.setImage(null);
+        playerSplit5.setImage(null);
+        playerSplit6.setImage(null);
+
         playerTotal.setText("");
         dealerTotal.setText("");
     }

@@ -12,6 +12,8 @@ public class Player {
      */
     private Hand hand;
 
+    private Hand splittedHand;
+
     private int amountOfWins = 0;
     /**
      * An integer which describes the total amount of onlinecash the player has

@@ -13,12 +13,14 @@ public class Hand {
      * An arraylist of Card-objects.
      */
     private ArrayList<Card> hand;
+    private ArrayList<Card> splittedHand;
 
     /**
      * Initializes a new Hand-object which stores Card-obejcts in an arraylist
      */
     public Hand() {
         this.hand = new ArrayList<>();
+        this.splittedHand = new ArrayList<>();
     }
 
     /**
@@ -28,9 +30,23 @@ public class Hand {
         return this.hand.size();
     }
 
+    public int getNumberOfSplittedCards() {
+        return this.splittedHand.size();
+    }
+
 
     public ArrayList<Card> getHand() {
         return hand;
+    }
+
+    public ArrayList<Card> getSplittedHand() {
+        return splittedHand;
+    }
+
+    public void splitHand() {
+        Card splittedCard = this.hand.get(1);
+        splittedHand.add(splittedCard);
+        this.hand.remove(1);
     }
 
     /**
@@ -49,6 +65,12 @@ public class Hand {
      */
     public void printHand() {
         for (Card card : hand) {
+            System.out.println(card.toString());
+        }
+    }
+
+    public void printSplittedHand() {
+        for (Card card : splittedHand) {
             System.out.println(card.toString());
         }
     }
@@ -78,6 +100,24 @@ public class Hand {
         return total;
     }
 
+    public int calculateSplittedTotal() {
+        int total = 0;
+        boolean aceFlag = false;
+        for (int i = 0; i < splittedHand.size(); i++) {
+            int value = splittedHand.get(i).getRank();
+            if (value > 10) {
+                value = 10;
+            } else if (value == 1) {
+                aceFlag = true;
+            }
+            total += value;
+        }
+        if (aceFlag && total + 10 <= 21) { // Only for dealer. Player decides the value of ace.
+            total += 10;
+        }
+        return total;
+    }
+
     /**
      * Adds a card-object to a hand
      *
@@ -87,11 +127,19 @@ public class Hand {
         this.hand.add(card);
     }
 
+    public void addCardToSplittedHand(Card card) {
+        this.splittedHand.add(card);
+    }
+
     /**
      * Clears the hand-object / deletes all the card-objects in a hand
      */
     public void clearHand() {
         this.hand.clear();
+    }
+
+    public void clearSplittedHand() {
+        this.splittedHand.clear();
     }
 
     /*

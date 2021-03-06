@@ -20,6 +20,8 @@ public class BlackjackRound extends Thread {
     private String winner;
     boolean doublePossibility;
     boolean splitPossibility;
+    boolean splitted;
+
 
     CasinoDAO casinoDAO = new CasinoDAO();
 
@@ -68,7 +70,8 @@ public class BlackjackRound extends Thread {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
         splitPossibility = checkSplitPossibility();
-        this.gameController.setSplitPossibility(splitPossibility);
+        //this.gameController.setSplitPossibility(splitPossibility);
+        this.gameController.setSplitPossibility(true);
         this.gameController.setDoublePossibility(doublePossibility);
     }
 
@@ -80,10 +83,28 @@ public class BlackjackRound extends Thread {
         this.gameController.setPlayersCardsToUI(player.getHand().getHand());
         player.getHand().printHand();
         int total = player.getHand().calculateTotal();
-        if (total > 21) {
+        if (total > 21 && !splitted) {
             playerBusted = true;
             this.start();
-        } else if (total == 21) {
+        } else if (total == 21 && !splitted) {
+            playerBusted = false;
+            gameController.disableHit();
+            gameController.disableStand();
+            this.start();
+        } else if (total > 21 || total == 21) {
+            gameController.setSplitStatus(true);
+        }
+    }
+
+    public void hitToSplittedHand() {
+        this.player.getHand().addCardToSplittedHand(deck.nextCard());
+        this.gameController.setPlayersSplittedCardsToUI(player.getHand().getSplittedHand());
+        int splittedTotal = player.getHand().calculateSplittedTotal();
+
+        if (splittedTotal > 21) {
+            playerBusted = true;
+            this.start();
+        } else if (splittedTotal == 21) {
             playerBusted = false;
             gameController.disableHit();
             gameController.disableStand();
@@ -91,12 +112,22 @@ public class BlackjackRound extends Thread {
         }
     }
 
+
     public void playerDouble() {
         this.player.doubleBet();
         playerHit();
         if (!this.isAlive()) {
             playerStay();
         }
+    }
+
+    public void playerSplit() {
+        splitted = true;
+        this.player.getHand().splitHand();
+        System.out.println("HAND 1:");
+        this.player.getHand().printHand();
+        System.out.println("\nHAND 2:");
+        this.player.getHand().printSplittedHand();
     }
 
     public boolean checkSplitPossibility() {

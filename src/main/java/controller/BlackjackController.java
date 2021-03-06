@@ -14,6 +14,7 @@ public class BlackjackController {
     private Player player;
     private Hand handObjectPlayer;
     private ArrayList<Card> handPlayer;
+    private ArrayList<Card> splittedHandPlayer;
     private Dealer dealer;
     private Hand handObjectDealer;
     private ArrayList<Card> handDealer;
@@ -21,6 +22,7 @@ public class BlackjackController {
     private String winner;
     private boolean doublePossibility;
     private boolean splitPossibility;
+    private boolean splitIsOn = false;
 
 
     /**
@@ -31,6 +33,7 @@ public class BlackjackController {
         this.player = blackJackGame.getPlayer();
         this.handObjectPlayer = player.getHand();
         this.handPlayer = handObjectPlayer.getHand();
+        this.splittedHandPlayer = handObjectPlayer.getSplittedHand();
         this.dealer = blackJackGame.getDealer();
         this.handObjectDealer = dealer.getHand();
         this.handDealer = handObjectDealer.getHand();
@@ -78,6 +81,8 @@ public class BlackjackController {
         return this.handPlayer;
     }
 
+    public ArrayList<Card> getPlayersSplittedCards() { return this.splittedHandPlayer;}
+
     /**
      * Gets the hand of the Dealer
      * @return
@@ -93,6 +98,22 @@ public class BlackjackController {
 
     public void setPlayersCardsToUI(ArrayList<Card> playersCards) {
         inGameViewController.setPlayersCards(playersCards);
+    }
+
+    public void setPlayersSplittedCardsToUI(ArrayList<Card> playersSplittedCards) {
+        inGameViewController.setPlayersSplittedCards(playersSplittedCards);
+    }
+
+    public void setSplitStatus(boolean splitIsOn) {
+        this.splitIsOn = splitIsOn;
+    }
+
+    public boolean getSplitStatus() {
+        return this.splitIsOn;
+    }
+
+    public void hitToSplittedHand() {
+        this.blackJackGame.hitToSplittedHand();
     }
 
     /**
@@ -175,5 +196,10 @@ public class BlackjackController {
     public boolean getSplitPossibility() {
         return this.splitPossibility;
     }
+
+    public void playerSplit() {
+        this.blackJackGame.playerSplit();
+    }
+
 
 }
