@@ -95,12 +95,12 @@
             <Font name="Cooper Black" size="26.0" />
          </font>
       </Button>
-      <Text fx:id="playerCurrency" layoutX="820.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
+      <Text fx:id="playerCurrency" layoutX="783.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="currencyText" layoutX="649.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Currency:">
+      <Text fx:id="currencyText" layoutX="649.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Balance:">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>

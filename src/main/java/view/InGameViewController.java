@@ -391,8 +391,12 @@ public class InGameViewController {
             splitHandInUI();
             updateTotalResult();
             splitButton.setDisable(true);
+        } else {
+            setValidBetView("Insufficient balance to split the hand");
         }
     }
+
+
 
     public void splitHandInUI() {
         playerCardImage2.setImage(null);
