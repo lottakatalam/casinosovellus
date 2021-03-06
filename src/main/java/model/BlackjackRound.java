@@ -40,14 +40,31 @@ public class BlackjackRound extends Thread {
 
         deck.shuffleDeck();
 
-        this.player.getHand().addCard(deck.nextCard());
-        this.player.getHand().addCard(deck.nextCard());
-        this.dealer.getHand().addCard(deck.nextCard());
+        addFirstCards();
+
+        addFirstCardsToUI();
+
+        checkDoubleAndSplitPossibility();
+
+
         player.getHand().printHand();
         System.out.println("");
         dealer.getHand().printHand();
+    }
+
+
+    public void addFirstCards() {
+        this.player.getHand().addCard(deck.nextCard());
+        this.player.getHand().addCard(deck.nextCard());
+        this.dealer.getHand().addCard(deck.nextCard());
+    }
+
+    public void addFirstCardsToUI() {
         this.gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         this.gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
+    }
+
+    public void checkDoubleAndSplitPossibility() {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
         splitPossibility = checkSplitPossibility();
