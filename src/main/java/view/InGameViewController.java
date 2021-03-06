@@ -227,6 +227,7 @@ public class InGameViewController {
             this.dealerCards = gameController.getDealersCards();
             updateTotalResult();
             checkForDouble();
+            checkForSplit();
         }
     }
 
@@ -426,6 +427,12 @@ public class InGameViewController {
     public void checkForDouble() {
         if (gameController.getDoublePossibility()) {
             doubleButton.setDisable(false);
+        }
+    }
+
+    public void checkForSplit() {
+        if(gameController.getSplitPossibility()) {
+            splitButton.setDisable(false);
         }
     }
 

@@ -51,6 +51,7 @@ public class BlackjackRound extends Thread {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
         splitPossibility = checkSplitPossibility();
+        this.gameController.setSplitPossibility(splitPossibility);
         this.gameController.setDoublePossibility(doublePossibility);
     }
 
