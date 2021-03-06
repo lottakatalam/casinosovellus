@@ -103,6 +103,7 @@ public class BlackjackRound extends Thread {
         return player.getHand().getHand().get(0).getRankString().equals(player.getHand().getHand().get(1).getRankString());
     }
 
+
     /**
      * Called from the UI and controller when player presses "Stand". Sets 'busted' status to false and starts the main thread.
      */
