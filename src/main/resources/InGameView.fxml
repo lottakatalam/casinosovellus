@@ -115,7 +115,7 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="currentBet" layoutX="446.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="84.0">
+      <Text fx:id="currentBet" layoutX="446.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="95.0">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>
@@ -165,7 +165,7 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Button>
-      <VBox fx:id="instructionsBox" layoutX="250.0" layoutY="189.0" prefHeight="368.0" prefWidth="520.0" style="-fx-background-color: rgba(0,0,0,0.2);">
+      <VBox fx:id="instructionsBox" layoutX="250.0" layoutY="189.0" prefHeight="368.0" prefWidth="520.0" style="-fx-background-color: rgba(0,0,0,0.2);" visible="false">
          <children>
             <Text fill="#eef2ed" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="• Each player is dealt 2 cards. The dealer is dealt 2 cards with one face-up and one face-down." wrappingWidth="500.0">
                <font>
