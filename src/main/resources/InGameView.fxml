@@ -115,7 +115,7 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="currentBet" layoutX="420.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="140.0">
+      <Text fx:id="currentBet" layoutX="330.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" textAlignment="CENTER" wrappingWidth="315.0">
          <font>
             <Font name="Cooper Black" size="25.0" />
          </font>

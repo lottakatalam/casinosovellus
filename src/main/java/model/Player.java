@@ -24,6 +24,8 @@ public class Player {
      */
     private int bet;
 
+    private int splitBet;
+
     /**
      * Initializes new Player-object
      */
@@ -99,7 +101,6 @@ public class Player {
      * Decreases the amount of online cash the player has
      */
     public void lose() {
-        //this.currency -= bet;
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
         }
@@ -127,6 +128,17 @@ public class Player {
         } else {
             this.bet = b;
             this.currency -= bet;
+            return true;
+        }
+    }
+
+    public boolean setSplitBet(int b) {
+        if (this.currency < b) {
+            Logger.log(Logger.LogLevel.PROD, "Saldo ("+currency+") ei riitä panoksen ("+b+") asettamiseen.");
+            return false;
+        } else {
+            this.splitBet = b;
+            this.currency -= splitBet;
             return true;
         }
     }

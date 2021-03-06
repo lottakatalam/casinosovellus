@@ -17,7 +17,9 @@ public class BlackjackRound extends Thread {
     private final Player player;
     private final Dealer dealer;
     private boolean playerBusted = false;
+    private boolean playerBustedSplit = true;
     private String winner;
+    private String splitWinner;
     boolean doublePossibility;
     boolean splitPossibility;
     boolean splitted;
@@ -70,8 +72,11 @@ public class BlackjackRound extends Thread {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
         splitPossibility = checkSplitPossibility();
-        //this.gameController.setSplitPossibility(splitPossibility);
+
+        /* THIS CAN BE USED TO DEBUG SPLITTING */
         this.gameController.setSplitPossibility(true);
+        //this.gameController.setSplitPossibility(splitPossibility);
+
         this.gameController.setDoublePossibility(doublePossibility);
     }
 
@@ -93,6 +98,7 @@ public class BlackjackRound extends Thread {
             this.start();
         } else if (total > 21 || total == 21) {
             gameController.setSplitStatus(true);
+            hitToSplittedHand();
         }
     }
 
@@ -102,10 +108,10 @@ public class BlackjackRound extends Thread {
         int splittedTotal = player.getHand().calculateSplittedTotal();
 
         if (splittedTotal > 21) {
-            playerBusted = true;
+            this.playerBustedSplit = true;
             this.start();
         } else if (splittedTotal == 21) {
-            playerBusted = false;
+            this.playerBustedSplit = false;
             gameController.disableHit();
             gameController.disableStand();
             this.start();
@@ -149,11 +155,10 @@ public class BlackjackRound extends Thread {
      * @return winner/end result of the round in String
      * @throws InterruptedException when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity.
      */
-    public String whoWins() throws InterruptedException {
+    public String whoWins(int playerTotal) throws InterruptedException {
         History h = new History();
         String winner = "";
 
-        int playerTotal = player.getHand().calculateTotal();
         int dealerTotal = dealer.getHand().calculateTotal();
         boolean playerWins = false;
 
@@ -206,6 +211,11 @@ public class BlackjackRound extends Thread {
         System.out.println("Pelaaja ID: " + h.getUserID());
         h.setBalance(player.getCurrency());
         casinoDAO.addHistoryRow(h);
+
+        if (splitted) {
+            splitted = false;
+            whoWins(player.getHand().calculateSplittedTotal());
+        }
         return winner;
     }
 
@@ -214,7 +224,7 @@ public class BlackjackRound extends Thread {
      * This thread is started when the user's turn ends. It starts and plays the dealer's turn if needed and starts checking who won the round.
      */
     public void run() {// end round
-        if (!playerBusted) {
+        if (!playerBusted || !playerBustedSplit) {
             System.out.println("Dealer plays\n");
             while (dealer.getHand().calculateTotal() <= 16) {
                 System.out.println("Dealer has " + dealer.getHand().calculateTotal() + " and hits");
@@ -231,7 +241,7 @@ public class BlackjackRound extends Thread {
             gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         }
         try {
-            winner = whoWins();
+            winner = whoWins(player.getHand().calculateTotal());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

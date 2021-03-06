@@ -368,18 +368,30 @@ public class InGameViewController {
      * @throws InterruptedException
      */
     public void stand() throws InterruptedException {
-        disableHit();
-        disableStand();
-        gameController.stand();
+        if (gameController.getSplitStatus() && splitted) {
+            disableHit();
+            disableStand();
+            gameController.stand();
+        } else if (!gameController.getSplitStatus() && splitted) {
+            gameController.setSplitStatus(true);
+        } else {
+            disableHit();
+            disableStand();
+            gameController.stand();
+        }
         updateTotalResult();
     }
 
     public void split() {
-        this.splitted = true;
-        gameController.playerSplit();
-        splitHandInUI();
-        updateTotalResult();
-        splitButton.setDisable(true);
+        if (gameController.setSplitBet(bet)) {
+            currentBet.setText("\uD83D\uDCB2" + bet + " + \uD83D\uDCB2" + bet);
+            updateBalance();
+            this.splitted = true;
+            gameController.playerSplit();
+            splitHandInUI();
+            updateTotalResult();
+            splitButton.setDisable(true);
+        }
     }
 
     public void splitHandInUI() {

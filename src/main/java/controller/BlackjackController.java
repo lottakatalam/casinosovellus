@@ -73,6 +73,10 @@ public class BlackjackController {
         return this.player.setBet(b);
     }
 
+    public boolean setSplitBet(int b) {
+        return this.player.setSplitBet(b);
+    }
+
     /**
      * Gets the hand of the Player
      * @return
