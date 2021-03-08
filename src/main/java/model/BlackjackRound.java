@@ -74,8 +74,8 @@ public class BlackjackRound extends Thread {
         splitPossibility = checkSplitPossibility();
 
         /* THIS CAN BE USED TO DEBUG SPLITTING */
-        //this.gameController.setSplitPossibility(true);
-        this.gameController.setSplitPossibility(splitPossibility);
+        this.gameController.setSplitPossibility(true);
+        //this.gameController.setSplitPossibility(splitPossibility);
 
         this.gameController.setDoublePossibility(doublePossibility);
     }

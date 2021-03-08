@@ -226,6 +226,7 @@ public class InGameViewController {
      * @throws InterruptedException
      */
     public void hit() throws InterruptedException {
+        splitButton.setDisable(true);
         if (gameController.getSplitStatus()) {
             gameController.hitToSplittedHand();
         } else {
@@ -368,6 +369,7 @@ public class InGameViewController {
      * @throws InterruptedException
      */
     public void stand() throws InterruptedException {
+        splitButton.setDisable(true);
         if (gameController.getSplitStatus() && splitted) {
             disableHit();
             disableStand();
@@ -501,6 +503,7 @@ public class InGameViewController {
     }
 
     public void doublePressed() {
+        splitButton.setDisable(true);
         doubleButton.setDisable(true);
         gameController.playerDouble();
         currentBet.setText("\uD83D\uDCB2" + gameController.getPlayer().getBet());
