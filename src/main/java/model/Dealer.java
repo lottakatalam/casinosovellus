@@ -9,10 +9,17 @@ public class Dealer implements Serializable {
 
     private Hand hand;
 
+    /**
+     * Constructor of Dealer
+     */
     public Dealer() {
         this.hand = new Hand();
     }
 
+    /**
+     * Gets the dealer's hand
+     * @return - The dealer's hand
+     */
     public Hand getHand() {
         return this.hand;
     }
@@ -24,46 +31,4 @@ public class Dealer implements Serializable {
     public boolean isBlackjack() {
         return hand.calculateTotal() == 21;
     }
-
-    /**
-     * Prints Dealers hand
-     */
-    /*
-    public void printHand() {
-        Logger.log(Logger.LogLevel.DEV, "Dealers hand:");
-        hand.printHand();
-    }*/
-
-    /**
-     * Adds a card o the dealer's hand
-     */
-    /*
-    public void addCard(Card card) {
-        hand.addCard(card);
-    }*/
-
-    /**
-     * Calculates the dealer's hand total
-     */
-    /*
-    public int calculateTotal() {
-        return hand.calculateTotal();
-    }*/
-
-    /**
-     * Clears the dealer's hand
-     */
-    /*
-    public void clearHand() {
-        hand.clearHand();
-    }*/
-
-    /**
-     * Peeks the dealer's face-down card
-     */
-    /*public boolean peek() {
-        return hand.dealerPeek();
-    }*/
-
-
 }

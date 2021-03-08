@@ -12,8 +12,9 @@ public class Player {
      */
     private Hand hand;
 
-    private Hand splittedHand;
-
+    /**
+     * Counter for how many round the player has won
+     */
     private int amountOfWins = 0;
     /**
      * An integer which describes the total amount of onlinecash the player has
@@ -34,57 +35,13 @@ public class Player {
         this.currency = currency;
     }
 
+    /**
+     * Gets the hand of the player
+     * @return
+     */
     public Hand getHand() {
         return this.hand;
     }
-
-    /**
-     * A method which adds a card-object to players hand-object
-     *
-     * @param card the card-object to be added
-     */
-    /*public void addCard(Card card) {
-        hand.addCard(card);
-    }*/
-
-    /**
-     * Sets cards to players hand and prints the hand.
-     *
-     * @param cardsToHand Array of cards
-     */
-    /*
-    public void setHand(Card[] cardsToHand) { //tätäkään ei taideta tarvita?
-        hand.setHand(cardsToHand);
-        Logger.log(Logger.LogLevel.DEV, "Players hand:");
-        hand.printHand();
-    }*/
-
-    /**
-     * Clears the players hand-object completely
-     */
-    /*
-    public void clearHand() {
-        hand.clearHand();
-    }*/
-
-    /**
-     * Prints the players hand-object by calling the printHand-method from Hand-class
-     */
-    /*
-    public void printHand() {
-        Logger.log(Logger.LogLevel.DEV, "Players hand:");
-        hand.printHand();
-    }*/
-
-    /**
-     * Calculates the total value (sum of card ranks) of the players hand-object
-     *
-     * @return the total sum of card-objects ranks in a hand
-     */
-    /*
-    public int calculateHand() {
-        return hand.calculateTotal();
-    }*/
 
     /**
      * Adds one win to players amountOfWins-attribute and increases the amount of online cash the player has
@@ -106,11 +63,18 @@ public class Player {
         }
     }
 
+    /**
+     * Gets the amountOfWins
+     * @return - The amountOfWins
+     */
     public int getWins() {
         return amountOfWins;
     }
 
-
+    /**
+     * Gets the player's current balance
+     * @return - The balance
+     */
     public int getCurrency() {
         return this.currency;
     }
@@ -132,6 +96,11 @@ public class Player {
         }
     }
 
+    /**
+     * Sets the bet-attribute to a player's splitted hand
+     * @param b - the amount of bet
+     * @return - true if the bet is set, false if the player doesn't have enough online cash for setting the bet
+     */
     public boolean setSplitBet(int b) {
         if (this.currency < b) {
             Logger.log(Logger.LogLevel.PROD, "Saldo ("+currency+") ei riitä panoksen ("+b+") asettamiseen.");
@@ -143,11 +112,18 @@ public class Player {
         }
     }
 
+    /**
+     * Doubles the player's current bet
+     */
     public void doubleBet() {
         this.currency -= bet;
         this.bet = bet * 2;
     }
 
+    /**
+     * Gets the amount of bet
+     * @return - the amount of bet
+     */
     public int getBet() {
         return bet;
     }

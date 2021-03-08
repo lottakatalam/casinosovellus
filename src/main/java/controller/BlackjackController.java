@@ -255,7 +255,7 @@ public class BlackjackController {
     }
 
     /**
-     * Player's game splits to two hand (First hand and splitted hand)
+     * Player's game splits to two hands (First hand and splitted hand)
      */
     public void playerSplit() {
         this.blackJackGame.playerSplit();

@@ -7,6 +7,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
+/**
+ * A class to handling all the user related stuff
+ */
 public class UserCredentialHandler {
 
     private static UserCredentialHandler instance = null;
@@ -17,11 +20,17 @@ public class UserCredentialHandler {
 
     public boolean isLoggedIn = false;
 
-
+    /**
+     * Constructor of UserCredentialHandler
+     */
     private UserCredentialHandler() {
         casinoDAO = new CasinoDAO();
     }
 
+    /**
+     * Instance of UserCredentialHandler
+     * @return - The instance
+     */
     public static UserCredentialHandler getInstance() {
         if (instance == null) {
             instance = new UserCredentialHandler();
@@ -29,6 +38,10 @@ public class UserCredentialHandler {
         return instance;
     }
 
+    /**
+     * Sets the casino Database
+     * @param casinoDAO - The Database
+     */
     public void setCasinoDAO(CasinoDAO casinoDAO) {
         this.casinoDAO = casinoDAO;
     }
@@ -49,7 +62,12 @@ public class UserCredentialHandler {
 
     }
 
-
+    /**
+     * Creates a new user and adds it to userTable in Database
+     * @param username - Username of added user
+     * @param password - Password of added user
+     * @return - True if user creation is successed
+     */
     public boolean createNewUser(String username, String password) {
 
         User newUser = new User();
@@ -63,9 +81,14 @@ public class UserCredentialHandler {
         return true;
     }
 
-    private String hashPassword(String pasword) {
+    /**
+     * Method to hash the users' password in the Database
+     * @param password - The password to hash
+     * @return
+     */
+    private String hashPassword(String password) {
         int iterations = 1000;
-        char[] chars = pasword.toCharArray();
+        char[] chars = password.toCharArray();
         byte[] salt = getSalt();
 
         PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
@@ -81,6 +104,10 @@ public class UserCredentialHandler {
         return iterations + ":" + toHex(salt) + ":" + toHex(hash);
     }
 
+    /**
+     * Hashes the password
+     * @return - The hashed password
+     */
     private byte[] getSalt() {
         SecureRandom secureRandom = null;
         try {
@@ -94,6 +121,12 @@ public class UserCredentialHandler {
         return salt;
     }
 
+    /**
+     * Validates the password
+     * @param givenPassword - The password
+     * @param passwordHash - Hashed password
+     * @return
+     */
     private boolean validatePassword(String givenPassword, String passwordHash) {
         String[] splitedHash = passwordHash.split(":");
 
@@ -118,6 +151,11 @@ public class UserCredentialHandler {
         return diff == 0;
     }
 
+    /**
+     * From string to Hex
+     * @param array
+     * @return
+     */
     private String toHex(byte[] array) {
         BigInteger bigInteger = new BigInteger(1, array);
         String hex = bigInteger.toString(16);
@@ -129,6 +167,11 @@ public class UserCredentialHandler {
         }
     }
 
+    /**
+     * From Hex to string
+     * @param hex
+     * @return
+     */
     private byte[] fromHex(String hex) {
 
         byte[] bytes = new byte[hex.length() / 2];
@@ -138,14 +181,25 @@ public class UserCredentialHandler {
         return bytes;
     }
 
+    /**
+     * Gets the currently logged in user
+     * @return
+     */
     public User getLoggedInUser() {
         return loggedInUser;
     }
 
+    /**
+     * Checks if the user is logged in
+     * @return
+     */
     public boolean isLoggedIn() {
         return isLoggedIn;
     }
 
+    /**
+     * Logs the user out
+     */
     public void logout() {
         loggedInUser = null;
         isLoggedIn = false;

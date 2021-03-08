@@ -10,10 +10,16 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * A class to control Database (Hibernate)
+ */
 public class CasinoDAO {
 
     private SessionFactory sessionFactory = null;
 
+    /**
+     * Constructor of CasinoDAO
+     */
     public CasinoDAO() {
 
         try {
@@ -53,6 +59,9 @@ public class CasinoDAO {
 
     }
 
+    /**
+     * Closes the sessionFactory if it is not null
+     */
     @Override
     protected void finalize() {
 
@@ -66,6 +75,12 @@ public class CasinoDAO {
     }
 
     // HISTORY
+
+    /**
+     * Adds a row to the historyTable
+     * @param history
+     * @return - Returns true if successed and false if not
+     */
     public boolean addHistoryRow(History history) {
         Transaction transaction = null;
 
@@ -84,6 +99,11 @@ public class CasinoDAO {
         }
     }
 
+    /**
+     * Gets the specific historyRow from historyTable
+     * @param gameNumber - Used to search the specific historyRow
+     * @return - The searched historyRow
+     */
     public History getHistoryRow(int gameNumber) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -102,6 +122,10 @@ public class CasinoDAO {
 
     }
 
+    /**
+     * Gets every row of the historyTable
+     * @return - the whole historyTable
+     */
     public History[] getAllHistoryRows() {
         Session istunto = sessionFactory.openSession();
 
@@ -114,7 +138,11 @@ public class CasinoDAO {
         return (History[]) list.toArray(returnArray);
     }
 
-
+    /**
+     * Updates specific historyRow from historyTable
+     * @param historyData
+     * @return - Returns true if successed and false if not
+     */
     public boolean updateHistoryRow(History historyData) {
         boolean out;
         Session session = sessionFactory.openSession();
@@ -132,7 +160,11 @@ public class CasinoDAO {
         return out;
     }
 
-
+    /**
+     * Deletes specific historyRow from historyTable
+     * @param gameNumber - Used to search for wanted historyRow
+     * @return - Returns true if successed and false if not
+     */
     public boolean deleteHistoryRow(int gameNumber) {
         boolean out;
         Session istunto = sessionFactory.openSession();
@@ -151,6 +183,12 @@ public class CasinoDAO {
     }
 
     // USER
+
+    /**
+     * Adds a userRow to the userTable
+     * @param user - User added to the table
+     * @return - Returns true if successed and false if not
+     */
     public boolean addUserRow(User user) {
         Transaction transaction = null;
 
@@ -169,6 +207,11 @@ public class CasinoDAO {
         }
     }
 
+    /**
+     * Updates the user's balance at the userTable
+     * @param user - User that's balance is wanted to change
+     * @return - Returns true if successed and false if not
+     */
     public boolean updateBalance(User user) {
         Transaction transaction = null;
 
@@ -186,6 +229,11 @@ public class CasinoDAO {
         }
     }
 
+    /**
+     * Gets the user by username
+     * @param username - Username of the user wanted to find
+     * @return
+     */
     public User getUserByUsername(String username) {
         Criteria criteria = sessionFactory.openSession().createCriteria(User.class);
         criteria.add(Restrictions.eq("username", username));

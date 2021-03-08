@@ -31,6 +31,7 @@ public class BlackjackRound extends Thread {
 
     /**
      * Constructor of the round. Draws the first cards and adds them to UI. Sets needed objects for the use of BlackjackRound.
+     * Also sets tips if they are ON
      * @param gameController is the controller to allow communication between view and model.
      * @param deck is used to generate and draw cards.
      * @param player represents the user. It's methods are called from the UI activity. Wins or loses currency.
@@ -67,18 +68,26 @@ public class BlackjackRound extends Thread {
         }
     }
 
-
+    /**
+     * Player draws 2 cards and Dealer draws one at the start of the round
+     */
     public void addFirstCards() {
         this.player.getHand().addCard(deck.nextCard());
         this.player.getHand().addCard(deck.nextCard());
         this.dealer.getHand().addCard(deck.nextCard());
     }
 
+    /**
+     * Adds cards from addFirstCards()-method to UI
+     */
     public void addFirstCardsToUI() {
         this.gameController.setPlayersCardsToUI(this.player.getHand().getHand());
         this.gameController.setDealersCardsToUI(this.dealer.getHand().getHand());
     }
 
+    /**
+     * Check if it is possible to split or double in game
+     */
     public void checkDoubleAndSplitPossibility() {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
@@ -120,6 +129,9 @@ public class BlackjackRound extends Thread {
         }
     }
 
+    /**
+     * Hits a new card to the splitted hand
+     */
     public void hitToSplittedHand() {
         this.player.getHand().addCardToSplittedHand(deck.nextCard());
         this.gameController.setPlayersSplittedCardsToUI(player.getHand().getSplittedHand());
@@ -136,7 +148,9 @@ public class BlackjackRound extends Thread {
         }
     }
 
-
+    /**
+     * Player doubles (Hits a new card and ends the turn)
+     */
     public void playerDouble() {
         this.player.doubleBet();
         playerHit();
@@ -145,6 +159,9 @@ public class BlackjackRound extends Thread {
         }
     }
 
+    /**
+     * Player splits the hand to two hands
+     */
     public void playerSplit() {
         splitted = true;
         this.player.getHand().splitHand();
@@ -159,6 +176,10 @@ public class BlackjackRound extends Thread {
         }
     }
 
+    /**
+     * Checks if splitting is possible in game
+     * @return
+     */
     public boolean checkSplitPossibility() {
         return player.getHand().getHand().get(0).getRankString().equals(player.getHand().getHand().get(1).getRankString());
     }

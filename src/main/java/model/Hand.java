@@ -5,8 +5,6 @@ import java.util.Collections;
 
 /**
  * Represents a hand of cards.
- *
- * @author
  */
 public class Hand {
     /**
@@ -30,35 +28,30 @@ public class Hand {
         return this.hand.size();
     }
 
-    public int getNumberOfSplittedCards() {
-        return this.splittedHand.size();
-    }
-
-
+    /**
+     * Gets the hand
+     * @return - The hand
+     */
     public ArrayList<Card> getHand() {
         return hand;
     }
 
+    /**
+     * Gets the splitted hand
+     * @return - The splitted hand
+     */
     public ArrayList<Card> getSplittedHand() {
         return splittedHand;
     }
 
+    /**
+     * Splits the hand to two hands
+     */
     public void splitHand() {
         Card splittedCard = this.hand.get(1);
         splittedHand.add(splittedCard);
         this.hand.remove(1);
     }
-
-    /**
-     * Sets cards in hand
-     *
-     * @param cards array of cards
-     */
-    /*
-    public void setHand(Card[] cards) { //Tätä ei taideta tarvita?
-
-        Collections.addAll(this.hand, cards);
-    }*/
 
     /**
      * Prints all of the card-objects (in their own rows) in a hand by calling the toString()-method in Card-class
@@ -69,6 +62,9 @@ public class Hand {
         }
     }
 
+    /**
+     * Prints the splitted hand
+     */
     public void printSplittedHand() {
         for (Card card : splittedHand) {
             System.out.println(card.toString());
@@ -100,6 +96,10 @@ public class Hand {
         return total;
     }
 
+    /**
+     * Calculates the sum of card values in splitted hand
+     * @return - the total value of the splitted hand
+     */
     public int calculateSplittedTotal() {
         int total = 0;
         boolean aceFlag = false;
@@ -127,6 +127,10 @@ public class Hand {
         this.hand.add(card);
     }
 
+    /**
+     * Adds a card-object to a splitted hand
+     * @param card - the object to be added to a splitted hand
+     */
     public void addCardToSplittedHand(Card card) {
         this.splittedHand.add(card);
     }
@@ -138,13 +142,11 @@ public class Hand {
         this.hand.clear();
     }
 
+    /**
+     * Clears the hand-object / deletes all the card-objects in a splitted hand
+     */
     public void clearSplittedHand() {
         this.splittedHand.clear();
     }
 
-    /*
-    public boolean dealerPeek() {
-        int value = hand.get(1).getRank();
-        return value == 1 || value >= 10;
-    }*/
 }

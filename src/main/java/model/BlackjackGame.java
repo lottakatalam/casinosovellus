@@ -69,14 +69,24 @@ public class BlackjackGame extends Thread {
         round.playerHit();
     }
 
+    /**
+     * Player splits the hand to two hands
+     */
+
     public void playerSplit() {
         round.playerSplit();
     }
 
+    /**
+     * Player doubles (Hits a new card and ends the turn)
+     */
     public void playerDouble() {
         round.playerDouble();
     }
 
+    /**
+     * Hits a new card to the splitted hand
+     */
     public void hitToSplittedHand() {
         round.hitToSplittedHand();
     }
@@ -105,16 +115,4 @@ public class BlackjackGame extends Thread {
         return this.dealer;
     }
 
-    public Deck getDeck() {
-        return deck;
-    }
-
-    public BlackjackRound getRound() {
-        return round;
-    }
-
-
-    public BlackjackController getGameController() {
-        return gameController;
-    }
 }

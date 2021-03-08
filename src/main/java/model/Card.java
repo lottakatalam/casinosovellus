@@ -42,6 +42,10 @@ public class Card {
         this.suit = suit;
     }
 
+    /**
+     * Sets cards' values
+     * @return - The value
+     */
     public String getRankString() {
         if (ranks[this.rank].equals("10") || ranks[this.rank].equals("Jack") || ranks[this.rank].equals("Queen") || ranks[this.rank].equals("King")) {
             value = "10";
@@ -53,25 +57,29 @@ public class Card {
         return value;
     }
 
+    /**
+     * Gets the rank of the card
+     * @return - The rank
+     */
     public int getRank() {
         return rank;
     }
 
+    /**
+     * Gets the suit of the card
+     * @return - The suit
+     */
     public int getSuit() {
         return suit;
     }
 
+    /**
+     * toString()-method to express the card (Rank and suit)
+     * @return - The card
+     */
     @Override
     public String toString() {
         return ranks[this.rank]+" of "+suits[this.suit];
     }
 
-    @Override
-    public boolean equals(Object o) {
-        Card anotherCard = (Card) o;
-        if (rank == anotherCard.getRank() && suit == anotherCard.getSuit()) {
-            return true;
-        }
-        return false;
-    }
 }
