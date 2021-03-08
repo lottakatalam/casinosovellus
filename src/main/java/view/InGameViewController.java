@@ -103,7 +103,7 @@ public class InGameViewController {
     }
 
     /**
-     * Loads to MainMenu.fxml
+     * Loads to MainMenu
      *
      * @param actionEvent
      * @throws IOException
@@ -257,6 +257,11 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Sets the image of the player's card to UI
+     * @param card - Card set to UI
+     * @param cardNumber - Number of that card
+     */
     public void setCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
 
@@ -282,6 +287,11 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Sets the image of the player's card to UI (splitted hand)
+     * @param card - Card set to UI
+     * @param cardNumber - Number of that card
+     */
     public void setSplittedCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
 
@@ -307,6 +317,11 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Sets image of dealer's card to UI
+     * @param card - Card set to UI
+     * @param cardNumber - Number of that card
+     */
     public void setDealerCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
 
@@ -332,6 +347,11 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Gets the image of card
+     * @param card - The card
+     * @return
+     */
     public String getImage(Card card) {
         String suit = "";
         String value = "";
@@ -386,6 +406,9 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    /**
+     * Player splits
+     */
     public void split() {
         if (gameController.setSplitBet(bet)) {
             currentBet.setText("\uD83D\uDCB2" + bet + " + \uD83D\uDCB2" + bet);
@@ -401,7 +424,9 @@ public class InGameViewController {
     }
 
 
-
+    /**
+     * Sets splitted hand to UI when player has splitted
+     */
     public void splitHandInUI() {
         playerCardImage2.setImage(null);
         setSplittedCardImage(getImage(gameController.getPlayersSplittedCards().get(0)), 1);
@@ -495,11 +520,17 @@ public class InGameViewController {
         hitButton.setDisable(true);
     }
 
+    /**
+     * Disables the 'Stand' button
+     */
     public void disableStand() {
         standButton.setDisable(true);
         disableDouble();
     }
 
+    /**
+     * Disables 'Double' button
+     */
     public void disableDouble() {
         doubleButton.setDisable(true);
     }
@@ -512,12 +543,18 @@ public class InGameViewController {
         updateBalance();
     }
 
+    /**
+     * Checks if doubling is possible and if its possible, it enables 'Double' button
+     */
     public void checkForDouble() {
         if (gameController.getDoublePossibility()) {
             doubleButton.setDisable(false);
         }
     }
 
+    /**
+     * Checks if splitting is possible and if its possible, it enables 'Split' button
+     */
     public void checkForSplit() {
         if(gameController.getSplitPossibility()) {
             splitButton.setDisable(false);
@@ -546,19 +583,16 @@ public class InGameViewController {
 
     }
 
+    /**
+     * If bet is not valid, error message pops up
+     * @param message - Message that is shown in UI
+     */
     private void setValidBetView(String message) {
         winnerScreen.setVisible(true);
         setValidBet.setText(message);
         setValidBet.setVisible(true);
         OKBetButton.setVisible(true);
     }
-
-    /*public void OKBetButton() {
-        winnerScreen.setVisible(false);
-        setValidBet.setVisible(false);
-        setBet();
-
-    }*/
 
     /**
      * OKBetButton-action
@@ -569,6 +603,9 @@ public class InGameViewController {
         OKBetButton.setVisible(false);
     }
 
+    /**
+     * Shows a tip to the player that recommends to hit
+     */
     public void showHitTip() {
         Tooltip hitTip = new Tooltip();
         hitTip.setText("You should hit!");
@@ -578,6 +615,9 @@ public class InGameViewController {
         splitButton.setTooltip(hitTip);
     }
 
+    /**
+     * Shows a tip to the player that recommends to stand
+     */
     public void showStandTip() {
         Tooltip standTip = new Tooltip();
         standTip.setText("You should stand!");
@@ -587,6 +627,9 @@ public class InGameViewController {
         splitButton.setTooltip(standTip);
     }
 
+    /**
+     * Shows a tip to the player that recommends to double
+     */
     public void showDoubleTip() {
         Tooltip doubleTip = new Tooltip();
         doubleTip.setText("You should double!");
@@ -596,6 +639,9 @@ public class InGameViewController {
         splitButton.setTooltip(doubleTip);
     }
 
+    /**
+     * Shows a tip to the player that recommends to split
+     */
     public void showSplitTip() {
         Tooltip splitTip = new Tooltip();
         splitTip.setText("You should split!");
@@ -655,6 +701,10 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    /**
+     * Sets players' splitted cards to the UI based on the amount of cards.
+     * @param playersSplittedCards
+     */
     public void setPlayersSplittedCards(ArrayList<Card> playersSplittedCards) {
         switch (playersSplittedCards.size()) {
             case 1:

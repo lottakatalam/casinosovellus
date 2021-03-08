@@ -13,6 +13,9 @@ import model.UserCredentialHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class for Settings.fxml
+ */
 public class SettingsViewController {
 
     public RadioButton onRadio;
@@ -39,12 +42,18 @@ public class SettingsViewController {
 
     }
 
+    /**
+     * Initializes Logged in as-text at the top corner
+     */
     public void initialize() {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
     }
 
+    /**
+     * Turns tips ON or OFF
+     */
     public void turnTips(){
         if(offRadio.isSelected()) {
             isSelected = false;
@@ -55,6 +64,10 @@ public class SettingsViewController {
         }
     }
 
+    /**
+     * Checks if the tips are ON or OFF
+     * @return - Returns true if tips are ON and false if they are OFF
+     */
     public boolean getSelected() {
         return isSelected;
     }

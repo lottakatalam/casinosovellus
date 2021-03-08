@@ -58,21 +58,13 @@ public class MainMenuController {
 
     }
 
+    /**
+     * Initializes Welcome-message for logged in user
+     */
     public void initialize() {
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
-    }
-
-    public void backToMainMenu(ActionEvent actionEvent) throws IOException {
-
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
-        Scene menuScene = new Scene(menuParent);
-        stageManager = StageManager.getInstance();
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
     }
 
     /**
@@ -115,6 +107,11 @@ public class MainMenuController {
 
     }
 
+    /**
+     * Loads to LogInView.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
     public void logInButton(ActionEvent actionEvent) throws IOException {
         Parent logInParent = FXMLLoader.load(getClass().getResource("/LogInView.fxml"));
         Scene logInScene = new Scene(logInParent);
@@ -127,6 +124,10 @@ public class MainMenuController {
 
     }
 
+    /**
+     * Logs user out and makes login and register buttons visible again
+     * @param actionEvent
+     */
     public void logOutButton(ActionEvent actionEvent) {
         userController.logout();
         logoutButton.setVisible(false);
@@ -135,6 +136,11 @@ public class MainMenuController {
         loggedUser.setText("Logged out");
     }
 
+    /**
+     * Loads to RegisterView.fxml
+     * @param actionEvent
+     * @throws IOException
+     */
     public void registerButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/RegisterView.fxml"));
@@ -175,10 +181,18 @@ public class MainMenuController {
         gameController = blackjackController;
     }
 
+    /**
+     * Sets userController as the object of class UserController
+     * @param userController object of the UserController
+     */
     public void setUserController(UserController userController) {
         this.userController = userController;
     }
 
+    /**
+     * Sets stageManager as the object of class StageManager
+     * @param stageManager object of the StageManager
+     */
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
     }

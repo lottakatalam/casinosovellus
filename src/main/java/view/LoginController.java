@@ -39,6 +39,9 @@ public class LoginController {
 
 
     @FXML
+    /**
+     * Login button action that logs user in
+     */
     public void logInButton(ActionEvent event) throws SQLException {
 
         Window owner = logInButton.getScene().getWindow();
@@ -62,6 +65,10 @@ public class LoginController {
 
     }
 
+    /**
+     * Loads back to MainMenu
+     * @throws IOException
+     */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/MainMenu.fxml"));
@@ -80,7 +87,10 @@ public class LoginController {
 
     }
 
-
+    /**
+     * Closes pop up screen and if log in is successful it loads back to Mainmenu as a logged in user
+     * @throws IOException
+     */
     public void okButton() throws IOException {
         if (loginText.isVisible()) {
             backToMainMenu();

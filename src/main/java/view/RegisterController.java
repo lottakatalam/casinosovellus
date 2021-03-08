@@ -47,6 +47,9 @@ public class RegisterController {
 
 
     @FXML
+    /**
+     * Registers a new user
+     */
     public void register(ActionEvent event) throws SQLException {
 
         Window owner = usernameTextField.getScene().getWindow();
@@ -93,7 +96,10 @@ public class RegisterController {
         repeatTextField.setText("");
     }
 
-
+    /**
+     * Loads back to Mainmenu
+     * @throws IOException
+     */
     public void backToMainMenu() throws IOException {
         Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         Scene menuScene = new Scene(menuParent);
@@ -104,10 +110,11 @@ public class RegisterController {
 
     }
 
-    public void setUserController(UserController userController) {
-        this.userController = userController;
-    }
-
+    /**
+     * Validation of Username while registering
+     * @param username - Username that is validated
+     * @return - If the username is valid or not
+     */
     public static boolean isValidUsername(String username) {
         boolean isValid = true;
         if (username.length() > 20 || username.length() < 4) {
@@ -117,6 +124,11 @@ public class RegisterController {
         return isValid;
     }
 
+    /**
+     * Validation of Password while registering
+     * @param password - Password that is validated
+     * @return - If the password is valid or not
+     */
     public static boolean isValidPassword(String password) {
         boolean isValid = true;
         if (password.length() > 20 || password.length() < 6) {
@@ -141,6 +153,10 @@ public class RegisterController {
         return isValid;
     }
 
+    /**
+     * Button closes pop up screen and loads to MainMenu if registeration is successed
+     * @throws IOException
+     */
     public void okButton() throws IOException {
         if (registerText.isVisible()) {
             backToMainMenu();

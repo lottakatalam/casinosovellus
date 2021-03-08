@@ -20,6 +20,9 @@ import model.UserCredentialHandler;
 
 import java.io.IOException;
 
+/**
+ * Controller class for Game History
+ */
 public class GameHistoryController {
 
     public Text areYouSure;
@@ -44,8 +47,8 @@ public class GameHistoryController {
 
 
     /**
-     * Loads back to MainMenu.fxml
-     * @throws IOException
+     * Loads back to MainMenu
+     * @throws IOException - if .fxml file is not found
      */
     public void gameHistoryBackButton() throws IOException {
 
@@ -79,6 +82,7 @@ public class GameHistoryController {
 
     /**
      * Clears user's game history if user is logged in (Gets every row and deletes every one of them in the loop)
+     * If user is not logged in, clearing isn't possible
      */
     public void yesAction() {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
@@ -146,6 +150,9 @@ public class GameHistoryController {
 
     }
 
+    /**
+     * For initializing table in game history
+     */
     public void initialize() {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
@@ -171,6 +178,7 @@ public class GameHistoryController {
 
     /**
      * okButton disables "error" message, that you should log in to view game history
+     * and puts user back to main menu
      */
     public void okButton() throws IOException {
         blackScreen.setVisible(false);

@@ -32,6 +32,9 @@ public class GUImain extends Application {
         launch(args);
     }
 
+    /**
+     * Constructor of GUImain
+     */
     public GUImain() {
 
     }
@@ -41,7 +44,6 @@ public class GUImain extends Application {
      * @param primaryStage is the primary stage set for the view
      */
     public void start(Stage primaryStage) {
-        // Building the User Interface
         try {
 
             primaryStage.setOnCloseRequest(new EventHandler<>() {
@@ -58,10 +60,6 @@ public class GUImain extends Application {
 
             initRootLayout();
 
-            // Set the application icon. (These can be used later)
-
-            //Image icon = new Image(getClass().getResource("img/....png").toExternalForm());
-            //this.primaryStage.getIcons().add(icon);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -72,7 +70,6 @@ public class GUImain extends Application {
      */
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(GUImain.class.getResource("/MainMenu.fxml"));
             rootLayout = loader.load();
@@ -83,7 +80,6 @@ public class GUImain extends Application {
             controller.setGameController(ctrl);
             controller.setUserController(userController);
             controller.setStageManager(this.stageManager);
-            // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
