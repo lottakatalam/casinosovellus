@@ -1,8 +1,8 @@
 package model;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 /**
@@ -13,6 +13,7 @@ public class BlackjackRound extends Thread {
     private static int roundNumber = 0;
 
     private final BlackjackController gameController;
+    SettingsController settingsController = new SettingsController();
     private final Deck deck;
     private final Player player;
     private final Dealer dealer;
@@ -54,6 +55,16 @@ public class BlackjackRound extends Thread {
         player.getHand().printHand();
         System.out.println("");
         dealer.getHand().printHand();
+
+        if(settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility) {
+            gameController.showHitTip();
+        }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility) {
+            gameController.showStandTip();
+        }else if(settingsController.getSelected() && doublePossibility) {
+            gameController.showDoubleTip();
+        }else if(settingsController.getSelected() && splitPossibility) {
+            gameController.showSplitTip();
+        }
     }
 
 
@@ -87,6 +98,11 @@ public class BlackjackRound extends Thread {
         this.player.getHand().addCard(deck.nextCard());
         this.gameController.setPlayersCardsToUI(player.getHand().getHand());
         player.getHand().printHand();
+        if(settingsController.getSelected() && player.getHand().calculateTotal() < 17) {
+            gameController.showHitTip();
+        }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16) {
+            gameController.showStandTip();
+        }
         int total = player.getHand().calculateTotal();
         if (total > 21 && !splitted) {
             playerBusted = true;
@@ -134,6 +150,11 @@ public class BlackjackRound extends Thread {
         this.player.getHand().printHand();
         System.out.println("\nHAND 2:");
         this.player.getHand().printSplittedHand();
+        if(settingsController.getSelected() && player.getHand().calculateTotal() < 17) {
+            gameController.showHitTip();
+        }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16) {
+            gameController.showStandTip();
+        }
     }
 
     public boolean checkSplitPossibility() {
@@ -203,12 +224,10 @@ public class BlackjackRound extends Thread {
         gameController.declareWinner(this.winner);
 
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-            System.out.println("Pelaaja ID: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserID());
             h.setUserID(UserCredentialHandler.getInstance().getLoggedInUser().getUserID());
         }
         h.setDate(LocalDateTime.now());
         h.setBet(player.getBet());
-        System.out.println("Pelaaja ID: " + h.getUserID());
         h.setBalance(player.getCurrency());
         casinoDAO.addHistoryRow(h);
 

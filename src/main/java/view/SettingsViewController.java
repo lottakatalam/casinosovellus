@@ -1,5 +1,7 @@
 package view;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,13 +13,14 @@ import model.UserCredentialHandler;
 
 import java.io.IOException;
 
-public class SettingsController {
+public class SettingsViewController {
 
     public RadioButton onRadio;
     public RadioButton offRadio;
     public Slider volumeSlider;
     public Text loggedUser;
     private StageManager stageManager;
+    private boolean isSelected = true;
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
@@ -40,5 +43,19 @@ public class SettingsController {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
+    }
+
+    public void turnTips(){
+        if(offRadio.isSelected()) {
+            isSelected = false;
+            System.out.println("Tips are now OFF");
+        }else if(onRadio.isSelected()) {
+            isSelected = true;
+            System.out.println("Tips are now ON");
+        }
+    }
+
+    public boolean getSelected() {
+        return isSelected;
     }
 }

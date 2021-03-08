@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import view.InGameViewController;
+import view.SettingsViewController;
 
 import java.util.ArrayList;
 
@@ -205,5 +206,19 @@ public class BlackjackController {
         this.blackJackGame.playerSplit();
     }
 
+    public void showHitTip() {
+        inGameViewController.showHitTip();
+    }
 
+    public void showStandTip() {
+        inGameViewController.showStandTip();
+    }
+
+    public void showDoubleTip() {
+        inGameViewController.showDoubleTip();
+    }
+
+    public void showSplitTip() {
+        inGameViewController.showSplitTip();
+    }
 }
