@@ -8,8 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -567,6 +569,42 @@ public class InGameViewController {
         OKBetButton.setVisible(false);
     }
 
+    public void showHitTip() {
+        Tooltip hitTip = new Tooltip();
+        hitTip.setText("You should hit!");
+        hitButton.setTooltip(hitTip);
+        standButton.setTooltip(hitTip);
+        doubleButton.setTooltip(hitTip);
+        splitButton.setTooltip(hitTip);
+    }
+
+    public void showStandTip() {
+        Tooltip standTip = new Tooltip();
+        standTip.setText("You should stand!");
+        hitButton.setTooltip(standTip);
+        standButton.setTooltip(standTip);
+        doubleButton.setTooltip(standTip);
+        splitButton.setTooltip(standTip);
+    }
+
+    public void showDoubleTip() {
+        Tooltip doubleTip = new Tooltip();
+        doubleTip.setText("You should double!");
+        hitButton.setTooltip(doubleTip);
+        standButton.setTooltip(doubleTip);
+        doubleButton.setTooltip(doubleTip);
+        splitButton.setTooltip(doubleTip);
+    }
+
+    public void showSplitTip() {
+        Tooltip splitTip = new Tooltip();
+        splitTip.setText("You should split!");
+        hitButton.setTooltip(splitTip);
+        standButton.setTooltip(splitTip);
+        doubleButton.setTooltip(splitTip);
+        splitButton.setTooltip(splitTip);
+    }
+
     /**
      * Updates the balance shown in the UI
      */
@@ -734,6 +772,5 @@ public class InGameViewController {
         playerTotal.setText("");
         dealerTotal.setText("");
     }
-
 }
 
