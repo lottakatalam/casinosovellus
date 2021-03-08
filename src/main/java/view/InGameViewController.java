@@ -256,7 +256,7 @@ public class InGameViewController {
     }
 
     public void setCardImage(String card, int cardNumber) {
-        Image cardImage= new Image(getClass().getResource(card).toExternalForm());
+        Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
 
         switch(cardNumber) {
             case 1:
@@ -281,7 +281,7 @@ public class InGameViewController {
     }
 
     public void setSplittedCardImage(String card, int cardNumber) {
-        Image cardImage= new Image(getClass().getResource(card).toExternalForm());
+        Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
 
         switch(cardNumber) {
             case 1:
@@ -306,7 +306,7 @@ public class InGameViewController {
     }
 
     public void setDealerCardImage(String card, int cardNumber) {
-        Image cardImage= new Image(getClass().getResource(card).toExternalForm());
+        Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
 
         switch(cardNumber) {
             case 1:
