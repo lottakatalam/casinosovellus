@@ -56,7 +56,7 @@
             <Image url="@WinnerScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="errorText" layoutX="125.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please enter username" textAlignment="CENTER" visible="false" wrappingWidth="556.8156127929688">
+      <Text fx:id="errorText" layoutX="220.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please enter username" textAlignment="CENTER" visible="false" wrappingWidth="556.8156127929688">
          <font>
             <Font name="Cooper Black" size="24.0" />
          </font>
