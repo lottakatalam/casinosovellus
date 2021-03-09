@@ -14,6 +14,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.UserCredentialHandler;
 
 import javax.sound.sampled.AudioInputStream;
@@ -70,7 +71,11 @@ public class MainMenuController {
     public void initialize() {
             Media sound = new Media(getClass().getResource("/Music/ElegantJazz.mp3").toExternalForm());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
+            mediaPlayer.setOnEndOfMedia(() -> {
+                mediaPlayer.seek(Duration.ZERO);
+                mediaPlayer.play();
+            });
+        mediaPlayer.play();
 
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
