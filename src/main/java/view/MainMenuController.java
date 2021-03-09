@@ -13,6 +13,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.UserCredentialHandler;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 
 /**
@@ -65,6 +68,7 @@ public class MainMenuController {
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
+        //playMusic();
     }
 
     /**
@@ -195,5 +199,20 @@ public class MainMenuController {
      */
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
+    }
+
+    /**
+     * Used for playing music *NOT WORKING*
+     */
+    public void playMusic() {
+        try{
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/Music/ElegantJazz.mp3"));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+            System.out.println("Music is playing!");
+        } catch(Exception e) {
+            System.out.println("Music is not playing!");
+        }
     }
 }
