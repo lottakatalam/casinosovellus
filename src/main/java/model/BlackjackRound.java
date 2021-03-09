@@ -2,6 +2,7 @@ package model;
 
 import controller.BlackjackController;
 import controller.SettingsController;
+import view.SettingsViewController;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +14,6 @@ public class BlackjackRound extends Thread {
     private static int roundNumber = 0;
 
     private final BlackjackController gameController;
-    SettingsController settingsController = new SettingsController();
     private final Deck deck;
     private final Player player;
     private final Dealer dealer;
@@ -24,6 +24,7 @@ public class BlackjackRound extends Thread {
     boolean doublePossibility;
     boolean splitPossibility;
     boolean splitted;
+    private SettingsController settingsController;
 
 
     CasinoDAO casinoDAO = new CasinoDAO();
@@ -52,22 +53,11 @@ public class BlackjackRound extends Thread {
 
         checkDoubleAndSplitPossibility();
 
-
         player.getHand().printHand();
         System.out.println("");
         dealer.getHand().printHand();
 
-        System.out.println(settingsController.getSelected());
-
-        if(settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility) {
-            gameController.showHitTip();
-        }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility) {
-            gameController.showStandTip();
-        }else if(settingsController.getSelected() && doublePossibility) {
-            gameController.showDoubleTip();
-        }else if(settingsController.getSelected() && splitPossibility) {
-            gameController.showSplitTip();
-        }
+        setTooltips();
     }
 
     /**
@@ -198,6 +188,20 @@ public class BlackjackRound extends Thread {
     public void playerStay() {
         playerBusted = false;
         this.start();
+    }
+
+    public void setTooltips() {
+        settingsController = SettingsController.getInstance();
+
+        if(settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility) {
+            gameController.showHitTip();
+        }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility) {
+            gameController.showStandTip();
+        }else if(settingsController.getSelected() && doublePossibility) {
+            gameController.showDoubleTip();
+        }else if(settingsController.getSelected() && splitPossibility) {
+            gameController.showSplitTip();
+        }
     }
 
     /**

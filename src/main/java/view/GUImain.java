@@ -1,5 +1,6 @@
 package view;
 import controller.BlackjackController;
+import controller.SettingsController;
 import controller.UserController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -57,6 +58,7 @@ public class GUImain extends Application {
             this.primaryStage.setTitle("The Grand Myllypuro");
             stageManager = StageManager.getInstance();
             stageManager.setPrimaryStage(primaryStage);
+            SettingsController.getInstance().initializeSettings();
 
             initRootLayout();
 

@@ -1,5 +1,6 @@
 package view;
 
+import controller.SettingsController;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -23,7 +24,8 @@ public class SettingsViewController {
     public Slider volumeSlider;
     public Text loggedUser;
     private StageManager stageManager;
-    private boolean isSelected;
+    private boolean isSelected = false;
+    private SettingsController settingsController = SettingsController.getInstance();
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
@@ -57,10 +59,12 @@ public class SettingsViewController {
      */
     public void turnTips(){
         if(offRadio.isSelected()) {
-            isSelected = false;
+            this.isSelected = false;
+            settingsController.setSelected(false);
             System.out.println("Tips are now OFF");
         }else if(onRadio.isSelected()) {
-            isSelected = true;
+            this.isSelected = true;
+            settingsController.setSelected(true);
             System.out.println("Tips are now ON");
         }
     }
@@ -70,6 +74,6 @@ public class SettingsViewController {
      * @return - Returns true if tips are ON and false if they are OFF
      */
     public boolean getSelected() {
-        return isSelected;
+        return this.isSelected;
     }
 }

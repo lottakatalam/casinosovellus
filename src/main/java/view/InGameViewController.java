@@ -90,6 +90,7 @@ public class InGameViewController {
     public ImageView dealerCardImage6;
     private boolean splitted = false;
 
+
     /**
      * Sets Are you sure-screen visible to get back to Menu
      */

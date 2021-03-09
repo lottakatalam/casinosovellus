@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,6 +70,10 @@ public class MainMenuController {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
         //playMusic();
+        /*
+        SettingsController settingsController = SettingsController.getInstance();
+        SettingsViewController settingsViewController = new SettingsViewController();
+        settingsController.setSelected(settingsViewController.getSelected());*/
     }
 
     /**
