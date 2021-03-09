@@ -258,6 +258,8 @@ public class InGameViewController {
                 standButton.setDisable(false);
                 this.playersCards = gameController.getPlayersCards();
                 this.dealerCards = gameController.getDealersCards();
+                Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
+                dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
                 checkForDouble();
                 checkForSplit();
