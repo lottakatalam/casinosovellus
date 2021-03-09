@@ -89,6 +89,9 @@ public class InGameViewController {
     public ImageView dealerCardImage5;
     public ImageView dealerCardImage6;
     private boolean splitted = false;
+    public Button yesMoneyButton;
+    public Button noMoneyButton;
+    public Text outOfMoney;
 
 
     /**
@@ -244,18 +247,23 @@ public class InGameViewController {
      * shows first cards in UI and updates the total counter
      */
     public void deal() {
-        if (setBet()) {
-            updateBalance();
-            gameController.nextRound();
-            dealButton.setDisable(true);
-            hitButton.setDisable(false);
-            standButton.setDisable(false);
-            this.playersCards = gameController.getPlayersCards();
-            this.dealerCards = gameController.getDealersCards();
-            updateTotalResult();
-            checkForDouble();
-            checkForSplit();
+        if (gameController.getPlayer().getCurrency() == 0) {
+            checkBalance();
+        } else {
+            if (setBet()) {
+                updateBalance();
+                gameController.nextRound();
+                dealButton.setDisable(true);
+                hitButton.setDisable(false);
+                standButton.setDisable(false);
+                this.playersCards = gameController.getPlayersCards();
+                this.dealerCards = gameController.getDealersCards();
+                updateTotalResult();
+                checkForDouble();
+                checkForSplit();
+            }
         }
+
     }
 
     /**
@@ -473,6 +481,33 @@ public class InGameViewController {
         currentBet.setText("\uD83D\uDCB2" + bet);
         gameController.setSplitStatus(false);
         splitted = false;
+        checkBalance();
+    }
+
+    public void checkBalance() {
+        if (gameController.getPlayer().getCurrency() == 0) {
+            winnerScreen.setVisible(true);
+            outOfMoney.setVisible(true);
+            outOfMoney.setText("Looks like you are out of money. Would you like to try again?");
+            yesMoneyButton.setVisible(true);
+            noMoneyButton.setVisible(true);
+        }
+    }
+
+    public void noMoney() {
+        winnerScreen.setVisible(false);
+        outOfMoney.setVisible(false);
+        yesMoneyButton.setVisible(false);
+        noMoneyButton.setVisible(false);
+    }
+
+    public void yesMoney() {
+        gameController.getPlayer().setNewBalance();
+        winnerScreen.setVisible(false);
+        outOfMoney.setVisible(false);
+        yesMoneyButton.setVisible(false);
+        noMoneyButton.setVisible(false);
+        updateBalance();
     }
 
     /**

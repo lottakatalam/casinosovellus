@@ -162,10 +162,6 @@ public class BlackjackRound extends Thread {
     public void playerSplit() {
         splitted = true;
         this.player.getHand().splitHand();
-        System.out.println("HAND 1:");
-        this.player.getHand().printHand();
-        System.out.println("\nHAND 2:");
-        this.player.getHand().printSplittedHand();
         if(settingsController.getSelected() && player.getHand().calculateTotal() < 17) {
             gameController.showHitTip();
         }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16) {

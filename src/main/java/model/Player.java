@@ -54,6 +54,13 @@ public class Player {
         }
     }
 
+    public void setNewBalance() {
+        this.currency = 2500;
+        if (UserCredentialHandler.getInstance().isLoggedIn()) {
+            UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
+        }
+    }
+
     /**
      * Decreases the amount of online cash the player has
      */
