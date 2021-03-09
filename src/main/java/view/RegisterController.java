@@ -118,7 +118,8 @@ public class RegisterController {
     public static boolean isValidUsername(String username) {
         boolean isValid = true;
         if (username.length() > 20 || username.length() < 4) {
-            System.out.println("Username must be less than 20 and more than 4 characters in length.");
+            String message = "Username must be less than 20 and more than 4 characters in length.";
+            System.out.println(message);
             isValid = false;
         }
         return isValid;
@@ -132,22 +133,26 @@ public class RegisterController {
     public static boolean isValidPassword(String password) {
         boolean isValid = true;
         if (password.length() > 20 || password.length() < 6) {
-            System.out.println("Password must be less than 20 and more than 6 characters in length.");
+            String message = "Password must be less than 20 and more than 6 characters in length.";
+            System.out.println(message);
             isValid = false;
         }
         String upperCaseChars = "(.*[A-Z].*)";
         if (!password.matches(upperCaseChars)) {
-            System.out.println("Password must have atleast one uppercase character");
+            String message = "Password must have atleast one uppercase character";
+            System.out.println(message);
             isValid = false;
         }
         String lowerCaseChars = "(.*[a-z].*)";
         if (!password.matches(lowerCaseChars)) {
-            System.out.println("Password must have atleast one lowercase character");
+            String message = "Password must have atleast one lowercase character";
+            System.out.println(message);
             isValid = false;
         }
         String numbers = "(.*[0-9].*)";
         if (!password.matches(numbers)) {
-            System.out.println("Password must have atleast one number");
+            String message = "Password must have atleast one number";
+            System.out.println(message);
             isValid = false;
         }
         return isValid;
