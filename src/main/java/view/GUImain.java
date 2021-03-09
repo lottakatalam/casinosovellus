@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -59,7 +60,8 @@ public class GUImain extends Application {
             stageManager = StageManager.getInstance();
             stageManager.setPrimaryStage(primaryStage);
             SettingsController.getInstance().initializeSettings();
-
+            Image icon= new Image(getClass().getResource("chip.png").toExternalForm());
+            primaryStage.getIcons().add(icon);
             initRootLayout();
 
         } catch(Exception e) {

@@ -17,6 +17,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -550,7 +555,6 @@ public class InGameViewController {
         instructionsText.setVisible(false);
         closebutton.setVisible(false);
     }
-
 
     /**
      * Disables the 'Hit' button if Blackjack has been gained immediately from the first two cards

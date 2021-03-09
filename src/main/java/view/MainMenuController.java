@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.UserCredentialHandler;
@@ -66,14 +68,13 @@ public class MainMenuController {
      * Initializes Welcome-message for logged in user
      */
     public void initialize() {
+            Media sound = new Media(getClass().getResource("/Music/ElegantJazz.mp3").toExternalForm());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
-        //playMusic();
-        /*
-        SettingsController settingsController = SettingsController.getInstance();
-        SettingsViewController settingsViewController = new SettingsViewController();
-        settingsController.setSelected(settingsViewController.getSelected());*/
     }
 
     /**
