@@ -124,7 +124,7 @@ public class RegisterController {
     public boolean isValidUsername(String username) {
         boolean isValid = true;
         if (username.length() > 16 || username.length() < 4) {
-            String message = "Username must be less than 20 and more than 4 characters in length.";
+            String message = "Username must be less than 16 and more than 4 characters in length.";
             System.out.println(message);
             errorText.setText(message);
             blackScreen.setVisible(true);
@@ -142,8 +142,8 @@ public class RegisterController {
      */
     public boolean isValidPassword(String password) {
         String message;
-        if (password.length() > 20 || password.length() < 6) {
-            message = "Password must be less than 20 and more than 6 characters in length.";
+        if (password.length() < 6) {
+            message = "Password must contain at least 6 characters.";
             System.out.println(message);
             setErrorMessageAboutPassword(message);
             return false;
