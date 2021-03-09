@@ -647,7 +647,7 @@ public class InGameViewController {
      */
     public void showHitTip() {
         Tooltip hitTip = new Tooltip();
-        hitTip.setText("You should hit!");
+        hitTip.setText("Your total count is 16 or under. Hitting might be the best option.");
         hitButton.setTooltip(hitTip);
         standButton.setTooltip(hitTip);
         doubleButton.setTooltip(hitTip);
@@ -659,7 +659,7 @@ public class InGameViewController {
      */
     public void showStandTip() {
         Tooltip standTip = new Tooltip();
-        standTip.setText("You should stand!");
+        standTip.setText("Your total count is over 16. Consider standing.");
         hitButton.setTooltip(standTip);
         standButton.setTooltip(standTip);
         doubleButton.setTooltip(standTip);
@@ -671,7 +671,7 @@ public class InGameViewController {
      */
     public void showDoubleTip() {
         Tooltip doubleTip = new Tooltip();
-        doubleTip.setText("You should double!");
+        doubleTip.setText("You have a possibility to double. Consider it.");
         hitButton.setTooltip(doubleTip);
         standButton.setTooltip(doubleTip);
         doubleButton.setTooltip(doubleTip);
@@ -683,7 +683,7 @@ public class InGameViewController {
      */
     public void showSplitTip() {
         Tooltip splitTip = new Tooltip();
-        splitTip.setText("You should split!");
+        splitTip.setText("You have a possibility to split. Consider it.");
         hitButton.setTooltip(splitTip);
         standButton.setTooltip(splitTip);
         doubleButton.setTooltip(splitTip);
