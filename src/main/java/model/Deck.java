@@ -77,6 +77,21 @@ public class Deck {
         deck.clear();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        Deck d = (Deck) o;
+        boolean equals = false;
+        for (int i=0; i < deck.size(); i++) {
+            if (deck.get(i).equals(d.getDeck().get(i))) {
+                equals = true;
+            } else {
+                equals = false;
+                break;
+            }
+        }
+        return equals;
+    }
+
 
 }
 

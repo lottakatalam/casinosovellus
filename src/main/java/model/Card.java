@@ -82,4 +82,15 @@ public class Card {
         return ranks[this.rank]+" of "+suits[this.suit];
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        Card anotherCard = (Card) o;
+        if (rank == anotherCard.getRank() && suit == anotherCard.getSuit()) {
+            return true;
+        }
+        return false;
+    }
+
+
 }
