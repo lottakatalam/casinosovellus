@@ -62,11 +62,17 @@ public class RegisterController {
             errorText.setVisible(true);
             okButton.setVisible(true);
         }
+        else if (!isValidUsername(usernameTextField.getText())) {
+
+        }
         else if (passwordTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty()) {
             errorText.setText("Please enter password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
+        }
+        else if(!isValidPassword(passwordTextField.getText())) {
+
         }
         else if (repeatTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty() && !passwordTextField.getText().isEmpty()) {
             errorText.setText("Please repeat password");
@@ -115,11 +121,15 @@ public class RegisterController {
      * @param username - Username that is validated
      * @return - If the username is valid or not
      */
-    public static boolean isValidUsername(String username) {
+    public boolean isValidUsername(String username) {
         boolean isValid = true;
         if (username.length() > 20 || username.length() < 4) {
             String message = "Username must be less than 20 and more than 4 characters in length.";
             System.out.println(message);
+            errorText.setText(message);
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
             isValid = false;
         }
         return isValid;
@@ -130,32 +140,44 @@ public class RegisterController {
      * @param password - Password that is validated
      * @return - If the password is valid or not
      */
-    public static boolean isValidPassword(String password) {
-        boolean isValid = true;
+    public boolean isValidPassword(String password) {
+        String message;
         if (password.length() > 20 || password.length() < 6) {
-            String message = "Password must be less than 20 and more than 6 characters in length.";
+            message = "Password must be less than 20 and more than 6 characters in length.";
             System.out.println(message);
-            isValid = false;
+            setErrorMessageAboutPassword(message);
+            return false;
         }
         String upperCaseChars = "(.*[A-Z].*)";
         if (!password.matches(upperCaseChars)) {
-            String message = "Password must have atleast one uppercase character";
+            message = "Password must have atleast one uppercase character";
             System.out.println(message);
-            isValid = false;
+            setErrorMessageAboutPassword(message);
+            return false;
         }
         String lowerCaseChars = "(.*[a-z].*)";
         if (!password.matches(lowerCaseChars)) {
-            String message = "Password must have atleast one lowercase character";
+            message = "Password must have atleast one lowercase character";
             System.out.println(message);
-            isValid = false;
+            setErrorMessageAboutPassword(message);
+            return false;
         }
         String numbers = "(.*[0-9].*)";
         if (!password.matches(numbers)) {
-            String message = "Password must have atleast one number";
+            message = "Password must have atleast one number";
             System.out.println(message);
-            isValid = false;
+            setErrorMessageAboutPassword(message);
+            return false;
         }
-        return isValid;
+
+        return true;
+    }
+
+    public void setErrorMessageAboutPassword(String message) {
+            errorText.setText(message);
+            blackScreen.setVisible(true);
+            errorText.setVisible(true);
+            okButton.setVisible(true);
     }
 
     /**
