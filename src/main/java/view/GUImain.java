@@ -60,7 +60,7 @@ public class GUImain extends Application {
             stageManager = StageManager.getInstance();
             stageManager.setPrimaryStage(primaryStage);
             SettingsController.getInstance().initializeSettings();
-            Image icon= new Image(getClass().getResource("chip.png").toExternalForm());
+            Image icon= new Image(getClass().getResource("/Cards/chip.png").toExternalForm());
             primaryStage.getIcons().add(icon);
             initRootLayout();
 
