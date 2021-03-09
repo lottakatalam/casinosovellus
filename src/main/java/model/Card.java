@@ -82,4 +82,16 @@ public class Card {
         return ranks[this.rank]+" of "+suits[this.suit];
     }
 
+    /**
+     * Used for JUnit tests
+     * @param o
+     * @return
+     */
+    public boolean equals(Object o) {
+        Card anotherCard = (Card) o;
+        if (rank == anotherCard.getRank() && suit == anotherCard.getSuit()) {
+            return true;
+        }
+        return false;
+    }
 }

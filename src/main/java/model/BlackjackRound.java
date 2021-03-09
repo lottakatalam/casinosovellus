@@ -57,6 +57,8 @@ public class BlackjackRound extends Thread {
         System.out.println("");
         dealer.getHand().printHand();
 
+        System.out.println(settingsController.getSelected());
+
         if(settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility) {
             gameController.showHitTip();
         }else if(settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility) {
@@ -135,6 +137,11 @@ public class BlackjackRound extends Thread {
     public void hitToSplittedHand() {
         this.player.getHand().addCardToSplittedHand(deck.nextCard());
         this.gameController.setPlayersSplittedCardsToUI(player.getHand().getSplittedHand());
+        if(settingsController.getSelected() && player.getHand().calculateSplittedTotal() < 17) {
+            gameController.showHitTip();
+        }else if(settingsController.getSelected() && player.getHand().calculateSplittedTotal() > 16) {
+            gameController.showStandTip();
+        }
         int splittedTotal = player.getHand().calculateSplittedTotal();
 
         if (splittedTotal > 21) {
