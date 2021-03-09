@@ -23,7 +23,7 @@ public class SettingsViewController {
     public Slider volumeSlider;
     public Text loggedUser;
     private StageManager stageManager;
-    private boolean isSelected = true;
+    private boolean isSelected;
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
@@ -49,6 +49,8 @@ public class SettingsViewController {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
+        turnTips();
+        System.out.println(getSelected());
     }
 
     /**

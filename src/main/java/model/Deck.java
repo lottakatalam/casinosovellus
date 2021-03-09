@@ -77,7 +77,11 @@ public class Deck {
         deck.clear();
     }
 
-    @Override
+    /**
+     * Used for JUnit tests
+     * @param o
+     * @return
+     */
     public boolean equals(Object o) {
         Deck d = (Deck) o;
         boolean equals = false;
@@ -91,7 +95,6 @@ public class Deck {
         }
         return equals;
     }
-
 
 }
 

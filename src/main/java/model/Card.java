@@ -82,8 +82,11 @@ public class Card {
         return ranks[this.rank]+" of "+suits[this.suit];
     }
 
-
-    @Override
+    /**
+     * Used for JUnit tests
+     * @param o
+     * @return
+     */
     public boolean equals(Object o) {
         Card anotherCard = (Card) o;
         if (rank == anotherCard.getRank() && suit == anotherCard.getSuit()) {
@@ -91,6 +94,4 @@ public class Card {
         }
         return false;
     }
-
-
 }
