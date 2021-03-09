@@ -50,7 +50,6 @@ public class SettingsViewController {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
         turnTips();
-        System.out.println(getSelected());
     }
 
     /**
