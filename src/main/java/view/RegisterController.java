@@ -123,7 +123,7 @@ public class RegisterController {
      */
     public boolean isValidUsername(String username) {
         boolean isValid = true;
-        if (username.length() > 20 || username.length() < 4) {
+        if (username.length() > 16 || username.length() < 4) {
             String message = "Username must be less than 20 and more than 4 characters in length.";
             System.out.println(message);
             errorText.setText(message);
