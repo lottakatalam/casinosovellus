@@ -57,7 +57,7 @@ public class RegisterController {
         System.out.println(usernameTextField.getText());
         System.out.println(passwordTextField.getText());
         if (usernameTextField.getText().isEmpty()) {
-            errorText.setText("Please enter username");
+            errorText.setText("Please enter a username");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
@@ -66,7 +66,7 @@ public class RegisterController {
 
         }
         else if (passwordTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty()) {
-            errorText.setText("Please enter password");
+            errorText.setText("Please enter a password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);

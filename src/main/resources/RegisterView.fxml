@@ -31,11 +31,21 @@
                 <Font name="Cooper Black" size="35.0" />
             </font>
         </Text>
+      <Text fx:id="usernameRule" fill="#faf6f6" layoutX="350.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username must be between 4 and 16 characters long." textAlignment="CENTER">
+         <font>
+            <Font name="Cooper Black" size="13.0" />
+         </font>
+      </Text>
         <Text layoutX="431.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Password:">
             <font>
                 <Font name="Cooper Black" size="35.0" />
             </font>
         </Text>
+      <Text fx:id="passwordRule" fill="#edebeb" layoutX="40.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must contain at least 6 characters with 1 upper-case character and 1 number." textAlignment="CENTER" wrappingWidth="1000.0">
+         <font>
+            <Font name="Cooper Black" size="13.0" />
+         </font>
+      </Text>
         <Button layoutX="482.0" layoutY="634.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
             <font>
                 <Font name="Cooper Black" size="20.0" />
@@ -51,12 +61,12 @@
             <Font name="Cooper Black" size="15.0" />
          </font>
       </PasswordField>
-      <ImageView fx:id="blackScreen" fitHeight="799.0" fitWidth="1075.0" layoutX="-20.0" layoutY="-12.0" opacity="0.9" pickOnBounds="true" visible="false">
+      <ImageView fx:id="blackScreen" fitHeight="799.0" fitWidth="1075.0" layoutX="-20.0" layoutY="-12.0" opacity="0.87" pickOnBounds="true" visible="false">
          <image>
             <Image url="@BlackScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="errorText" layoutX="220.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please enter username" textAlignment="CENTER" visible="false" wrappingWidth="556.8156127929688">
+      <Text fx:id="errorText" layoutX="220.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please enter a username" textAlignment="CENTER" visible="false" wrappingWidth="556.8156127929688">
          <font>
             <Font name="Cooper Black" size="24.0" />
          </font>
@@ -69,16 +79,6 @@
       <Text fx:id="registerText" layoutX="300.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Registeration successful!" visible="false">
          <font>
             <Font name="Cooper Black" size="35.0" />
-         </font>
-      </Text>
-      <Text fx:id="usernameRule" fill="#faf6f6" layoutX="350.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username must be between 4 and 16 characters long." textAlignment="CENTER">
-         <font>
-            <Font name="Cooper Black" size="13.0" />
-         </font>
-      </Text>
-      <Text fx:id="passwordRule" fill="#edebeb" layoutX="40.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password must contain at least 6 characters with 1 upper-case character and 1 number." textAlignment="CENTER" wrappingWidth="1000.0">
-         <font>
-            <Font name="Cooper Black" size="13.0" />
          </font>
       </Text>
     </children>
