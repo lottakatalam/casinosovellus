@@ -75,6 +75,7 @@ public class MainMenuController {
                 mediaPlayer.seek(Duration.ZERO);
                 mediaPlayer.play();
             });
+        mediaPlayer.setVolume(0.03);
         mediaPlayer.play();
 
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
@@ -210,20 +211,5 @@ public class MainMenuController {
      */
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
-    }
-
-    /**
-     * Used for playing music *NOT WORKING*
-     */
-    public void playMusic() {
-        try{
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/Music/ElegantJazz.mp3"));
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-            System.out.println("Music is playing!");
-        } catch(Exception e) {
-            System.out.println("Music is not playing!");
-        }
     }
 }
