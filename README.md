@@ -1,16 +1,20 @@
 # Casino-sovellus - OTP1 / R02
 
-## MUISTA
-- Koodi ja kommentit englanniksi
-- Muista aina pull ennen kuin aloitat
-- Tee aina javadoc kommentointi kun teet koodia (ohje: https://www.cs.helsinki.fi/group/hali/javadoc-ohje.html)
-- Merkkaa aina tekemäsi hommat nectioniin ( https://app.nektion.com/Metropolia/ )
-## Branch
-1. Pullaa develop-branch
-2. Siirry omaan branchiin
-3. Klikkaa develop-branchia ja paina "Merge into current"
-4. Kun haluat lopettaa, pushaa muutokset omaan branchiin
-5. Siirry develop-branchiin
-6. Klikkaa omaa branchia ja paina "Merge into current"
-7. Pushaa develop-branch
+## Kehitysympäristö
+Projekti on rakennettu Javalla maven projektina.
+### IDE
+Sovelluskehittimenä on käytetty IntelliJ IDEAa.
 
+### Tietokanta
+Tietokanta on toteutettu Metropolian educloud-palvelimelle asennetulla MariaDB tietokannalla.
+
+### Jatkuvan integroinnin työkalu
+Projektissa on käytetty Jenkinsiä jatkuvan testaamisen ja -integroinnin työkaluna. 
+
+## Asennusohje
+Projekti ei toimi vielä ilman kehitysympäristöä. Suorittaaksesi sovelluksen, seuraa allaolevia ohjeita.
+
+1. Lataa tämä git-repositorio
+2. Avaa ladattu kansio jollain mavenia tukevalla IDEllä
+3. Synkronoi maven projekti ladataksesi kaikki riippuvuudet
+4. Suorita main.java 
