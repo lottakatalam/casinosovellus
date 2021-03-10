@@ -55,7 +55,7 @@ public class StageManager {
     }
 
     private void initAudio(){
-        Media sound = new Media(getClass().getResource("/Music/ElegantJazz.mp3").toExternalForm());
+        Media sound = new Media(getClass().getResource("/Music/ElegantJazz_edited.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setOnEndOfMedia(() -> {
             mediaPlayer.seek(Duration.ZERO);
