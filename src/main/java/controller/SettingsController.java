@@ -10,6 +10,7 @@ import view.SettingsViewController;
 public class SettingsController {
     private boolean isSelected;
     private boolean isPlaying;
+    private double volume;
     SettingsViewController settingsViewController;
 
     private SettingsController() {
@@ -50,6 +51,7 @@ public class SettingsController {
     public void initializeSettings() {
         SettingsViewController settingsViewController = new SettingsViewController();
         this.isPlaying = false;
+        this.volume = 3;
         this.isSelected = settingsViewController.getSelected();
     }
 
@@ -59,6 +61,14 @@ public class SettingsController {
 
     public void setIsPlaying() {
         this.isPlaying = !this.isPlaying;
+    }
+
+    public double getVolume() {
+        return this.volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
     }
 
 }

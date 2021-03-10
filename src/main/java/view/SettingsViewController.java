@@ -61,11 +61,12 @@ public class SettingsViewController {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
         turnTips();
-        volumeSlider.setValue(3);
-        volumeText.setText("3");
+        volumeSlider.setValue(SettingsController.getInstance().getVolume());
+        volumeText.setText(""+SettingsController.getInstance().getVolume());
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
             volumeText.setText(""+Math.floor((Double) newValue));
             mainMenuController.getMediaPlayer().setVolume(((Double) newValue) / 100);
+            SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
         });
     }
 
