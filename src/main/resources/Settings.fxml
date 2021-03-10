@@ -43,10 +43,15 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Slider fx:id="volumeSlider" layoutX="398.0" layoutY="304.0" prefHeight="45.0" prefWidth="248.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0" />
+      <Slider fx:id="volumeSlider" layoutX="374.0" layoutY="304.0" minorTickCount="5" prefHeight="45.0" prefWidth="303.0" showTickLabels="true" showTickMarks="true" value="3.0" />
       <Text fx:id="loggedUser" layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;">
          <font>
             <Font name="Cooper Black" size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="volumeText" layoutX="695.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="3">
+         <font>
+            <Font size="20.0" />
          </font>
       </Text>
    </children>

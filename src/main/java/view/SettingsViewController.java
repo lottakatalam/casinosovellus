@@ -3,6 +3,8 @@ package view;
 import controller.SettingsController;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +25,7 @@ public class SettingsViewController {
     public RadioButton offRadio;
     public Slider volumeSlider;
     public Text loggedUser;
+    public Text volumeText;
     private StageManager stageManager;
     private boolean isSelected = false;
     private SettingsController settingsController = SettingsController.getInstance();
@@ -52,6 +55,11 @@ public class SettingsViewController {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
         turnTips();
+        volumeSlider.setValue(3);
+        volumeText.setText("3");
+        volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            volumeText.setText(newValue.toString());
+        });
     }
 
     /**
