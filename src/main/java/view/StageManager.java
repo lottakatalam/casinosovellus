@@ -61,7 +61,7 @@ public class StageManager {
             mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.play();
         });
-        mediaPlayer.setVolume(0.03);
+        mediaPlayer.setVolume(0.25);
         mediaPlayer.play();
         SettingsController.getInstance().setIsPlaying();
     }
