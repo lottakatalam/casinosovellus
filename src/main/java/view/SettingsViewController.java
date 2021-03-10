@@ -61,7 +61,13 @@ public class SettingsViewController {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
-        turnTips();
+        if(settingsController.getSelected()) {
+            offRadio.setSelected(false);
+            onRadio.setSelected(true);
+        }else {
+            offRadio.setSelected(true);
+            onRadio.setSelected(false);
+        }
         initSettings();
     }
 
