@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,14 +69,17 @@ public class MainMenuController {
      * Initializes Welcome-message for logged in user and music
      */
     public void initialize() {
+        if (!SettingsController.getInstance().getIsPlaying()) {
             Media sound = new Media(getClass().getResource("/Music/ElegantJazz.mp3").toExternalForm());
             mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setOnEndOfMedia(() -> {
             mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.play();
         });
-        mediaPlayer.setVolume(0.03);
-        mediaPlayer.play();
+            mediaPlayer.setVolume(0.03);
+            mediaPlayer.play();
+            SettingsController.getInstance().setIsPlaying();
+        }
 
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());

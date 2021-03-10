@@ -9,6 +9,7 @@ import view.SettingsViewController;
 
 public class SettingsController {
     private boolean isSelected;
+    private boolean isPlaying;
     SettingsViewController settingsViewController;
 
     private SettingsController() {
@@ -48,7 +49,16 @@ public class SettingsController {
 
     public void initializeSettings() {
         SettingsViewController settingsViewController = new SettingsViewController();
+        this.isPlaying = false;
         this.isSelected = settingsViewController.getSelected();
+    }
+
+    public boolean getIsPlaying() {
+        return this.isPlaying;
+    }
+
+    public void setIsPlaying() {
+        this.isPlaying = !this.isPlaying;
     }
 
 }
