@@ -39,7 +39,7 @@ public class MainMenuController {
     private static UserController userController;
     public Stage primaryStage;
     private StageManager stageManager;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @param actionEvent
@@ -70,15 +70,7 @@ public class MainMenuController {
      */
     public void initialize() {
         if (!SettingsController.getInstance().getIsPlaying()) {
-            Media sound = new Media(getClass().getResource("/Music/ElegantJazz.mp3").toExternalForm());
-            mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setOnEndOfMedia(() -> {
-            mediaPlayer.seek(Duration.ZERO);
-            mediaPlayer.play();
-        });
-            mediaPlayer.setVolume(0.03);
-            mediaPlayer.play();
-            SettingsController.getInstance().setIsPlaying();
+
         }
 
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
@@ -220,7 +212,5 @@ public class MainMenuController {
         this.stageManager = stageManager;
     }
 
-    public MediaPlayer getMediaPlayer() {
-        return this.mediaPlayer;
-    }
+
 }

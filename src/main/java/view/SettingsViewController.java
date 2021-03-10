@@ -57,15 +57,18 @@ public class SettingsViewController {
      * Initializes Logged in as-text at the top corner
      */
     public void initialize() {
+        stageManager = StageManager.getInstance();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
         turnTips();
         volumeSlider.setValue(SettingsController.getInstance().getVolume());
-        volumeText.setText(""+SettingsController.getInstance().getVolume());
+        volumeText.setText("" + SettingsController.getInstance().getVolume());
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
-            volumeText.setText(""+Math.floor((Double) newValue));
-            mainMenuController.getMediaPlayer().setVolume(((Double) newValue) / 100);
+            volumeText.setText("" + Math.floor((Double) newValue));
+            stageManager
+                    .getMediaPlayer()
+                    .setVolume(((Double) newValue) / 100);
             SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
         });
     }
@@ -73,12 +76,12 @@ public class SettingsViewController {
     /**
      * Turns tips ON or OFF
      */
-    public void turnTips(){
-        if(offRadio.isSelected()) {
+    public void turnTips() {
+        if (offRadio.isSelected()) {
             this.isSelected = false;
             settingsController.setSelected(false);
             System.out.println("Tips are now OFF");
-        }else if(onRadio.isSelected()) {
+        } else if (onRadio.isSelected()) {
             this.isSelected = true;
             settingsController.setSelected(true);
             System.out.println("Tips are now ON");
@@ -87,6 +90,7 @@ public class SettingsViewController {
 
     /**
      * Checks if the tips are ON or OFF
+     *
      * @return - Returns true if tips are ON and false if they are OFF
      */
     public boolean getSelected() {
