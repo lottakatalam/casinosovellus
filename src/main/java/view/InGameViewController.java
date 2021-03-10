@@ -422,6 +422,7 @@ public class InGameViewController {
             gameController.stand();
         } else if (!gameController.getSplitStatus() && splitted) {
             gameController.setSplitStatus(true);
+            gameController.hitToSplittedHand();
         } else {
             disableHit();
             disableStand();
@@ -589,6 +590,8 @@ public class InGameViewController {
     public void doublePressed() {
         splitButton.setDisable(true);
         doubleButton.setDisable(true);
+        hitButton.setDisable(true);
+        standButton.setDisable(true);
         gameController.playerDouble();
         currentBet.setText("\uD83D\uDCB2" + gameController.getPlayer().getBet());
         updateBalance();
