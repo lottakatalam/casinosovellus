@@ -62,15 +62,7 @@ public class SettingsViewController {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
         turnTips();
-        volumeSlider.setValue(SettingsController.getInstance().getVolume());
-        volumeText.setText("" + SettingsController.getInstance().getVolume());
-        volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
-            volumeText.setText("" + Math.floor((Double) newValue));
-            stageManager
-                    .getMediaPlayer()
-                    .setVolume(((Double) newValue) / 100);
-            SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
-        });
+        initSettings();
     }
 
     /**
@@ -97,6 +89,25 @@ public class SettingsViewController {
         return this.isSelected;
     }
 
+    /**
+     * Initializes settings in the settings screen
+     */
+    public void initSettings() {
+        volumeSlider.setValue(SettingsController.getInstance().getVolume());
+        volumeText.setText("" + SettingsController.getInstance().getVolume());
+        volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            volumeText.setText("" + Math.floor((Double) newValue));
+            stageManager
+                    .getMediaPlayer()
+                    .setVolume(((Double) newValue) / 100);
+            SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
+        });
+    }
+
+    /**
+     * Sets mainMenuController as the object of class MainMenuController
+     * @param mainMenuController object of the MainMenuController
+     */
     public void setMainMenuController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
     }

@@ -69,10 +69,6 @@ public class MainMenuController {
      * Initializes Welcome-message for logged in user and music
      */
     public void initialize() {
-        if (!SettingsController.getInstance().getIsPlaying()) {
-
-        }
-
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
