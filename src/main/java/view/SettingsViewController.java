@@ -1,6 +1,7 @@
 package view;
 
 import controller.SettingsController;
+import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,6 +27,7 @@ public class SettingsViewController {
     private boolean isSelected = false;
     private SettingsController settingsController = SettingsController.getInstance();
     MainMenuController mainMenuController = null;
+    private UserController userController = new UserController();
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
@@ -34,9 +36,16 @@ public class SettingsViewController {
      * @throws IOException
      */
     public void settingsBackButton(ActionEvent actionEvent) throws IOException {
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        Parent menuParent = loader.load();
+        MainMenuController controller = loader.getController();
+        if (userController.isUserLoggedIn()) {
+            controller.loginButton.setVisible(false);
+            controller.registerButton.setVisible(false);
+            controller.logoutButton.setVisible(true);
+        }
         Scene menuScene = new Scene(menuParent);
-
         stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);

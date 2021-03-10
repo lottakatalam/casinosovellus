@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -97,7 +98,7 @@ public class InGameViewController {
     public Button yesMoneyButton;
     public Button noMoneyButton;
     public Text outOfMoney;
-
+    private UserController userController = new UserController();
 
     /**
      * Sets Are you sure-screen visible to get back to Menu
@@ -118,9 +119,16 @@ public class InGameViewController {
      * @throws IOException
      */
     public void yesAction(ActionEvent actionEvent) throws IOException {
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        Parent menuParent = loader.load();
+        MainMenuController controller = loader.getController();
+        if (userController.isUserLoggedIn()) {
+            controller.loginButton.setVisible(false);
+            controller.registerButton.setVisible(false);
+            controller.logoutButton.setVisible(true);
+        }
         Scene menuScene = new Scene(menuParent);
-
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setTitle("The Grand Myllypuro");
         window.setScene(menuScene);

@@ -1,5 +1,6 @@
 package view;
 
+import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,7 +43,7 @@ public class GameHistoryController {
     public Text errorText;
     public Text loggedUser;
     private StageManager stageManager;
-
+    private UserController userController = new UserController();
     CasinoDAO casinoDAO = new CasinoDAO();
 
 
@@ -52,7 +53,15 @@ public class GameHistoryController {
      */
     public void gameHistoryBackButton() throws IOException {
 
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        Parent menuParent = loader.load();
+        MainMenuController controller = loader.getController();
+        if (userController.isUserLoggedIn()) {
+            controller.loginButton.setVisible(false);
+            controller.registerButton.setVisible(false);
+            controller.logoutButton.setVisible(true);
+        }
         Scene menuScene = new Scene(menuParent);
         stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");

@@ -25,7 +25,7 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <RadioButton fx:id="onRadio" layoutX="410.0" layoutY="203.0" mnemonicParsing="false" onAction="#turnTips" selected="true" text="ON" textFill="WHITE">
+      <RadioButton fx:id="onRadio" layoutX="410.0" layoutY="203.0" mnemonicParsing="false" onAction="#turnTips" text="ON" textFill="WHITE">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -33,7 +33,7 @@
             <ToggleGroup fx:id="tips" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="offRadio" layoutX="557.0" layoutY="202.0" mnemonicParsing="false" onAction="#turnTips" text="OFF" textFill="WHITE" toggleGroup="$tips">
+      <RadioButton fx:id="offRadio" layoutX="557.0" layoutY="202.0" mnemonicParsing="false" onAction="#turnTips" selected="true" text="OFF" textFill="WHITE" toggleGroup="$tips">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>

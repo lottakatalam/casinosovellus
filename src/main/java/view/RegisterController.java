@@ -107,7 +107,15 @@ public class RegisterController {
      * @throws IOException
      */
     public void backToMainMenu() throws IOException {
-        Parent menuParent = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        Parent menuParent = loader.load();
+        MainMenuController controller = loader.getController();
+        if (userController.isUserLoggedIn()) {
+            controller.loginButton.setVisible(false);
+            controller.registerButton.setVisible(false);
+            controller.logoutButton.setVisible(true);
+        }
         Scene menuScene = new Scene(menuParent);
         stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
