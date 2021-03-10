@@ -25,6 +25,7 @@ public class SettingsViewController {
     private StageManager stageManager;
     private boolean isSelected = false;
     private SettingsController settingsController = SettingsController.getInstance();
+    MainMenuController mainMenuController = null;
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
@@ -54,7 +55,8 @@ public class SettingsViewController {
         volumeSlider.setValue(3);
         volumeText.setText("3");
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
-            volumeText.setText(newValue.toString());
+            volumeText.setText(""+Math.floor((Double) newValue));
+            mainMenuController.getMediaPlayer().setVolume(((Double) newValue) / 100);
         });
     }
 
@@ -79,5 +81,9 @@ public class SettingsViewController {
      */
     public boolean getSelected() {
         return this.isSelected;
+    }
+
+    public void setMainMenuController(MainMenuController mainMenuController) {
+        this.mainMenuController = mainMenuController;
     }
 }

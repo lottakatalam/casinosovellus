@@ -1,7 +1,6 @@
 package view;
 
 import controller.BlackjackController;
-import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +15,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.UserCredentialHandler;
+import org.w3c.dom.css.CSS2Properties;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * Controller class for MainMenu.fxml
@@ -40,6 +38,7 @@ public class MainMenuController {
     private static UserController userController;
     public Stage primaryStage;
     private StageManager stageManager;
+    MediaPlayer mediaPlayer;
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @param actionEvent
@@ -66,15 +65,15 @@ public class MainMenuController {
     }
 
     /**
-     * Initializes Welcome-message for logged in user
+     * Initializes Welcome-message for logged in user and music
      */
     public void initialize() {
             Media sound = new Media(getClass().getResource("/Music/ElegantJazz.mp3").toExternalForm());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.setOnEndOfMedia(() -> {
-                mediaPlayer.seek(Duration.ZERO);
-                mediaPlayer.play();
-            });
+            mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
+        });
         mediaPlayer.setVolume(0.03);
         mediaPlayer.play();
 
@@ -103,7 +102,11 @@ public class MainMenuController {
      * @throws IOException
      */
     public void settingsButton(ActionEvent actionEvent) throws IOException {
-        Parent settingsParent = FXMLLoader.load(getClass().getResource("/Settings.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/Settings.fxml"));
+        Parent settingsParent = loader.load();
+        SettingsViewController settingsViewController = loader.getController();
+        settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);
 
         stageManager = StageManager.getInstance();
@@ -211,5 +214,9 @@ public class MainMenuController {
      */
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
+    }
+
+    public MediaPlayer getMediaPlayer() {
+        return this.mediaPlayer;
     }
 }
