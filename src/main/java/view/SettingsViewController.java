@@ -24,7 +24,7 @@ public class SettingsViewController {
     public Text loggedUser;
     public Text volumeText;
     private StageManager stageManager;
-    private boolean isSelected = false;
+    private boolean isSelected = true;
     private SettingsController settingsController = SettingsController.getInstance();
     MainMenuController mainMenuController = null;
     private UserController userController = new UserController();
