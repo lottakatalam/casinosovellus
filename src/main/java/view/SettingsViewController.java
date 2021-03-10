@@ -100,9 +100,9 @@ public class SettingsViewController {
      */
     public void initSettings() {
         volumeSlider.setValue(SettingsController.getInstance().getVolume());
-        volumeText.setText("" + SettingsController.getInstance().getVolume());
+        volumeText.setText(SettingsController.getInstance().getVolume()+"%");
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
-            volumeText.setText("" + Math.floor((Double) newValue));
+            volumeText.setText(Math.floor((Double) newValue)+"%");
             stageManager
                     .getMediaPlayer()
                     .setVolume(((Double) newValue) / 100);
