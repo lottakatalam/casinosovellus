@@ -1,4 +1,4 @@
-# Casino-sovellus - OTP1 / R02
+# Casino-sovellus - OTP1&2 / R02 / K2021
 
 ## Kehitysympäristö
 Projekti on rakennettu Javalla maven projektina.
