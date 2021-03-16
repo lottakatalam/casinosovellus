@@ -4,6 +4,8 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -15,12 +17,12 @@
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="453.0" layoutY="607.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
+      <Button layoutX="447.0" layoutY="607.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Home">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Button>
-      <Text fx:id="usernameText" layoutX="261.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Tips:">
+      <Text fx:id="tipsText" layoutX="261.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Tips:">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
@@ -38,7 +40,7 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </RadioButton>
-      <Text fx:id="usernameText1" layoutX="200.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Volume:">
+      <Text fx:id="volumeText1" layoutX="200.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Volume:">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
@@ -54,5 +56,28 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Text fx:id="languageText" layoutX="169.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Language:">
+         <font>
+            <Font name="Cooper Black" size="35.0" />
+         </font>
+      </Text>
+      <Button fx:id="englishButton" layoutX="374.0" layoutY="392.0" mnemonicParsing="false" onAction="#selectEnglish" prefHeight="59.0" prefWidth="87.0" style="-fx-padding: 0;">
+         <graphic>
+            <ImageView fitHeight="82.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/UKflag.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="finnishButton" layoutX="544.0" layoutY="392.0" mnemonicParsing="false" onAction="#selectFinnish" style="-fx-padding: 0;">
+         <graphic>
+            <ImageView fitHeight="82.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/Finnishflag.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

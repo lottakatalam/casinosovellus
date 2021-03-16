@@ -21,7 +21,7 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="465.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Back">
+      <Button layoutX="458.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Home">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -48,7 +48,7 @@
       </TableView>
       <ImageView fx:id="blackScreen" fitHeight="786.0" fitWidth="1049.0" layoutX="-6.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@WinnerScreen.png" />
+            <Image url="@Images/WinnerScreen.png" />
          </image>
       </ImageView>
       <Button fx:id="noButton" layoutX="570.0" layoutY="344.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="No" visible="false">

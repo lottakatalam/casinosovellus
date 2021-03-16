@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
@@ -23,6 +24,8 @@ public class SettingsViewController {
     public Slider volumeSlider;
     public Text loggedUser;
     public Text volumeText;
+    public Button finnishButton;
+    public Button englishButton;
     private StageManager stageManager;
     private boolean isSelected = true;
     private SettingsController settingsController = SettingsController.getInstance();
@@ -116,5 +119,17 @@ public class SettingsViewController {
      */
     public void setMainMenuController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
+    }
+
+    /**
+     * Changes language to English *NOT USED YET*
+     */
+    public void selectEnglish() {
+    }
+
+    /**
+     * Changes language to Finnish *NOT USED YET*
+     */
+    public void selectFinnish() {
     }
 }

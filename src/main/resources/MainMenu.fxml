@@ -45,12 +45,12 @@
       </Button>
       <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="181.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@thegrandmyllypurologo.png" />
+            <Image url="@Images/thegrandmyllypurologo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="blackScreen" fitHeight="798.0" fitWidth="1109.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@WinnerScreen.png" />
+            <Image url="@Images/WinnerScreen.png" />
          </image>
       </ImageView>
       <Text fx:id="areYouSure" layoutX="182.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to quit?" visible="false">
