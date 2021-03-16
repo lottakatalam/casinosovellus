@@ -170,6 +170,31 @@ public class BlackjackRound extends Thread {
     }
 
     /**
+     * Player surrenders (Round ends)
+     */
+    //TODO JS Outline for surrender
+    /*
+
+    function Surrender() {
+        surrenderModal.style.display = "block";
+
+        surrender.addEventListener("click", function() {
+            surrenderModal.style.display = "none";
+            cash -= bet;
+            cash.textContent = `${cash}`;
+            playAgainMsg.textContent = "You surrendered, you lost.";
+            game.playAgain();
+        }, { once: true });
+
+        noSurrender.addEventListener("click", function() {
+            surrenderModal.style.display = "none";
+            chooseInsurance();
+        }, { once: true });
+    }
+
+    */
+
+    /**
      * Checks if splitting is possible in game
      * @return
      */
