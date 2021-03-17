@@ -27,12 +27,21 @@ public class Player {
 
     private int splitBet;
 
-    /**
-     * Initializes new Player-object
-     */
+    private CasinoDAO casinoDAO;
+
+
     public Player(int currency) {
         this.hand = new Hand();
         this.currency = currency;
+
+    }
+    /**
+     * Initializes new Player-object
+     */
+    public Player(int currency, CasinoDAO casinoDAO) {
+        this.hand = new Hand();
+        this.currency = currency;
+        this.casinoDAO = casinoDAO;
     }
 
     /**
@@ -50,14 +59,18 @@ public class Player {
         amountOfWins++;
         this.currency += (bet * 2);
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
+            User user = UserCredentialHandler.getInstance().getLoggedInUser();
+            user.setBalance(this.currency);
+            casinoDAO.updateUser(user);
         }
     }
 
     public void setNewBalance() {
         this.currency = 2500;
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
+            User user = UserCredentialHandler.getInstance().getLoggedInUser();
+            user.setBalance(this.currency);
+            casinoDAO.updateUser(user);
         }
     }
 
@@ -66,7 +79,9 @@ public class Player {
      */
     public void lose() {
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
+            User user = UserCredentialHandler.getInstance().getLoggedInUser();
+            user.setBalance(this.currency);
+            casinoDAO.updateUser(user);
         }
     }
 

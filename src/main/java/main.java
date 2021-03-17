@@ -14,7 +14,7 @@ public class main {
      * @param args
      */
     public static void main(String[] args) {
-        Logger.setLogLevel(Logger.LogLevel.ALL);
+        Logger.setLogLevel(Logger.LogLevel.PROD);
         GUImain.main(args);
     }
 

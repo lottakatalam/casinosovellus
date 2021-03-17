@@ -31,17 +31,20 @@ public class BlackjackGame extends Thread {
      */
     private final BlackjackController gameController;
 
+    private CasinoDAO casinoDAO;
+
 
     /**
      * Initializes new Blackjack game
      */
     public BlackjackGame(BlackjackController gameController) {
+        this.casinoDAO = new CasinoDAO();
         Logger.log(Logger.LogLevel.DEV, "Blackjack game started");
         this.deck = new Deck();
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            this.player = new Player(UserCredentialHandler.getInstance().getLoggedInUser().getBalance());
+            this.player = new Player(UserCredentialHandler.getInstance().getLoggedInUser().getBalance(), this.casinoDAO);
         } else {
-            this.player = new Player(2500);
+            this.player = new Player(2500, this.casinoDAO);
         }
         this.dealer = new Dealer();
         this.gameController = gameController;
@@ -58,7 +61,7 @@ public class BlackjackGame extends Thread {
         player.getHand().clearSplittedHand();
         dealer.getHand().clearHand();
 
-        this.round = new BlackjackRound(this.gameController, this.deck, this.player, this.dealer);
+        this.round = new BlackjackRound(this.gameController, this.casinoDAO, this.deck, this.player, this.dealer);
 
     }
 
