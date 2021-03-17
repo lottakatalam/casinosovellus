@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
-import model.User;
-import model.UserCredentialHandler;
 
 /**
  * Login Controller for fxml ui
@@ -26,6 +25,8 @@ public class LoginController {
     public Text errorText;
     public Button okButton;
     public Text loginText;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     @FXML
     private TextField usernameTextField;
 
@@ -71,7 +72,7 @@ public class LoginController {
      */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -99,5 +100,23 @@ public class LoginController {
         errorText.setVisible(false);
         loginText.setVisible(false);
         okButton.setVisible(false);
+    }
+
+    /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 }

@@ -10,16 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import model.UserCredentialHandler;
-import org.w3c.dom.css.CSS2Properties;
 
 import java.io.IOException;
-import java.util.Set;
 
 /**
  * Controller class for MainMenu.fxml
@@ -35,6 +31,8 @@ public class MainMenuController {
     public Button loginButton;
     public Button logoutButton;
     public Button registerButton;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     private BlackjackController gameController;
     private static UserController userController;
     public Stage primaryStage;
@@ -48,7 +46,7 @@ public class MainMenuController {
     public void playButton(ActionEvent actionEvent) throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(GUImain.class.getResource("/InGameView.fxml"));
+        loader.setLocation(GUImain.class.getResource("/FXML/InGameView.fxml"));
         Parent gameParent = loader.load();
 
         InGameViewController controller = loader.getController();
@@ -80,7 +78,7 @@ public class MainMenuController {
      * @throws IOException
      */
     public void gameHistoryButton(ActionEvent actionEvent) throws IOException {
-        Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/GameHistory.fxml"));
+        Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/FXML/GameHistory.fxml"));
         Scene gameHistoryScene = new Scene(gameHistoryParent);
 
         stageManager = StageManager.getInstance();
@@ -95,7 +93,7 @@ public class MainMenuController {
      */
     public void settingsButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Settings.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/Settings.fxml"));
         Parent settingsParent = loader.load();
         SettingsViewController settingsViewController = loader.getController();
         settingsViewController.setMainMenuController(this);
@@ -124,7 +122,7 @@ public class MainMenuController {
      * @throws IOException
      */
     public void logInButton(ActionEvent actionEvent) throws IOException {
-        Parent logInParent = FXMLLoader.load(getClass().getResource("/LogInView.fxml"));
+        Parent logInParent = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
         Scene logInScene = new Scene(logInParent);
 
         stageManager = StageManager.getInstance();
@@ -154,7 +152,7 @@ public class MainMenuController {
      */
     public void registerButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/RegisterView.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/RegisterView.fxml"));
 
         Parent registerParent = loader.load();
         RegisterController controller = loader.getController();
@@ -185,6 +183,24 @@ public class MainMenuController {
     }
 
     /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+    }
+
+    /**
      * Sets gameController as the object of class BlackjackController
      * @param blackjackController object of the BlackjackController
      */
@@ -207,6 +223,5 @@ public class MainMenuController {
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
     }
-
 
 }

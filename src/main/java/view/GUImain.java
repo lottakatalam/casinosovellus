@@ -75,7 +75,7 @@ public class GUImain extends Application {
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(GUImain.class.getResource("/MainMenu.fxml"));
+            loader.setLocation(GUImain.class.getResource("/FXML/MainMenu.fxml"));
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
             BlackjackController ctrl = new BlackjackController();

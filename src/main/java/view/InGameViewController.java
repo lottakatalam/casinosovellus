@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,18 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
 
 
 import java.io.IOException;
@@ -71,6 +66,8 @@ public class InGameViewController {
     public Button evenMoneyButton;
     public Text instructionsText;
     public VBox instructionsBox;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     private BlackjackController gameController;
     private ArrayList<Card> playersCards;
     private ArrayList<Card> dealerCards;
@@ -121,7 +118,7 @@ public class InGameViewController {
      */
     public void yesAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -709,6 +706,24 @@ public class InGameViewController {
         standButton.setTooltip(splitTip);
         doubleButton.setTooltip(splitTip);
         splitButton.setTooltip(splitTip);
+    }
+
+    /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**

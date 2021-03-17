@@ -1,16 +1,15 @@
 package view;
 
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -29,6 +28,8 @@ public class RegisterController {
     public Text errorText;
     public Button okButton;
     public Text registerText;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     private UserController userController = new UserController();
 
     @FXML
@@ -108,7 +109,7 @@ public class RegisterController {
      */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -199,5 +200,23 @@ public class RegisterController {
         blackScreen.setVisible(false);
         errorText.setVisible(false);
         okButton.setVisible(false);
+    }
+
+    /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 }
