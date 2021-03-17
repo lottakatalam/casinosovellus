@@ -212,7 +212,7 @@ public class CasinoDAO {
      * @param user - User that's balance is wanted to change
      * @return - Returns true if successed and false if not
      */
-    public boolean updateBalance(User user) {
+    public boolean updateUser(User user) {
         Transaction transaction = null;
 
         try (Session session = sessionFactory.openSession()) {

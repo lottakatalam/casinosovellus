@@ -27,7 +27,7 @@ public class BlackjackRound extends Thread {
     private SettingsController settingsController;
 
 
-    CasinoDAO casinoDAO = new CasinoDAO();
+    CasinoDAO casinoDAO;
 
 
     /**
@@ -38,12 +38,13 @@ public class BlackjackRound extends Thread {
      * @param player represents the user. It's methods are called from the UI activity. Wins or loses currency.
      * @param dealer draws and stands through algorithm.
      */
-    public BlackjackRound(BlackjackController gameController, Deck deck, Player player, Dealer dealer) {
+    public BlackjackRound(BlackjackController gameController, CasinoDAO casinoDAO, Deck deck, Player player, Dealer dealer) {
         Logger.log(Logger.LogLevel.PROD, String.format("Round %d started", ++roundNumber));
         this.deck = deck;
         this.player = player;
         this.dealer = dealer;
         this.gameController = gameController;
+        this.casinoDAO = casinoDAO;
 
         deck.shuffleDeck();
 
@@ -86,12 +87,12 @@ public class BlackjackRound extends Thread {
         splitPossibility = checkSplitPossibility();
 
         /* THIS CAN BE USED TO DEBUG SPLITTING */
-        //this.gameController.setSplitPossibility(true);
-        this.gameController.setSplitPossibility(splitPossibility);
+        this.gameController.setSplitPossibility(true);
+        //this.gameController.setSplitPossibility(splitPossibility);
 
         /* THIS CAN BE USED TO DEBUG DOUBLING */
-        this.gameController.setDoublePossibility(doublePossibility);
-        //this.gameController.setDoublePossibility(true);
+        //this.gameController.setDoublePossibility(doublePossibility);
+        this.gameController.setDoublePossibility(true);
     }
 
     /**

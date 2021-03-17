@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 /**
- * A class for userTable in Databse
+ * A class for userTable in Database
  */
 public class User {
 
@@ -99,7 +99,6 @@ public class User {
      */
     public void setBalance(int balance) {
         this.balance = balance;
-        CasinoDAO casinoDAO = new CasinoDAO();
-        casinoDAO.updateBalance(this);
+
     }
 }

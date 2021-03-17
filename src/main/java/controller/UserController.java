@@ -1,7 +1,7 @@
 package controller;
 
 
-import model.User;
+
 import model.UserCredentialHandler;
 
 /**
