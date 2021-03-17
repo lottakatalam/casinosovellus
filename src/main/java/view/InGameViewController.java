@@ -493,13 +493,17 @@ public class InGameViewController {
         }
         updateBalance();
         sleep(4000);
-        winnerScreen.setVisible(false);
-        declareWinner.setText("");
-        currentBet.setText("\uD83D\uDCB2" + bet);
-        clearTable();
-        gameController.setSplitStatus(false);
-        splitted = false;
-        checkBalance();
+        if (gameController.getSplitStatus()) {
+            gameController.setSplitStatus(false);
+            declareWinner.setText("");
+        } else {
+            winnerScreen.setVisible(false);
+            declareWinner.setText("");
+            currentBet.setText("\uD83D\uDCB2" + bet);
+            clearTable();
+            splitted = false;
+            checkBalance();
+        }
     }
 
     public void checkBalance() {
