@@ -46,9 +46,13 @@ public class Player {
     /**
      * Adds one win to players amountOfWins-attribute and increases the amount of online cash the player has
      */
-    public void win() {
+    public void win(String method) {
         amountOfWins++;
-        this.currency += (bet * 2);
+        if (method.equals("Blackjack")) {
+            this.currency += (bet * 3);
+        } else {
+            this.currency += (bet * 2);
+        }
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             UserCredentialHandler.getInstance().getLoggedInUser().setBalance(this.currency);
         }

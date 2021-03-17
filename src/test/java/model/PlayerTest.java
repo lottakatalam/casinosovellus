@@ -35,7 +35,7 @@ class PlayerTest {
     @CsvSource({"10, 1010", "200, 1200", "1000, 2000"})
     void win(int bet, int amountOfCurrency) {
             p.setBet(bet);
-            p.win();
+            p.win("Basic");
             assertEquals(1, p.getWins(), "The amount of wins isn't correct");
             assertEquals(amountOfCurrency, p.getCurrency(), "The currency didn't change correctly after a win");
     }

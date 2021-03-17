@@ -234,6 +234,7 @@ public class BlackjackRound extends Thread {
     public String whoWins(int playerTotal) throws InterruptedException {
         History h = new History();
         String winner = "";
+        String method = "";
 
         int dealerTotal = dealer.getHand().calculateTotal();
         boolean playerWins = false;
@@ -242,37 +243,43 @@ public class BlackjackRound extends Thread {
             Logger.log(Logger.LogLevel.PROD, "No one wins");
             this.winner = "nobody";
             h.setResult(History.gameResults.DRAW);
-            h.setMethod("Draw");
+            method = "Draw";
+            h.setMethod(method);
         } else if (playerTotal == 21){
             playerWins = true;
             this.winner = "Blackjack";
             h.setResult(History.gameResults.WON);
-            h.setMethod("Blackjack");
+            method = "Blackjack";
+            h.setMethod(method);
         } else if (playerTotal < 21 && (playerTotal > dealerTotal || dealerTotal > 21)) {
             playerWins = true;
             this.winner = "player";
             h.setResult(History.gameResults.WON);
-            h.setMethod("Basic");
+            method = "Basic";
+            h.setMethod(method);
             Logger.log(Logger.LogLevel.PROD, "Player wins");
         } else if (playerTotal > 21) {
             this.winner = "busted";
             h.setResult(History.gameResults.LOST);
-            h.setMethod("Busted");
+            method = "Busted";
+            h.setMethod(method);
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         } else if (dealerTotal == 21) {
             this.winner = "dealer";
             h.setResult(History.gameResults.LOST);
-            h.setMethod("Blackjack");
+            method = "Blackjack";
+            h.setMethod(method);
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         } else {
             this.winner = "dealer";
             h.setResult(History.gameResults.LOST);
-            h.setMethod("Basic");
+            method = "Basic";
+            h.setMethod(method);
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
         }
 
         if (playerWins) {
-            player.win();
+            player.win(method);
         } else {
             player.lose();
         }

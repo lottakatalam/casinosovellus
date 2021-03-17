@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -292,6 +293,7 @@ public class InGameViewController {
         switch(cardNumber) {
             case 1:
                 playerCardImage1.setImage(cardImage);
+
                 break;
             case 2:
                 playerCardImage2.setImage(cardImage);
@@ -490,11 +492,11 @@ public class InGameViewController {
                 break;
         }
         updateBalance();
-        clearTable();
         sleep(4000);
         winnerScreen.setVisible(false);
         declareWinner.setText("");
         currentBet.setText("\uD83D\uDCB2" + bet);
+        clearTable();
         gameController.setSplitStatus(false);
         splitted = false;
         checkBalance();
