@@ -46,6 +46,13 @@ public class RegisterController {
 
     private StageManager stageManager;
 
+    /**
+     * Initializes stageManager
+     */
+    public void initialize() {
+        stageManager = StageManager.getInstance();
+    }
+
 
     @FXML
     /**
@@ -119,7 +126,6 @@ public class RegisterController {
             controller.changePasswordButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();

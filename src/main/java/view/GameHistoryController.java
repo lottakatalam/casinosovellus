@@ -63,7 +63,6 @@ public class GameHistoryController {
             controller.logoutButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();
@@ -163,6 +162,7 @@ public class GameHistoryController {
      * For initializing table in game history
      */
     public void initialize() {
+        stageManager = StageManager.getInstance();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
