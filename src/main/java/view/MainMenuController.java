@@ -56,7 +56,6 @@ public class MainMenuController {
         controller.init();
         Scene gameScene = new Scene(gameParent);
 
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("Blackjack");
         stageManager.getPrimaryStage().setScene(gameScene);
         stageManager.getPrimaryStage().show();
@@ -67,6 +66,7 @@ public class MainMenuController {
      * Initializes Welcome-message for logged in user and music
      */
     public void initialize() {
+        stageManager = StageManager.getInstance();
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
@@ -81,7 +81,6 @@ public class MainMenuController {
         Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/FXML/GameHistory.fxml"));
         Scene gameHistoryScene = new Scene(gameHistoryParent);
 
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("Game History");
         stageManager.getPrimaryStage().setScene(gameHistoryScene);
         stageManager.getPrimaryStage().show();
@@ -99,7 +98,6 @@ public class MainMenuController {
         settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);
 
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("Settings");
         stageManager.getPrimaryStage().setScene(settingsScene);
         stageManager.getPrimaryStage().show();
@@ -125,7 +123,6 @@ public class MainMenuController {
         Parent logInParent = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
         Scene logInScene = new Scene(logInParent);
 
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("Log In");
         stageManager.getPrimaryStage().setScene(logInScene);
         stageManager.getPrimaryStage().show();
@@ -158,7 +155,6 @@ public class MainMenuController {
         RegisterController controller = loader.getController();
 
         Scene registerScene = new Scene(registerParent);
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("Register");
         stageManager.getPrimaryStage().setScene(registerScene);
         stageManager.getPrimaryStage().show();

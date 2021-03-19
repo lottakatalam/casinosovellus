@@ -51,7 +51,6 @@ public class SettingsViewController {
             controller.logoutButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();

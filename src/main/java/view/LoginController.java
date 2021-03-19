@@ -38,6 +38,13 @@ public class LoginController {
     private StageManager stageManager;
     private UserController userController = new UserController();
 
+    /**
+     * Initialized stageManager
+     */
+    public void initialize(){
+        stageManager = StageManager.getInstance();
+    }
+
 
     @FXML
     /**
@@ -81,7 +88,6 @@ public class LoginController {
             controller.logoutButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();

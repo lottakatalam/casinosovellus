@@ -144,6 +144,13 @@ public class InGameViewController {
     }
 
     /**
+     * Initializes stageManager
+     */
+    public void initialize() {
+        stageManager = StageManager.getInstance();
+    }
+
+    /**
      * Game screen's Instructions-Button loads to Instructions.fxml (Opens another window)
      *
      * @throws IOException
