@@ -173,6 +173,8 @@ public class BlackjackRound extends Thread {
         this.player.insure();
     }
 
+
+
     /**
      * Player splits the hand to two hands
      */
@@ -189,6 +191,12 @@ public class BlackjackRound extends Thread {
     /**
      * Player surrenders (Round ends)
      */
+
+
+    public void playersurrender() {
+        this.insured = true;
+        this.player.insure();
+    }
     //TODO JS Outline for surrender
     /*
 

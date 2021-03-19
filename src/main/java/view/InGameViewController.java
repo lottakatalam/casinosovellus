@@ -468,6 +468,18 @@ public class InGameViewController {
         }
     }
 
+    public void surrender() {
+        int surrender = this.bet / 2;
+        if (gameController.getsurrenderPossibility()) {
+            currentBet.setText("\uD83D\uDCB2" + bet + " (\uD83D\uDCB2" + surrender + ")");
+            gameController.playerSurrender();
+            updateBalance();
+            splitButton.setDisable(true);
+            surrenderButton.setDisable(true);
+            disableDouble();
+        }
+    }
+
 
     /**
      * Sets splitted hand to UI when player has splitted
@@ -509,6 +521,9 @@ public class InGameViewController {
                 break;
             case "insured":
                 declareWinner.setText("Insurance payback");
+                break;
+            case "Surrendered":
+                declareWinner.setText("Surrendered payback");
         }
         updateBalance();
         sleep(4000);

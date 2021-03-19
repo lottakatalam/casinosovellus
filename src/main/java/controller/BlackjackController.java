@@ -24,6 +24,7 @@ public class BlackjackController {
     private boolean doublePossibility;
     private boolean splitPossibility;
     private boolean insurancePossibility;
+    private boolean surrenderPossibility;
     private boolean splitIsOn = false;
 
 
@@ -261,6 +262,23 @@ public class BlackjackController {
 
     public void playerInsure() { this.blackJackGame.playerInsure(); }
 
+
+
+    /**
+     * Sets the surrender possibility
+     * @param surrenderPossibility - Current surrender possibility
+     */
+    public void setSurrenderPossibility(boolean surrenderPossibility) { this.surrenderPossibility = surrenderPossibility; }
+
+    /**
+     * Gets the surrender possibility
+     * @return - Returns true or false/ is surrendering possible or not
+     */
+    public boolean getsurrenderPossibility() { return this.surrenderPossibility; }
+
+    public void playerSurrender() { this.blackJackGame.playersurrender(); }
+
+
     /**
      * Gets the split possibility
      * @return - Returns true or false/ is splitting possible or not
@@ -303,4 +321,6 @@ public class BlackjackController {
     public void showSplitTip() {
         inGameViewController.showSplitTip();
     }
+
+
 }
