@@ -33,6 +33,7 @@ public class MainMenuController {
     public Button registerButton;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
+    public Button changePasswordButton;
     private BlackjackController gameController;
     private static UserController userController;
     public Stage primaryStage;
@@ -160,6 +161,20 @@ public class MainMenuController {
         stageManager.getPrimaryStage().show();
     }
 
+    public void handleChangePassword(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
+
+        Parent changePasswordView = loader.load();
+        ChangePasswordController controller = loader.getController();
+
+        Scene changePasswordScene = new Scene(changePasswordView);
+        stageManager = StageManager.getInstance();
+        stageManager.getPrimaryStage().setTitle("Change password");
+        stageManager.getPrimaryStage().setScene(changePasswordScene);
+        stageManager.getPrimaryStage().show();
+
+    }
     /**
      * Closes the program
      */

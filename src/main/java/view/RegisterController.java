@@ -53,6 +53,9 @@ public class RegisterController {
         stageManager = StageManager.getInstance();
     }
 
+    @FXML
+    private Button changePasswordButton;
+
 
     @FXML
     /**
@@ -208,6 +211,7 @@ public class RegisterController {
         errorText.setVisible(false);
         okButton.setVisible(false);
     }
+
 
     /**
      * Mutes game music

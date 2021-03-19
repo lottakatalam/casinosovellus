@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class NewPasswordViewController {
+public class ChangePasswordController {
 
     public ImageView blackScreen;
     public Text errorText;
@@ -94,7 +94,7 @@ public class NewPasswordViewController {
      */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
