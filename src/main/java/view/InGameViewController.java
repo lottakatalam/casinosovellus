@@ -522,8 +522,8 @@ public class InGameViewController {
             case "insured":
                 declareWinner.setText("Insurance payback");
                 break;
-            case "Surrendered":
-                declareWinner.setText("Surrendered payback");
+            case "surrendered":
+                declareWinner.setText("Surrendered");
         }
         updateBalance();
         sleep(4000);
