@@ -2,6 +2,7 @@ package controller;
 
 
 
+import model.User;
 import model.UserCredentialHandler;
 
 /**
@@ -46,5 +47,9 @@ public class UserController {
      */
     public boolean isUserLoggedIn() {
         return UserCredentialHandler.getInstance().isLoggedIn();
+    }
+
+    public boolean changeUserPassword(String newPassword, String oldPassword) {
+        return UserCredentialHandler.getInstance().changePassword(newPassword, oldPassword);
     }
 }

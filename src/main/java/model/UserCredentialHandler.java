@@ -51,7 +51,7 @@ public class UserCredentialHandler {
         User user = casinoDAO.getUserByUsername(username);
         if (user != null ) {
             if (validatePassword(password, user.getPassword())) {
-                //user.setPassword("");
+                user.setPassword("");
                 loggedInUser = user;
                 isLoggedIn = true;
                 return true;
@@ -69,7 +69,6 @@ public class UserCredentialHandler {
      * @return - True if user creation is successed
      */
     public boolean createNewUser(String username, String password) {
-
         User newUser = new User();
         newUser.setUserName(username);
         newUser.setPassword(hashPassword(password));
@@ -79,6 +78,22 @@ public class UserCredentialHandler {
 
 
         return true;
+    }
+
+    public boolean changePassword(String newPassword, String oldPassword) {
+
+        User user = casinoDAO.getUserByUsername(loggedInUser.getUserName());
+        if (user != null ) {
+            if (validatePassword(oldPassword, user.getPassword())) {
+                user.setPassword(hashPassword(newPassword));
+                casinoDAO.updateUser(user);
+
+                return true;
+            }
+        }
+
+
+        return false;
     }
 
     /**

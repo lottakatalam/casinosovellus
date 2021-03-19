@@ -1,44 +1,34 @@
 package view;
 
-import java.awt.*;
-import java.io.IOException;
-import java.sql.SQLException;
-
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Window;
 
-/**
- *
- * Register Controller for fxml ui
- *
- */
+import java.io.IOException;
 
-public class RegisterController {
+public class NewPasswordViewController {
 
     public ImageView blackScreen;
     public Text errorText;
     public Button okButton;
-    public Text registerText;
+    public Text succesfulText;
     private UserController userController = new UserController();
 
     @FXML
-    public TextField usernameTextField;
+    public TextField oldPasswordField;
 
     @FXML
-    public TextField passwordTextField;
+    public TextField newPasswordField;
 
     @FXML
-    public TextField repeatTextField;
+    public TextField newPasswordRepeatField;
 
     @FXML
     public Button submitButton;
@@ -48,47 +38,43 @@ public class RegisterController {
 
     @FXML
     /**
-     * Registers a new user
+     * Changes users password
      */
-    public void register(ActionEvent event) throws SQLException {
+    public void changePassword(ActionEvent event) {
 
-        Window owner = usernameTextField.getScene().getWindow();
-
-        System.out.println(usernameTextField.getText());
-        System.out.println(passwordTextField.getText());
-        if (usernameTextField.getText().isEmpty()) {
-            errorText.setText("Please enter a username");
+        if (oldPasswordField.getText().isEmpty() ) {
+            errorText.setText("Please enter old password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
         }
-        else if (!isValidUsername(usernameTextField.getText())) {
-
-        }
-        else if (passwordTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty()) {
-            errorText.setText("Please enter a password");
+        else if(newPasswordField.getText().isEmpty()) {
+            errorText.setText("Please enter new password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
         }
-        else if(!isValidPassword(passwordTextField.getText())) {
-
+        else if(!isValidPassword(newPasswordField.getText())) {
         }
-        else if (repeatTextField.getText().isEmpty() && !usernameTextField.getText().isEmpty() && !passwordTextField.getText().isEmpty()) {
-            errorText.setText("Please repeat password");
+        else if (newPasswordRepeatField.getText().isEmpty()) {
+            errorText.setText("Please repeat new password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
         }
-        else if (passwordTextField.getText().equals(repeatTextField.getText()) && !passwordTextField.getText().isEmpty() && !repeatTextField.getText().isEmpty()) {
-            blackScreen.setVisible(true);
-            registerText.setVisible(true);
-            okButton.setVisible(true);
-            String username = usernameTextField.getText();
-            String password = passwordTextField.getText();
+        else if (newPasswordField.getText().equals(newPasswordRepeatField.getText()) && !newPasswordField.getText().isEmpty() && !newPasswordRepeatField.getText().isEmpty()) {
+            if(userController.changeUserPassword(newPasswordField.getText(), oldPasswordField.getText())) {
+                blackScreen.setVisible(true);
+                succesfulText.setVisible(true);
+                okButton.setVisible(true);
+            } else {
+                errorText.setText("Please check that old password is written correctly");
+                blackScreen.setVisible(true);
+                errorText.setVisible(true);
+                okButton.setVisible(true);
+            }
 
-            userController.createNewUser(username, password);
-            userController.login(username,password);
+
         } else {
             errorText.setText("Password does not match");
             blackScreen.setVisible(true);
@@ -97,9 +83,9 @@ public class RegisterController {
         }
 
 
-
-        passwordTextField.setText("");
-        repeatTextField.setText("");
+        oldPasswordField.setText("");
+        newPasswordField.setText("");
+        newPasswordRepeatField.setText("");
     }
 
     /**
@@ -115,7 +101,6 @@ public class RegisterController {
             controller.loginButton.setVisible(false);
             controller.registerButton.setVisible(false);
             controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
         stageManager = StageManager.getInstance();
@@ -125,24 +110,6 @@ public class RegisterController {
 
     }
 
-    /**
-     * Validation of Username while registering
-     * @param username - Username that is validated
-     * @return - If the username is valid or not
-     */
-    public boolean isValidUsername(String username) {
-        boolean isValid = true;
-        if (username.length() > 16 || username.length() < 4) {
-            String message = "Username must be less than 16 and more than 4 characters in length.";
-            System.out.println(message);
-            errorText.setText(message);
-            blackScreen.setVisible(true);
-            errorText.setVisible(true);
-            okButton.setVisible(true);
-            isValid = false;
-        }
-        return isValid;
-    }
 
     /**
      * Validation of Password while registering
@@ -183,10 +150,10 @@ public class RegisterController {
     }
 
     public void setErrorMessageAboutPassword(String message) {
-            errorText.setText(message);
-            blackScreen.setVisible(true);
-            errorText.setVisible(true);
-            okButton.setVisible(true);
+        errorText.setText(message);
+        blackScreen.setVisible(true);
+        errorText.setVisible(true);
+        okButton.setVisible(true);
     }
 
     /**
@@ -194,7 +161,7 @@ public class RegisterController {
      * @throws IOException
      */
     public void okButton() throws IOException {
-        if (registerText.isVisible()) {
+        if (succesfulText.isVisible()) {
             backToMainMenu();
         }
         blackScreen.setVisible(false);
@@ -202,3 +169,4 @@ public class RegisterController {
         okButton.setVisible(false);
     }
 }
+

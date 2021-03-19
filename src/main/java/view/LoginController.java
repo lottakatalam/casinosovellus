@@ -59,7 +59,7 @@ public class LoginController {
             okButton.setVisible(true);
         }
 
-        usernameTextField.setText("");
+
         passwordTextField.setText("");
 
 
@@ -78,6 +78,7 @@ public class LoginController {
             controller.loginButton.setVisible(false);
             controller.registerButton.setVisible(false);
             controller.logoutButton.setVisible(true);
+            controller.changePasswordButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
         stageManager = StageManager.getInstance();
