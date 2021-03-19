@@ -156,6 +156,10 @@ public class Player {
         this.currency -= bet / 2;
     }
 
+    public void surrender() {
+       // this.currency -= bet / 2;
+    }
+
     /**
      * Gets the amount of bet
      * @return - the amount of bet

@@ -24,8 +24,10 @@ public class BlackjackRound extends Thread {
     boolean doublePossibility;
     boolean splitPossibility;
     boolean insurancePossibility;
+    boolean surrenderPossibility;
     boolean splitted;
     boolean insured;
+    boolean surrendered;
     boolean insuranceHit;
     private SettingsController settingsController;
 
@@ -194,8 +196,8 @@ public class BlackjackRound extends Thread {
 
 
     public void playersurrender() {
-        this.insured = true;
-        this.player.insure();
+        this.surrendered = true;
+        this.player.surrender();
     }
     //TODO JS Outline for surrender
     /*
