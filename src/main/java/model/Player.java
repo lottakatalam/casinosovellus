@@ -58,7 +58,7 @@ public class Player {
     public void win(String method) {
         amountOfWins++;
         if (method.equals("Blackjack")) {
-            this.currency += (bet * 3);
+            this.currency += (bet * 2.5);
         } else {
             this.currency += (bet * 2);
         }
@@ -81,7 +81,10 @@ public class Player {
     /**
      * Decreases the amount of online cash the player has
      */
-    public void lose() {
+    public void lose(String method) {
+        if (method.equals("Insurance")) {
+            this.currency += bet + bet / 2;
+        }
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             User user = UserCredentialHandler.getInstance().getLoggedInUser();
             user.setBalance(this.currency);
@@ -144,6 +147,10 @@ public class Player {
     public void doubleBet() {
         this.currency -= bet;
         this.bet = bet * 2;
+    }
+
+    public void insure() {
+        this.currency -= bet / 2;
     }
 
     /**

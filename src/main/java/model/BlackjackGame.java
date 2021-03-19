@@ -101,6 +101,8 @@ public class BlackjackGame extends Thread {
         round.playerStay();
     }
 
+    public void playerInsure() { round.playerInsure(); }
+
 
     /**
      * Returns player of the game

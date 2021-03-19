@@ -23,7 +23,10 @@ public class BlackjackRound extends Thread {
     private String splitWinner;
     boolean doublePossibility;
     boolean splitPossibility;
+    boolean insurancePossibility;
     boolean splitted;
+    boolean insured;
+    boolean insuranceHit;
     private SettingsController settingsController;
 
 
@@ -52,7 +55,7 @@ public class BlackjackRound extends Thread {
 
         addFirstCardsToUI();
 
-        checkDoubleAndSplitPossibility();
+        checkSpecialRulePossibilities();
 
         player.getHand().printHand();
         System.out.println("");
@@ -81,18 +84,26 @@ public class BlackjackRound extends Thread {
     /**
      * Check if it is possible to split or double in game
      */
-    public void checkDoubleAndSplitPossibility() {
+    public void checkSpecialRulePossibilities() {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
         splitPossibility = checkSplitPossibility();
+        insurancePossibility = dealer.getHand().getHand().get(0).getRankString().equals("Ace") && gameController.getPlayer().getCurrency() > player.getBet() / 2;
 
         /* THIS CAN BE USED TO DEBUG SPLITTING */
-        this.gameController.setSplitPossibility(true);
-        //this.gameController.setSplitPossibility(splitPossibility);
+        //this.gameController.setSplitPossibility(true);
+        this.gameController.setSplitPossibility(splitPossibility);
 
         /* THIS CAN BE USED TO DEBUG DOUBLING */
-        //this.gameController.setDoublePossibility(doublePossibility);
-        this.gameController.setDoublePossibility(true);
+        this.gameController.setDoublePossibility(doublePossibility);
+        //this.gameController.setDoublePossibility(true);
+
+        /* THIS CAN BE USED TO DEBUG INSURANCE */
+        this.gameController.setInsurancePossibility(insurancePossibility);
+        //this.gameController.setInsurancePossibility(true);
+
+        /*  Although to truly debug insuring you also have to set insuranceHit to true and make a new if -statement in
+         * whoWins with only condition insuranceHit == true */
     }
 
     /**
@@ -155,6 +166,11 @@ public class BlackjackRound extends Thread {
         if (!this.isAlive()) {
             playerStay();
         }
+    }
+
+    public void playerInsure() {
+        this.insured = true;
+        this.player.insure();
     }
 
     /**
@@ -246,7 +262,8 @@ public class BlackjackRound extends Thread {
             h.setResult(History.gameResults.DRAW);
             method = "Draw";
             h.setMethod(method);
-        } else if (playerTotal == 21){
+        }
+        else if (playerTotal == 21){
             playerWins = true;
             this.winner = "Blackjack";
             h.setResult(History.gameResults.WON);
@@ -265,12 +282,18 @@ public class BlackjackRound extends Thread {
             method = "Busted";
             h.setMethod(method);
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
-        } else if (dealerTotal == 21) {
+        } else if (dealerTotal == 21 && !insuranceHit) {
             this.winner = "dealer";
             h.setResult(History.gameResults.LOST);
             method = "Blackjack";
             h.setMethod(method);
             Logger.log(Logger.LogLevel.PROD, "Dealer wins");
+        } else if (dealerTotal == 21 && insuranceHit) {
+            this.winner = "insured";
+            h.setResult(History.gameResults.INSURED);
+            method = "Insurance";
+            h.setMethod(method);
+            Logger.log(Logger.LogLevel.PROD, "Hand insured");
         } else {
             this.winner = "dealer";
             h.setResult(History.gameResults.LOST);
@@ -282,7 +305,7 @@ public class BlackjackRound extends Thread {
         if (playerWins) {
             player.win(method);
         } else {
-            player.lose();
+            player.lose(method);
         }
         gameController.declareWinner(this.winner);
 
@@ -298,6 +321,11 @@ public class BlackjackRound extends Thread {
             splitted = false;
             whoWins(player.getHand().calculateSplittedTotal());
         }
+
+        if (insured) {
+            insured = false;
+            insuranceHit = false;
+        }
         return winner;
     }
 
@@ -311,6 +339,9 @@ public class BlackjackRound extends Thread {
             while (dealer.getHand().calculateTotal() <= 16) {
                 System.out.println("Dealer has " + dealer.getHand().calculateTotal() + " and hits");
                 dealer.getHand().addCard(deck.nextCard());
+                if (dealer.getHand().calculateTotal() == 21 && dealer.getHand().getNumberOfCards() == 2 && insured) {
+                    this.insuranceHit = true;
+                }
                 gameController.setDealersCardsToUI(dealer.getHand().getHand());
 
             }

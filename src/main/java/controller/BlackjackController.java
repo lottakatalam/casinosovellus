@@ -23,6 +23,7 @@ public class BlackjackController {
     private String winner;
     private boolean doublePossibility;
     private boolean splitPossibility;
+    private boolean insurancePossibility;
     private boolean splitIsOn = false;
 
 
@@ -245,6 +246,20 @@ public class BlackjackController {
     public void setSplitPossibility(boolean splitPossibility) {
         this.splitPossibility = splitPossibility;
     }
+
+    /**
+     * Sets the insurance possibility
+     * @param insurancePossibility - Current insurance possibility
+     */
+    public void setInsurancePossibility(boolean insurancePossibility) { this.insurancePossibility = insurancePossibility; }
+
+    /**
+     * Gets the insurance possibility
+     * @return - Returns true or false/ is insuring possible or not
+     */
+    public boolean getInsurancePossibility() { return this.insurancePossibility; }
+
+    public void playerInsure() { this.blackJackGame.playerInsure(); }
 
     /**
      * Gets the split possibility

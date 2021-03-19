@@ -244,6 +244,7 @@ public class InGameViewController {
      */
     public void hit() throws InterruptedException {
         splitButton.setDisable(true);
+        insuranceButton.setDisable(true);
         if (gameController.getSplitStatus()) {
             gameController.hitToSplittedHand();
         } else {
@@ -272,8 +273,7 @@ public class InGameViewController {
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
-                checkForDouble();
-                checkForSplit();
+                checkSpecialRules();
             }
         }
 
@@ -415,6 +415,7 @@ public class InGameViewController {
      */
     public void stand() throws InterruptedException {
         splitButton.setDisable(true);
+        insuranceButton.setDisable(true);
         if (gameController.getSplitStatus() && splitted) {
             disableHit();
             disableStand();
@@ -445,6 +446,18 @@ public class InGameViewController {
             disableDouble();
         } else {
             setValidBetView("Insufficient balance to split the hand");
+        }
+    }
+
+    public void insure() {
+        int insurance = this.bet / 2;
+        if (gameController.getInsurancePossibility()) {
+            currentBet.setText("\uD83D\uDCB2" + bet + " (\uD83D\uDCB2" + insurance + ")");
+            gameController.playerInsure();
+            updateBalance();
+            splitButton.setDisable(true);
+            insuranceButton.setDisable(true);
+            disableDouble();
         }
     }
 
@@ -487,6 +500,8 @@ public class InGameViewController {
             case "busted":
                 declareWinner.setText("Busted! Dealer wins.");
                 break;
+            case "insured":
+                declareWinner.setText("Insurance payback");
         }
         updateBalance();
         sleep(4000);
@@ -616,6 +631,23 @@ public class InGameViewController {
         if(gameController.getSplitPossibility()) {
             splitButton.setDisable(false);
         }
+    }
+
+    /**
+     * Checks if insuring is possible and if its possible, it enables 'Insurance' button
+     */
+    public void checkForInsurance() {
+        if(gameController.getInsurancePossibility()) {
+            insuranceButton.setDisable(false);
+        }
+    }
+    /**
+     * Checks for all the special rules
+     */
+    public void checkSpecialRules() {
+        checkForSplit();
+        checkForDouble();
+        checkForInsurance();
     }
 
     /**
