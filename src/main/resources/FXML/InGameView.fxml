@@ -75,7 +75,7 @@
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="insuranceButton" disable="true" layoutX="545.0" layoutY="662.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Insurance">
+      <Button fx:id="insuranceButton" disable="true" layoutX="545.0" layoutY="662.0" mnemonicParsing="false" onAction="#insure" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Insurance">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
@@ -120,9 +120,27 @@
             <Font name="Cooper Black" size="25.0" />
          </font>
       </Text>
+      <Button fx:id="volumeOFFbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeOFF" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/VolumeONicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="volumeONbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeON" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;" visible="false">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/VolumeOFFicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <ImageView fx:id="winnerScreen" fitHeight="801.0" fitWidth="1068.0" layoutX="-4.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@Images/WinnerScreen.png" />
+            <Image url="@../Images/WinnerScreen.png" />
          </image>
       </ImageView>
       <Button fx:id="yesMoneyButton" layoutX="445.0" layoutY="357.0" mnemonicParsing="false" onAction="#yesMoney" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="Yes!" textAlignment="CENTER" visible="false">

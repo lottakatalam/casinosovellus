@@ -15,7 +15,7 @@ public class BlackjackGame extends Thread {
     /**
      * Deck used in a blackjack game
      */
-    private final Deck deck;
+    private Deck deck;
 
     /**
      * Player playing in a blackjack game
@@ -61,6 +61,11 @@ public class BlackjackGame extends Thread {
         player.getHand().clearSplittedHand();
         dealer.getHand().clearHand();
 
+        if(this.deck.getDeck().size() < 18) {
+            this.deck = new Deck();
+            Logger.log(Logger.LogLevel.PROD, "Getting a new deck...");
+        }
+
         this.round = new BlackjackRound(this.gameController, this.casinoDAO, this.deck, this.player, this.dealer);
 
     }
@@ -100,6 +105,8 @@ public class BlackjackGame extends Thread {
     public void playerStay() {
         round.playerStay();
     }
+
+    public void playerInsure() { round.playerInsure(); }
 
 
     /**

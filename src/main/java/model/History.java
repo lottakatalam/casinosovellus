@@ -20,7 +20,8 @@ public class History {
     public enum gameResults{
         WON,
         LOST,
-        DRAW
+        DRAW,
+        INSURED
     }
 
     @Id

@@ -43,14 +43,32 @@
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="volumeOFFbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeOFF" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/VolumeONicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="volumeONbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeON" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;" visible="false">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/VolumeOFFicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
       <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="181.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/thegrandmyllypurologo.png" />
+            <Image url="@../Images/thegrandmyllypurologo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="blackScreen" fitHeight="798.0" fitWidth="1109.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@Images/WinnerScreen.png" />
+            <Image url="@../Images/WinnerScreen.png" />
          </image>
       </ImageView>
       <Text fx:id="areYouSure" layoutX="182.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to quit?" visible="false">

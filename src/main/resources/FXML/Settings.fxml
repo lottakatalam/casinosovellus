@@ -65,7 +65,7 @@
          <graphic>
             <ImageView fitHeight="82.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/UKflag.png" />
+                  <Image url="@../Images/UKflag.png" />
                </image>
             </ImageView>
          </graphic>
@@ -74,7 +74,25 @@
          <graphic>
             <ImageView fitHeight="82.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Finnishflag.png" />
+                  <Image url="@../Images/Finnishflag.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="volumeOFFbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeOFF" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/VolumeONicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="volumeONbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeON" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;" visible="false">
+         <graphic>
+            <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/VolumeOFFicon.png" />
                </image>
             </ImageView>
          </graphic>

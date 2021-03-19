@@ -1,11 +1,10 @@
 package view;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import model.CasinoDAO;
 import model.History;
 import model.UserCredentialHandler;
@@ -42,6 +40,8 @@ public class GameHistoryController {
     public Button okButton;
     public Text errorText;
     public Text loggedUser;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     private StageManager stageManager;
     private UserController userController = new UserController();
     CasinoDAO casinoDAO = new CasinoDAO();
@@ -54,7 +54,7 @@ public class GameHistoryController {
     public void gameHistoryBackButton() throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -194,5 +194,23 @@ public class GameHistoryController {
         errorText.setVisible(false);
         okButton.setVisible(false);
         gameHistoryBackButton();
+    }
+
+    /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 }

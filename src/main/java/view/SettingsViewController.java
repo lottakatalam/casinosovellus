@@ -26,6 +26,8 @@ public class SettingsViewController {
     public Text volumeText;
     public Button finnishButton;
     public Button englishButton;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     private StageManager stageManager;
     private boolean isSelected = true;
     private SettingsController settingsController = SettingsController.getInstance();
@@ -40,7 +42,7 @@ public class SettingsViewController {
      */
     public void settingsBackButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/MainMenu.fxml"));
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -106,9 +108,7 @@ public class SettingsViewController {
         volumeText.setText(SettingsController.getInstance().getVolume()+"%");
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
             volumeText.setText(Math.floor((Double) newValue)+"%");
-            stageManager
-                    .getMediaPlayer()
-                    .setVolume(((Double) newValue) / 100);
+            stageManager.getMediaPlayer().setVolume(((Double) newValue) / 100);
             SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
         });
     }
@@ -131,5 +131,23 @@ public class SettingsViewController {
      * Changes language to Finnish *NOT USED YET*
      */
     public void selectFinnish() {
+    }
+
+    /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 }
