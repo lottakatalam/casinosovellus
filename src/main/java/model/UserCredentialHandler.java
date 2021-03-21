@@ -55,6 +55,13 @@ public class UserCredentialHandler {
         this.casinoDAO = casinoDAO;
     }
 
+    public boolean validateUserCredentials(String username, String password1, String password2) {
+        if (isValidUsername(username)&isValidPassword(password1)&passwordsMatch(password1, password2)){
+            createNewUser(username, password1);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Creates a new user and adds it to userTable in Database
@@ -62,39 +69,70 @@ public class UserCredentialHandler {
      * @param password - Password of added user
      * @return - True if user creation is successed
      */
-    public boolean createNewUser(String username, String password) {
+    public void createNewUser(String username, String password) {
 
-        if (isValidUsername(username)&isValidPassword(password)) {
-            //before change starts
             User newUser = new User();
             newUser.setUserName(username);
             newUser.setPassword(hashPassword(password));
             newUser.setBalance(2500);
             casinoDAO.addUserRow(newUser);
-            return true;
-            //before change ends
-        }
-
-        return false;
     }
 
     public boolean isValidUsername(String username) {
         if (username.length() > 16 || username.length() < 4) {
             String message = "Username must be less than 16 and more than 4 characters in length.";
             System.out.println(message);
-            //setErrorMessage(message);
+            setErrorMessage(message);
             return false;
         }
         return true;
     }
 
     public boolean isValidPassword(String password) {
+        String message;
+        if (password.length() < 6) {
+            message = "Password must contain at least 6 characters.";
+            System.out.println(message);
+            setErrorMessage(message);
+            return false;
+        }
+        String upperCaseChars = "(.*[A-Z].*)";
+        if (!password.matches(upperCaseChars)) {
+            message = "Password must have at least one uppercase character";
+            System.out.println(message);
+            setErrorMessage(message);
+            return false;
+        }
+        String lowerCaseChars = "(.*[a-z].*)";
+        if (!password.matches(lowerCaseChars)) {
+            message = "Password must have at least one lowercase character";
+            System.out.println(message);
+            setErrorMessage(message);
+            return false;
+        }
+        String numbers = "(.*[0-9].*)";
+        if (!password.matches(numbers)) {
+            message = "Password must have at least one number";
+            System.out.println(message);
+            setErrorMessage(message);
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean passwordsMatch(String password1, String password2){
+        if (password1.equals(password2)){
+            return true;
+        }
+        String message = "Passwords did not match";
+        setErrorMessage(message);
         return false;
     }
 
-    /*public void setErrorMessage(String message) {
-        this.userController.setErrorMessageToView();
-    }*/
+    public void setErrorMessage(String message) {
+        this.userController.setErrorMessageToView(message);
+    }
 
 
 

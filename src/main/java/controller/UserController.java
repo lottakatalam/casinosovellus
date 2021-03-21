@@ -20,7 +20,7 @@ public class UserController {
     }
 
     /**
-     * Alternative constructor for registerController
+     * Alternative constructor to be used in registerController
      */
     public UserController(RegisterController rg) {
         registerController = rg;
@@ -28,16 +28,17 @@ public class UserController {
     }
 
     /**
-     * Creates new user
+     *  new user
      * @param username - New user's username
-     * @param password - New user's password
+     * @param password1 - New user's password
      */
-    public void createNewUser(String username, String password) {
-        UserCredentialHandler.getInstance().createNewUser(username,password);
+    public boolean tryToCreateNewUser(String username, String password1, String password2) {
+        return UserCredentialHandler.getInstance().validateUserCredentials(username,password1, password2);
     }
 
     public String setErrorMessagetoView(String message){
-        return "moi";
+        registerController.setErrorMessage(message);
+        return message;
     }
 
     /**
@@ -67,5 +68,12 @@ public class UserController {
 
     public boolean changeUserPassword(String newPassword, String oldPassword) {
         return UserCredentialHandler.getInstance().changePassword(newPassword, oldPassword);
+    }
+
+    /**
+     *
+     */
+    public void setErrorMessageToView(String message) {
+        registerController.setErrorMessage(message);
     }
 }
