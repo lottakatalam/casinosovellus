@@ -56,11 +56,18 @@ public class UserCredentialHandler {
     }
 
     public boolean validateUserCredentials(String username, String password1, String password2) {
-        if (isValidUsername(username)&isValidPassword(password1)&passwordsMatch(password1, password2)){
+
+        if(!isValidUsername(username)) {
+            return false;
+        } else if (!isValidPassword(password1)) {
+            return false;
+        } else if (!passwordsMatch(password1,password2)){
+            return false;
+        } else {
             createNewUser(username, password1);
             return true;
         }
-        return false;
+
     }
 
     /**
