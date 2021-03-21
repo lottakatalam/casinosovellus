@@ -43,6 +43,11 @@ public class UserCredentialHandler {
         return instance;
     }
 
+    /**
+     * Method for linking the registration view controller, controller and this object to each other.
+     * Method is called in the constructor of UserController
+     * @param userContr - the controller which is used to connect this object with registration view
+     */
     public void linkController(UserController userContr) {
         this.userController = userContr;
     }
@@ -85,7 +90,6 @@ public class UserCredentialHandler {
      * @return - True if user creation is successed
      */
     public void createNewUser(String username, String password) {
-
             User newUser = new User();
             newUser.setUserName(username);
             newUser.setPassword(hashPassword(password));
@@ -341,5 +345,21 @@ public class UserCredentialHandler {
     public void logout() {
         loggedInUser = null;
         isLoggedIn = false;
+    }
+
+    /**
+     * For testing purposes
+     * @return userController-object
+     */
+    public UserController getUserController() {
+        return userController;
+    }
+
+    /**
+     * For testing purposes
+     * @return DAO-object
+     */
+    public CasinoDAO getCasinoDAO() {
+        return casinoDAO;
     }
 }
