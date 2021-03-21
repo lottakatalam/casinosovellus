@@ -95,21 +95,24 @@ public class UserCredentialHandler {
 
     /**
      * Method for validating the username which user has input.
+     * Checks if username is unique and if so, checks if the lenght meets the requirements.
      * If username is not usable, sets an errormessage which is then returned to the UI via controller
      * @param username - String which user has given as an input
      * @return true if username is valid for creating a user
      */
     public boolean isValidUsername(String username) {
         String message = "";
-        if (username.length() > 16 || username.length() < 4) {
-            message = "Username must be less than 16 and more than 4 characters in length.";
+
+        User user = casinoDAO.getUserByUsername(username);
+        if (user != null) {
+            message = "Username already exists. Try a different username";
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
-        User user = casinoDAO.getUserByUsername(username);
-        if (user != null) {
-            message = "Username already exists. Try a different username";
+
+        if (username.length() > 16 || username.length() < 4) {
+            message = "Username must be less than 16 and more than 4 characters in length.";
             System.out.println(message);
             setErrorMessage(message);
             return false;
