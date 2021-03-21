@@ -3,7 +3,6 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,9 +39,11 @@ public class LoginController {
 
     /**
      * Initialized stageManager
+     * Checks the current volume state
      */
     public void initialize(){
         stageManager = StageManager.getInstance();
+        checkVolume();
     }
 
 
@@ -50,7 +51,7 @@ public class LoginController {
     /**
      * Login button action that logs user in
      */
-    public void logInButton(ActionEvent event) throws SQLException {
+    public void logInButton() {
 
         Window owner = logInButton.getScene().getWindow();
 
@@ -75,7 +76,7 @@ public class LoginController {
 
     /**
      * Loads back to MainMenu
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -96,7 +97,7 @@ public class LoginController {
     }
 
     /**
-     * Closes pop up screen and if log in is successful it loads back to Mainmenu as a logged in user
+     * Closes pop up screen and if log in is successful it loads back to Main menu as a logged in user
      * @throws IOException
      */
     public void okButton() throws IOException {
@@ -124,6 +125,17 @@ public class LoginController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
     }
 }

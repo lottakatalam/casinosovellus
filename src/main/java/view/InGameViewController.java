@@ -114,7 +114,7 @@ public class InGameViewController {
      * Loads to MainMenu
      *
      * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
     public void yesAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -145,13 +145,15 @@ public class InGameViewController {
 
     /**
      * Initializes stageManager
+     * Check the current volume state
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
+        checkVolume();
     }
 
     /**
-     * Game screen's Instructions-Button loads to Instructions.fxml (Opens another window)
+     * Game screen's Instructions-Button makes instructions visible top of the game screen
      *
      * @throws IOException
      */
@@ -199,7 +201,7 @@ public class InGameViewController {
     }
 
     /**
-     * Instruction screen's Close-Button closes the instructions window
+     * Instruction screen's Close-Button closes the instructions
      */
     public void closeButton() {
         instructionsOn = false;
@@ -247,9 +249,8 @@ public class InGameViewController {
     /**
      * Player hits and updates the total counter
      *
-     * @throws InterruptedException
      */
-    public void hit() throws InterruptedException {
+    public void hit() {
         splitButton.setDisable(true);
         insuranceButton.setDisable(true);
         if (gameController.getSplitStatus()) {
@@ -417,10 +418,8 @@ public class InGameViewController {
 
     /**
      * Player stands and updates the total counter
-     *
-     * @throws InterruptedException
      */
-    public void stand() throws InterruptedException {
+    public void stand() {
         splitButton.setDisable(true);
         insuranceButton.setDisable(true);
         if (gameController.getSplitStatus() && splitted) {
@@ -439,7 +438,7 @@ public class InGameViewController {
     }
 
     /**
-     * Player splits
+     * Player splits his hand to two hands
      */
     public void split() {
         if (gameController.setSplitBet(bet)) {
@@ -456,6 +455,9 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Player insures
+     */
     public void insure() {
         int insurance = this.bet / 2;
         if (gameController.getInsurancePossibility()) {
@@ -468,6 +470,9 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Player surrenders
+     */
     public void surrender() {
         int surrender = this.bet / 2;
         if (gameController.getsurrenderPossibility()) {
@@ -540,6 +545,10 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * If player runs out of money, the game will give them an option to get money back
+     * Opens up a message with "Yes" and "No" actions
+     */
     public void checkBalance() {
         if (gameController.getPlayer().getCurrency() == 0) {
             winnerScreen.setVisible(true);
@@ -550,6 +559,9 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Player declines the money offered and continues with 0 balance
+     */
     public void noMoney() {
         winnerScreen.setVisible(false);
         outOfMoney.setVisible(false);
@@ -557,6 +569,9 @@ public class InGameViewController {
         noMoneyButton.setVisible(false);
     }
 
+    /**
+     * Player wants more money and sets new balance for him
+     */
     public void yesMoney() {
         gameController.getPlayer().setNewBalance();
         winnerScreen.setVisible(false);
@@ -719,7 +734,7 @@ public class InGameViewController {
      */
     public void showHitTip() {
         Tooltip hitTip = new Tooltip();
-        hitTip.setText("Your total count is 16 or under. Hitting might be the best option.");
+        hitTip.setText("Your total count is under 17. Hitting might be the best option.");
         hitButton.setTooltip(hitTip);
         standButton.setTooltip(hitTip);
         doubleButton.setTooltip(hitTip);
@@ -777,7 +792,18 @@ public class InGameViewController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
     }
 
     /**

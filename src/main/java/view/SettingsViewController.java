@@ -2,7 +2,6 @@ package view;
 
 import controller.SettingsController;
 import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,10 +36,9 @@ public class SettingsViewController {
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
      *
-     * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
-    public void settingsBackButton(ActionEvent actionEvent) throws IOException {
+    public void settingsBackButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         Parent menuParent = loader.load();
@@ -59,9 +57,12 @@ public class SettingsViewController {
 
     /**
      * Initializes Logged in as-text at the top corner
+     * Checks the current volume state
+     * Initializes settings
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
+        checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
@@ -121,18 +122,6 @@ public class SettingsViewController {
     }
 
     /**
-     * Changes language to English *NOT USED YET*
-     */
-    public void selectEnglish() {
-    }
-
-    /**
-     * Changes language to Finnish *NOT USED YET*
-     */
-    public void selectFinnish() {
-    }
-
-    /**
      * Mutes game music
      */
     public void volumeOFF() {
@@ -147,6 +136,29 @@ public class SettingsViewController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
+    }
+
+    /**
+     * Changes language to English *NOT USED YET*
+     */
+    public void selectEnglish() {
+    }
+
+    /**
+     * Changes language to Finnish *NOT USED YET*
+     */
+    public void selectFinnish() {
     }
 }

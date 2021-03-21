@@ -48,9 +48,11 @@ public class RegisterController {
 
     /**
      * Initializes stageManager
+     * Checks the current volume state
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
+        checkVolume();
     }
 
     @FXML
@@ -61,7 +63,7 @@ public class RegisterController {
     /**
      * Registers a new user
      */
-    public void register(ActionEvent event) throws SQLException {
+    public void register() {
 
         Window owner = usernameTextField.getScene().getWindow();
 
@@ -115,7 +117,7 @@ public class RegisterController {
 
     /**
      * Loads back to Mainmenu
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -228,6 +230,17 @@ public class RegisterController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
     }
 }
