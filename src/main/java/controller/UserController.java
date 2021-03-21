@@ -4,15 +4,27 @@ package controller;
 
 import model.User;
 import model.UserCredentialHandler;
+import view.RegisterController;
 
 /**
  * Used to control User information
  */
 public class UserController {
+
+    private RegisterController registerController;
     /**
      * Constructor of UserController
      */
     public UserController() {
+
+    }
+
+    /**
+     * Alternative constructor for registerController
+     */
+    public UserController(RegisterController rg) {
+        registerController = rg;
+        UserCredentialHandler.getInstance().linkController(this);
     }
 
     /**
@@ -22,6 +34,10 @@ public class UserController {
      */
     public void createNewUser(String username, String password) {
         UserCredentialHandler.getInstance().createNewUser(username,password);
+    }
+
+    public String setErrorMessagetoView(String message){
+        return "moi";
     }
 
     /**

@@ -1,5 +1,7 @@
 package model;
 
+import controller.UserController;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
@@ -20,10 +22,13 @@ public class UserCredentialHandler {
 
     public boolean isLoggedIn = false;
 
+    private UserController userController;
+
     /**
      * Constructor of UserCredentialHandler
      */
     private UserCredentialHandler() {
+
         casinoDAO = new CasinoDAO();
     }
 
@@ -38,6 +43,10 @@ public class UserCredentialHandler {
         return instance;
     }
 
+    public void linkController(UserController userContr) {
+        this.userController = userContr;
+    }
+
     /**
      * Sets the casino Database
      * @param casinoDAO - The Database
@@ -45,6 +54,50 @@ public class UserCredentialHandler {
     public void setCasinoDAO(CasinoDAO casinoDAO) {
         this.casinoDAO = casinoDAO;
     }
+
+
+    /**
+     * Creates a new user and adds it to userTable in Database
+     * @param username - Username of added user
+     * @param password - Password of added user
+     * @return - True if user creation is successed
+     */
+    public boolean createNewUser(String username, String password) {
+
+        if (isValidUsername(username)&isValidPassword(password)) {
+            //before change starts
+            User newUser = new User();
+            newUser.setUserName(username);
+            newUser.setPassword(hashPassword(password));
+            newUser.setBalance(2500);
+            casinoDAO.addUserRow(newUser);
+            return true;
+            //before change ends
+        }
+
+        return false;
+    }
+
+    public boolean isValidUsername(String username) {
+        if (username.length() > 16 || username.length() < 4) {
+            String message = "Username must be less than 16 and more than 4 characters in length.";
+            System.out.println(message);
+            //setErrorMessage(message);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isValidPassword(String password) {
+        return false;
+    }
+
+    /*public void setErrorMessage(String message) {
+        this.userController.setErrorMessageToView();
+    }*/
+
+
+
 
 
     public boolean login(String username, String password) {
@@ -62,23 +115,6 @@ public class UserCredentialHandler {
 
     }
 
-    /**
-     * Creates a new user and adds it to userTable in Database
-     * @param username - Username of added user
-     * @param password - Password of added user
-     * @return - True if user creation is successed
-     */
-    public boolean createNewUser(String username, String password) {
-        User newUser = new User();
-        newUser.setUserName(username);
-        newUser.setPassword(hashPassword(password));
-        newUser.setBalance(2500);
-
-        casinoDAO.addUserRow(newUser);
-
-
-        return true;
-    }
 
     public boolean changePassword(String newPassword, String oldPassword) {
 

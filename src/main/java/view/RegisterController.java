@@ -30,7 +30,7 @@ public class RegisterController {
     public Text registerText;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
-    private UserController userController = new UserController();
+    private UserController userController = new UserController(this);
 
     @FXML
     public TextField usernameTextField;
@@ -114,28 +114,6 @@ public class RegisterController {
     }
 
     /**
-     * Loads back to Mainmenu
-     * @throws IOException
-     */
-    public void backToMainMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
-    }
-
-    /**
      * Validation of Username while registering
      * @param username - Username that is validated
      * @return - If the username is valid or not
@@ -193,11 +171,34 @@ public class RegisterController {
     }
 
     public void setErrorMessageAboutPassword(String message) {
-            errorText.setText(message);
-            blackScreen.setVisible(true);
-            errorText.setVisible(true);
-            okButton.setVisible(true);
+        errorText.setText(message);
+        blackScreen.setVisible(true);
+        errorText.setVisible(true);
+        okButton.setVisible(true);
     }
+
+    /**
+     * Loads back to Mainmenu
+     * @throws IOException
+     */
+    public void backToMainMenu() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        Parent menuParent = loader.load();
+        MainMenuController controller = loader.getController();
+        if (userController.isUserLoggedIn()) {
+            controller.loginButton.setVisible(false);
+            controller.registerButton.setVisible(false);
+            controller.logoutButton.setVisible(true);
+            controller.changePasswordButton.setVisible(true);
+        }
+        Scene menuScene = new Scene(menuParent);
+        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
+        stageManager.getPrimaryStage().setScene(menuScene);
+        stageManager.getPrimaryStage().show();
+
+    }
+
 
     /**
      * Button closes pop up screen and loads to MainMenu if registeration is successed
@@ -230,4 +231,6 @@ public class RegisterController {
         volumeOFFbutton.setVisible(true);
         stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
+
+
 }
