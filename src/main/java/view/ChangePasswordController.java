@@ -19,6 +19,8 @@ public class ChangePasswordController {
     public Text errorText;
     public Button okButton;
     public Text succesfulText;
+    public Button volumeOFFbutton;
+    public Button volumeONbutton;
     private UserController userController = new UserController();
 
     @FXML
@@ -35,12 +37,19 @@ public class ChangePasswordController {
 
     private StageManager stageManager;
 
+    /**
+     * Initializes stageManager
+     * Checks the current volume state
+     */
+    public void initialize() {
+        stageManager = StageManager.getInstance();
+        checkVolume();
+    }
 
-    @FXML
     /**
      * Changes users password
      */
-    public void changePassword(ActionEvent event) {
+    public void changePassword() {
 
         if (oldPasswordField.getText().isEmpty() ) {
             errorText.setText("Please enter old password");
@@ -90,7 +99,7 @@ public class ChangePasswordController {
 
     /**
      * Loads back to Mainmenu
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -101,9 +110,9 @@ public class ChangePasswordController {
             controller.loginButton.setVisible(false);
             controller.registerButton.setVisible(false);
             controller.logoutButton.setVisible(true);
+            controller.changePasswordButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
-        stageManager = StageManager.getInstance();
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();
@@ -167,6 +176,36 @@ public class ChangePasswordController {
         blackScreen.setVisible(false);
         errorText.setVisible(false);
         okButton.setVisible(false);
+    }
+
+    /**
+     * Mutes game music
+     */
+    public void volumeOFF() {
+        volumeOFFbutton.setVisible(false);
+        volumeONbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0);
+
+    }
+
+    /**
+     * Turns game music back ON
+     */
+    public void volumeON() {
+        volumeONbutton.setVisible(false);
+        volumeOFFbutton.setVisible(true);
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
     }
 }
 
