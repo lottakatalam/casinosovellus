@@ -161,7 +161,7 @@ public class RegisterController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
     }
 
     /**
