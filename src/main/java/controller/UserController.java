@@ -28,15 +28,22 @@ public class UserController {
     }
 
     /**
-     *  new user
+     *  Calls for registration validation
      * @param username - New user's username
      * @param password1 - New user's password
+     * @param password2 - User's repeated password
+     * returns true if new user is created
      */
-    public boolean tryToCreateNewUser(String username, String password1, String password2) {
+    public boolean createNewUser(String username, String password1, String password2) {
         return UserCredentialHandler.getInstance().validateUserCredentials(username,password1, password2);
     }
 
-    public String setErrorMessagetoView(String message){
+    /**
+     * Sets a new error message to registration view
+     * @param message - string to display as an error message for user
+     * @return message which is displayed in the UI
+     */
+    public String setErrorMessageToView(String message){
         registerController.setErrorMessage(message);
         return message;
     }
@@ -70,10 +77,4 @@ public class UserController {
         return UserCredentialHandler.getInstance().changePassword(newPassword, oldPassword);
     }
 
-    /**
-     *
-     */
-    public void setErrorMessageToView(String message) {
-        registerController.setErrorMessage(message);
-    }
 }

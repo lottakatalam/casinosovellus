@@ -55,6 +55,14 @@ public class UserCredentialHandler {
         this.casinoDAO = casinoDAO;
     }
 
+    /**
+     * Validates the user credentials which user has given in the registration view.
+     * Uses three different methods for validating.
+     * @param username - user input for username
+     * @param password1 - user input for password
+     * @param password2 - user input for repeated password
+     * @return true, if the user credentials can be used for registration
+     */
     public boolean validateUserCredentials(String username, String password1, String password2) {
 
         if(!isValidUsername(username)) {
@@ -85,6 +93,12 @@ public class UserCredentialHandler {
             casinoDAO.addUserRow(newUser);
     }
 
+    /**
+     * Method for validating the username which user has input.
+     * If username is not usable, sets an errormessage which is then returned to the UI via controller
+     * @param username - String which user has given as an input
+     * @return true if username is valid for creating a user
+     */
     public boolean isValidUsername(String username) {
         if (username.length() > 16 || username.length() < 4) {
             String message = "Username must be less than 16 and more than 4 characters in length.";
@@ -95,6 +109,12 @@ public class UserCredentialHandler {
         return true;
     }
 
+    /**
+     * Method for validating the password which user has input.
+     * If password is not usable, sets an errormessage which is then returned to the UI via controller
+     * @param password String which user has given as an input
+     * @return true id password is valid for creating a user
+     */
     public boolean isValidPassword(String password) {
         String message;
         if (password.length() < 6) {
@@ -128,6 +148,13 @@ public class UserCredentialHandler {
         return true;
     }
 
+    /**
+     * Method for checking if the passwords user input match with each other.
+     * If passwords do not match, sets an errormessage which is then returned to the UI via controller
+     * @param password1 String which user has given as an input
+     * @param password2 String which user has given as an input when repeating the password
+     * @return true if passwords match
+     */
     public boolean passwordsMatch(String password1, String password2){
         if (password1.equals(password2)){
             return true;
@@ -137,6 +164,10 @@ public class UserCredentialHandler {
         return false;
     }
 
+    /**
+     * Method for setting an error message to UI via controller
+     * @param message String which is used as an errormessage
+     */
     public void setErrorMessage(String message) {
         this.userController.setErrorMessageToView(message);
     }

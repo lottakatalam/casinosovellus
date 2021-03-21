@@ -82,7 +82,7 @@ public class RegisterController {
             String password1 = passwordTextField.getText();
             String password2 = repeatTextField.getText();
 
-            if (userController.tryToCreateNewUser(username, password1, password2)) {
+            if (userController.createNewUser(username, password1, password2)) {
 
                 userController.login(username, password1);
 
@@ -97,7 +97,10 @@ public class RegisterController {
 
     }
 
-
+    /**
+     * Set's an error message on display in UI
+     * @param message
+     */
     public void setErrorMessage(String message) {
         errorText.setText(message);
         blackScreen.setVisible(true);
