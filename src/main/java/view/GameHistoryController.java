@@ -70,6 +70,7 @@ public class GameHistoryController {
 
     /**
      * Sets Are you sure-screen visible to clear the game history
+     * Yes-action clears history and No-action closes the screen
      */
     public void clearHistory() {
         blackScreen.setVisible(true);
@@ -115,7 +116,7 @@ public class GameHistoryController {
     }
 
     /**
-     * Gets every row from Database to Observablelist
+     * Gets every row from Historytable in database to Observablelist
      * @return - Returns Observablelist
      */
     public ObservableList<History> getHistory() {
@@ -134,7 +135,7 @@ public class GameHistoryController {
 
 
     /**
-     * Refresh-button makes database visible in the TableView if user is logged in
+     * Refresh-button refreshes the TableView if user is logged in
      */
     public void refresh() {
 
@@ -160,9 +161,11 @@ public class GameHistoryController {
 
     /**
      * For initializing table in game history
+     * Checks the current volume state
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
+        checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
@@ -211,6 +214,17 @@ public class GameHistoryController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
     }
 }

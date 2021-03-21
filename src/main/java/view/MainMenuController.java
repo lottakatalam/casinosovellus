@@ -1,7 +1,6 @@
 package view;
 
 import controller.BlackjackController;
-import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.UserCredentialHandler;
@@ -36,15 +34,12 @@ public class MainMenuController {
     public Button changePasswordButton;
     private BlackjackController gameController;
     private static UserController userController;
-    public Stage primaryStage;
     private StageManager stageManager;
-    private MediaPlayer mediaPlayer;
 
     /** Menu's Play-Button loads to InGameView.fxml
-     * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
-    public void playButton(ActionEvent actionEvent) throws IOException {
+    public void playButton() throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GUImain.class.getResource("/FXML/InGameView.fxml"));
@@ -65,9 +60,11 @@ public class MainMenuController {
 
     /**
      * Initializes Welcome-message for logged in user and music
+     * Checks the current volume state
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
+        checkVolume();
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
@@ -75,10 +72,9 @@ public class MainMenuController {
 
     /**
      * Menu's Game History-button loads to GameHistory.fxml
-     * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
-    public void gameHistoryButton(ActionEvent actionEvent) throws IOException {
+    public void gameHistoryButton() throws IOException {
         Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/FXML/GameHistory.fxml"));
         Scene gameHistoryScene = new Scene(gameHistoryParent);
 
@@ -88,10 +84,9 @@ public class MainMenuController {
     }
 
     /** Menu's Settings-Button loads to Settings.fxml
-     * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
-    public void settingsButton(ActionEvent actionEvent) throws IOException {
+    public void settingsButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/Settings.fxml"));
         Parent settingsParent = loader.load();
@@ -117,10 +112,9 @@ public class MainMenuController {
 
     /**
      * Loads to LogInView.fxml
-     * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
-    public void logInButton(ActionEvent actionEvent) throws IOException {
+    public void logInButton() throws IOException {
         Parent logInParent = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
         Scene logInScene = new Scene(logInParent);
 
@@ -133,9 +127,8 @@ public class MainMenuController {
 
     /**
      * Logs user out and makes login and register buttons visible again
-     * @param actionEvent
      */
-    public void logOutButton(ActionEvent actionEvent) {
+    public void logOutButton() {
         userController.logout();
         logoutButton.setVisible(false);
         loginButton.setVisible(true);
@@ -145,10 +138,9 @@ public class MainMenuController {
 
     /**
      * Loads to RegisterView.fxml
-     * @param actionEvent
-     * @throws IOException
+     * @throws IOException - if .fxml file is not found
      */
-    public void registerButton(ActionEvent actionEvent) throws IOException {
+    public void registerButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/RegisterView.fxml"));
 
@@ -161,7 +153,7 @@ public class MainMenuController {
         stageManager.getPrimaryStage().show();
     }
 
-    public void handleChangePassword(ActionEvent actionEvent) throws IOException {
+    public void handleChangePassword() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
 
@@ -200,6 +192,7 @@ public class MainMenuController {
         volumeOFFbutton.setVisible(false);
         volumeONbutton.setVisible(true);
         stageManager.getMediaPlayer().setVolume(0);
+
     }
 
     /**
@@ -208,7 +201,18 @@ public class MainMenuController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
+        stageManager.getMediaPlayer().setVolume(0.25);
+    }
+
+    /**
+     * Checks is the volume ON or OFF
+     */
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFF();
+        }else {
+            volumeON();
+        }
     }
 
     /**
