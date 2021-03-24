@@ -57,6 +57,7 @@ public class BlackjackRound extends Thread {
 
         addFirstCardsToUI();
 
+        checkForBlackJack();
         checkSpecialRulePossibilities();
 
         player.getHand().printHand();
@@ -173,6 +174,14 @@ public class BlackjackRound extends Thread {
     public void playerInsure() {
         this.insured = true;
         this.player.insure();
+    }
+
+    public void checkForBlackJack() {
+        if (player.getHand().calculateTotal() == 21) {
+            gameController.disableHit();
+            gameController.disableStand();
+            this.start();
+        }
     }
 
 

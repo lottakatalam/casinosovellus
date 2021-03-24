@@ -281,6 +281,7 @@ public class InGameViewController {
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
+                checkForBlackJack();
                 checkSpecialRules();
             }
         }
@@ -482,6 +483,13 @@ public class InGameViewController {
             splitButton.setDisable(true);
             surrenderButton.setDisable(true);
             disableDouble();
+        }
+    }
+
+    public void checkForBlackJack() {
+        if (gameController.getPlayer().getHand().calculateTotal() == 21) {
+            disableHit();
+            disableStand();
         }
     }
 
