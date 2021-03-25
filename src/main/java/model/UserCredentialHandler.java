@@ -196,7 +196,7 @@ public class UserCredentialHandler {
         User user = casinoDAO.getUserByUsername(username);
         if (user != null ) {
             if (validatePassword(password, user.getPassword())) {
-                user.setPassword("");
+                //user.setPassword("");
                 loggedInUser = user;
                 isLoggedIn = true;
                 return true;
