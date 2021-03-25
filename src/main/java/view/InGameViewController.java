@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
+import model.UserCredentialHandler;
 
 
 import java.io.IOException;
@@ -550,6 +551,10 @@ public class InGameViewController {
             clearTable();
             splitted = false;
             checkBalance();
+        }
+
+        if(UserCredentialHandler.getInstance().isLoggedIn()) {
+            UserCredentialHandler.getInstance().getLoggedInUser().addRound();
         }
     }
 

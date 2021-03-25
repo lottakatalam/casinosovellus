@@ -39,7 +39,7 @@ class UserCredentialHandlerTest {
         CasinoDAO casdao = UCHandler.getCasinoDAO();
         UCHandler.createNewUser(username,password);
         User user = casdao.getUserByUsername(username);
-        assertTrue(user.getUserName().equals(username), "The user "+username+"  was not created");
+        assertTrue(user.getUsername().equals(username), "The user "+username+"  was not created");
     }
 
 

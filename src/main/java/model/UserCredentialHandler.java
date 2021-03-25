@@ -91,9 +91,10 @@ public class UserCredentialHandler {
      */
     public void createNewUser(String username, String password) {
             User newUser = new User();
-            newUser.setUserName(username);
+            newUser.setUsername(username);
             newUser.setPassword(hashPassword(password));
             newUser.setBalance(2500);
+            newUser.setRounds(1);
             casinoDAO.addUserRow(newUser);
     }
 
@@ -209,7 +210,7 @@ public class UserCredentialHandler {
 
     public boolean changePassword(String newPassword, String oldPassword) {
 
-        User user = casinoDAO.getUserByUsername(loggedInUser.getUserName());
+        User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
         if (user != null ) {
             if (validatePassword(oldPassword, user.getPassword())) {
                 user.setPassword(hashPassword(newPassword));

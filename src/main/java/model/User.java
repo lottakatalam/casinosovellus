@@ -37,6 +37,19 @@ public class User {
      */
     private int balance;
 
+    @Column
+    /**
+     * rounds column in userTable
+     */
+    private Integer rounds;
+
+    @Column
+    /**
+     * rounds ranking in userTable
+     */
+    private Integer ranking;
+
+
     /**
      * Gets the userID
      * @return - The userID
@@ -57,7 +70,7 @@ public class User {
      * Gets the username
      * @return - The username
      */
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
@@ -65,7 +78,7 @@ public class User {
      * Sets the username
      * @param userName - The username
      */
-    public void setUserName(String userName) {
+    public void setUsername(String userName) {
         this.username = userName;
     }
 
@@ -100,5 +113,33 @@ public class User {
     public void setBalance(int balance) {
         this.balance = balance;
 
+    }
+
+    /**
+     * Gets the rounds
+     * @return - The rounds
+     */
+    public int getRounds() {
+        return rounds;
+    }
+
+    /**
+     * Sets the rounds
+     * @param rounds - The rounds
+     */
+    public void setRounds(Integer rounds) {
+        this.rounds = rounds;
+    }
+
+    public Integer getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
+    public void addRound() {
+        this.rounds++;
     }
 }

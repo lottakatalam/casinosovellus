@@ -67,7 +67,7 @@ public class MainMenuController {
         stageManager = StageManager.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
+            loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
     }
 
@@ -133,6 +133,7 @@ public class MainMenuController {
         userController.logout();
         logoutButton.setVisible(false);
         loginButton.setVisible(true);
+        changePasswordButton.setVisible(false);
         registerButton.setVisible(true);
         loggedUser.setText("Logged out");
     }

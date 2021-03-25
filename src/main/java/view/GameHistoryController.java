@@ -167,7 +167,7 @@ public class GameHistoryController {
         stageManager = StageManager.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
+            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
         refresh();
     }

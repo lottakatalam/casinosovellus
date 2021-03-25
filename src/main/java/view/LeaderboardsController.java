@@ -16,12 +16,15 @@ import model.User;
 import model.UserCredentialHandler;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class LeaderboardsController {
     public Text loggedUser;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
-    public TableView leaderboardTable;
+    public TableView<User> leaderboardTable;
     public TableColumn rankingColumn;
     public TableColumn usernameColumn;
     public TableColumn balanceColumn;
@@ -38,7 +41,7 @@ public class LeaderboardsController {
         stageManager = StageManager.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
+            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
         setTable();
     }
@@ -71,27 +74,30 @@ public class LeaderboardsController {
         rankingColumn.setCellValueFactory(new PropertyValueFactory<>("ranking"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        roundColumn.setCellValueFactory(new PropertyValueFactory<>("round"));
-        //leaderboardTable.setItems(getLeaderboards());
+        roundColumn.setCellValueFactory(new PropertyValueFactory<>("rounds"));
+
+        leaderboardTable.setItems(getLeaderboards());
     }
 
     /**
      * Gets every row from Userstable in database to Observablelist
      * @return - Returns Observablelist
      */
-    /*public ObservableList<User> getLeaderboards() {
+    public ObservableList<User> getLeaderboards() {
         ObservableList<User> leaderboards = FXCollections.observableArrayList();
-        User[] u = casinoDAO.getAllHistoryRows(); // TODO: CasinoDAO:n getAllUserRows()-metodi ja User-luokkaan kolumni pelikierroksille
-        for (int i = 0; i < u.length; i++) {
+        User[] u = casinoDAO.getAllUserRows();
+        leaderboards.addAll(Arrays.asList(u));
 
-            if (u[i].getUserID() == UserCredentialHandler.getInstance().getLoggedInUser().getUserID()) {
+        Comparator<User> comparator = Comparator.comparingInt(User::getBalance);
+        comparator = comparator.reversed();
+        FXCollections.sort(leaderboards, comparator);
 
-                leaderboards.add(u[i]);
-            }
+        for (int i=0; i<leaderboards.size(); i++ ) {
+            leaderboards.get(i).setRanking(i+1);
         }
 
         return leaderboards;
-    }*/
+    }
 
     /**
      * Mutes game music

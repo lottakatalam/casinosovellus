@@ -138,6 +138,18 @@ public class CasinoDAO {
         return (History[]) list.toArray(returnArray);
     }
 
+    public User[] getAllUserRows() {
+        Session istunto = sessionFactory.openSession();
+
+        @SuppressWarnings("unchecked")
+        List<User> list = istunto.createQuery("from User").getResultList();
+
+        istunto.close();
+        User[] returnArray = new User[list.size()];
+
+        return (User[]) list.toArray(returnArray);
+    }
+
     /**
      * Updates specific historyRow from historyTable
      * @param historyData
