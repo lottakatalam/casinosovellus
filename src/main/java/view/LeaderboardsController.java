@@ -94,6 +94,7 @@ public class LeaderboardsController {
 
         for (int i=0; i<leaderboards.size(); i++ ) {
             leaderboards.get(i).setRanking(i+1);
+            casinoDAO.updateUser(leaderboards.get(i));
         }
 
         return leaderboards;

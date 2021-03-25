@@ -119,7 +119,7 @@ public class User {
      * Gets the rounds
      * @return - The rounds
      */
-    public int getRounds() {
+    public Integer getRounds() {
         return rounds;
     }
 
@@ -135,7 +135,7 @@ public class User {
         return ranking;
     }
 
-    public void setRanking(int ranking) {
+    public void setRanking(Integer ranking) {
         this.ranking = ranking;
     }
 
