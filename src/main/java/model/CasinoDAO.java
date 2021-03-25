@@ -207,6 +207,7 @@ public class CasinoDAO {
         }
     }
 
+
     /**
      * Updates the user's balance at the userTable
      * @param user - User that's balance is wanted to change

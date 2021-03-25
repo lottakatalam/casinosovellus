@@ -48,6 +48,11 @@
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="leaderboardsButton" layoutX="767.0" layoutY="687.0" mnemonicParsing="false" onAction="#leaderboardsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Leaderboards">
+         <font>
+            <Font name="Cooper Black" size="18.0" />
+         </font>
+      </Button>
       <Button fx:id="volumeOFFbutton" layoutX="933.0" layoutY="681.0" mnemonicParsing="false" onAction="#volumeOFF" prefHeight="48.0" prefWidth="0.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-padding: 0;">
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">

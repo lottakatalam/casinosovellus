@@ -48,6 +48,7 @@ public class RegisterController {
 
     /**
      * Initializes stageManager
+     * Checks the current volume state
      */
     public void initialize() {
         stageManager = StageManager.getInstance();

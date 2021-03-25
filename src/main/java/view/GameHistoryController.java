@@ -169,23 +169,7 @@ public class GameHistoryController {
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUserName());
         }
-        gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
-        resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
-        methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
-        betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
-        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-
-        if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-
-            historyTable.setItems(getHistory());
-
-        }else {
-            errorText.setText("Please log in to view game history");
-            blackScreen.setVisible(true);
-            errorText.setVisible(true);
-            okButton.setVisible(true);
-        }
+        refresh();
     }
 
     /**

@@ -32,6 +32,7 @@ public class MainMenuController {
     public Button volumeOFFbutton;
     public Button volumeONbutton;
     public Button changePasswordButton;
+    public Button leaderboardsButton;
     private BlackjackController gameController;
     private static UserController userController;
     private StageManager stageManager;
@@ -153,6 +154,23 @@ public class MainMenuController {
         stageManager.getPrimaryStage().show();
     }
 
+    /**
+     * Loads to Leaderboards.fxml
+     * @throws IOException - if .fxml file is not found
+     */
+    public void leaderboardsButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/Leaderboards.fxml"));
+
+        Parent leaderboardsParent = loader.load();
+        LeaderboardsController controller = loader.getController();
+
+        Scene leaderboardsScene = new Scene(leaderboardsParent);
+        stageManager.getPrimaryStage().setTitle("Leaderboards");
+        stageManager.getPrimaryStage().setScene(leaderboardsScene);
+        stageManager.getPrimaryStage().show();
+    }
+
     public void handleChangePassword() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
@@ -238,5 +256,4 @@ public class MainMenuController {
     public void setStageManager(StageManager stageManager) {
         this.stageManager = stageManager;
     }
-
 }
