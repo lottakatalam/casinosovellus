@@ -1,8 +1,6 @@
 import model.Logger;
 import view.GUImain;
 
-import static javafx.application.Application.launch;
-
 /**
  * Main class of the app.
  */

@@ -14,10 +14,8 @@ import javafx.scene.text.Text;
 import model.CasinoDAO;
 import model.User;
 import model.UserCredentialHandler;
-
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class LeaderboardsController {
@@ -80,7 +78,7 @@ public class LeaderboardsController {
     }
 
     /**
-     * Gets every row from Userstable in database to Observablelist
+     * Gets every row from UsersTable in database to Observablelist
      * @return - Returns Observablelist
      */
     public ObservableList<User> getLeaderboards() {

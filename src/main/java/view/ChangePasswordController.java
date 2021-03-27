@@ -22,19 +22,9 @@ public class ChangePasswordController {
     public Button volumeOFFbutton;
     public Button volumeONbutton;
     private UserController userController = new UserController();
-
-    @FXML
     public TextField oldPasswordField;
-
-    @FXML
     public TextField newPasswordField;
-
-    @FXML
     public TextField newPasswordRepeatField;
-
-    @FXML
-    public Button submitButton;
-
     private StageManager stageManager;
 
     /**

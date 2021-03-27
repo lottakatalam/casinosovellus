@@ -26,13 +26,8 @@ public class LoginController {
     public Text loginText;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
-    @FXML
     private TextField usernameTextField;
-
-    @FXML
     private TextField passwordTextField;
-
-    @FXML
     private Button logInButton;
     private StageManager stageManager;
     private UserController userController = new UserController();
@@ -45,7 +40,6 @@ public class LoginController {
         stageManager = StageManager.getInstance();
         checkVolume();
     }
-
 
     @FXML
     /**
@@ -68,10 +62,7 @@ public class LoginController {
             okButton.setVisible(true);
         }
 
-
         passwordTextField.setText("");
-
-
     }
 
     /**

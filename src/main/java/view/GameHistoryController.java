@@ -61,6 +61,7 @@ public class GameHistoryController {
             controller.loginButton.setVisible(false);
             controller.registerButton.setVisible(false);
             controller.logoutButton.setVisible(true);
+            controller.changePasswordButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
@@ -162,6 +163,7 @@ public class GameHistoryController {
     /**
      * For initializing table in game history
      * Checks the current volume state
+     * Refreshes the tableView
      */
     public void initialize() {
         stageManager = StageManager.getInstance();

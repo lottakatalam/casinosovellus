@@ -54,6 +54,10 @@ public class StageManager {
         return this.primaryStage;
     }
 
+    /**
+     * Initializes game music
+     * Sets default volume to 0.25
+     */
     private void initAudio(){
         Media sound = new Media(getClass().getResource("/Music/ElegantJazz_edited.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);

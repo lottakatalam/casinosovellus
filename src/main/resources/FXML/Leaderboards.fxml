@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LeaderboardsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LeaderboardsController">
    <children>
       <Text layoutX="368.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Leaderboards">
          <font>
@@ -49,7 +49,7 @@
             <TableColumn fx:id="rankingColumn" prefWidth="150.0" text="Ranking" />
             <TableColumn fx:id="usernameColumn" prefWidth="200.0" text="Username" />
             <TableColumn fx:id="balanceColumn" prefWidth="200.0" text="Balance" />
-            <TableColumn fx:id="roundColumn" prefWidth="200.0" text="Rounds played" />
+            <TableColumn fx:id="roundColumn" prefWidth="193.0" text="Rounds played" />
          </columns>
       </TableView>
    </children>

@@ -262,8 +262,6 @@ public class BlackjackController {
 
     public void playerInsure() { this.blackJackGame.playerInsure(); }
 
-
-
     /**
      * Sets the surrender possibility
      * @param surrenderPossibility - Current surrender possibility

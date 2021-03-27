@@ -126,6 +126,7 @@ public class InGameViewController {
             controller.loginButton.setVisible(false);
             controller.registerButton.setVisible(false);
             controller.logoutButton.setVisible(true);
+            controller.changePasswordButton.setVisible(true);
         }
         Scene menuScene = new Scene(menuParent);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

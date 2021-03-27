@@ -172,6 +172,10 @@ public class MainMenuController {
         stageManager.getPrimaryStage().show();
     }
 
+    /**
+     * Loads to ChangePassword.fxml
+     * @throws IOException - if .fxml file is not found
+     */
     public void handleChangePassword() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
