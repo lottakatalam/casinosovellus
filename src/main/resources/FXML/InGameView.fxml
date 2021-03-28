@@ -80,7 +80,7 @@
             <Font name="Cooper Black" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="evenMoneyButton" disable="true" layoutX="667.0" layoutY="662.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Even money">
+      <Button fx:id="evenMoneyButton" disable="true" layoutX="667.0" layoutY="662.0" mnemonicParsing="false" onAction="#handleEvenMoney" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -0.5;" text="Even money">
          <font>
             <Font name="Cooper Black" size="16.0" />
          </font>
