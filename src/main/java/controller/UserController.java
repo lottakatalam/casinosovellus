@@ -78,8 +78,15 @@ public class UserController {
         return UserCredentialHandler.getInstance().isLoggedIn();
     }
 
-    public boolean changeUserPassword(String newPassword, String oldPassword) {
-        return UserCredentialHandler.getInstance().changePassword(newPassword, oldPassword);
+
+    public boolean validatePasswordChange(String oldPassword, String newPassword, String newPasswordRepeated) {
+        if (UserCredentialHandler.getInstance().validatePassWordChange(oldPassword, newPassword, newPasswordRepeated)) {
+            UserCredentialHandler.getInstance().changePassword(newPassword);
+            return true;
+        } else {
+            errorMessage = UserCredentialHandler.getInstance().getErrorMessage();
+            return false;
+        }
     }
 
 }

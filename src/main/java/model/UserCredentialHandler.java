@@ -34,6 +34,7 @@ public class UserCredentialHandler {
 
     /**
      * Instance of UserCredentialHandler
+     *
      * @return - The instance
      */
     public static UserCredentialHandler getInstance() {
@@ -46,6 +47,7 @@ public class UserCredentialHandler {
 
     /**
      * Sets the casino Database
+     *
      * @param casinoDAO - The Database
      */
     public void setCasinoDAO(CasinoDAO casinoDAO) {
@@ -55,18 +57,19 @@ public class UserCredentialHandler {
     /**
      * Validates the user credentials which user has given in the registration view.
      * Uses three different methods for validating.
-     * @param username - user input for username
+     *
+     * @param username  - user input for username
      * @param password1 - user input for password
      * @param password2 - user input for repeated password
      * @return true, if the user credentials can be used for registration
      */
     public boolean validateUserCredentials(String username, String password1, String password2) {
 
-        if(!isValidUsername(username)) {
+        if (!isValidUsername(username)) {
             return false;
         } else if (!isValidPassword(password1)) {
             return false;
-        } else if (!passwordsMatch(password1,password2)){
+        } else if (!passwordsMatch(password1, password2)) {
             return false;
         } else {
             return true;
@@ -76,23 +79,25 @@ public class UserCredentialHandler {
 
     /**
      * Creates a new user and adds it to userTable in Database
+     *
      * @param username - Username of added user
      * @param password - Password of added user
      * @return - True if user creation is successed
      */
     public void createNewUser(String username, String password) {
-            User newUser = new User();
-            newUser.setUsername(username);
-            newUser.setPassword(hashPassword(password));
-            newUser.setBalance(2500);
-            newUser.setRounds(1);
-            casinoDAO.addUserRow(newUser);
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setPassword(hashPassword(password));
+        newUser.setBalance(2500);
+        newUser.setRounds(1);
+        casinoDAO.addUserRow(newUser);
     }
 
     /**
      * Method for validating the username which user has input.
      * Checks if username is unique and if so, checks if the lenght meets the requirements.
      * If username is not usable, sets an errormessage which is then returned to the UI via controller
+     *
      * @param username - String which user has given as an input
      * @return true if username is valid for creating a user
      */
@@ -119,6 +124,7 @@ public class UserCredentialHandler {
     /**
      * Method for validating the password which user has input.
      * If password is not usable, sets an errormessage which is then returned to the UI via controller
+     *
      * @param password String which user has given as an input
      * @return true id password is valid for creating a user
      */
@@ -158,12 +164,13 @@ public class UserCredentialHandler {
     /**
      * Method for checking if the passwords user input match with each other.
      * If passwords do not match, sets an errormessage which is then returned to the UI via controller
+     *
      * @param password1 String which user has given as an input
      * @param password2 String which user has given as an input when repeating the password
      * @return true if passwords match
      */
-    public boolean passwordsMatch(String password1, String password2){
-        if (password1.equals(password2)){
+    public boolean passwordsMatch(String password1, String password2) {
+        if (password1.equals(password2)) {
             return true;
         }
         String message = "Passwords did not match";
@@ -174,23 +181,21 @@ public class UserCredentialHandler {
     /**
      * Method for setting an errorMessage for the user
      * Method is possibly used in the username/password validation methods
+     *
      * @param message String which is used as an errormessage
      */
     public void setErrorMessage(String message) {
         errorMessage = message;
     }
 
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return errorMessage;
     }
 
 
-
-
-
     public boolean login(String username, String password) {
         User user = casinoDAO.getUserByUsername(username);
-        if (user != null ) {
+        if (user != null) {
             if (validatePassword(password, user.getPassword())) {
                 //user.setPassword("");
                 loggedInUser = user;
@@ -198,30 +203,45 @@ public class UserCredentialHandler {
                 return true;
             }
         }
-            return false;
+        return false;
 
 
     }
 
-
-    public boolean changePassword(String newPassword, String oldPassword) {
-
+    public boolean validatePassWordChange(String oldPassword, String newPassword, String newPasswordRepeated) {
         User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
-        if (user != null ) {
-            if (validatePassword(oldPassword, user.getPassword())) {
-                user.setPassword(hashPassword(newPassword));
-                casinoDAO.updateUser(user);
 
-                return true;
-            }
+        if (!validatePassword(oldPassword, user.getPassword())) {
+            errorMessage = "The old password was incorrect";
+            return false;
+        } else if (!isValidPassword(newPassword)) {
+            return false;
+        } else if (!passwordsMatch(newPassword, newPasswordRepeated)) {
+            errorMessage = "The passwords did not match";
+            return false;
+        } else {
+            return true;
         }
 
 
-        return false;
+    }
+
+    public boolean changePassword(String newPassword) {
+
+        User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
+
+        user.setPassword(hashPassword(newPassword));
+        if (casinoDAO.updateUser(user)) {
+            return true;
+        } else {
+            errorMessage = "Something went wrong with updating the password";
+            return false;
+        }
     }
 
     /**
      * Method to hash the users' password in the Database
+     *
      * @param password - The password to hash
      * @return
      */
@@ -245,6 +265,7 @@ public class UserCredentialHandler {
 
     /**
      * Hashes the password
+     *
      * @return - The hashed password
      */
     private byte[] getSalt() {
@@ -262,8 +283,9 @@ public class UserCredentialHandler {
 
     /**
      * Validates the password
+     *
      * @param givenPassword - The password
-     * @param passwordHash - Hashed password
+     * @param passwordHash  - Hashed password
      * @return
      */
     private boolean validatePassword(String givenPassword, String passwordHash) {
@@ -292,6 +314,7 @@ public class UserCredentialHandler {
 
     /**
      * From string to Hex
+     *
      * @param array
      * @return
      */
@@ -308,6 +331,7 @@ public class UserCredentialHandler {
 
     /**
      * From Hex to string
+     *
      * @param hex
      * @return
      */
@@ -322,6 +346,7 @@ public class UserCredentialHandler {
 
     /**
      * Gets the currently logged in user
+     *
      * @return
      */
     public User getLoggedInUser() {
@@ -330,6 +355,7 @@ public class UserCredentialHandler {
 
     /**
      * Checks if the user is logged in
+     *
      * @return
      */
     public boolean isLoggedIn() {
@@ -344,16 +370,10 @@ public class UserCredentialHandler {
         isLoggedIn = false;
     }
 
-    /**
-     * For testing purposes
-     * @return userController-object
-     */
-    /*public UserController getUserController() {
-        return userController;
-    }*/
 
     /**
      * For testing purposes
+     *
      * @return DAO-object
      */
     public CasinoDAO getCasinoDAO() {

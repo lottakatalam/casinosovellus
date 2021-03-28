@@ -41,46 +41,37 @@ public class ChangePasswordController {
      */
     public void changePassword() {
 
-        if (oldPasswordField.getText().isEmpty() ) {
+        if (oldPasswordField.getText().isEmpty()) {
             errorText.setText("Please enter old password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
-        }
-        else if(newPasswordField.getText().isEmpty()) {
+        } else if (newPasswordField.getText().isEmpty()) {
             errorText.setText("Please enter new password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
-        }
-        else if(!isValidPassword(newPasswordField.getText())) {
-        }
-        else if (newPasswordRepeatField.getText().isEmpty()) {
+        } /*else if (!isValidPassword(newPasswordField.getText())) {
+
+        }*/ else if (newPasswordRepeatField.getText().isEmpty()) {
             errorText.setText("Please repeat new password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
-        }
-        else if (newPasswordField.getText().equals(newPasswordRepeatField.getText()) && !newPasswordField.getText().isEmpty() && !newPasswordRepeatField.getText().isEmpty()) {
-            if(userController.changeUserPassword(newPasswordField.getText(), oldPasswordField.getText())) {
+        } else {
+            String oldpassword = oldPasswordField.getText();
+            String newPassword = newPasswordField.getText();
+            String newPasswordRepeated = newPasswordRepeatField.getText();
+
+            if (userController.validatePasswordChange(oldpassword, newPassword, newPasswordRepeated)) {
                 blackScreen.setVisible(true);
                 succesfulText.setVisible(true);
                 okButton.setVisible(true);
             } else {
-                errorText.setText("Please check that old password is written correctly");
-                blackScreen.setVisible(true);
-                errorText.setVisible(true);
-                okButton.setVisible(true);
+                setErrorMessageAboutPassword(userController.getErrorMessage());
             }
 
-
-        } else {
-            errorText.setText("Password does not match");
-            blackScreen.setVisible(true);
-            errorText.setVisible(true);
-            okButton.setVisible(true);
         }
-
 
         oldPasswordField.setText("");
         newPasswordField.setText("");
@@ -89,6 +80,7 @@ public class ChangePasswordController {
 
     /**
      * Loads back to Mainmenu
+     *
      * @throws IOException - if .fxml file is not found
      */
     public void backToMainMenu() throws IOException {
@@ -110,43 +102,7 @@ public class ChangePasswordController {
     }
 
 
-    /**
-     * Validation of Password while registering
-     * @param password - Password that is validated
-     * @return - If the password is valid or not
-     */
-    public boolean isValidPassword(String password) {
-        String message;
-        if (password.length() < 6) {
-            message = "Password must contain at least 6 characters.";
-            System.out.println(message);
-            setErrorMessageAboutPassword(message);
-            return false;
-        }
-        String upperCaseChars = "(.*[A-Z].*)";
-        if (!password.matches(upperCaseChars)) {
-            message = "Password must have atleast one uppercase character";
-            System.out.println(message);
-            setErrorMessageAboutPassword(message);
-            return false;
-        }
-        String lowerCaseChars = "(.*[a-z].*)";
-        if (!password.matches(lowerCaseChars)) {
-            message = "Password must have atleast one lowercase character";
-            System.out.println(message);
-            setErrorMessageAboutPassword(message);
-            return false;
-        }
-        String numbers = "(.*[0-9].*)";
-        if (!password.matches(numbers)) {
-            message = "Password must have atleast one number";
-            System.out.println(message);
-            setErrorMessageAboutPassword(message);
-            return false;
-        }
 
-        return true;
-    }
 
     public void setErrorMessageAboutPassword(String message) {
         errorText.setText(message);
@@ -157,6 +113,7 @@ public class ChangePasswordController {
 
     /**
      * Button closes pop up screen and loads to MainMenu if registeration is successed
+     *
      * @throws IOException
      */
     public void okButton() throws IOException {
@@ -191,9 +148,9 @@ public class ChangePasswordController {
      * Checks is the volume ON or OFF
      */
     public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
+        if (stageManager.getMediaPlayer().getVolume() == 0) {
             volumeOFF();
-        }else {
+        } else {
             volumeON();
         }
     }
