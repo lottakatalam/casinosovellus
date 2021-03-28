@@ -35,6 +35,7 @@ public class Player {
         this.currency = currency;
 
     }
+
     /**
      * Initializes new Player-object
      */
@@ -46,6 +47,7 @@ public class Player {
 
     /**
      * Gets the hand of the player
+     *
      * @return
      */
     public Hand getHand() {
@@ -59,7 +61,10 @@ public class Player {
         amountOfWins++;
         if (method.equals("Blackjack")) {
             this.currency += (bet * 2.5);
-        } else {
+        } else if(method.equals("EvenMoney")) {
+            this.currency += (bet * 2);
+        }else
+        {
             this.currency += (bet * 2);
         }
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
@@ -85,9 +90,9 @@ public class Player {
         if (method.equals("Insurance")) {
             this.currency += bet + bet / 2;
         }
-            if (method.equals("Surrender")) {
-                this.currency += bet - bet / 2;
-            }
+        if (method.equals("Surrender")) {
+            this.currency += bet - bet / 2;
+        }
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             User user = UserCredentialHandler.getInstance().getLoggedInUser();
             user.setBalance(this.currency);
@@ -97,6 +102,7 @@ public class Player {
 
     /**
      * Gets the amountOfWins
+     *
      * @return - The amountOfWins
      */
     public int getWins() {
@@ -105,6 +111,7 @@ public class Player {
 
     /**
      * Gets the player's current balance
+     *
      * @return - The balance
      */
     public int getCurrency() {
@@ -119,7 +126,7 @@ public class Player {
      */
     public boolean setBet(int b) {
         if (this.currency < b) {
-            Logger.log(Logger.LogLevel.PROD, "Saldo ("+currency+") ei riitä panoksen ("+b+") asettamiseen.");
+            Logger.log(Logger.LogLevel.PROD, "Saldo (" + currency + ") ei riitä panoksen (" + b + ") asettamiseen.");
             return false;
         } else {
             this.bet = b;
@@ -130,12 +137,13 @@ public class Player {
 
     /**
      * Sets the bet-attribute to a player's splitted hand
+     *
      * @param b - the amount of bet
      * @return - true if the bet is set, false if the player doesn't have enough online cash for setting the bet
      */
     public boolean setSplitBet(int b) {
         if (this.currency < b) {
-            Logger.log(Logger.LogLevel.PROD, "Saldo ("+currency+") ei riitä panoksen ("+b+") asettamiseen.");
+            Logger.log(Logger.LogLevel.PROD, "Saldo (" + currency + ") ei riitä panoksen (" + b + ") asettamiseen.");
             return false;
         } else {
             this.splitBet = b;
@@ -157,11 +165,12 @@ public class Player {
     }
 
     public void surrender() {
-       // this.currency -= bet / 2;
+        // this.currency -= bet / 2;
     }
 
     /**
      * Gets the amount of bet
+     *
      * @return - the amount of bet
      */
     public int getBet() {

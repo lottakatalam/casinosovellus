@@ -96,5 +96,17 @@ public class Deck {
         return equals;
     }
 
+    /**
+     * Used only for debugging to set first three cards
+     * @param card1
+     * @param card2
+     * @param card3
+     */
+    public void manipulateDeck(Card card1, Card card2, Card card3) {
+        deck.add(0, card3);
+        deck.add(0, card2);
+        deck.add(0, card1);
+    }
+
 }
 

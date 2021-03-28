@@ -111,6 +111,8 @@ public class BlackjackGame extends Thread {
     //TODO typo?
     public void playersurrender() { round.playersurrender(); }
 
+    public void playerEvenMoney() { round.playerEvenMoney();}
+
     /**
      * Returns player of the game
      * @return Player-object

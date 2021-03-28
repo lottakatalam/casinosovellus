@@ -25,6 +25,7 @@ public class BlackjackController {
     private boolean splitPossibility;
     private boolean insurancePossibility;
     private boolean surrenderPossibility;
+    private boolean evenMoneyPossibility;
     private boolean splitIsOn = false;
 
 
@@ -274,6 +275,7 @@ public class BlackjackController {
      */
     public boolean getsurrenderPossibility() { return this.surrenderPossibility; }
 
+
     public void playerSurrender() { this.blackJackGame.playersurrender(); }
 
 
@@ -291,6 +293,12 @@ public class BlackjackController {
     public void playerSplit() {
         this.blackJackGame.playerSplit();
     }
+
+    public void setEvenMoneyPossibility(boolean evenMoneyPossibility) {this.evenMoneyPossibility = evenMoneyPossibility;}
+
+    public boolean getEvenMoneyPossibility() {return evenMoneyPossibility;}
+
+    public void playerEvenMoney() {this.blackJackGame.playerEvenMoney();}
 
     /**
      * Shows a tip that player should hit

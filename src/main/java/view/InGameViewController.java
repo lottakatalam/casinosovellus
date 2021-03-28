@@ -283,7 +283,7 @@ public class InGameViewController {
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
-                checkForBlackJack();
+                //checkForBlackJack();
                 checkSpecialRules();
             }
         }
@@ -488,6 +488,11 @@ public class InGameViewController {
         }
     }
 
+    public void handleEvenMoney() {
+        gameController.playerEvenMoney();
+        evenMoneyButton.setDisable(true);
+    }
+
     public void checkForBlackJack() {
         if (gameController.getPlayer().getHand().calculateTotal() == 21) {
             disableHit();
@@ -539,8 +544,13 @@ public class InGameViewController {
                 break;
             case "surrendered":
                 declareWinner.setText("Surrendered");
+                break;
+            case "EvenMoney":
+                declareWinner.setText("Even money!");
+
         }
         updateBalance();
+        System.out.println(winner);
         sleep(4000);
         if (gameController.getSplitStatus()) {
             gameController.setSplitStatus(false);
@@ -692,6 +702,12 @@ public class InGameViewController {
             insuranceButton.setDisable(false);
         }
     }
+
+    public void checkForEvenMoney() {
+            if (gameController.getEvenMoneyPossibility()) {
+            evenMoneyButton.setDisable(false);
+            }
+    }
     /**
      * Checks for all the special rules
      */
@@ -699,6 +715,7 @@ public class InGameViewController {
         checkForSplit();
         checkForDouble();
         checkForInsurance();
+        checkForEvenMoney();
     }
 
     /**
