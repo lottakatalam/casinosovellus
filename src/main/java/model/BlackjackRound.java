@@ -46,7 +46,7 @@ public class BlackjackRound extends Thread {
      * @param player         represents the user. It's methods are called from the UI activity. Wins or loses currency.
      * @param dealer         draws and stands through algorithm.
      */
-    public BlackjackRound(BlackjackController gameController, CasinoDAO casinoDAO, Deck deck, Player player, Dealer dealer) {
+    public BlackjackRound(Boolean testMode, BlackjackController gameController, CasinoDAO casinoDAO, Deck deck, Player player, Dealer dealer) {
         Logger.log(Logger.LogLevel.PROD, String.format("Round %d started", ++roundNumber));
         this.deck = deck;
         this.player = player;
@@ -57,9 +57,9 @@ public class BlackjackRound extends Thread {
         deck.shuffleDeck();
 
         /* THIS CAN BE USED TO DEBUG SPECIAL RULES*/
-        //deck.manipulateDeck(new Card(1,1), new Card(10,1), new Card(1,2));
-
-
+        if (testMode) {
+            deck.manipulateDeck(new Card(1,1), new Card(10,1), new Card(1,2));
+        }
         addFirstCards();
 
         addFirstCardsToUI();
@@ -214,13 +214,14 @@ public class BlackjackRound extends Thread {
     /**
      * Player surrenders (Round ends)
      */
-
-
     public void playersurrender() {
         this.surrendered = true;
         this.player.surrender();
     }
 
+    /**
+     * Player calls even money (Round ends)
+     */
     public void playerEvenMoney() {
         evenMoney = true;
         this.start();
