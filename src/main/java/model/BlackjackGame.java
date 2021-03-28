@@ -33,6 +33,8 @@ public class BlackjackGame extends Thread {
 
     private CasinoDAO casinoDAO;
 
+    private boolean testMode = false;
+
 
     /**
      * Initializes new Blackjack game
@@ -66,7 +68,7 @@ public class BlackjackGame extends Thread {
             Logger.log(Logger.LogLevel.PROD, "Getting a new deck...");
         }
 
-        this.round = new BlackjackRound(this.gameController, this.casinoDAO, this.deck, this.player, this.dealer);
+        this.round = new BlackjackRound(this.testMode, this.gameController, this.casinoDAO, this.deck, this.player, this.dealer);
 
     }
 
@@ -129,4 +131,8 @@ public class BlackjackGame extends Thread {
         return this.dealer;
     }
 
+    public boolean toggleTestMode() {
+        testMode = !testMode;
+        return testMode;
+    }
 }

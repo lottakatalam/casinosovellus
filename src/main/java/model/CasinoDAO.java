@@ -64,7 +64,6 @@ public class CasinoDAO {
      */
     @Override
     protected void finalize() {
-
         try {
             if (sessionFactory != null) {
                 sessionFactory.close();

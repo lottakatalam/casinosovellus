@@ -488,6 +488,9 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Player calls even money
+     */
     public void handleEvenMoney() {
         gameController.playerEvenMoney();
         evenMoneyButton.setDisable(true);

@@ -294,10 +294,22 @@ public class BlackjackController {
         this.blackJackGame.playerSplit();
     }
 
+
+    /**
+     * Sets the even money possibility
+     * @param evenMoneyPossibility - Current even money possibility
+     */
     public void setEvenMoneyPossibility(boolean evenMoneyPossibility) {this.evenMoneyPossibility = evenMoneyPossibility;}
 
+    /**
+     * Gets the even money possibility
+     * @return - Returns true or false/ is even money possible or not
+     */
     public boolean getEvenMoneyPossibility() {return evenMoneyPossibility;}
 
+    /**
+     * Ends game with even money rule
+     */
     public void playerEvenMoney() {this.blackJackGame.playerEvenMoney();}
 
     /**
