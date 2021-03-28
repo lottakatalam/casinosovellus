@@ -37,7 +37,9 @@ public class ChangePasswordController {
     }
 
     /**
-     * Changes users password
+     * Changes users password if the userinput meets the requirements
+     * If all fields have input, asks the controller to validate the given passwords
+     * and tells the user if the change has been made or not
      */
     public void changePassword() {
 
@@ -51,9 +53,7 @@ public class ChangePasswordController {
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
-        } /*else if (!isValidPassword(newPasswordField.getText())) {
-
-        }*/ else if (newPasswordRepeatField.getText().isEmpty()) {
+        } else if (newPasswordRepeatField.getText().isEmpty()) {
             errorText.setText("Please repeat new password");
             blackScreen.setVisible(true);
             errorText.setVisible(true);
@@ -101,9 +101,10 @@ public class ChangePasswordController {
 
     }
 
-
-
-
+    /**
+     * Sets an error message for user to the UI if the password change was unsuccessful
+     * @param message the error message for the user shown in the UI
+     */
     public void setErrorMessageAboutPassword(String message) {
         errorText.setText(message);
         blackScreen.setVisible(true);

@@ -22,6 +22,9 @@ public class UserCredentialHandler {
 
     public boolean isLoggedIn = false;
 
+    /**
+     * Error message concerning registration or password change. Is used in the UI when needed
+     */
     private String errorMessage;
 
     /**
@@ -192,7 +195,12 @@ public class UserCredentialHandler {
         return errorMessage;
     }
 
-
+    /**
+     * Checks the user credentials and if correct, logs the user in
+     * @param username
+     * @param password
+     * @return true, if the login was successful
+     */
     public boolean login(String username, String password) {
         User user = casinoDAO.getUserByUsername(username);
         if (user != null) {
@@ -208,6 +216,16 @@ public class UserCredentialHandler {
 
     }
 
+    /**
+     * Validates if
+     * 1. the old password given as input matches the users password
+     * 2. the new password given as input is valid for use
+     * 3. the new password and repeated new password match with one another
+     * @param oldPassword
+     * @param newPassword
+     * @param newPasswordRepeated
+     * @return true, if all three inputs are valid
+     */
     public boolean validatePassWordChange(String oldPassword, String newPassword, String newPasswordRepeated) {
         User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
 
@@ -226,6 +244,11 @@ public class UserCredentialHandler {
 
     }
 
+    /**
+     * Changes the users password and gives an errormessage if something goes wrong with the change
+     * @param newPassword
+     * @return true, if the password was changed successfully
+     */
     public boolean changePassword(String newPassword) {
 
         User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
