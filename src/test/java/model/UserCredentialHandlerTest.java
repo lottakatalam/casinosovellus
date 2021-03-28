@@ -49,11 +49,23 @@ class UserCredentialHandlerTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"123456,1","salas,0","salasana1,0","SALASANA1,0","salaSana,0","salasanA1,1","hjrTs7,1",})
+    @CsvSource({"salas,0","salasana1,0","SALASANA1,0","salaSana,0","123456,0","salasanA1,1","hjrTs7,1"})
     void isValidPassword(String password, int isValid) {
         String message = "";
         if (isValid==0) {
             assertFalse(UCH.isValidPassword(password),"Invalid password :"+password+" was valid according to the test");
+            if (password.equals("salas")) {
+                message = "Password must contain at least 6 characters";
+            } else if (password.equals("salasana1")) {
+                message = "Password must have at least one uppercase character";
+            } else if (password.equals("SALASANA1")) {
+                message = "Password must have at least one lowercase character";
+            } else if (password.equals("salaSana")) {
+                message = "Password must have at least one number";
+            } else {
+                message = "Password must contain at least one alphabetical character";
+            }
+            assertTrue(UCH.getErrorMessage().equals(message), "The error message was not correct");
         } else {
             assertTrue(UCH.isValidPassword(password), "Valid password: "+password+" was invalid according to the test");
         }

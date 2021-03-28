@@ -135,14 +135,14 @@ public class UserCredentialHandler {
     public boolean isValidPassword(String password) {
         String message;
         if (password.length() < 6) {
-            message = "Password must contain at least 6 characters.";
+            message = "Password must contain at least 6 characters";
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
         String digits = "\\d+";
         if (password.matches(digits)) {
-            message = "Password must contain alphabetical characters";
+            message = "Password must contain at least one alphabetical character";
             System.out.println(message);
             setErrorMessage(message);
             return false;
