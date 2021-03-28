@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.regex.Pattern;
 
 /**
  * A class to handling all the user related stuff
@@ -135,6 +136,13 @@ public class UserCredentialHandler {
         String message;
         if (password.length() < 6) {
             message = "Password must contain at least 6 characters.";
+            System.out.println(message);
+            setErrorMessage(message);
+            return false;
+        }
+        String digits = "\\d+";
+        if (password.matches(digits)) {
+            message = "Password must contain alphabetical characters";
             System.out.println(message);
             setErrorMessage(message);
             return false;

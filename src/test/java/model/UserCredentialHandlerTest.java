@@ -1,57 +1,62 @@
 package model;
 
-import controller.UserController;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import view.RegisterController;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserCredentialHandlerTest {
 
-    UserCredentialHandler UCHandler = UserCredentialHandler.getInstance();
-    //Miten alustetaan registerController?
+    UserCredentialHandler UCH = UserCredentialHandler.getInstance();
 
-
-    @Test
+   /* @Test
     void getInstance() {
 
     }
 
-    /*@Test
-    void linkController() {
-        UserController userController = new UserController(rg);
-        assertNotNull(UserCredentialHandler.getInstance().getUserController(),"The user controller-object was not created.");
+    @Test
+    void setCasinoDAO() {
     }*/
+
 
     @Test
     void validateUserCredentials() {
 
     }
 
-    //might not work is username already exists?
-    @ParameterizedTest
-    @CsvSource({"lottaliina, Lol123", "pelaaja, pelaaja234", "lol, lol"})
-    void createNewUser(String username, String password) {
-        CasinoDAO casdao = UCHandler.getCasinoDAO();
-        UCHandler.createNewUser(username,password);
-        User user = casdao.getUserByUsername(username);
-        assertTrue(user.getUsername().equals(username), "The user "+username+"  was not created");
+    @Test
+    void createNewUser() {
     }
 
+    @ParameterizedTest
+    @CsvSource({"Katala,0", "Moikka,0","lllllllllllllllll,0","oi1,0","pkLhnm3,1","hgdkjrT87,1"})
+    void isValidUsername(String username, int isValid) {
+        String message = "";
+        if (isValid == 0) {
+            assertFalse(UCH.isValidUsername(username), "Invalid username :"+username+" was valid according to the test");
+            if (username.equals("Katala")|username.equals("Moikka")) {
+                message = "Username already exists. Try a different username";
 
-    /*@ParameterizedTest
-    @ValueSource (strings = {"ai", "mit", "mmmmmmmmmmmmmmmmm"})
-    void isValidUsername(String username) {
-        UserController userController = new UserController(new RegisterController());
-        assertFalse(UCHandler.isValidUsername(username), "The method returned true, should have been false");
-    }*/
+            } else if (username.equals("lllllllllllllllll")|username.equals("oi1")){
+                message = "Username must be more than 4 and less than 16 characters in length.";
+            }
+            assertTrue(UCH.getErrorMessage().equals(message), "The error message was not correct");
+        } else {
+            assertTrue(UCH.isValidUsername(username), "Valid username :"+username+" was not valid according to the test");
+        }
+    }
 
-    @Test
-    void isValidPassword() {
+    @ParameterizedTest
+    @CsvSource({"123456,1","salas,0","salasana1,0","SALASANA1,0","salaSana,0","salasanA1,1","hjrTs7,1",})
+    void isValidPassword(String password, int isValid) {
+        String message = "";
+        if (isValid==0) {
+            assertFalse(UCH.isValidPassword(password),"Invalid password :"+password+" was valid according to the test");
+        } else {
+            assertTrue(UCH.isValidPassword(password), "Valid password: "+password+" was invalid according to the test");
+        }
     }
 
     @Test
@@ -63,7 +68,15 @@ class UserCredentialHandlerTest {
     }
 
     @Test
+    void getErrorMessage() {
+    }
+
+    @Test
     void login() {
+    }
+
+    @Test
+    void validatePassWordChange() {
     }
 
     @Test
@@ -80,5 +93,9 @@ class UserCredentialHandlerTest {
 
     @Test
     void logout() {
+    }
+
+    @Test
+    void getCasinoDAO() {
     }
 }
