@@ -30,7 +30,7 @@ public class RegisterController {
     public Text registerText;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
-    private UserController userController = new UserController(this);
+    private UserController userController = new UserController();
 
     @FXML
     public TextField usernameTextField;
@@ -84,13 +84,15 @@ public class RegisterController {
             String password1 = passwordTextField.getText();
             String password2 = repeatTextField.getText();
 
-            if (userController.createNewUser(username, password1, password2)) {
+            if (userController.validateCredentials(username, password1, password2)) {
 
                 userController.login(username, password1);
 
                 blackScreen.setVisible(true);
                 registerText.setVisible(true);
                 okButton.setVisible(true);
+            } else {
+                setErrorMessage(userController.getErrorMessage());
             }
         }
 

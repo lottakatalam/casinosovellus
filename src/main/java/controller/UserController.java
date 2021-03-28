@@ -12,6 +12,10 @@ import view.RegisterController;
 public class UserController {
 
     private RegisterController registerController;
+
+    private String errorMessage;
+
+
     /**
      * Constructor of UserController
      */
@@ -19,13 +23,6 @@ public class UserController {
 
     }
 
-    /**
-     * Alternative constructor to be used in registerController
-     */
-    public UserController(RegisterController rg) {
-        registerController = rg;
-        UserCredentialHandler.getInstance().linkController(this);
-    }
 
     /**
      *  Calls for registration validation
@@ -34,19 +31,27 @@ public class UserController {
      * @param password2 - User's repeated password
      * returns true if new user is created
      */
-    public boolean createNewUser(String username, String password1, String password2) {
-        return UserCredentialHandler.getInstance().validateUserCredentials(username,password1, password2);
+    public boolean validateCredentials(String username, String password1, String password2) {
+        if (UserCredentialHandler.getInstance().validateUserCredentials(username,password1, password2)) {
+            UserCredentialHandler.getInstance().createNewUser(username, password1);
+            return true;
+        } else {
+            errorMessage = UserCredentialHandler.getInstance().getErrorMessage();
+            return false;
+        }
+
     }
 
     /**
-     * Sets a new error message to registration view
-     * @param message - string to display as an error message for user
-     * @return message which is displayed in the UI
+     * RegisterController uses this method for setting an errormessage related to unsuccessful registration
+     * The string is possibly set in the validateCredentials-method by calling the UserCredentialHandler for the right errormessage
+     * @return errorMessage, which specifies the reason for the unsuccessful registration
      */
-    public String setErrorMessageToView(String message){
-        registerController.setErrorMessage(message);
-        return message;
+    public String getErrorMessage() {
+        return errorMessage;
     }
+
+
 
     /**
      * Logs the user in

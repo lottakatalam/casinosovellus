@@ -22,7 +22,7 @@ public class UserCredentialHandler {
 
     public boolean isLoggedIn = false;
 
-    private UserController userController;
+    private String errorMessage;
 
     /**
      * Constructor of UserCredentialHandler
@@ -43,14 +43,6 @@ public class UserCredentialHandler {
         return instance;
     }
 
-    /**
-     * Method for linking the registration view controller, controller and this object to each other.
-     * Method is called in the constructor of UserController
-     * @param userContr - the controller which is used to connect this object with registration view
-     */
-    public void linkController(UserController userContr) {
-        this.userController = userContr;
-    }
 
     /**
      * Sets the casino Database
@@ -77,7 +69,6 @@ public class UserCredentialHandler {
         } else if (!passwordsMatch(password1,password2)){
             return false;
         } else {
-            createNewUser(username, password1);
             return true;
         }
 
@@ -117,7 +108,7 @@ public class UserCredentialHandler {
         }
 
         if (username.length() > 16 || username.length() < 4) {
-            message = "Username must be less than 16 and more than 4 characters in length.";
+            message = "Username must be more than 4 and less than 16 characters in length.";
             System.out.println(message);
             setErrorMessage(message);
             return false;
@@ -181,11 +172,16 @@ public class UserCredentialHandler {
     }
 
     /**
-     * Method for setting an error message to UI via controller
+     * Method for setting an errorMessage for the user
+     * Method is possibly used in the username/password validation methods
      * @param message String which is used as an errormessage
      */
     public void setErrorMessage(String message) {
-        this.userController.setErrorMessageToView(message);
+        errorMessage = message;
+    }
+
+    public String getErrorMessage(){
+        return errorMessage;
     }
 
 
@@ -352,9 +348,9 @@ public class UserCredentialHandler {
      * For testing purposes
      * @return userController-object
      */
-    public UserController getUserController() {
+    /*public UserController getUserController() {
         return userController;
-    }
+    }*/
 
     /**
      * For testing purposes
