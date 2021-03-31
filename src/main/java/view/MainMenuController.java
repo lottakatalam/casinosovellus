@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.LanguageLoader;
 import model.UserCredentialHandler;
 
 import java.io.IOException;
@@ -94,8 +95,8 @@ public class MainMenuController {
         SettingsViewController settingsViewController = loader.getController();
         settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);
-
-        stageManager.getPrimaryStage().setTitle("Settings");
+        System.out.println(LanguageLoader.getInstance().getString("settings"));
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("settings"));
         stageManager.getPrimaryStage().setScene(settingsScene);
         stageManager.getPrimaryStage().show();
     }

@@ -55,6 +55,7 @@ public class BlackjackRound extends Thread {
         this.casinoDAO = casinoDAO;
 
         deck.shuffleDeck();
+        deck.manipulateDeck(new Card(1,1), new Card(10,3), new Card(1,2));
 
         /* THIS CAN BE USED TO DEBUG SPECIAL RULES*/
         if (testMode) {

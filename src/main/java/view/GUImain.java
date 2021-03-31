@@ -11,8 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.LanguageLoader;
+import model.UserCredentialHandler;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static javafx.application.Application.launch;
 
@@ -76,6 +80,7 @@ public class GUImain extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(GUImain.class.getResource("/FXML/MainMenu.fxml"));
+            loader.setResources(LanguageLoader.getInstance().getResourceBundle());
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
             BlackjackController ctrl = new BlackjackController();

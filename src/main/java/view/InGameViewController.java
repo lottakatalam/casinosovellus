@@ -983,6 +983,7 @@ public class InGameViewController {
 
     /**
      * Clears the table to end the round
+     * TODO: nappien disablointi
      */
     public void clearTable() {
         hitButton.setDisable(true);
