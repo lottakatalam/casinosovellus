@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
+import javafx.scene.effect.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
@@ -114,6 +117,11 @@ public class SettingsViewController {
             stageManager.getMediaPlayer().setVolume(((Double) newValue) / 100);
             SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
         });
+        if (LanguageLoader.getInstance().getLocale().getLanguage() == "fi") {
+            selectFinnish();
+        }else {
+            selectEnglish();
+        }
     }
 
     /**
@@ -157,11 +165,27 @@ public class SettingsViewController {
      * Changes language to English *NOT USED YET*
      */
     public void selectEnglish() {
+
+        LanguageLoader.getInstance().setLocale("en","GB");
+        englishButton.setScaleX(1.2);
+        englishButton.setScaleY(1.2);
+        finnishButton.setScaleX(0.8);
+        finnishButton.setScaleY(0.8);
+
+        englishButton.setEffect(new DropShadow());
+        finnishButton.setEffect(null);
     }
 
     /**
      * Changes language to Finnish *NOT USED YET*
      */
     public void selectFinnish() {
+        LanguageLoader.getInstance().setLocale("fi", "FI");
+        englishButton.setScaleX(0.8);
+        englishButton.setScaleY(0.8);
+        finnishButton.setScaleX(1.2);
+        finnishButton.setScaleY(1.2);
+        finnishButton.setEffect(new DropShadow());
+        englishButton.setEffect(null);
     }
 }

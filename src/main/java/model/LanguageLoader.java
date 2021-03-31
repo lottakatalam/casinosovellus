@@ -22,7 +22,7 @@ public class LanguageLoader {
     }
 
     private LanguageLoader() {
-        setLocale("en", "GB");
+        setLocale(Locale.getDefault());
     };
 
     public ResourceBundle getResourceBundle() {
@@ -32,6 +32,15 @@ public class LanguageLoader {
     public void setLocale(String language, String country) {
         locale = new Locale(language, country);
         getTextResources();
+    }
+
+    private void setLocale(Locale locale) {
+        this.locale = locale;
+        getTextResources();
+    }
+
+    public Locale getLocale() {
+        return locale;
     }
 
     private void getTextResources() {
