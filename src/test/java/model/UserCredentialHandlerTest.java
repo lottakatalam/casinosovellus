@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -95,6 +96,11 @@ class UserCredentialHandlerTest {
         } else {
             assertTrue(UCH.login(username, password), "Registrated user could not log in");
         }
+    }
+
+    @AfterAll
+    void logout(){
+        UCH.logout();
     }
 
 }
