@@ -1,6 +1,8 @@
 package model;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,9 +11,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserCredentialHandlerTest {
+    UserCredentialHandler UCH;
 
-    UserCredentialHandler UCH = UserCredentialHandler.getInstance();
 
+    @BeforeEach
+    void initTests() {
+        UCH = UserCredentialHandler.getInstance();
+    }
 
     @Test
     void validateUserCredentials() {
@@ -98,7 +104,7 @@ class UserCredentialHandlerTest {
         }
     }
 
-    @AfterAll
+    @AfterEach
     void logout(){
         UCH.logout();
     }
