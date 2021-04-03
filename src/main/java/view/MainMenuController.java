@@ -2,7 +2,6 @@ package view;
 
 import controller.BlackjackController;
 import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -77,11 +76,13 @@ public class MainMenuController {
      * @throws IOException - if .fxml file is not found
      */
     public void gameHistoryButton() throws IOException {
-        Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/FXML/GameHistory.fxml"));
-        Scene gameHistoryScene = new Scene(gameHistoryParent);
-
-        stageManager.getPrimaryStage().setTitle("Game History");
-        stageManager.getPrimaryStage().setScene(gameHistoryScene);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/GameHistory.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
+        Parent gamehistoryParent = loader.load();
+        Scene gamehistoryScene = new Scene(gamehistoryParent);
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("GamehistoryText"));
+        stageManager.getPrimaryStage().setScene(gamehistoryScene);
         stageManager.getPrimaryStage().show();
     }
 
@@ -91,12 +92,12 @@ public class MainMenuController {
     public void settingsButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/Settings.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent settingsParent = loader.load();
         SettingsViewController settingsViewController = loader.getController();
         settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);
-        System.out.println(LanguageLoader.getInstance().getString("settings"));
-        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("settings"));
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("SettingsText"));
         stageManager.getPrimaryStage().setScene(settingsScene);
         stageManager.getPrimaryStage().show();
     }
@@ -117,14 +118,14 @@ public class MainMenuController {
      * @throws IOException - if .fxml file is not found
      */
     public void logInButton() throws IOException {
-        Parent logInParent = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
-        Scene logInScene = new Scene(logInParent);
-
-        stageManager.getPrimaryStage().setTitle("Log In");
-        stageManager.getPrimaryStage().setScene(logInScene);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/LogInView.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
+        Parent loginParent = loader.load();
+        Scene loginScene = new Scene(loginParent);
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("LogInText"));
+        stageManager.getPrimaryStage().setScene(loginScene);
         stageManager.getPrimaryStage().show();
-
-
     }
 
     /**
