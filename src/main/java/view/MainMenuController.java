@@ -37,6 +37,7 @@ public class MainMenuController {
     private BlackjackController gameController;
     private static UserController userController;
     private StageManager stageManager;
+    private LanguageLoader langloader = LanguageLoader.getInstance();
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @throws IOException - if .fxml file is not found
@@ -79,7 +80,7 @@ public class MainMenuController {
     public void gameHistoryButton() throws IOException {
         Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/FXML/GameHistory.fxml"));
         Scene gameHistoryScene = new Scene(gameHistoryParent);
-
+        langloader.getString("gamehistory");
         stageManager.getPrimaryStage().setTitle("Game History");
         stageManager.getPrimaryStage().setScene(gameHistoryScene);
         stageManager.getPrimaryStage().show();
@@ -95,7 +96,7 @@ public class MainMenuController {
         SettingsViewController settingsViewController = loader.getController();
         settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);
-        System.out.println(LanguageLoader.getInstance().getString("settings"));
+        langloader.getString("settings");
         stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("settings"));
         stageManager.getPrimaryStage().setScene(settingsScene);
         stageManager.getPrimaryStage().show();
@@ -109,6 +110,7 @@ public class MainMenuController {
         areYouSure.setVisible(true);
         yesButton.setVisible(true);
         noButton.setVisible(true);
+        langloader.getString("quit");
 
     }
 
@@ -119,7 +121,7 @@ public class MainMenuController {
     public void logInButton() throws IOException {
         Parent logInParent = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
         Scene logInScene = new Scene(logInParent);
-
+        langloader.getString("login");
         stageManager.getPrimaryStage().setTitle("Log In");
         stageManager.getPrimaryStage().setScene(logInScene);
         stageManager.getPrimaryStage().show();
@@ -137,6 +139,7 @@ public class MainMenuController {
         changePasswordButton.setVisible(false);
         registerButton.setVisible(true);
         loggedUser.setText("Logged out");
+        langloader.getString("logout");
     }
 
     /**
@@ -149,7 +152,7 @@ public class MainMenuController {
 
         Parent registerParent = loader.load();
         RegisterController controller = loader.getController();
-
+        langloader.getString("register");
         Scene registerScene = new Scene(registerParent);
         stageManager.getPrimaryStage().setTitle("Register");
         stageManager.getPrimaryStage().setScene(registerScene);
@@ -166,7 +169,7 @@ public class MainMenuController {
 
         Parent leaderboardsParent = loader.load();
         LeaderboardsController controller = loader.getController();
-
+        langloader.getString("leaderboard");
         Scene leaderboardsScene = new Scene(leaderboardsParent);
         stageManager.getPrimaryStage().setTitle("Leaderboards");
         stageManager.getPrimaryStage().setScene(leaderboardsScene);
@@ -180,7 +183,7 @@ public class MainMenuController {
     public void handleChangePassword() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
-
+        langloader.getString("changepassword");
         Parent changePasswordView = loader.load();
         ChangePasswordController controller = loader.getController();
 
@@ -197,6 +200,7 @@ public class MainMenuController {
     public void yesAction() {
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
+        langloader.getString("yes");
     }
 
     /**
@@ -207,6 +211,7 @@ public class MainMenuController {
         areYouSure.setVisible(false);
         yesButton.setVisible(false);
         noButton.setVisible(false);
+        langloader.getString("no");
     }
 
     /**

@@ -1,3 +1,4 @@
+import model.LanguageLoader;
 import model.Logger;
 import view.GUImain;
 
@@ -14,6 +15,7 @@ public class main {
     public static void main(String[] args) {
         Logger.setLogLevel(Logger.LogLevel.PROD);
         GUImain.main(args);
+
     }
 
 }
