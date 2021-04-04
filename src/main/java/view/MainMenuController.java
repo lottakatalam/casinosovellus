@@ -164,12 +164,13 @@ public class MainMenuController {
     public void leaderboardsButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/Leaderboards.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
 
         Parent leaderboardsParent = loader.load();
         LeaderboardsController controller = loader.getController();
 
         Scene leaderboardsScene = new Scene(leaderboardsParent);
-        stageManager.getPrimaryStage().setTitle("Leaderboards");
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("LeaderboardsText"));
         stageManager.getPrimaryStage().setScene(leaderboardsScene);
         stageManager.getPrimaryStage().show();
     }
