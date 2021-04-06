@@ -12,17 +12,17 @@
                 <Image url="@../Images/thegrandmyllypurologo.png" />
             </image>
         </ImageView>
-        <Button fx:id="logInButton" layoutX="453.0" layoutY="523.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%Log in">
+        <Button fx:id="logInButton" layoutX="453.0" layoutY="523.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%LoginButton">
             <font>
                 <Font name="Cooper Black" size="25.0" />
             </font>
         </Button>
-      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="406.0" layoutY="311.0" prefHeight="34.0" prefWidth="210.0" promptText="%Username" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+      <TextField fx:id="usernameTextField" alignment="CENTER" layoutX="406.0" layoutY="311.0" prefHeight="34.0" prefWidth="210.0" promptText="%promptUsername" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="406.0" layoutY="437.0" prefHeight="34.0" prefWidth="210.0" promptText="%Password" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
+      <PasswordField fx:id="passwordTextField" alignment="CENTER" layoutX="406.0" layoutY="437.0" prefHeight="34.0" prefWidth="210.0" promptText="%promptPassword" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;">
          <font>
             <Font name="Cooper Black" size="15.0" />
          </font>
@@ -30,17 +30,17 @@
             <Tooltip text="Forgot password? Please contact admin to change the password" />
          </tooltip>
       </PasswordField>
-      <Text fx:id="usernameText" layoutX="417.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%Username:">
+      <Text fx:id="usernameText" layoutX="417.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginUsername">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Text fx:id="passwordText" layoutX="419.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%Password:">
+      <Text fx:id="passwordText" layoutX="419.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginPassword">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="470.0" layoutY="618.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%Back">
+      <Button fx:id="backButton" layoutX="470.0" layoutY="618.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -68,17 +68,17 @@
             <Image url="@../Images/WinnerScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="errorText" layoutX="210.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Incorrect username or password!" visible="false">
+      <Text fx:id="errorText" layoutX="210.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginError" visible="false">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Button fx:id="okButton" layoutX="480.0" layoutY="379.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="OK" visible="false">
+      <Button fx:id="okButton" layoutX="480.0" layoutY="379.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%OKbutton" visible="false">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Text fx:id="loginText" layoutX="360.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Login successful!" visible="false">
+      <Text fx:id="loginText" layoutX="360.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginOk" visible="false">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
