@@ -71,13 +71,13 @@ public class RegisterController {
         System.out.println(passwordTextField.getText());
 
         if (usernameTextField.getText().isEmpty()) {
-            setErrorMessage("Please enter a username");
+            setErrorMessage(LanguageLoader.getInstance().getString("RegErrUser"));
         }
         else if (passwordTextField.getText().isEmpty()) {
-            setErrorMessage("Please enter a password");
+            setErrorMessage(LanguageLoader.getInstance().getString("RegErrPwd"));
         }
         else if (repeatTextField.getText().isEmpty()) {
-            setErrorMessage("Please repeat password");
+            setErrorMessage(LanguageLoader.getInstance().getString("RegErrRepeatPwd"));
         }
         else  {
             String username = usernameTextField.getText();

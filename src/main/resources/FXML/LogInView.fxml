@@ -27,7 +27,7 @@
             <Font name="Cooper Black" size="15.0" />
          </font>
          <tooltip>
-            <Tooltip text="Forgot password? Please contact admin to change the password" />
+            <Tooltip text="%forgotpwd" />
          </tooltip>
       </PasswordField>
       <Text fx:id="usernameText" layoutX="417.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginUsername">
