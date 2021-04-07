@@ -35,7 +35,7 @@ public class LanguageLoader {
     }
 
     private void setLocale(Locale locale) {
-        this.locale = locale;
+        LanguageLoader.locale = locale;
         getTextResources();
     }
 

@@ -169,7 +169,6 @@ public class SettingsViewController {
         englishButton.setScaleY(1.2);
         finnishButton.setScaleX(0.8);
         finnishButton.setScaleY(0.8);
-
         englishButton.setEffect(new DropShadow());
         finnishButton.setEffect(null);
     }

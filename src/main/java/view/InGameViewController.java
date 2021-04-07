@@ -17,11 +17,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Card;
+import model.LanguageLoader;
 import model.UserCredentialHandler;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static java.lang.Thread.sleep;
 
@@ -98,6 +100,7 @@ public class InGameViewController {
     public Button noMoneyButton;
     public Text outOfMoney;
     private UserController userController = new UserController();
+    LanguageLoader texts = LanguageLoader.getInstance();
 
     /**
      * Sets Are you sure-screen visible to get back to Menu
@@ -120,6 +123,7 @@ public class InGameViewController {
     public void yesAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -440,12 +444,28 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    public String formatBet() {
+        if (LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+            return texts.getString("Currency") + " " + bet;
+        } else {
+            return bet + " " + texts.getString("Currency");
+        }
+    }
+
+    public String formatInsurance(int insurance) {
+        if (LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+            return texts.getString("Currency") + " " + insurance;
+        } else {
+            return insurance + " " + texts.getString("Currency");
+        }
+    }
+
     /**
      * Player splits his hand to two hands
      */
     public void split() {
         if (gameController.setSplitBet(bet)) {
-            currentBet.setText("\uD83D\uDCB2" + bet + " + \uD83D\uDCB2" + bet);
+            currentBet.setText(formatBet() + " + " + formatBet());
             updateBalance();
             this.splitted = true;
             gameController.playerSplit();
@@ -464,7 +484,7 @@ public class InGameViewController {
     public void insure() {
         int insurance = this.bet / 2;
         if (gameController.getInsurancePossibility()) {
-            currentBet.setText("\uD83D\uDCB2" + bet + " (\uD83D\uDCB2" + insurance + ")");
+            currentBet.setText(formatBet() + "(" + formatInsurance(insurance) + ")");
             gameController.playerInsure();
             updateBalance();
             splitButton.setDisable(true);
@@ -479,7 +499,7 @@ public class InGameViewController {
     public void surrender() {
         int surrender = this.bet / 2;
         if (gameController.getsurrenderPossibility()) {
-            currentBet.setText("\uD83D\uDCB2" + bet + " (\uD83D\uDCB2" + surrender + ")");
+            //currentBet.setText(texts.getString("Currency") + bet + "(" + texts.getString("Currency") + surrender + ")");
             gameController.playerSurrender();
             updateBalance();
             splitButton.setDisable(true);
@@ -528,28 +548,28 @@ public class InGameViewController {
         }
         switch (winner) {
             case "player":
-                declareWinner.setText("You win!");
+                declareWinner.setText(texts.getString("YouWin"));
                 break;
             case "dealer":
-                declareWinner.setText("Dealer wins");
+                declareWinner.setText(texts.getString("DealerWins"));
                 break;
             case "nobody":
-                declareWinner.setText("Draw");
+                declareWinner.setText(texts.getString("Draw"));
                 break;
             case "Blackjack":
                 declareWinner.setText("BLACKJACK!");
                 break;
             case "busted":
-                declareWinner.setText("Busted! Dealer wins.");
+                declareWinner.setText(texts.getString("Busted"));
                 break;
             case "insured":
-                declareWinner.setText("Insurance payback");
+                declareWinner.setText(texts.getString("InsurancePayback"));
                 break;
             case "surrendered":
-                declareWinner.setText("Surrendered");
+                declareWinner.setText(texts.getString("Surrendered"));
                 break;
             case "EvenMoney":
-                declareWinner.setText("Even money!");
+                declareWinner.setText(texts.getString("EvenMoney"));
 
         }
         updateBalance();
@@ -561,7 +581,7 @@ public class InGameViewController {
         } else {
             winnerScreen.setVisible(false);
             declareWinner.setText("");
-            currentBet.setText("\uD83D\uDCB2" + bet);
+            currentBet.setText(formatBet());
             clearTable();
             splitted = false;
             checkBalance();
@@ -580,7 +600,7 @@ public class InGameViewController {
         if (gameController.getPlayer().getCurrency() == 0) {
             winnerScreen.setVisible(true);
             outOfMoney.setVisible(true);
-            outOfMoney.setText("Looks like you are out of money. Would you like to try again?");
+            outOfMoney.setText(texts.getString("OutOfMoney"));
             yesMoneyButton.setVisible(true);
             noMoneyButton.setVisible(true);
         }
@@ -634,7 +654,15 @@ public class InGameViewController {
      */
 
     public void showCurrency() {
-        playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
+        playerCurrency.setText(formatBalance());
+    }
+
+    public String formatBalance() {
+        if (LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+            return texts.getString("Currency") + " " + gameController.getPlayer().getCurrency();
+        } else {
+            return gameController.getPlayer().getCurrency() + " " + texts.getString("Currency");
+        }
     }
 
     /**
@@ -675,7 +703,7 @@ public class InGameViewController {
         hitButton.setDisable(true);
         standButton.setDisable(true);
         gameController.playerDouble();
-        currentBet.setText("\uD83D\uDCB2" + gameController.getPlayer().getBet());
+        currentBet.setText(formatBet() + " + " + formatBet());
         updateBalance();
     }
 
@@ -728,15 +756,15 @@ public class InGameViewController {
         try {
             bet = Integer.parseInt(betField.getText());
             if (gameController.setBet(bet)) {
-                currentBet.setText("\uD83D\uDCB2" + bet);
+                currentBet.setText(formatBet());
                 updateBalance();
                 return true;
             } else {
-                String message = "Your bet can not be greater than your balance";
+                String message = texts.getString("BetGreaterThanBalance");
                 setValidBetView(message);
             }
         } catch (NumberFormatException e) {
-            String message = "Place a valid bet";
+            String message = texts.getString("PlaceAValidBet");
             setValidBetView(message);
         }
         return false;
@@ -768,7 +796,7 @@ public class InGameViewController {
      */
     public void showHitTip() {
         Tooltip hitTip = new Tooltip();
-        hitTip.setText("Your total count is under 17. Hitting might be the best option.");
+        hitTip.setText(texts.getString("HitTip"));
         hitButton.setTooltip(hitTip);
         standButton.setTooltip(hitTip);
         doubleButton.setTooltip(hitTip);
@@ -780,7 +808,7 @@ public class InGameViewController {
      */
     public void showStandTip() {
         Tooltip standTip = new Tooltip();
-        standTip.setText("Your total count is over 16. Consider standing.");
+        standTip.setText(texts.getString("StandTip"));
         hitButton.setTooltip(standTip);
         standButton.setTooltip(standTip);
         doubleButton.setTooltip(standTip);
@@ -792,7 +820,7 @@ public class InGameViewController {
      */
     public void showDoubleTip() {
         Tooltip doubleTip = new Tooltip();
-        doubleTip.setText("You have a possibility to double. Consider it.");
+        doubleTip.setText(texts.getString("DoubleTip"));
         hitButton.setTooltip(doubleTip);
         standButton.setTooltip(doubleTip);
         doubleButton.setTooltip(doubleTip);
@@ -804,7 +832,7 @@ public class InGameViewController {
      */
     public void showSplitTip() {
         Tooltip splitTip = new Tooltip();
-        splitTip.setText("You have a possibility to split. Consider it.");
+        splitTip.setText(texts.getString("SplitTip"));
         hitButton.setTooltip(splitTip);
         standButton.setTooltip(splitTip);
         doubleButton.setTooltip(splitTip);
@@ -846,7 +874,7 @@ public class InGameViewController {
      * Updates the balance shown in the UI
      */
     public void updateBalance() {
-        playerCurrency.setText("\uD83D\uDCB2" + gameController.getPlayer().getCurrency());
+        playerCurrency.setText(formatBalance());
     }
 
     /**

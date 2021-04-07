@@ -44,6 +44,7 @@ public class MainMenuController {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GUImain.class.getResource("/FXML/InGameView.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent gameParent = loader.load();
 
         InGameViewController controller = loader.getController();
