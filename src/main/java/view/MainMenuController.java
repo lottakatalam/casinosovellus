@@ -102,7 +102,8 @@ public class MainMenuController {
         stageManager.getPrimaryStage().show();
     }
 
-    /** Sets Are you sure-screen visible to close the program
+    /**
+     * Sets Are you sure-screen visible to close the program
      */
     @FXML private javafx.scene.control.Button quitButton;
     public void quitButton(){
@@ -147,7 +148,7 @@ public class MainMenuController {
     public void registerButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/RegisterView.fxml"));
-
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent registerParent = loader.load();
         RegisterController controller = loader.getController();
 
@@ -182,7 +183,7 @@ public class MainMenuController {
     public void handleChangePassword() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
-
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent changePasswordView = loader.load();
         ChangePasswordController controller = loader.getController();
 

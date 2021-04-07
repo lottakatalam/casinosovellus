@@ -23,7 +23,7 @@ public class LanguageLoader {
 
     private LanguageLoader() {
         setLocale(Locale.getDefault());
-    };
+    }
 
     public ResourceBundle getResourceBundle() {
         return ResourceBundle.getBundle("TextResources", locale);
