@@ -1,5 +1,6 @@
 package view;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -204,7 +205,7 @@ public class GameHistoryController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**

@@ -106,12 +106,12 @@ public class SettingsViewController {
      * Initializes settings in the settings screen
      */
     public void initSettings() {
-        volumeSlider.setValue(SettingsController.getInstance().getVolume());
-        volumeText.setText(SettingsController.getInstance().getVolume()+" %");
+        volumeSlider.setValue(SettingsController.getInstance().getVolume() * 100);
+        volumeText.setText(SettingsController.getInstance().getVolume() * 100 +" %");
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
             volumeText.setText(Math.floor((Double) newValue)+" %");
             stageManager.getMediaPlayer().setVolume(((Double) newValue) / 100);
-            SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
+            SettingsController.getInstance().setVolume(Math.floor((Double) newValue) / 100);
         });
         if (LanguageLoader.getInstance().getLocale().getLanguage() == "fi") {
             selectFinnish();
@@ -143,7 +143,7 @@ public class SettingsViewController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(volumeSlider.getValue());
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**

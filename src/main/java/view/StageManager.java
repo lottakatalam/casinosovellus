@@ -38,7 +38,6 @@ public class StageManager {
 
     /**
      * Sets the primaryStage
-     *
      * @param primaryStage - The primaryStage
      */
     public void setPrimaryStage(Stage primaryStage) {
@@ -47,7 +46,6 @@ public class StageManager {
 
     /**
      * Gets the primaryStage
-     *
      * @return - The primaryStage
      */
     public Stage getPrimaryStage() {
@@ -70,6 +68,10 @@ public class StageManager {
         SettingsController.getInstance().setIsPlaying();
     }
 
+    /**
+     * Getter for MediaPlayer, which plays the music
+     * @return - The MediaPlayer
+     */
     public MediaPlayer getMediaPlayer() {
         return this.mediaPlayer;
     }

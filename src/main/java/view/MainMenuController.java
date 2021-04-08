@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -229,7 +230,7 @@ public class MainMenuController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
