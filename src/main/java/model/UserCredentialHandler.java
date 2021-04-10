@@ -106,14 +106,14 @@ public class UserCredentialHandler {
 
         User user = casinoDAO.getUserByUsername(username);
         if (user != null) {
-            message = "Username already exists. Try a different username";
+            message = LanguageLoader.getInstance().getString("errorUserNameExists");
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
 
         if (username.length() > 16 || username.length() < 4) {
-            message = "Username must be more than 4 and less than 16 characters in length.";
+            message = LanguageLoader.getInstance().getString("errorUserNameLenght");
             System.out.println(message);
             setErrorMessage(message);
             return false;
@@ -131,35 +131,35 @@ public class UserCredentialHandler {
     public boolean isValidPassword(String password) {
         String message;
         if (password.length() < 6) {
-            message = "Password must contain at least 6 characters";
+            message = LanguageLoader.getInstance().getString("errorPasswordLenght");
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
         String digits = "\\d+";
         if (password.matches(digits)) {
-            message = "Password must contain at least one alphabetical character";
+            message = LanguageLoader.getInstance().getString("errorPasswordNoAlphabet");;
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
         String upperCaseChars = "(.*[A-Z].*)";
         if (!password.matches(upperCaseChars)) {
-            message = "Password must have at least one uppercase character";
+            message = LanguageLoader.getInstance().getString("errorPasswordNoUpperCaseChar");;
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
         String lowerCaseChars = "(.*[a-z].*)";
         if (!password.matches(lowerCaseChars)) {
-            message = "Password must have at least one lowercase character";
+            message = LanguageLoader.getInstance().getString("errorPasswordNoLowerCaseChar");;
             System.out.println(message);
             setErrorMessage(message);
             return false;
         }
         String numbers = "(.*[0-9].*)";
         if (!password.matches(numbers)) {
-            message = "Password must have at least one number";
+            message = LanguageLoader.getInstance().getString("errorPasswordNoNumberChar");;
             System.out.println(message);
             setErrorMessage(message);
             return false;
@@ -180,7 +180,7 @@ public class UserCredentialHandler {
         if (password1.equals(password2)) {
             return true;
         }
-        String message = "Passwords did not match";
+        String message = LanguageLoader.getInstance().getString("errorPasswordNotMatching_register");;
         setErrorMessage(message);
         return false;
     }
@@ -209,7 +209,6 @@ public class UserCredentialHandler {
         User user = casinoDAO.getUserByUsername(username);
         if (user != null) {
             if (validatePassword(password, user.getPassword())) {
-                //user.setPassword("");
                 loggedInUser = user;
                 isLoggedIn = true;
                 return true;
@@ -261,7 +260,7 @@ public class UserCredentialHandler {
         if (casinoDAO.updateUser(user)) {
             return true;
         } else {
-            errorMessage = "Something went wrong with updating the password";
+            errorMessage = LanguageLoader.getInstance().getString("errorDBConnection_changePassword");;
             return false;
         }
     }
