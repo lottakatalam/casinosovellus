@@ -192,7 +192,7 @@ public class MainMenuController {
 
         Scene changePasswordScene = new Scene(changePasswordView);
         stageManager = StageManager.getInstance();
-        stageManager.getPrimaryStage().setTitle("Change password");
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("changePasswordSceneTitle"));
         stageManager.getPrimaryStage().setScene(changePasswordScene);
         stageManager.getPrimaryStage().show();
 

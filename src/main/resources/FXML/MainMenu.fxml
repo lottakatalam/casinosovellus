@@ -43,12 +43,12 @@
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="changePasswordButton" layoutX="130.0" layoutY="687.0" mnemonicParsing="false" onAction="#handleChangePassword" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Change password" visible="false">
+      <Button fx:id="changePasswordButton" layoutX="130.0" layoutY="687.0" mnemonicParsing="false" onAction="#handleChangePassword" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToChangePassword" visible="false">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="leaderboardsButton" layoutX="767.0" layoutY="687.0" mnemonicParsing="false" onAction="#leaderboardsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Leaderboards">
+      <Button fx:id="leaderboardsButton" layoutX="767.0" layoutY="687.0" mnemonicParsing="false" onAction="#leaderboardsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToLeaderBoard">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
