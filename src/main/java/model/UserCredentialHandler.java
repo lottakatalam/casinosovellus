@@ -1,14 +1,10 @@
 package model;
 
-import controller.UserController;
-
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.util.regex.Pattern;
 
 /**
  * A class to handling all the user related stuff
@@ -238,12 +234,12 @@ public class UserCredentialHandler {
         User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
 
         if (!validatePassword(oldPassword, user.getPassword())) {
-            errorMessage = "The old password was incorrect";
+            errorMessage = LanguageLoader.getInstance().getString("errorOldPassword_passwordChange");
             return false;
         } else if (!isValidPassword(newPassword)) {
             return false;
         } else if (!passwordsMatch(newPassword, newPasswordRepeated)) {
-            errorMessage = "The passwords did not match";
+            errorMessage = LanguageLoader.getInstance().getString("errorPasswordsNotMatching_passwordChange");
             return false;
         } else {
             return true;

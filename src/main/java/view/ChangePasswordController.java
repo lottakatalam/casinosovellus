@@ -2,8 +2,6 @@ package view;
 
 import controller.SettingsController;
 import controller.UserController;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import model.LanguageLoader;
 
 import java.io.IOException;
 
@@ -45,17 +44,17 @@ public class ChangePasswordController {
     public void changePassword() {
 
         if (oldPasswordField.getText().isEmpty()) {
-            errorText.setText("Please enter old password");
+            errorText.setText(LanguageLoader.getInstance().getString("EnterOldPassword"));
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
         } else if (newPasswordField.getText().isEmpty()) {
-            errorText.setText("Please enter new password");
+            errorText.setText(LanguageLoader.getInstance().getString("EnterNewPassword"));
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
         } else if (newPasswordRepeatField.getText().isEmpty()) {
-            errorText.setText("Please repeat new password");
+            errorText.setText(LanguageLoader.getInstance().getString("repeatNewPassword"));
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
@@ -87,6 +86,7 @@ public class ChangePasswordController {
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
