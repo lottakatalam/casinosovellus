@@ -36,10 +36,9 @@ class UserCredentialHandlerTest {
         if (isValid == 0) {
             assertFalse(UCH.isValidUsername(username), "Invalid username :" + username + " was valid according to the test");
             if (username.equals("Katala") | username.equals("Moikka")) {
-                message = "Username already exists. Try a different username";
-
+                message = LanguageLoader.getInstance().getString("errorUserNameExists");
             } else if (username.equals("lllllllllllllllll") | username.equals("oi1")) {
-                message = "Username must be more than 4 and less than 16 characters in length.";
+                message = LanguageLoader.getInstance().getString("errorUserNameLenght");
             }
             assertTrue(UCH.getErrorMessage().equals(message), "The error message was not correct");
         } else {
@@ -54,15 +53,15 @@ class UserCredentialHandlerTest {
         if (isValid == 0) {
             assertFalse(UCH.isValidPassword(password), "Invalid password :" + password + " was valid according to the test");
             if (password.equals("salas")) {
-                message = "Password must contain at least 6 characters";
+                message = LanguageLoader.getInstance().getString("errorPasswordLenght");
             } else if (password.equals("salasana1")) {
-                message = "Password must have at least one uppercase character";
+                message = LanguageLoader.getInstance().getString("errorPasswordNoUpperCaseChar");
             } else if (password.equals("SALASANA1")) {
-                message = "Password must have at least one lowercase character";
+                message = LanguageLoader.getInstance().getString("errorPasswordNoLowerCaseChar");
             } else if (password.equals("salaSana")) {
-                message = "Password must have at least one number";
+                message = LanguageLoader.getInstance().getString("errorPasswordNoNumberChar");
             } else {
-                message = "Password must contain at least one alphabetical character";
+                message = LanguageLoader.getInstance().getString("errorPasswordNoAlphabet");
             }
             assertTrue(UCH.getErrorMessage().equals(message), "The error message was not correct");
         } else {
@@ -73,12 +72,12 @@ class UserCredentialHandlerTest {
     @ParameterizedTest
     @CsvSource({"salasana, salaSana,0", "testi, test,0", "num3r0, numero,0", "salasana,salasana,1", "test1,test1,1", "samanLainen, samanLainen,1"})
     void passwordsMatch(String password, String anotherPassword, int isValid) {
-        String message = "Passwords did not match";
+        String message =  LanguageLoader.getInstance().getString("errorPasswordNotMatching_register");
         if (isValid == 0) {
-            assertFalse(UCH.passwordsMatch(password, anotherPassword));
+            assertFalse(UCH.passwordsMatch(password, anotherPassword),"Passwords should not match");
             assertTrue(UCH.getErrorMessage().equals(message), "The error message was not correct");
         } else {
-            assertTrue(UCH.passwordsMatch(password, anotherPassword));
+            assertTrue(UCH.passwordsMatch(password, anotherPassword), "Passwords should have matched");
         }
     }
 
