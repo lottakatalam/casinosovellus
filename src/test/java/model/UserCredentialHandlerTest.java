@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserCredentialHandlerTest {
+    private static int userNameEnding = 0;
     UserCredentialHandler UCH;
 
 
@@ -19,19 +20,9 @@ class UserCredentialHandlerTest {
         UCH = UserCredentialHandler.getInstance();
     }
 
-    @Test
-    void validateUserCredentials() {
-
-    }
-
-    //miten testataan kun aina pitäisi saada uusi uniikki käyttäjänimi annettua?
-    @Test
-    void createNewUser() {
-    }
-
     @ParameterizedTest
     @CsvSource({"Katala,0", "Moikka,0", "lllllllllllllllll,0", "oi1,0", "pkLhnm3,1", "hgdkjrT87,1"})
-    void isValidUsername(String username, int isValid) {
+    void isValidUsernameTest(String username, int isValid) {
         String message = "";
         if (isValid == 0) {
             assertFalse(UCH.isValidUsername(username), "Invalid username :" + username + " was valid according to the test");
@@ -48,7 +39,7 @@ class UserCredentialHandlerTest {
 
     @ParameterizedTest
     @CsvSource({"salas,0", "salasana1,0", "SALASANA1,0", "salaSana,0", "123456,0", "salasanA1,1", "hjrTs7,1"})
-    void isValidPassword(String password, int isValid) {
+    void isValidPasswordTest(String password, int isValid) {
         String message = "";
         if (isValid == 0) {
             assertFalse(UCH.isValidPassword(password), "Invalid password :" + password + " was valid according to the test");
@@ -71,7 +62,7 @@ class UserCredentialHandlerTest {
 
     @ParameterizedTest
     @CsvSource({"salasana, salaSana,0", "testi, test,0", "num3r0, numero,0", "salasana,salasana,1", "test1,test1,1", "samanLainen, samanLainen,1"})
-    void passwordsMatch(String password, String anotherPassword, int isValid) {
+    void passwordsMatchTest(String password, String anotherPassword, int isValid) {
         String message =  LanguageLoader.getInstance().getString("errorPasswordNotMatching_register");
         if (isValid == 0) {
             assertFalse(UCH.passwordsMatch(password, anotherPassword),"Passwords should not match");
@@ -84,7 +75,7 @@ class UserCredentialHandlerTest {
 
     @ParameterizedTest
     @CsvSource({"Tämä on errorviesti,1", "Tämä on väärä errorviesti,0", "tämä myös,0"})
-    void getErrorMessage(String message, int matches) {
+    void getErrorMessageTest(String message, int matches) {
         UCH.setErrorMessage("Tämä on errorviesti");
         if (matches == 0) {
             assertFalse(UCH.getErrorMessage().equals(message));
@@ -95,13 +86,37 @@ class UserCredentialHandlerTest {
 
     @ParameterizedTest
     @CsvSource({"Katala,Katala1,1", "dk78hafy,salasana,0"})
-    void login(String username, String password, int isUser) {
+    void loginTest(String username, String password, int isUser) {
         if (isUser == 0) {
             assertFalse(UCH.login(username, password), "Login successful with unregistrated user credentials");
         } else {
             assertTrue(UCH.login(username, password), "Registrated user could not log in");
         }
     }
+
+    @ParameterizedTest
+    @CsvSource({"Katala,Katala1,Katala1,0", "Mhsjkdfjgh, moikkA1, moikkA1,1",})
+    void validateUsernameTest(String username, String password1, String password2, int isValid){
+        if (isValid == 0) {
+            assertFalse(UCH.validateUserCredentials(username, password1, password2), "The method should have returned false since the username already exists");
+        } else {
+            assertTrue(UCH.validateUserCredentials(username, password1, password2), "The method should have returned true");
+        }
+
+    }
+
+
+    @Test
+    void createUserTest(){
+        String username = "lkjhgf"+String.valueOf(userNameEnding);
+        String password = "Lkjhgf1";
+        UCH.createNewUser(username,password);
+        UCH.login(username,password);
+        assertTrue(UCH.getLoggedInUser().getUsername().equals(username), "User not created");
+        assertTrue(UCH.getLoggedInUser().getBalance() == 2500, "The balance of the new user was incorrect");
+        userNameEnding++;
+    }
+
 
     @AfterEach
     void logout(){
