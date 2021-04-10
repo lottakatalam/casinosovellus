@@ -95,8 +95,8 @@ class UserCredentialHandlerTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"Katala,Katala1,Katala1,0", "Mhsjkdfjgh, moikkA1, moikkA1,1",})
-    void validateUsernameTest(String username, String password1, String password2, int isValid){
+    @CsvSource({"Katala,Katala1,Katala1,0", "Mhsjkdfjgh, moikkA1, moikkA1,1","pdhf, moi,moi,0","JDASshfg,Moikka2,Moikka1,0"})
+    void validateUserCredentialsTest(String username, String password1, String password2, int isValid){
         if (isValid == 0) {
             assertFalse(UCH.validateUserCredentials(username, password1, password2), "The method should have returned false since the username already exists");
         } else {
@@ -104,7 +104,6 @@ class UserCredentialHandlerTest {
         }
 
     }
-
 
     @Test
     void createUserTest(){
@@ -115,6 +114,28 @@ class UserCredentialHandlerTest {
         assertTrue(UCH.getLoggedInUser().getUsername().equals(username), "User not created");
         assertTrue(UCH.getLoggedInUser().getBalance() == 2500, "The balance of the new user was incorrect");
         userNameEnding++;
+    }
+
+    void initializePasswordChangeTest(String username, String password){
+        UCH.login(username,password);
+
+    }
+
+    @ParameterizedTest
+    @CsvSource({"lopita,Lopita1,uusiSalasana1,uusiSalasana1,1","loputa,vaarasalasana,salasana,salasana,0","lopita,Lopita1,salas,salas,0","lopita,Lopita1,salasana,salasani,0"})
+    void validatePasswordChangeTest(String username, String password, String newPassword1, String newPassword2, int isOK){
+        if(username.equals("loputa")){
+            this.initializePasswordChangeTest("loputa","Loputa1");
+        } else {
+            this.initializePasswordChangeTest(username, password);
+        }
+        String message = "";
+        if (isOK == 0) {
+            assertFalse(UCH.validatePassWordChange(password, newPassword1, newPassword2), "The method should have returned false");
+        } else {
+            assertTrue(UCH.validatePassWordChange(password,newPassword1,newPassword2));
+        }
+
     }
 
 
