@@ -69,7 +69,8 @@ public class MainMenuController {
         stageManager = StageManager.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
-            loggedUser.setText("Welcome, \n" + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
+            String welcome = LanguageLoader.getInstance().getString("welcomeLoggedInUser");
+            loggedUser.setText(welcome+"\n"+UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
     }
 
@@ -140,7 +141,7 @@ public class MainMenuController {
         loginButton.setVisible(true);
         changePasswordButton.setVisible(false);
         registerButton.setVisible(true);
-        loggedUser.setText("Logged out");
+        loggedUser.setText(LanguageLoader.getInstance().getString("loggedOut"));
     }
 
     /**
@@ -155,7 +156,7 @@ public class MainMenuController {
         RegisterController controller = loader.getController();
 
         Scene registerScene = new Scene(registerParent);
-        stageManager.getPrimaryStage().setTitle("Register");
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("registerSceneTitle"));
         stageManager.getPrimaryStage().setScene(registerScene);
         stageManager.getPrimaryStage().show();
     }
