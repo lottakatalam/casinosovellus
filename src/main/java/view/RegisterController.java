@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
-
+import model.LanguageLoader;
 /**
  *
  * Register Controller for fxml ui
@@ -71,13 +71,13 @@ public class RegisterController {
         System.out.println(passwordTextField.getText());
 
         if (usernameTextField.getText().isEmpty()) {
-            setErrorMessage("Please enter a username");
+            setErrorMessage(LanguageLoader.getInstance().getString("RegErrUser"));
         }
         else if (passwordTextField.getText().isEmpty()) {
-            setErrorMessage("Please enter a password");
+            setErrorMessage(LanguageLoader.getInstance().getString("RegErrPwd"));
         }
         else if (repeatTextField.getText().isEmpty()) {
-            setErrorMessage("Please repeat password");
+            setErrorMessage(LanguageLoader.getInstance().getString("RegErrRepeatPwd"));
         }
         else  {
             String username = usernameTextField.getText();
@@ -119,6 +119,7 @@ public class RegisterController {
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -164,7 +165,7 @@ public class RegisterController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
@@ -172,9 +173,11 @@ public class RegisterController {
      */
     public void checkVolume() {
         if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
         }else {
-            volumeON();
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 }

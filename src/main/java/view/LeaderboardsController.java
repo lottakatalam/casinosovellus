@@ -1,5 +1,6 @@
 package view;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,11 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import model.CasinoDAO;
+import model.LanguageLoader;
 import model.User;
 import model.UserCredentialHandler;
 import java.io.IOException;
@@ -34,12 +37,14 @@ public class LeaderboardsController {
     /**
      * Initializes stageManager
      * Checks the current volume state
+     * Sets empty table's message to correct language
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
         checkVolume();
+        leaderboardTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
+            loggedUser.setText(LanguageLoader.getInstance().getString("LoggedInUser") + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
         setTable();
     }
@@ -51,6 +56,7 @@ public class LeaderboardsController {
     public void leaderboardsBackButton () throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -113,17 +119,19 @@ public class LeaderboardsController {
     public void volumeON () {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
      * Checks is the volume ON or OFF
      */
-    public void checkVolume () {
-        if (stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
-        } else {
-            volumeON();
+    public void checkVolume() {
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
+        }else {
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 }

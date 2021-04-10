@@ -1,8 +1,8 @@
 package view;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,7 +37,6 @@ public class MainMenuController {
     private BlackjackController gameController;
     private static UserController userController;
     private StageManager stageManager;
-    private LanguageLoader langloader = LanguageLoader.getInstance();
 
     /** Menu's Play-Button loads to InGameView.fxml
      * @throws IOException - if .fxml file is not found
@@ -46,6 +45,7 @@ public class MainMenuController {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GUImain.class.getResource("/FXML/InGameView.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent gameParent = loader.load();
 
         InGameViewController controller = loader.getController();
@@ -78,11 +78,13 @@ public class MainMenuController {
      * @throws IOException - if .fxml file is not found
      */
     public void gameHistoryButton() throws IOException {
-        Parent gameHistoryParent = FXMLLoader.load(getClass().getResource("/FXML/GameHistory.fxml"));
-        Scene gameHistoryScene = new Scene(gameHistoryParent);
-        langloader.getString("gamehistory");
-        stageManager.getPrimaryStage().setTitle("Game History");
-        stageManager.getPrimaryStage().setScene(gameHistoryScene);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/GameHistory.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
+        Parent gamehistoryParent = loader.load();
+        Scene gamehistoryScene = new Scene(gamehistoryParent);
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("GamehistoryText"));
+        stageManager.getPrimaryStage().setScene(gamehistoryScene);
         stageManager.getPrimaryStage().show();
     }
 
@@ -92,17 +94,18 @@ public class MainMenuController {
     public void settingsButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/Settings.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent settingsParent = loader.load();
         SettingsViewController settingsViewController = loader.getController();
         settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);
-        langloader.getString("settings");
-        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("settings"));
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("SettingsText"));
         stageManager.getPrimaryStage().setScene(settingsScene);
         stageManager.getPrimaryStage().show();
     }
 
-    /** Sets Are you sure-screen visible to close the program
+    /**
+     * Sets Are you sure-screen visible to close the program
      */
     @FXML private javafx.scene.control.Button quitButton;
     public void quitButton(){
@@ -110,7 +113,6 @@ public class MainMenuController {
         areYouSure.setVisible(true);
         yesButton.setVisible(true);
         noButton.setVisible(true);
-        langloader.getString("quit");
 
     }
 
@@ -119,14 +121,14 @@ public class MainMenuController {
      * @throws IOException - if .fxml file is not found
      */
     public void logInButton() throws IOException {
-        Parent logInParent = FXMLLoader.load(getClass().getResource("/FXML/LogInView.fxml"));
-        Scene logInScene = new Scene(logInParent);
-        langloader.getString("login");
-        stageManager.getPrimaryStage().setTitle("Log In");
-        stageManager.getPrimaryStage().setScene(logInScene);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/FXML/LogInView.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
+        Parent loginParent = loader.load();
+        Scene loginScene = new Scene(loginParent);
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("LogInText"));
+        stageManager.getPrimaryStage().setScene(loginScene);
         stageManager.getPrimaryStage().show();
-
-
     }
 
     /**
@@ -139,7 +141,6 @@ public class MainMenuController {
         changePasswordButton.setVisible(false);
         registerButton.setVisible(true);
         loggedUser.setText("Logged out");
-        langloader.getString("logout");
     }
 
     /**
@@ -149,10 +150,10 @@ public class MainMenuController {
     public void registerButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/RegisterView.fxml"));
-
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent registerParent = loader.load();
         RegisterController controller = loader.getController();
-        langloader.getString("register");
+
         Scene registerScene = new Scene(registerParent);
         stageManager.getPrimaryStage().setTitle("Register");
         stageManager.getPrimaryStage().setScene(registerScene);
@@ -166,12 +167,13 @@ public class MainMenuController {
     public void leaderboardsButton() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/Leaderboards.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
 
         Parent leaderboardsParent = loader.load();
         LeaderboardsController controller = loader.getController();
-        langloader.getString("leaderboard");
+
         Scene leaderboardsScene = new Scene(leaderboardsParent);
-        stageManager.getPrimaryStage().setTitle("Leaderboards");
+        stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("LeaderboardsText"));
         stageManager.getPrimaryStage().setScene(leaderboardsScene);
         stageManager.getPrimaryStage().show();
     }
@@ -183,7 +185,7 @@ public class MainMenuController {
     public void handleChangePassword() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
-        langloader.getString("changepassword");
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent changePasswordView = loader.load();
         ChangePasswordController controller = loader.getController();
 
@@ -200,7 +202,6 @@ public class MainMenuController {
     public void yesAction() {
         Stage stage = (Stage) quitButton.getScene().getWindow();
         stage.close();
-        langloader.getString("yes");
     }
 
     /**
@@ -211,7 +212,6 @@ public class MainMenuController {
         areYouSure.setVisible(false);
         yesButton.setVisible(false);
         noButton.setVisible(false);
-        langloader.getString("no");
     }
 
     /**
@@ -230,7 +230,7 @@ public class MainMenuController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
@@ -238,9 +238,11 @@ public class MainMenuController {
      */
     public void checkVolume() {
         if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
         }else {
-            volumeON();
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 

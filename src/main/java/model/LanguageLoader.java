@@ -23,7 +23,7 @@ public class LanguageLoader {
 
     private LanguageLoader() {
         setLocale(Locale.getDefault());
-    };
+    }
 
     public ResourceBundle getResourceBundle() {
         return ResourceBundle.getBundle("TextResources", locale);
@@ -35,7 +35,7 @@ public class LanguageLoader {
     }
 
     private void setLocale(Locale locale) {
-        this.locale = locale;
+        LanguageLoader.locale = locale;
         getTextResources();
     }
 

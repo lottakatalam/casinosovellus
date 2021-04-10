@@ -50,7 +50,7 @@ public class SettingsController {
     public void initializeSettings() {
         SettingsViewController settingsViewController = new SettingsViewController();
         this.isPlaying = false;
-        this.volume = 25;
+        this.volume = 0.25;
         this.isSelected = settingsViewController.getSelected();
     }
 

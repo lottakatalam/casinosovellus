@@ -3,6 +3,7 @@ package view;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
+import model.LanguageLoader;
 
 /**
  * Login Controller for fxml ui
@@ -79,6 +81,7 @@ public class LoginController {
     public void backToMainMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -123,7 +126,7 @@ public class LoginController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
@@ -131,9 +134,11 @@ public class LoginController {
      */
     public void checkVolume() {
         if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
         }else {
-            volumeON();
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 }

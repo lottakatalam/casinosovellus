@@ -11,22 +11,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameHistoryController">
    <children>
-      <Text layoutX="364.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Game History">
+      <Text layoutX="364.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%GamehistoryText">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="refreshButton" layoutX="25.0" layoutY="679.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Refresh">
+      <Button fx:id="refreshButton" layoutX="25.0" layoutY="679.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%RefreshButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="458.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Home">
+      <Button layoutX="458.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="clearHistoryButton" layoutX="804.0" layoutY="679.0" mnemonicParsing="false" onAction="#clearHistory" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Clear History">
+      <Button fx:id="clearHistoryButton" layoutX="804.0" layoutY="679.0" mnemonicParsing="false" onAction="#clearHistory" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%ClearHistoryButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -56,12 +56,12 @@
       </Button>
       <TableView fx:id="historyTable" layoutX="125.0" layoutY="169.0" prefHeight="446.0" prefWidth="763.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="108.0">
         <columns>
-          <TableColumn fx:id="gameColumn" prefWidth="125.0" text="Game" />
-            <TableColumn fx:id="resultColumn" prefWidth="125.0" text="Result" />
-            <TableColumn fx:id="methodColumn" prefWidth="125.0" text="Method" />
-            <TableColumn fx:id="betColumn" prefWidth="125.0" text="Bet" />
-            <TableColumn fx:id="balanceColumn" prefWidth="125.0" text="New Balance" />
-            <TableColumn fx:id="dateColumn" prefWidth="135.0" text="Date" />
+          <TableColumn fx:id="gameColumn" prefWidth="125.0" text="%GameColumn" />
+            <TableColumn fx:id="resultColumn" prefWidth="125.0" text="%ResultColumn" />
+            <TableColumn fx:id="methodColumn" prefWidth="125.0" text="%MethodColumn" />
+            <TableColumn fx:id="betColumn" prefWidth="125.0" text="%BetColumn" />
+            <TableColumn fx:id="balanceColumn" prefWidth="125.0" text="%NewbalanceColumn" />
+            <TableColumn fx:id="dateColumn" prefWidth="135.0" text="%DateColumn" />
         </columns>
       </TableView>
       <ImageView fx:id="blackScreen" fitHeight="786.0" fitWidth="1049.0" layoutX="-6.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -69,12 +69,12 @@
             <Image url="@../Images/WinnerScreen.png" />
          </image>
       </ImageView>
-      <Button fx:id="noButton" layoutX="570.0" layoutY="344.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="No" visible="false">
+      <Button fx:id="noButton" layoutX="570.0" layoutY="344.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%NoButton" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="yesButton" layoutX="380.0" layoutY="344.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Yes" visible="false">
+      <Button fx:id="yesButton" layoutX="380.0" layoutY="344.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%YesButton" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
@@ -84,7 +84,7 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="100.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to clear history?" visible="false">
+      <Text fx:id="areYouSure" layoutX="100.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureText" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>

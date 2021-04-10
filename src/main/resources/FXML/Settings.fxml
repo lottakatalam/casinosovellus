@@ -12,22 +12,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SettingsViewController">
    <children>
-      <Text layoutX="429.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Settings">
+      <Text layoutX="429.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%SettingsText">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="447.0" layoutY="607.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Home">
+      <Button layoutX="447.0" layoutY="607.0" mnemonicParsing="false" onAction="#settingsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
          <font>
             <Font name="Cooper Black" size="30.0" />
          </font>
       </Button>
-      <Text fx:id="tipsText" layoutX="261.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Tips:">
+      <Text fx:id="tipsText" layoutX="261.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%TipsText">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <RadioButton fx:id="onRadio" layoutX="410.0" layoutY="203.0" mnemonicParsing="false" onAction="#turnTips" selected="true" text="ON" textFill="WHITE">
+      <RadioButton fx:id="onRadio" layoutX="410.0" layoutY="203.0" mnemonicParsing="false" onAction="#turnTips" selected="true" text="%TipsONText" textFill="WHITE">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -35,12 +35,12 @@
             <ToggleGroup fx:id="tips" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="offRadio" layoutX="557.0" layoutY="202.0" mnemonicParsing="false" onAction="#turnTips" text="OFF" textFill="WHITE" toggleGroup="$tips">
+      <RadioButton fx:id="offRadio" layoutX="557.0" layoutY="202.0" mnemonicParsing="false" onAction="#turnTips" text="%TipsOFFText" textFill="WHITE" toggleGroup="$tips">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </RadioButton>
-      <Text fx:id="volumeText1" layoutX="200.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Volume:">
+      <Text fx:id="volumeText1" layoutX="200.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%VolumeText">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
@@ -56,7 +56,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="languageText" layoutX="169.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Language:">
+      <Text fx:id="languageText" layoutX="169.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LanguageText">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>

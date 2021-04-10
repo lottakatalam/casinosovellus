@@ -1,5 +1,6 @@
 package view;
 
+import controller.SettingsController;
 import controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -142,17 +143,19 @@ public class ChangePasswordController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
      * Checks is the volume ON or OFF
      */
     public void checkVolume() {
-        if (stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
-        } else {
-            volumeON();
+        if(stageManager.getMediaPlayer().getVolume() == 0) {
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
+        }else {
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 }

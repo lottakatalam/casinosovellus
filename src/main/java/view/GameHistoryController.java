@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import model.CasinoDAO;
 import model.History;
+import model.LanguageLoader;
 import model.UserCredentialHandler;
 
 import java.io.IOException;
@@ -55,6 +57,7 @@ public class GameHistoryController {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
+        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent menuParent = loader.load();
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
@@ -109,7 +112,7 @@ public class GameHistoryController {
             yesButton.setVisible(false);
             noButton.setVisible(false);
             areYouSure.setVisible(false);
-            errorText.setText("Please log in to clear game history");
+            errorText.setText(LanguageLoader.getInstance().getString("GamehistoryClearError"));
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
@@ -152,7 +155,7 @@ public class GameHistoryController {
             historyTable.setItems(getHistory());
 
         }else {
-            errorText.setText("Please log in to view game history");
+            errorText.setText(LanguageLoader.getInstance().getString("GamehistoryEntryError"));
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
@@ -164,12 +167,14 @@ public class GameHistoryController {
      * For initializing table in game history
      * Checks the current volume state
      * Refreshes the tableView
+     * Sets empty table's message to correct language
      */
     public void initialize() {
         stageManager = StageManager.getInstance();
         checkVolume();
+        historyTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
+            loggedUser.setText(LanguageLoader.getInstance().getString("LoggedInUser") + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
         refresh();
     }
@@ -200,7 +205,7 @@ public class GameHistoryController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
@@ -208,9 +213,11 @@ public class GameHistoryController {
      */
     public void checkVolume() {
         if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
         }else {
-            volumeON();
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 }

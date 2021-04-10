@@ -9,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.*;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
@@ -70,7 +68,7 @@ public class SettingsViewController {
         stageManager = StageManager.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
-            loggedUser.setText("Logged in as: " + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
+            loggedUser.setText(LanguageLoader.getInstance().getString("LoggedInUser") + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
         }
         if(settingsController.getSelected()) {
             offRadio.setSelected(false);
@@ -89,11 +87,9 @@ public class SettingsViewController {
         if (offRadio.isSelected()) {
             this.isSelected = false;
             settingsController.setSelected(false);
-            System.out.println("Tips are now OFF");
         } else if (onRadio.isSelected()) {
             this.isSelected = true;
             settingsController.setSelected(true);
-            System.out.println("Tips are now ON");
         }
     }
 
@@ -110,12 +106,12 @@ public class SettingsViewController {
      * Initializes settings in the settings screen
      */
     public void initSettings() {
-        volumeSlider.setValue(SettingsController.getInstance().getVolume());
-        volumeText.setText(SettingsController.getInstance().getVolume()+"%");
+        volumeSlider.setValue(SettingsController.getInstance().getVolume() * 100);
+        volumeText.setText(SettingsController.getInstance().getVolume() * 100 +" %");
         volumeSlider.valueProperty().addListener((observableValue, oldValue, newValue) -> {
-            volumeText.setText(Math.floor((Double) newValue)+"%");
+            volumeText.setText(Math.floor((Double) newValue)+" %");
             stageManager.getMediaPlayer().setVolume(((Double) newValue) / 100);
-            SettingsController.getInstance().setVolume(Math.floor((Double) newValue));
+            SettingsController.getInstance().setVolume(Math.floor((Double) newValue) / 100);
         });
         if (LanguageLoader.getInstance().getLocale().getLanguage() == "fi") {
             selectFinnish();
@@ -147,7 +143,7 @@ public class SettingsViewController {
     public void volumeON() {
         volumeONbutton.setVisible(false);
         volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0.25);
+        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
     }
 
     /**
@@ -155,14 +151,16 @@ public class SettingsViewController {
      */
     public void checkVolume() {
         if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFF();
+            volumeOFFbutton.setVisible(false);
+            volumeONbutton.setVisible(true);
         }else {
-            volumeON();
+            volumeONbutton.setVisible(false);
+            volumeOFFbutton.setVisible(true);
         }
     }
 
     /**
-     * Changes language to English *NOT USED YET*
+     * Changes language to English
      */
     public void selectEnglish() {
 
@@ -171,13 +169,12 @@ public class SettingsViewController {
         englishButton.setScaleY(1.2);
         finnishButton.setScaleX(0.8);
         finnishButton.setScaleY(0.8);
-
         englishButton.setEffect(new DropShadow());
         finnishButton.setEffect(null);
     }
 
     /**
-     * Changes language to Finnish *NOT USED YET*
+     * Changes language to Finnish
      */
     public void selectFinnish() {
         LanguageLoader.getInstance().setLocale("fi", "FI");
