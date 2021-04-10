@@ -122,7 +122,7 @@ class UserCredentialHandlerTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"lopita,Lopita1,uusiSalasana1,uusiSalasana1,1","loputa,vaarasalasana,salasana,salasana,0","lopita,Lopita1,salas,salas,0","lopita,Lopita1,salasana,salasani,0"})
+    @CsvSource({"lopita,Lopita1,uusiSalasana1,uusiSalasana1,1","loputa,vaarasalasana,salasanA1,salasanA1,0","lopita,Lopita1,salas,salas,0","lopita,Lopita1,salasanA1,salasanI1,0"})
     void validatePasswordChangeTest(String username, String password, String newPassword1, String newPassword2, int isOK){
         if(username.equals("loputa")){
             this.initializePasswordChangeTest("loputa","Loputa1");
