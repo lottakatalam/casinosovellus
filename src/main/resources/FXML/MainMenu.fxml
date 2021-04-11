@@ -7,33 +7,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
    <children>
-      <Button layoutX="362.0" layoutY="405.0" mnemonicParsing="false" onAction="#playButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%playBlackJack">
+      <Button layoutX="362.0" layoutY="413.0" mnemonicParsing="false" onAction="#playButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%playBlackJack" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="338.0">
          <font>
-            <Font name="Cooper Black" size="30.0" />
+            <Font name="Cooper Black" size="27.0" />
          </font></Button>
-      <Button layoutX="412.0" layoutY="479.0" mnemonicParsing="false" onAction="#gameHistoryButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%gameHistory">
+      <Button layoutX="379.0" layoutY="479.0" mnemonicParsing="false" onAction="#gameHistoryButton" prefHeight="42.0" prefWidth="262.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%gameHistory" AnchorPane.leftAnchor="379.0" AnchorPane.rightAnchor="355.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="440.0" layoutY="533.0" mnemonicParsing="false" onAction="#settingsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%SettingsText">
+      <Button layoutX="396.0" layoutY="533.0" mnemonicParsing="false" onAction="#settingsButton" prefHeight="42.0" prefWidth="228.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%SettingsText" AnchorPane.leftAnchor="396.0" AnchorPane.rightAnchor="372.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="quitButton" layoutX="459.0" layoutY="587.0" mnemonicParsing="false" onAction="#quitButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%quitApplication">
+      <Button fx:id="quitButton" layoutX="413.0" layoutY="587.0" mnemonicParsing="false" onAction="#quitButton" prefHeight="42.0" prefWidth="198.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%quitApplication" AnchorPane.leftAnchor="413.0" AnchorPane.rightAnchor="385.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="loginButton" layoutX="22.0" layoutY="687.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToLogIn">
+      <Button fx:id="loginButton" layoutX="14.0" layoutY="687.0" mnemonicParsing="false" onAction="#logInButton" prefWidth="140.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToLogIn" AnchorPane.leftAnchor="14.0">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" layoutX="120.0" layoutY="687.0" mnemonicParsing="false" onAction="#registerButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToRegister">
+      <Button fx:id="registerButton" layoutX="168.0" layoutY="687.0" mnemonicParsing="false" onAction="#registerButton" prefWidth="150.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToRegister" AnchorPane.leftAnchor="168.0">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
@@ -48,7 +48,7 @@
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="leaderboardsButton" layoutX="767.0" layoutY="687.0" mnemonicParsing="false" onAction="#leaderboardsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToLeaderBoard">
+      <Button fx:id="leaderboardsButton" layoutX="711.0" layoutY="687.0" mnemonicParsing="false" onAction="#leaderboardsButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToLeaderBoard" AnchorPane.rightAnchor="80.0">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="181.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="270.0" fitWidth="634.0" layoutX="193.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/thegrandmyllypurologo.png" />
          </image>
