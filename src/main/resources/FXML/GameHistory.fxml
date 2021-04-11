@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameHistoryController">
    <children>
-      <Text layoutX="364.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%GamehistoryText" textAlignment="CENTER">
+      <Text layoutX="263.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%GamehistoryText" textAlignment="CENTER" wrappingWidth="486.4648379981518" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="246.53516200184822">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
