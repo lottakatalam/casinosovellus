@@ -173,9 +173,9 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="110.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureMainMenu" visible="false">
+      <Text fx:id="areYouSure" layoutX="280.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureMainMenu" textAlignment="CENTER" visible="false" wrappingWidth="458.0">
          <font>
-            <Font name="Cooper Black" size="40.0" />
+            <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
       <Button fx:id="yesButton" layoutX="354.0" layoutY="353.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey; -fx-background-insets: -1.4;" text="%YesButton" textAlignment="CENTER" visible="false">
@@ -188,7 +188,7 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="instructionsText" layoutX="309.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%Instructions" textAlignment="CENTER" wrappingWidth="380.68359375">
+      <Text fx:id="instructionsText" layoutX="319.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%Instructions" textAlignment="CENTER" wrappingWidth="380.68359375">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
