@@ -81,17 +81,17 @@
             <Image url="@../Images/WinnerScreen.png" />
          </image>
       </ImageView>
-      <Text fx:id="areYouSure" layoutX="182.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Are you sure you want to quit?" visible="false">
+      <Text fx:id="areYouSure" layoutX="182.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureExitText" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="noButton" layoutX="537.0" layoutY="357.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="No" visible="false">
+      <Button fx:id="noButton" layoutX="537.0" layoutY="357.0" mnemonicParsing="false" onAction="#noAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%NoButton" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="yesButton" layoutX="390.0" layoutY="357.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="Yes" visible="false">
+      <Button fx:id="yesButton" layoutX="390.0" layoutY="357.0" mnemonicParsing="false" onAction="#yesAction" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%YesButton" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>

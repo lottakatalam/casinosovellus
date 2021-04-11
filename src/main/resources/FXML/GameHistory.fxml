@@ -84,7 +84,7 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="100.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureText" visible="false">
+      <Text fx:id="areYouSure" layoutX="100.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureClearText" visible="false">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
