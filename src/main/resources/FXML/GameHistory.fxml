@@ -11,22 +11,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameHistoryController">
    <children>
-      <Text layoutX="364.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%GamehistoryText">
+      <Text layoutX="364.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%GamehistoryText" textAlignment="CENTER">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button fx:id="refreshButton" layoutX="25.0" layoutY="679.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%RefreshButton">
+      <Button fx:id="refreshButton" layoutX="14.0" layoutY="679.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%RefreshButton" AnchorPane.leftAnchor="14.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="458.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
+      <Button layoutX="448.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" prefWidth="100.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="clearHistoryButton" layoutX="804.0" layoutY="679.0" mnemonicParsing="false" onAction="#clearHistory" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%ClearHistoryButton">
+      <Button fx:id="clearHistoryButton" layoutX="723.0" layoutY="679.0" mnemonicParsing="false" onAction="#clearHistory" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%ClearHistoryButton" AnchorPane.rightAnchor="14.0">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -89,7 +89,7 @@
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Text fx:id="errorText" layoutX="160.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please log in to view game history" visible="false">
+      <Text fx:id="errorText" layoutX="160.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please log in to view game history" textAlignment="CENTER" visible="false" wrappingWidth="716.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="120.0">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>

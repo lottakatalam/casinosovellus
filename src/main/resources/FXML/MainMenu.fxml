@@ -33,17 +33,17 @@
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="registerButton" layoutX="168.0" layoutY="687.0" mnemonicParsing="false" onAction="#registerButton" prefWidth="150.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToRegister" AnchorPane.leftAnchor="168.0">
+      <Button fx:id="registerButton" layoutX="166.0" layoutY="687.0" mnemonicParsing="false" onAction="#registerButton" prefWidth="150.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToRegister" AnchorPane.leftAnchor="166.0">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="logoutButton" layoutX="22.0" layoutY="687.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%logOut" visible="false">
+      <Button fx:id="logoutButton" layoutX="22.0" layoutY="687.0" mnemonicParsing="false" onAction="#logOutButton" prefWidth="170.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%logOut" visible="false" AnchorPane.leftAnchor="14.0">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="changePasswordButton" layoutX="130.0" layoutY="687.0" mnemonicParsing="false" onAction="#handleChangePassword" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToChangePassword" visible="false">
+      <Button fx:id="changePasswordButton" layoutX="193.0" layoutY="687.0" mnemonicParsing="false" onAction="#handleChangePassword" prefWidth="190.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%goToChangePassword" visible="false" AnchorPane.leftAnchor="193.0">
          <font>
             <Font name="Cooper Black" size="18.0" />
          </font>
