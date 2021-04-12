@@ -282,6 +282,7 @@ public class InGameViewController {
                 dealButton.setDisable(true);
                 hitButton.setDisable(false);
                 standButton.setDisable(false);
+                surrenderButton.setDisable(false);
                 this.playersCards = gameController.getPlayersCards();
                 this.dealerCards = gameController.getDealersCards();
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
