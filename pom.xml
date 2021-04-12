@@ -101,13 +101,6 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <includes>
-                    <include>config.properties</include>
-                    <include>hibernate.cfg.xml</include>
-                    <include>TextResources.properties</include>
-                    <include>TextResources_en_GB.properties</include>
-                    <include>TextResources_fi_FI.properties</include>
-                </includes>
             </resource>
         </resources>
 
