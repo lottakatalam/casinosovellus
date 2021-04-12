@@ -22,7 +22,7 @@ public class LanguageLoader {
     }
 
     private LanguageLoader() {
-        setLocale(Locale.getDefault());
+        setLocale("en", "GB");
     }
 
     public ResourceBundle getResourceBundle() {
@@ -46,11 +46,9 @@ public class LanguageLoader {
     private void getTextResources() {
         textResources = new Properties();
         String TRFile = String.format("TextResources_%s_%s.properties", locale.getLanguage(),locale.getCountry());
-        System.out.println("TRFile: "+TRFile);
         try {
             textResources.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(TRFile));
         } catch (IOException e) {
-            System.out.println("virhe");
             e.printStackTrace();
         }
     }
