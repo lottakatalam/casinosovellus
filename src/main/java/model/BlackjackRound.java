@@ -121,6 +121,9 @@ public class BlackjackRound extends Thread {
         /* THIS CAN BE USED TO DEBUG EVEN MONEY */
         this.gameController.setEvenMoneyPossibility(evenMoneyPossibility);
         //this.gameController.setEvenMoneyPossibility(true);
+        /* THIS CAN BE USED TO DEBUG EVEN MONEY */
+        this.gameController.setSurrenderPossibility(surrenderPossibility);
+        //this.gameController.setSurrenderPossibility(true);
     }
 
     /**
@@ -216,8 +219,8 @@ public class BlackjackRound extends Thread {
      * Player surrenders (Round ends)
      */
     public void playersurrender() {
-        this.surrendered = true;
-        this.player.surrender();
+        surrendered = true;
+        this.start();
     }
 
     /**

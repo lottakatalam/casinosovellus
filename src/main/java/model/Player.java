@@ -164,7 +164,6 @@ public class Player {
         this.currency -= bet / 2;
     }
 
-    //TODO check if this is correct
 
     public void surrender() {
         this.currency -= bet / 2;

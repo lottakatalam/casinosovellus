@@ -499,8 +499,8 @@ public class InGameViewController {
      */
     public void surrender() {
         int surrender = this.bet / 2;
-        if (gameController.getsurrenderPossibility()) {
-            currentBet.setText(texts.getString("Currency") + bet + "(" + texts.getString("Currency") + surrender + ")");
+        if (gameController.getSurrenderPossibility()) {
+            currentBet.setText(formatBet() + "(" + formatInsurance(surrender) + ")");
             gameController.playerSurrender();
             updateBalance();
             splitButton.setDisable(true);
@@ -734,6 +734,11 @@ public class InGameViewController {
             insuranceButton.setDisable(false);
         }
     }
+    public void checkForSurrender() {
+        if (gameController.getSurrenderPossibility()) {
+            surrenderButton.setDisable(false);
+        }
+    }
 
     public void checkForEvenMoney() {
             if (gameController.getEvenMoneyPossibility()) {
@@ -747,6 +752,7 @@ public class InGameViewController {
         checkForSplit();
         checkForDouble();
         checkForInsurance();
+        checkForSurrender();
         checkForEvenMoney();
     }
 
@@ -1019,6 +1025,7 @@ public class InGameViewController {
     public void clearTable() {
         hitButton.setDisable(true);
         standButton.setDisable(true);
+        surrenderButton.setDisable(true);
         dealButton.setDisable(false);
         dealerCardImage1.setImage(null);
         dealerCardImage2.setImage(null);
