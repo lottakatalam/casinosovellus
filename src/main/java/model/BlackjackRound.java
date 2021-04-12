@@ -275,7 +275,16 @@ public class BlackjackRound extends Thread {
         int dealerTotal = dealer.getHand().calculateTotal();
         boolean playerWins = false;
 
-        if (evenMoney) {
+
+
+        if (surrendered){
+            this.winner = "Surrender";
+            h.setResult(History.gameResults.LOST);
+            method = "Surrender";
+            h.setMethod(method);
+            Logger.log(Logger.LogLevel.PROD, "Surrendered");
+        }
+        else if (evenMoney) {
             playerWins = true;
             this.winner = "EvenMoney";
             h.setResult(History.gameResults.WON);
