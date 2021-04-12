@@ -499,7 +499,7 @@ public class InGameViewController {
     public void surrender() {
         int surrender = this.bet / 2;
         if (gameController.getsurrenderPossibility()) {
-            //currentBet.setText(texts.getString("Currency") + bet + "(" + texts.getString("Currency") + surrender + ")");
+            currentBet.setText(texts.getString("Currency") + bet + "(" + texts.getString("Currency") + surrender + ")");
             gameController.playerSurrender();
             updateBalance();
             splitButton.setDisable(true);
