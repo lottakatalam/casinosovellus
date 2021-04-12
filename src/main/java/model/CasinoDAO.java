@@ -31,7 +31,7 @@ public class CasinoDAO {
                 Properties prop = new Properties();
                 String propFileName = "config.properties";
 
-                inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+                inputStream = CasinoDAO.class.getClassLoader().getResourceAsStream(propFileName);
 
                 if (inputStream != null) {
                     prop.load(inputStream);
