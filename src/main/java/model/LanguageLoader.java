@@ -47,9 +47,7 @@ public class LanguageLoader {
         textResources = new Properties();
         String TRFile = String.format("TextResources_%s_%s.properties", locale.getLanguage(),locale.getCountry());
         try {
-            System.out.println("ennen");
             textResources.load(LanguageLoader.class.getClassLoader().getResourceAsStream(TRFile));
-            System.out.println("jälkeen");
         } catch (IOException e) {
             e.printStackTrace();
         }
