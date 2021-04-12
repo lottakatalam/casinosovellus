@@ -47,7 +47,7 @@ public class LanguageLoader {
         textResources = new Properties();
         String TRFile = String.format("TextResources_%s_%s.properties", locale.getLanguage(),locale.getCountry());
         try {
-            textResources.load(getClass().getClassLoader().getResourceAsStream(TRFile));
+            textResources.load(LanguageLoader.class.getClassLoader().getResourceAsStream(TRFile));
         } catch (IOException e) {
             e.printStackTrace();
         }
