@@ -21,7 +21,7 @@
             <Font name="Cooper Black" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="448.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" prefWidth="100.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
+      <Button layoutX="457.0" layoutY="679.0" mnemonicParsing="false" onAction="#gameHistoryBackButton" prefWidth="100.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>
@@ -79,17 +79,17 @@
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="okButton" layoutX="470.0" layoutY="320.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="OK" visible="false">
+      <Button fx:id="okButton" layoutX="470.0" layoutY="344.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="OK" visible="false">
          <font>
             <Font name="Cooper Black" size="23.0" />
          </font>
       </Button>
-      <Text fx:id="areYouSure" layoutX="100.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureClearText" visible="false">
+      <Text fx:id="areYouSure" layoutX="165.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%AreYouSureClearText" textAlignment="CENTER" visible="false" wrappingWidth="700.0">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Text fx:id="errorText" layoutX="160.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please log in to view game history" textAlignment="CENTER" visible="false" wrappingWidth="716.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="120.0">
+      <Text fx:id="errorText" layoutX="165.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="Please log in to view game history" textAlignment="CENTER" visible="false" wrappingWidth="700.0">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
