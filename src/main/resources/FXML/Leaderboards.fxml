@@ -11,12 +11,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LeaderboardsController">
    <children>
-      <Text layoutX="368.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LeaderboardsText">
+      <Text layoutX="232.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LeaderboardsText" textAlignment="CENTER" wrappingWidth="540.56640625">
          <font>
             <Font name="Cooper Black" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="458.0" layoutY="679.0" mnemonicParsing="false" onAction="#leaderboardsBackButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
+      <Button layoutX="453.0" layoutY="681.0" mnemonicParsing="false" onAction="#leaderboardsBackButton" prefWidth="100.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackToMenuButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>

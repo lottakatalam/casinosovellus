@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
     <children>
         <ImageView fitHeight="184.0" fitWidth="452.0" layoutX="285.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../Images/thegrandmyllypurologo.png" />
             </image>
         </ImageView>
-        <Button fx:id="logInButton" layoutX="453.0" layoutY="523.0" mnemonicParsing="false" onAction="#logInButton" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%LoginButton">
+        <Button fx:id="logInButton" layoutX="431.0" layoutY="522.0" mnemonicParsing="false" onAction="#logInButton" prefWidth="160.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%LoginButton">
             <font>
                 <Font name="Cooper Black" size="25.0" />
             </font>
@@ -30,17 +35,17 @@
             <Tooltip text="%forgotpwd" />
          </tooltip>
       </PasswordField>
-      <Text fx:id="usernameText" layoutX="417.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginUsername">
+      <Text fx:id="usernameText" layoutX="329.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginUsername" textAlignment="CENTER" wrappingWidth="364.06201171875">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Text fx:id="passwordText" layoutX="419.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginPassword">
+      <Text fx:id="passwordText" layoutX="329.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%LoginPassword" textAlignment="CENTER" wrappingWidth="364.06201672554016">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="470.0" layoutY="618.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackButton">
+      <Button fx:id="backButton" layoutX="446.0" layoutY="617.0" mnemonicParsing="false" onAction="#backToMainMenu" prefWidth="130.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>

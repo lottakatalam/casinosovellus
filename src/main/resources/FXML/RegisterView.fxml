@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="996.0" style="-fx-background-color: darkgreen;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RegisterController">
     <children>
-        <Button layoutX="450.0" layoutY="549.0" mnemonicParsing="false" onAction="#register" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%Register">
+        <Button layoutX="417.0" layoutY="531.0" mnemonicParsing="false" onAction="#register" prefWidth="220.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%Register">
             <font>
                 <Font name="Cooper Black" size="25.0" />
             </font>
@@ -26,32 +26,32 @@
             <Font name="Cooper Black" size="15.0" />
          </font>
       </PasswordField>
-        <Text layoutX="429.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%regUsername">
+        <Text layoutX="349.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%regUsername" textAlignment="CENTER" wrappingWidth="347.15771484375">
             <font>
                 <Font name="Cooper Black" size="35.0" />
             </font>
         </Text>
-      <Text fx:id="usernameRule" fill="#faf6f6" layoutX="350.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%UsernameRule" textAlignment="CENTER">
+      <Text fx:id="usernameRule" fill="#faf6f6" layoutX="27.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%UsernameRule" textAlignment="CENTER" wrappingWidth="1000.0">
          <font>
             <Font name="Cooper Black" size="13.0" />
          </font>
       </Text>
-        <Text layoutX="431.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%regPassword">
+        <Text layoutX="370.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%regPassword" textAlignment="CENTER" wrappingWidth="314.0000006556511">
             <font>
                 <Font name="Cooper Black" size="35.0" />
             </font>
         </Text>
-      <Text fx:id="passwordRule" fill="#edebeb" layoutX="40.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%passwordRule" textAlignment="CENTER" wrappingWidth="1000.0">
+      <Text fx:id="passwordRule" fill="#edebeb" layoutX="27.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%passwordRule" textAlignment="CENTER" wrappingWidth="1000.0">
          <font>
             <Font name="Cooper Black" size="13.0" />
          </font>
       </Text>
-        <Button layoutX="482.0" layoutY="634.0" mnemonicParsing="false" onAction="#backToMainMenu" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%backFromRegisterToMain">
+        <Button layoutX="462.0" layoutY="630.0" mnemonicParsing="false" onAction="#backToMainMenu" prefWidth="130.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%backFromRegisterToMain">
             <font>
                 <Font name="Cooper Black" size="20.0" />
             </font>
         </Button>
-      <Text layoutX="364.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%RepeatPassword">
+      <Text layoutX="227.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-stroke-width: 2; -fx-stroke: black;" text="%RepeatPassword" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font name="Cooper Black" size="35.0" />
          </font>
