@@ -808,6 +808,9 @@ public class InGameViewController {
         standButton.setTooltip(hitTip);
         doubleButton.setTooltip(hitTip);
         splitButton.setTooltip(hitTip);
+        surrenderButton.setTooltip(hitTip);
+        insuranceButton.setTooltip(hitTip);
+        evenMoneyButton.setTooltip(hitTip);
     }
 
     /**
@@ -820,6 +823,9 @@ public class InGameViewController {
         standButton.setTooltip(standTip);
         doubleButton.setTooltip(standTip);
         splitButton.setTooltip(standTip);
+        surrenderButton.setTooltip(standTip);
+        insuranceButton.setTooltip(standTip);
+        evenMoneyButton.setTooltip(standTip);
     }
 
     /**
@@ -832,6 +838,9 @@ public class InGameViewController {
         standButton.setTooltip(doubleTip);
         doubleButton.setTooltip(doubleTip);
         splitButton.setTooltip(doubleTip);
+        surrenderButton.setTooltip(doubleTip);
+        insuranceButton.setTooltip(doubleTip);
+        evenMoneyButton.setTooltip(doubleTip);
     }
 
     /**
@@ -844,6 +853,54 @@ public class InGameViewController {
         standButton.setTooltip(splitTip);
         doubleButton.setTooltip(splitTip);
         splitButton.setTooltip(splitTip);
+        surrenderButton.setTooltip(splitTip);
+        insuranceButton.setTooltip(splitTip);
+        evenMoneyButton.setTooltip(splitTip);
+    }
+
+    /**
+     * Shows a tip to the player that recommends to surrender
+     */
+    public void showSurrenderTip() {
+        Tooltip surrenderTip = new Tooltip();
+        surrenderTip.setText(texts.getString("SurrenderTip"));
+        hitButton.setTooltip(surrenderTip);
+        standButton.setTooltip(surrenderTip);
+        doubleButton.setTooltip(surrenderTip);
+        splitButton.setTooltip(surrenderTip);
+        surrenderButton.setTooltip(surrenderTip);
+        insuranceButton.setTooltip(surrenderTip);
+        evenMoneyButton.setTooltip(surrenderTip);
+    }
+
+    /**
+     * Shows a tip to the player that recommends to insure
+     */
+    public void showInsuranceTip() {
+        Tooltip insuranceTip = new Tooltip();
+        insuranceTip.setText(texts.getString("InsuranceTip"));
+        hitButton.setTooltip(insuranceTip);
+        standButton.setTooltip(insuranceTip);
+        doubleButton.setTooltip(insuranceTip);
+        splitButton.setTooltip(insuranceTip);
+        surrenderButton.setTooltip(insuranceTip);
+        insuranceButton.setTooltip(insuranceTip);
+        evenMoneyButton.setTooltip(insuranceTip);
+    }
+
+    /**
+     * Shows a tip to the player that recommends to take even money
+     */
+    public void showEvenMoneyTip() {
+        Tooltip evenMoneyTip = new Tooltip();
+        evenMoneyTip.setText(texts.getString("EvenMoneyTip"));
+        hitButton.setTooltip(evenMoneyTip);
+        standButton.setTooltip(evenMoneyTip);
+        doubleButton.setTooltip(evenMoneyTip);
+        splitButton.setTooltip(evenMoneyTip);
+        surrenderButton.setTooltip(evenMoneyTip);
+        insuranceButton.setTooltip(evenMoneyTip);
+        evenMoneyButton.setTooltip(evenMoneyTip);
     }
 
     /**
