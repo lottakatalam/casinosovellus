@@ -19,17 +19,15 @@ public class BlackjackRound extends Thread {
     private boolean playerBusted = false;
     private boolean playerBustedSplit = true;
     private String winner;
-    private String splitWinner;
     boolean doublePossibility;
     boolean splitPossibility;
     boolean insurancePossibility;
-    boolean surrenderPossibility;
     boolean evenMoneyPossibility;
     boolean splitted;
     boolean insured;
-    boolean surrendered;
     boolean insuranceHit;
     boolean evenMoney;
+    boolean surrendered;
     private SettingsController settingsController;
 
 
@@ -54,12 +52,12 @@ public class BlackjackRound extends Thread {
         this.casinoDAO = casinoDAO;
 
         deck.shuffleDeck();
-        //deck.manipulateDeck(new Card(1,1), new Card(10,3), new Card(1,2));
+        //deck.manipulateDeck(new Card(5,1), new Card(5,3), new Card(1,2));
 
         /* THIS CAN BE USED TO DEBUG SPECIAL RULES*/
-        if (testMode) {
+        /*if (testMode) {
             deck.manipulateDeck(new Card(1,1), new Card(10,1), new Card(1,2));
-        }
+        }*/
         addFirstCards();
 
         addFirstCardsToUI();
@@ -120,9 +118,6 @@ public class BlackjackRound extends Thread {
         /* THIS CAN BE USED TO DEBUG EVEN MONEY */
         this.gameController.setEvenMoneyPossibility(evenMoneyPossibility);
         //this.gameController.setEvenMoneyPossibility(true);
-        /* THIS CAN BE USED TO DEBUG EVEN MONEY */
-        this.gameController.setSurrenderPossibility(surrenderPossibility);
-        //this.gameController.setSurrenderPossibility(true);
     }
 
     /**
@@ -216,7 +211,7 @@ public class BlackjackRound extends Thread {
     /**
      * Player surrenders (Round ends)
      */
-    public void playersurrender() {
+    public void playerSurrender() {
         surrendered = true;
         this.start();
     }
@@ -284,7 +279,7 @@ public class BlackjackRound extends Thread {
 
 
         if (surrendered){
-            this.winner = "Surrender";
+            this.winner = "surrender";
             h.setResult(History.gameResults.LOST);
             method = "Surrender";
             h.setMethod(method);
@@ -379,7 +374,7 @@ public class BlackjackRound extends Thread {
      */
     public void run() { // End round
         System.out.println(evenMoney);
-        if ((!playerBusted || !playerBustedSplit) && !evenMoney) {
+        if ((!playerBusted || !playerBustedSplit) && !evenMoney && !surrendered) {
             System.out.println("Dealer plays\n");
             while (dealer.getHand().calculateTotal() <= 16) {
                 System.out.println("Dealer has " + dealer.getHand().calculateTotal() + " and hits");

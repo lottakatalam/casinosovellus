@@ -110,7 +110,7 @@ public class BlackjackGame extends Thread {
 
     public void playerInsure() { round.playerInsure(); }
 
-    public void playersurrender() { round.playersurrender(); }
+    public void playerSurrender() { round.playerSurrender(); }
 
     public void playerEvenMoney() { round.playerEvenMoney();}
 

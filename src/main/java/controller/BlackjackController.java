@@ -279,22 +279,11 @@ public class BlackjackController {
         this.blackJackGame.playerSplit();
     }
 
-    /**
-     * Sets the surrender possibility
-     * @param surrenderPossibility - Current surrender possibility
-     */
-    public void setSurrenderPossibility(boolean surrenderPossibility) { this.surrenderPossibility = surrenderPossibility; }
-
-    /**
-     * Gets the surrender possibility
-     * @return - Returns true or false/ is surrendering possible or not
-     */
-    public boolean getSurrenderPossibility() {return surrenderPossibility;}
 
     /**
      * Ends game with even money rule
      */
-    public void playerSurrender() {this.blackJackGame.playersurrender();}
+    public void playerSurrender() {this.blackJackGame.playerSurrender();}
 
 
     /**
