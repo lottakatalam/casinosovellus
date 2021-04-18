@@ -449,6 +449,10 @@ public class InGameViewController {
         updateTotalResult();
     }
 
+    /**
+     * Set's the format of the bet in the UI by the choice of language
+     * @return the String which is used to show the bet in the UI
+     */
     public String formatBet() {
         if (LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
             return texts.getString("Currency") + " " + bet;
@@ -457,6 +461,10 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Set's the format of the amount of insurance in the UI by the choice of language
+     * @return the String which is used to show the amount of insurance in the UI
+     */
     public String formatInsurance(int insurance) {
         if (LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
             return texts.getString("Currency") + " " + insurance;
@@ -665,6 +673,10 @@ public class InGameViewController {
         playerCurrency.setText(formatBalance());
     }
 
+    /**
+     * Set's the format of the player's balance in the UI by the choice of language
+     * @return the String which is used to show the balance in the UI
+     */
     public String formatBalance() {
         if (LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
             return texts.getString("Currency") + " " + gameController.getPlayer().getCurrency();
@@ -705,6 +717,11 @@ public class InGameViewController {
         doubleButton.setDisable(true);
     }
 
+    /**
+     * Does the changes needed if the player decides to double.
+     * Disables the buttons that should not be used after doubling and tells the controller the player wants to double
+     * Updates the player's balance
+     */
     public void doublePressed() {
         splitButton.setDisable(true);
         doubleButton.setDisable(true);
@@ -742,6 +759,9 @@ public class InGameViewController {
         }
     }
 
+    /**
+     * Checks if it's possible for the player to choose even money-option and enables to press even money-button
+     */
     public void checkForEvenMoney() {
             if (gameController.getEvenMoneyPossibility()) {
             evenMoneyButton.setDisable(false);
