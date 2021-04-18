@@ -342,5 +342,19 @@ public class BlackjackController {
         inGameViewController.showSplitTip();
     }
 
+    /**
+     * Shows a tip that player should insure
+     */
+    public void showInsuranceTip() {
+        inGameViewController.showInsuranceTip();
+    }
+
+    /**
+     * Shows a tip that player should take even money
+     */
+    public void showEvenMoneyTip() {
+        inGameViewController.showEvenMoneyTip();
+    }
+
 
 }

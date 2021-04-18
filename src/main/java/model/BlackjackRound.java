@@ -2,7 +2,6 @@ package model;
 
 import controller.BlackjackController;
 import controller.SettingsController;
-import view.SettingsViewController;
 
 import java.time.LocalDateTime;
 
@@ -201,7 +200,6 @@ public class BlackjackRound extends Thread {
         }
     }
 
-
     /**
      * Player splits the hand to two hands
      */
@@ -233,7 +231,6 @@ public class BlackjackRound extends Thread {
 
     /**
      * Checks if splitting is possible in game
-     *
      * @return
      */
     public boolean checkSplitPossibility() {
@@ -249,24 +246,30 @@ public class BlackjackRound extends Thread {
         this.start();
     }
 
+    /**
+     * Sets possible tooltips according to the current game situation
+     */
     public void setTooltips() {
         settingsController = SettingsController.getInstance();
 
-        if (settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility) {
+        if (settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility && !insurancePossibility && !evenMoneyPossibility) {
             gameController.showHitTip();
-        } else if (settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility) {
+        } else if (settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility && !insurancePossibility && !evenMoneyPossibility) {
             gameController.showStandTip();
         } else if (settingsController.getSelected() && doublePossibility) {
             gameController.showDoubleTip();
         } else if (settingsController.getSelected() && splitPossibility) {
             gameController.showSplitTip();
+        } else if(settingsController.getSelected() && insurancePossibility && !evenMoneyPossibility) {
+            gameController.showInsuranceTip();
+        }else if(settingsController.getSelected() && evenMoneyPossibility) {
+            gameController.showEvenMoneyTip();
         }
     }
 
     /**
      * Method to determine the winner and/or the way of winning. Calls the methods to influence player's currency.
      * Also sets data from the round and adds a row of the round to the history table
-     *
      * @return winner/end result of the round in String
      * @throws InterruptedException when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity.
      */
@@ -374,7 +377,7 @@ public class BlackjackRound extends Thread {
     /**
      * This thread is started when the user's turn ends. It starts and plays the dealer's turn if needed and starts checking who won the round.
      */
-    public void run() {// end round
+    public void run() { // End round
         System.out.println(evenMoney);
         if ((!playerBusted || !playerBustedSplit) && !evenMoney) {
             System.out.println("Dealer plays\n");
