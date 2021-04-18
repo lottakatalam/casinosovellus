@@ -15,16 +15,57 @@ import java.io.IOException;
 
 public class ChangePasswordController {
 
+    /**
+     * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
+     */
     public ImageView blackScreen;
+
+    /**
+     * Text used for presenting possible errormessages to user
+     */
     public Text errorText;
+
+    /**
+     * Button is used after messages to user to confirm the user has understood the message
+     */
     public Button okButton;
+
+    /**
+     * Text used for telling the user the password change was succesfull. Text is defined in the fxml-file
+     */
     public Text succesfulText;
+
+    /**
+     * Button which turns the music off when pressed
+     */
     public Button volumeOFFbutton;
+
+    /**
+     * Button which turns the music on when pressed
+     */
     public Button volumeONbutton;
+
+    /**
+     * userController is used for passing on information between the model-package class UserCredentialHandler and this viewController
+     */
     private UserController userController = new UserController();
+
+    /**
+     * Textfield where the user inputs the old password
+     */
     public TextField oldPasswordField;
+
+    /**
+     * Textfield where the user inputs the new password
+     */
     public TextField newPasswordField;
+
+    /**
+     * Textfield where the user inputs the new password again
+     */
     public TextField newPasswordRepeatField;
+
+
     private StageManager stageManager;
 
     /**
