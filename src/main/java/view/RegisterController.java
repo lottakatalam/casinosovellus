@@ -53,12 +53,19 @@ public class RegisterController {
      */
     private UserController userController = new UserController();
 
+    /**
+     * Textfield where the user inputs their username
+     */
     @FXML
     public TextField usernameTextField;
-
+    /**
+     * Textfield where the user inputs their password
+     */
     @FXML
     public TextField passwordTextField;
-
+    /**
+     * Textfield where the user repeats their password
+     */
     @FXML
     public TextField repeatTextField;
 
