@@ -31,7 +31,7 @@ public class ChangePasswordController {
     public Button okButton;
 
     /**
-     * Text used for telling the user the password change was succesfull. Text is defined in the fxml-file
+     * Text used for telling the user the password change was successful. Text is defined in the fxml-file
      */
     public Text succesfulText;
 

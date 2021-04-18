@@ -22,18 +22,45 @@ import model.LanguageLoader;
  */
 public class LoginController {
 
+    /**
+     * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
+     */
     public ImageView blackScreen;
+    /**
+     * Text used for presenting possible errormessages to user
+     */
     public Text errorText;
+    /**
+     * Button is used after messages to user to confirm the user has understood the message
+     */
     public Button okButton;
+    /**
+     * Text used for telling the user the login was successful. Text is defined in the fxml-file
+     */
     public Text loginText;
+    /**
+     * Button which turns the music off when pressed
+     */
     public Button volumeOFFbutton;
+    /**
+     * Button which turns the music on when pressed
+     */
     public Button volumeONbutton;
+    /**
+     * Textfield where the user inputs their username
+     */
     @FXML
     private TextField usernameTextField;
 
+    /**
+     * Textfield where the user inputs their password
+     */
     @FXML
     private TextField passwordTextField;
 
+    /**
+     * Button that tries to login the user after pressed
+     */
     @FXML
     private Button logInButton;
     private StageManager stageManager;

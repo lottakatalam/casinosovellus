@@ -24,12 +24,33 @@ import model.LanguageLoader;
 
 public class RegisterController {
 
+    /**
+     * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
+     */
     public ImageView blackScreen;
+    /**
+     * Text used for presenting possible errormessages to user
+     */
     public Text errorText;
+    /**
+     * Button is used after messages to user to confirm the user has understood the message
+     */
     public Button okButton;
+    /**
+     * Text used for telling the user the registration was successful. Text is defined in the fxml-file
+     */
     public Text registerText;
+    /**
+     * Button which turns the music off when pressed
+     */
     public Button volumeOFFbutton;
+    /**
+     * Button which turns the music on when pressed
+     */
     public Button volumeONbutton;
+    /**
+     * userController is used for passing on information between the model-package class UserCredentialHandler and this viewController
+     */
     private UserController userController = new UserController();
 
     @FXML
@@ -61,7 +82,9 @@ public class RegisterController {
 
     @FXML
     /**
-     * Registers a new user
+     * Registers a new user if the user input meets the requirements
+     * If all fields have input, asks the controller to pass on the information to validation
+     * and informs the user if the registration was successful or not. If not, tells more specific information
      */
 
     public void register() {
