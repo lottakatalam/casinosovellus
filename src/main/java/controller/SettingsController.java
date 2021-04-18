@@ -8,18 +8,40 @@ import view.SettingsViewController;
 
 
 public class SettingsController {
+    /**
+     * Boolean which describes are the automated instructions for play in the UI on
+     * True if the instructions are ON, false if the instructions are OFF
+     */
     private boolean isSelected;
+
+    /**
+     * Boolean which describes is the background music playing or not
+     * True if the music is ON, false if the music is OFF
+     */
     private boolean isPlaying;
+
+    /**
+     * Double which describes the volume
+     */
     private double volume;
 
+    /**
+     * A private constuctor for a singleton-object
+     */
     private SettingsController() {
 
     }
+
+    /**
+     * A singleton object of class
+     */
     public static SettingsController myInstance;
 
     /**
      * Instance of SettingsController
-     * @return
+     * First time called the method creates a new singleton object
+     * After the object is created returns the same exact object
+     * @return SettingsController-object
      */
     public static SettingsController getInstance() {
         if (myInstance == null) {
