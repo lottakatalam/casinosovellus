@@ -259,6 +259,8 @@ public class InGameViewController {
     public void hit() {
         splitButton.setDisable(true);
         insuranceButton.setDisable(true);
+        surrenderButton.setDisable(true);
+        evenMoneyButton.setDisable(true);
         if (gameController.getSplitStatus()) {
             gameController.hitToSplittedHand();
         } else {
@@ -430,6 +432,8 @@ public class InGameViewController {
     public void stand() {
         splitButton.setDisable(true);
         insuranceButton.setDisable(true);
+        surrenderButton.setDisable(true);
+        evenMoneyButton.setDisable(true);
         if (gameController.getSplitStatus() && splitted) {
             disableHit();
             disableStand();
@@ -472,7 +476,10 @@ public class InGameViewController {
             gameController.playerSplit();
             splitHandInUI();
             updateTotalResult();
+            insuranceButton.setDisable(true);
             splitButton.setDisable(true);
+            surrenderButton.setDisable(true);
+            evenMoneyButton.setDisable(true);
             disableDouble();
         } else {
             setValidBetView("Insufficient balance to split the hand");
@@ -490,6 +497,8 @@ public class InGameViewController {
             updateBalance();
             splitButton.setDisable(true);
             insuranceButton.setDisable(true);
+            surrenderButton.setDisable(true);
+            evenMoneyButton.setDisable(true);
             disableDouble();
         }
     }
@@ -498,15 +507,13 @@ public class InGameViewController {
      * Player surrenders
      */
     public void surrender() {
-        int surrender = this.bet / 2;
-        if (gameController.getSurrenderPossibility()) {
-            currentBet.setText(formatBet() + "(" + formatInsurance(surrender) + ")");
-            gameController.playerSurrender();
-            updateBalance();
             splitButton.setDisable(true);
             surrenderButton.setDisable(true);
+            insuranceButton.setDisable(true);
+            evenMoneyButton.setDisable(true);
+            gameController.playerSurrender();
+            updateBalance();
             disableDouble();
-        }
     }
 
     /**
@@ -566,7 +573,7 @@ public class InGameViewController {
             case "insured":
                 declareWinner.setText(texts.getString("InsurancePayback"));
                 break;
-            case "surrendered":
+            case "surrender":
                 declareWinner.setText(texts.getString("Surrendered"));
                 break;
             case "EvenMoney":
@@ -734,11 +741,6 @@ public class InGameViewController {
             insuranceButton.setDisable(false);
         }
     }
-    public void checkForSurrender() {
-        if (gameController.getSurrenderPossibility()) {
-            surrenderButton.setDisable(false);
-        }
-    }
 
     public void checkForEvenMoney() {
             if (gameController.getEvenMoneyPossibility()) {
@@ -752,7 +754,6 @@ public class InGameViewController {
         checkForSplit();
         checkForDouble();
         checkForInsurance();
-        checkForSurrender();
         checkForEvenMoney();
     }
 

@@ -91,7 +91,7 @@ public class Player {
             this.currency += bet + bet / 2;
         }
         if (method.equals("Surrender")) {
-            this.currency += bet + bet / 2;
+            this.currency += bet / 2;
         }
         if (UserCredentialHandler.getInstance().isLoggedIn()) {
             User user = UserCredentialHandler.getInstance().getLoggedInUser();
@@ -161,11 +161,6 @@ public class Player {
     }
 
     public void insure() {
-        this.currency -= bet / 2;
-    }
-
-
-    public void surrender() {
         this.currency -= bet / 2;
     }
 
