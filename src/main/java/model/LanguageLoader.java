@@ -1,6 +1,5 @@
 package model;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Properties;
@@ -68,6 +67,7 @@ public class LanguageLoader {
         locale = new Locale(language, country);
         getTextResources();
     }
+
 
     private void setLocale(Locale locale) {
         LanguageLoader.locale = locale;
