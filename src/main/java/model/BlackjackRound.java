@@ -414,4 +414,6 @@ public class BlackjackRound extends Thread {
 
         Logger.log(Logger.LogLevel.PROD, "The amount of wins: " + player.getWins());
     }
+
+
 }
