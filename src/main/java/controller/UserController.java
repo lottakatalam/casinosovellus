@@ -11,9 +11,11 @@ import view.RegisterController;
  */
 public class UserController {
 
+    /**
+     * A string which is created in the UserCredentialHandler
+     * This controller forwards the errormessage to viewController to use the message in UI
+     */
     private String errorMessage;
-
-
 
 
     /**
@@ -35,7 +37,7 @@ public class UserController {
     }
 
     /**
-     * RegisterController uses this method for setting an errormessage related to unsuccessful registration
+     * RegisterController uses this method for setting an errormessage related to unsuccessful situations in the UI
      * The string is possibly set in the validateCredentials-method by calling the UserCredentialHandler for the right errormessage
      * @return errorMessage, which specifies the reason for the unsuccessful registration
      */
