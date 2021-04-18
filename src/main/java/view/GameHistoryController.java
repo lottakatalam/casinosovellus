@@ -46,7 +46,7 @@ public class GameHistoryController {
     public Button volumeONbutton;
     private StageManager stageManager;
     private UserController userController = new UserController();
-    CasinoDAO casinoDAO = new CasinoDAO();
+    CasinoDAO casinoDAO;
 
 
     /**
@@ -170,6 +170,7 @@ public class GameHistoryController {
      * Sets empty table's message to correct language
      */
     public void initialize() {
+        casinoDAO = new CasinoDAO();
         stageManager = StageManager.getInstance();
         checkVolume();
         historyTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));
