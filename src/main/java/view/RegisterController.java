@@ -69,6 +69,9 @@ public class RegisterController {
     @FXML
     public TextField repeatTextField;
 
+    /**
+     * Button that registers user credentials after pressed
+     */
     @FXML
     public Button submitButton;
 
@@ -82,7 +85,9 @@ public class RegisterController {
         stageManager = StageManager.getInstance();
         checkVolume();
     }
-
+    /**
+     * Button that changes user password after pressed
+     */
     @FXML
     private Button changePasswordButton;
 
