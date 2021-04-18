@@ -12,10 +12,10 @@ public class BlackjackRound extends Thread {
 
     private static int roundNumber = 0;
 
-    private final BlackjackController gameController;
-    private final Deck deck;
-    private final Player player;
-    private final Dealer dealer;
+    private BlackjackController gameController;
+    private Deck deck;
+    private Player player;
+    private Dealer dealer;
     private boolean playerBusted = false;
     private boolean playerBustedSplit = true;
     private String winner;
@@ -70,6 +70,12 @@ public class BlackjackRound extends Thread {
         dealer.getHand().printHand();
 
         setTooltips();
+    }
+
+    public BlackjackRound(Player player, Dealer dealer, BlackjackController gameController) {
+        this.player = player;
+        this.dealer = dealer;
+        this.gameController = gameController;
     }
 
     /**
@@ -181,6 +187,10 @@ public class BlackjackRound extends Thread {
             playerStay();
         }
     }
+
+    /**
+     * Sets the insurance status to true and takes the insuring money from player
+     */
 
     public void playerInsure() {
         this.insured = true;

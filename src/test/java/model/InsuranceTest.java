@@ -1,5 +1,6 @@
 package model;
 
+import controller.BlackjackController;
 import model.Logger;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,13 +16,18 @@ class InsuranceTest {
 
     private static int currency;
     private static Player p;
+    private static Dealer d;
     private static BlackjackRound round;
+    private static BlackjackController ctrl;
 
     @BeforeEach
     public void initializeTests() {
         Logger.setLogLevel(Logger.LogLevel.ALL);
         currency = 1000;
         p = new Player(currency);
+        d = new Dealer();
+        ctrl = new BlackjackController();
+        round = new BlackjackRound(p, d, ctrl);
     }
 
     @ParameterizedTest
@@ -66,5 +72,15 @@ class InsuranceTest {
         p.insure();
         p.lose("Draw");
         assertEquals(newBalance, p.getCurrency(), "The amount of new balance after drawing is not correct");
+    }
+
+    @ParameterizedTest
+    @CsvSource({"5, 3, 5, 1, true, 1, 4", "10, 3, 6, 4, false, 3, 2", "11, 1, 11, 2, true, 1, 1"})
+    void insuringIsPossible(int rankFirstCard, int suitFirstCard, int rankSecondCard, int suitSecondCard, boolean isPossible, int dealerRankFirst, int dealerSuitFirst) {
+        p.getHand().addCard(new Card(rankFirstCard, suitFirstCard));
+        p.getHand().addCard(new Card(rankSecondCard, suitSecondCard));
+        d.getHand().addCard(new Card(dealerRankFirst, dealerSuitFirst));
+        round.checkSpecialRulePossibilities();
+        assertEquals(isPossible, ctrl.getInsurancePossibility(), "Insurance possibility is not set correctly");
     }
 }

@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SurrenderTest {
     private static int currency;
     private static Player p;
-    private static BlackjackRound round;
 
 
     @BeforeEach
@@ -21,5 +20,13 @@ public class SurrenderTest {
         Logger.setLogLevel(Logger.LogLevel.ALL);
         currency = 1000;
         p = new Player(currency);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"10, 995", "200, 900", "500, 750"})
+    void surrender(int bet, int newBalance) {
+        p.setBet(bet);
+        p.lose("Surrender");
+        assertEquals(newBalance, p.getCurrency(), "The amount of new balance is not correct");
     }
 }
