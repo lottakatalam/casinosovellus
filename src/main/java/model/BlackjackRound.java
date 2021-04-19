@@ -72,6 +72,12 @@ public class BlackjackRound extends Thread {
         setTooltips();
     }
 
+    /**
+     * Constructor for testing purposes only
+     * @param player
+     * @param dealer
+     * @param gameController
+     */
     public BlackjackRound(Player player, Dealer dealer, BlackjackController gameController) {
         this.player = player;
         this.dealer = dealer;
