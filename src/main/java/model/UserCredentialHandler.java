@@ -13,7 +13,7 @@ public class UserCredentialHandler {
 
     private static UserCredentialHandler instance = null;
 
-    private CasinoDAO casinoDAO;
+    private static CasinoDAO casinoDAO;
 
     private static User loggedInUser;
 
@@ -29,7 +29,7 @@ public class UserCredentialHandler {
      */
     private UserCredentialHandler() {
 
-        casinoDAO = new CasinoDAO();
+        //casinoDAO = new CasinoDAO();
     }
 
     /**
@@ -46,12 +46,14 @@ public class UserCredentialHandler {
 
 
     /**
-     * Sets the casino Database
+     * Sets the casino DAO
      *
-     * @param casinoDAO - The Database
+     *
      */
-    public void setCasinoDAO(CasinoDAO casinoDAO) {
-        this.casinoDAO = casinoDAO;
+    private void setCasinoDAO() {
+        if (casinoDAO == null) {
+            casinoDAO = new CasinoDAO();
+        }
     }
 
     /**
@@ -85,6 +87,7 @@ public class UserCredentialHandler {
      * @return - True if user creation is successed
      */
     public void createNewUser(String username, String password) {
+        setCasinoDAO();
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(hashPassword(password));
@@ -102,6 +105,7 @@ public class UserCredentialHandler {
      * @return true if username is valid for creating a user
      */
     public boolean isValidUsername(String username) {
+        setCasinoDAO();
         String message = "";
 
         User user = casinoDAO.getUserByUsername(username);
@@ -206,6 +210,7 @@ public class UserCredentialHandler {
      * @return true, if the login was successful
      */
     public boolean login(String username, String password) {
+        setCasinoDAO();
         User user = casinoDAO.getUserByUsername(username);
         if (user != null) {
             if (validatePassword(password, user.getPassword())) {
@@ -230,6 +235,7 @@ public class UserCredentialHandler {
      * @return true, if all three inputs are valid
      */
     public boolean validatePassWordChange(String oldPassword, String newPassword, String newPasswordRepeated) {
+        setCasinoDAO();
         User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
 
         if (!validatePassword(oldPassword, user.getPassword())) {
@@ -253,7 +259,7 @@ public class UserCredentialHandler {
      * @return true, if the password was changed successfully
      */
     public boolean changePassword(String newPassword) {
-
+        setCasinoDAO();
         User user = casinoDAO.getUserByUsername(loggedInUser.getUsername());
 
         user.setPassword(hashPassword(newPassword));
@@ -397,12 +403,4 @@ public class UserCredentialHandler {
     }
 
 
-    /**
-     * For testing purposes
-     *
-     * @return DAO-object
-     */
-    public CasinoDAO getCasinoDAO() {
-        return casinoDAO;
-    }
 }

@@ -32,7 +32,7 @@ public class LeaderboardsController {
     public TableColumn roundColumn;
     private StageManager stageManager;
     private UserController userController = new UserController();
-    CasinoDAO casinoDAO = new CasinoDAO();
+    CasinoDAO casinoDAO;
 
     /**
      * Initializes stageManager
@@ -40,6 +40,7 @@ public class LeaderboardsController {
      * Sets empty table's message to correct language
      */
     public void initialize() {
+        casinoDAO = new CasinoDAO();
         stageManager = StageManager.getInstance();
         checkVolume();
         leaderboardTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));

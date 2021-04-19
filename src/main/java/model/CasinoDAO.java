@@ -16,6 +16,7 @@ import java.util.Properties;
 public class CasinoDAO {
 
     private SessionFactory sessionFactory = null;
+    private static boolean testmode = false;
 
     /**
      * Constructor of CasinoDAO
@@ -24,7 +25,12 @@ public class CasinoDAO {
 
         try {
             Configuration cfg = new Configuration();
-            cfg.configure("hibernate.cfg.xml");
+            if (testmode) {
+                cfg.configure("hibernate-testDB.cfg.xml");
+            } else {
+                cfg.configure("hibernate.cfg.xml");
+            }
+
             String uname = "", passwd = "";
             InputStream inputStream = null;
             try {
@@ -39,9 +45,13 @@ public class CasinoDAO {
                     throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
                 }
 
-
-                uname = prop.getProperty("username");
-                passwd = prop.getProperty("passwd");
+                if (testmode) {
+                    uname = prop.getProperty("test_username");
+                    passwd = prop.getProperty("test_passwd");
+                } else {
+                    uname = prop.getProperty("username");
+                    passwd = prop.getProperty("passwd");
+                }
 
             } catch (Exception e) {
                 System.out.println("Exception: " + e);
@@ -58,6 +68,8 @@ public class CasinoDAO {
         }
 
     }
+
+
 
     /**
      * Closes the sessionFactory if it is not null
@@ -77,6 +89,7 @@ public class CasinoDAO {
 
     /**
      * Adds a row to the historyTable
+     *
      * @param history
      * @return - Returns true if successed and false if not
      */
@@ -100,6 +113,7 @@ public class CasinoDAO {
 
     /**
      * Gets the specific historyRow from historyTable
+     *
      * @param gameNumber - Used to search the specific historyRow
      * @return - The searched historyRow
      */
@@ -123,6 +137,7 @@ public class CasinoDAO {
 
     /**
      * Gets every row of the historyTable
+     *
      * @return - the whole historyTable
      */
     public History[] getAllHistoryRows() {
@@ -151,6 +166,7 @@ public class CasinoDAO {
 
     /**
      * Updates specific historyRow from historyTable
+     *
      * @param historyData
      * @return - Returns true if successed and false if not
      */
@@ -173,6 +189,7 @@ public class CasinoDAO {
 
     /**
      * Deletes specific historyRow from historyTable
+     *
      * @param gameNumber - Used to search for wanted historyRow
      * @return - Returns true if successed and false if not
      */
@@ -197,6 +214,7 @@ public class CasinoDAO {
 
     /**
      * Adds a userRow to the userTable
+     *
      * @param user - User added to the table
      * @return - Returns true if successed and false if not
      */
@@ -221,6 +239,7 @@ public class CasinoDAO {
 
     /**
      * Updates the user's balance at the userTable
+     *
      * @param user - User that's balance is wanted to change
      * @return - Returns true if successed and false if not
      */
@@ -243,6 +262,7 @@ public class CasinoDAO {
 
     /**
      * Gets the user by username
+     *
      * @param username - Username of the user wanted to find
      * @return
      */
@@ -254,5 +274,13 @@ public class CasinoDAO {
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
+    }
+
+    /**
+     * Sets DAO to use test database
+     * @param testmode - Boolean is testmode on
+     */
+    public static void setTestmode(boolean testmode) {
+        CasinoDAO.testmode = testmode;
     }
 }

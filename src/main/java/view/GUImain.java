@@ -26,7 +26,7 @@ import static javafx.application.Application.launch;
 public class GUImain extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
-    private BlackjackController ctrl;
+    //private BlackjackController ctrl;
     private UserController userController;
     private StageManager stageManager;
 
@@ -83,10 +83,10 @@ public class GUImain extends Application {
             loader.setResources(LanguageLoader.getInstance().getResourceBundle());
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
-            BlackjackController ctrl = new BlackjackController();
+            //BlackjackController ctrl = new BlackjackController();
             userController = new UserController();
 
-            controller.setGameController(ctrl);
+            //controller.setGameController(ctrl);
             controller.setUserController(userController);
             controller.setStageManager(this.stageManager);
             Scene scene = new Scene(rootLayout);

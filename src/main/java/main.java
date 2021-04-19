@@ -1,3 +1,4 @@
+import model.CasinoDAO;
 import model.LanguageLoader;
 import model.Logger;
 import view.GUImain;
