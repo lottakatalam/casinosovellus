@@ -2,7 +2,6 @@ package controller;
 
 import model.*;
 import view.InGameViewController;
-import view.SettingsViewController;
 
 import java.util.ArrayList;
 
@@ -11,20 +10,16 @@ import java.util.ArrayList;
  */
 public class BlackjackController {
 
-    private BlackjackGame blackJackGame;
-    private Player player;
-    private Hand handObjectPlayer;
-    private ArrayList<Card> handPlayer;
-    private ArrayList<Card> splittedHandPlayer;
-    private Dealer dealer;
-    private Hand handObjectDealer;
-    private ArrayList<Card> handDealer;
+    private final BlackjackGame blackJackGame;
+    private final Player player;
+    private final ArrayList<Card> handPlayer;
+    private final ArrayList<Card> splittedHandPlayer;
+    private final Dealer dealer;
+    private final ArrayList<Card> handDealer;
     private InGameViewController inGameViewController;
-    private String winner;
     private boolean doublePossibility;
     private boolean splitPossibility;
     private boolean insurancePossibility;
-    private boolean surrenderPossibility;
     private boolean evenMoneyPossibility;
     private boolean splitIsOn = false;
 
@@ -35,11 +30,11 @@ public class BlackjackController {
     public BlackjackController() {
         this.blackJackGame = new BlackjackGame(this);
         this.player = blackJackGame.getPlayer();
-        this.handObjectPlayer = player.getHand();
+        Hand handObjectPlayer = player.getHand();
         this.handPlayer = handObjectPlayer.getHand();
         this.splittedHandPlayer = handObjectPlayer.getSplittedHand();
         this.dealer = blackJackGame.getDealer();
-        this.handObjectDealer = dealer.getHand();
+        Hand handObjectDealer = dealer.getHand();
         this.handDealer = handObjectDealer.getHand();
     }
 
@@ -89,7 +84,7 @@ public class BlackjackController {
 
     /**
      * Gets the hand of the Player
-     * @return
+     * @return the Arraylist of players cards
      */
     public ArrayList<Card> getPlayersCards() {
         return this.handPlayer;
@@ -104,7 +99,7 @@ public class BlackjackController {
 
     /**
      * Gets the hand of the Dealer
-     * @return
+     * @return return the Arraylist of dealer's cards
      */
     public ArrayList<Card> getDealersCards() {
         return this.handDealer;
@@ -188,7 +183,7 @@ public class BlackjackController {
     /**
      * Declares the winner of the round
      * @param winner - Winner of the round
-     * @throws InterruptedException
+     * @throws InterruptedException when a thread is waiting, sleeping, or otherwise occupied, and the thread is interrupted, either before or during the activity
      */
     public void declareWinner(String winner) throws InterruptedException {
         inGameViewController.declareWinner(winner);

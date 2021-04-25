@@ -23,7 +23,6 @@ import model.UserCredentialHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import static java.lang.Thread.sleep;
 
@@ -33,14 +32,6 @@ import static java.lang.Thread.sleep;
 
 public class InGameViewController {
 
-    public Text playerCard1;
-    public Text playerCard2;
-    public Text playerCard3;
-    public Text playerCard4;
-    public Text dealerCard1;
-    public Text dealerCard2;
-    public Text dealerCard3;
-    public Text dealerCard4;
     public Text playerCurrency;
     public Text playerTotal;
     public Text dealerTotal;
@@ -72,8 +63,6 @@ public class InGameViewController {
     public Button volumeOFFbutton;
     public Button volumeONbutton;
     private BlackjackController gameController;
-    private ArrayList<Card> playersCards;
-    private ArrayList<Card> dealerCards;
     private int bet;
     private StageManager stageManager;
     boolean instructionsOn;
@@ -99,7 +88,7 @@ public class InGameViewController {
     public Button yesMoneyButton;
     public Button noMoneyButton;
     public Text outOfMoney;
-    private UserController userController = new UserController();
+    private final UserController userController = new UserController();
     LanguageLoader texts = LanguageLoader.getInstance();
 
     /**
@@ -285,8 +274,8 @@ public class InGameViewController {
                 hitButton.setDisable(false);
                 standButton.setDisable(false);
                 surrenderButton.setDisable(false);
-                this.playersCards = gameController.getPlayersCards();
-                this.dealerCards = gameController.getDealersCards();
+                ArrayList<Card> playersCards = gameController.getPlayersCards();
+                ArrayList<Card> dealerCards = gameController.getDealersCards();
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
