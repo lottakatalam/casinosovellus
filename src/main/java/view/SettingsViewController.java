@@ -2,9 +2,6 @@ package view;
 
 import controller.SettingsController;
 import controller.UserController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -18,7 +15,7 @@ import java.io.IOException;
 /**
  * Controller class for Settings.fxml
  */
-public class SettingsViewController {
+public class SettingsViewController extends ViewController {
 
     public RadioButton onRadio;
     public RadioButton offRadio;
@@ -29,7 +26,6 @@ public class SettingsViewController {
     public Button englishButton;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
-    private StageManager stageManager;
     private boolean isSelected = true;
     private SettingsController settingsController = SettingsController.getInstance();
     MainMenuController mainMenuController = null;
@@ -41,22 +37,7 @@ public class SettingsViewController {
      * @throws IOException - if .fxml file is not found
      */
     public void settingsBackButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
+        showMainMenu();
     }
 
     /**
@@ -65,7 +46,6 @@ public class SettingsViewController {
      * Initializes settings
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText(LanguageLoader.getInstance().getString("LoggedInUser") + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());

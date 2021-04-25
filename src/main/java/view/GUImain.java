@@ -1,5 +1,4 @@
 package view;
-import controller.BlackjackController;
 import controller.SettingsController;
 import controller.UserController;
 import javafx.application.Application;
@@ -12,13 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.LanguageLoader;
-import model.UserCredentialHandler;
 
 import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
-import static javafx.application.Application.launch;
 
 /**
  * Main class of the app GUI. Initializes the views, variables and controller
@@ -26,7 +20,6 @@ import static javafx.application.Application.launch;
 public class GUImain extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
-    //private BlackjackController ctrl;
     private UserController userController;
     private StageManager stageManager;
 
@@ -83,10 +76,7 @@ public class GUImain extends Application {
             loader.setResources(LanguageLoader.getInstance().getResourceBundle());
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
-            //BlackjackController ctrl = new BlackjackController();
             userController = new UserController();
-
-            //controller.setGameController(ctrl);
             controller.setUserController(userController);
             controller.setStageManager(this.stageManager);
             Scene scene = new Scene(rootLayout);

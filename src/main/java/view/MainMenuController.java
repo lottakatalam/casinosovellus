@@ -20,7 +20,7 @@ import java.io.IOException;
  * Controller class for MainMenu.fxml
  */
 
-public class MainMenuController {
+public class MainMenuController extends ViewController {
 
     public ImageView blackScreen;
     public Text areYouSure;

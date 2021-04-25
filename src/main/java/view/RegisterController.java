@@ -1,15 +1,8 @@
 package view;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import controller.SettingsController;
-import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -22,7 +15,7 @@ import model.LanguageLoader;
  *
  */
 
-public class RegisterController {
+public class RegisterController extends ViewController {
 
     /**
      * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
@@ -48,10 +41,8 @@ public class RegisterController {
      * Button which turns the music on when pressed
      */
     public Button volumeONbutton;
-    /**
-     * userController is used for passing on information between the model-package class UserCredentialHandler and this viewController
-     */
-    private UserController userController = new UserController();
+
+
 
     /**
      * Textfield where the user inputs their username
@@ -75,14 +66,12 @@ public class RegisterController {
     @FXML
     public Button submitButton;
 
-    private StageManager stageManager;
 
     /**
      * Initializes stageManager
      * Checks the current volume state
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
     /**
@@ -147,29 +136,6 @@ public class RegisterController {
         okButton.setVisible(true);
     }
 
-    /**
-     * Loads back to Mainmenu
-     * @throws IOException - if .fxml file is not found
-     */
-    public void backToMainMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
-    }
-
 
     /**
      * Button closes pop up screen and loads to MainMenu if registeration is successed
@@ -177,7 +143,7 @@ public class RegisterController {
      */
     public void okButton() throws IOException {
         if (registerText.isVisible()) {
-            backToMainMenu();
+            showMainMenu();
         }
         blackScreen.setVisible(false);
         errorText.setVisible(false);

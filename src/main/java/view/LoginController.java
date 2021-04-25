@@ -1,26 +1,20 @@
 package view;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import controller.SettingsController;
-import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
-import model.LanguageLoader;
+
 
 /**
  * Login Controller for fxml ui
  */
-public class LoginController {
+public class LoginController extends ViewController {
 
     /**
      * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
@@ -63,15 +57,13 @@ public class LoginController {
      */
     @FXML
     private Button logInButton;
-    private StageManager stageManager;
-    private UserController userController = new UserController();
+
 
     /**
      * Initialized stageManager
      * Checks the current volume state
      */
     public void initialize(){
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
 
@@ -101,28 +93,7 @@ public class LoginController {
 
     }
 
-    /**
-     * Loads back to MainMenu
-     * @throws IOException - if .fxml file is not found
-     */
-    public void backToMainMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
 
-    }
 
     /**
      * Closes pop up screen and if log in is successful it loads back to Main menu as a logged in user
@@ -130,7 +101,7 @@ public class LoginController {
      */
     public void okButton() throws IOException {
         if (loginText.isVisible()) {
-            backToMainMenu();
+            showMainMenu();
         }
         blackScreen.setVisible(false);
         errorText.setVisible(false);
