@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class LeaderboardsController {
+public class LeaderboardsController extends ViewController {
     public Text loggedUser;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
@@ -55,6 +55,8 @@ public class LeaderboardsController {
      * @throws IOException - if .fxml file is not found
      */
     public void leaderboardsBackButton () throws IOException {
+        showMainMenu();
+        /*
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
@@ -70,6 +72,8 @@ public class LeaderboardsController {
         stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
         stageManager.getPrimaryStage().setScene(menuScene);
         stageManager.getPrimaryStage().show();
+
+         */
     }
 
     /**

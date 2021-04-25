@@ -24,7 +24,7 @@ import java.io.IOException;
 /**
  * Controller class for Game History
  */
-public class GameHistoryController {
+public class GameHistoryController extends ViewController {
 
     public Text areYouSure;
     public Button yesButton;
@@ -44,8 +44,6 @@ public class GameHistoryController {
     public Text loggedUser;
     public Button volumeOFFbutton;
     public Button volumeONbutton;
-    private StageManager stageManager;
-    private UserController userController = new UserController();
     CasinoDAO casinoDAO;
 
 
@@ -54,22 +52,7 @@ public class GameHistoryController {
      * @throws IOException - if .fxml file is not found
      */
     public void gameHistoryBackButton() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
+        showMainMenu();
     }
 
     /**
@@ -171,7 +154,6 @@ public class GameHistoryController {
      */
     public void initialize() {
         casinoDAO = new CasinoDAO();
-        stageManager = StageManager.getInstance();
         checkVolume();
         historyTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {

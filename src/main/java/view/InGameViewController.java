@@ -2,12 +2,7 @@ package view;
 
 import controller.BlackjackController;
 import controller.SettingsController;
-import controller.UserController;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -15,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import model.Card;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
@@ -30,7 +24,7 @@ import static java.lang.Thread.sleep;
  * Controller class for the InGameView.fxml and Settings.fxml
  */
 
-public class InGameViewController {
+public class InGameViewController extends ViewController {
 
     public Text playerCurrency;
     public Text playerTotal;
@@ -64,7 +58,6 @@ public class InGameViewController {
     public Button volumeONbutton;
     private BlackjackController gameController;
     private int bet;
-    private StageManager stageManager;
     boolean instructionsOn;
     public ImageView playerCardImage1;
     public ImageView playerCardImage2;
@@ -88,7 +81,6 @@ public class InGameViewController {
     public Button yesMoneyButton;
     public Button noMoneyButton;
     public Text outOfMoney;
-    private final UserController userController = new UserController();
     LanguageLoader texts = LanguageLoader.getInstance();
 
     /**
@@ -110,22 +102,7 @@ public class InGameViewController {
      * @throws IOException - if .fxml file is not found
      */
     public void yesAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("The Grand Myllypuro");
-        window.setScene(menuScene);
-        window.show();
+        showMainMenu();
     }
 
     /**
@@ -143,7 +120,6 @@ public class InGameViewController {
      * Check the current volume state
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
 

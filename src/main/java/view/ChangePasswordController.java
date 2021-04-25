@@ -2,9 +2,6 @@ package view;
 
 import controller.SettingsController;
 import controller.UserController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -13,7 +10,7 @@ import model.LanguageLoader;
 
 import java.io.IOException;
 
-public class ChangePasswordController {
+public class ChangePasswordController extends ViewController {
 
     /**
      * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
@@ -66,14 +63,11 @@ public class ChangePasswordController {
     public TextField newPasswordRepeatField;
 
 
-    private StageManager stageManager;
-
     /**
      * Initializes stageManager
      * Checks the current volume state
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
 
@@ -120,30 +114,6 @@ public class ChangePasswordController {
     }
 
     /**
-     * Loads back to Mainmenu
-     *
-     * @throws IOException - if .fxml file is not found
-     */
-    public void backToMainMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
-    }
-
-    /**
      * Sets an error message for user to the UI if the password change was unsuccessful
      * @param message the error message for the user shown in the UI
      */
@@ -161,7 +131,7 @@ public class ChangePasswordController {
      */
     public void okButton() throws IOException {
         if (succesfulText.isVisible()) {
-            backToMainMenu();
+            showMainMenu();
         }
         blackScreen.setVisible(false);
         errorText.setVisible(false);
