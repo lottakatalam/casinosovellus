@@ -1,13 +1,8 @@
 package view;
 
-import controller.SettingsController;
 import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,14 +18,11 @@ import java.util.Comparator;
 
 public class LeaderboardsController extends ViewController {
     public Text loggedUser;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
     public TableView<User> leaderboardTable;
     public TableColumn rankingColumn;
     public TableColumn usernameColumn;
     public TableColumn balanceColumn;
     public TableColumn roundColumn;
-    private StageManager stageManager;
     private UserController userController = new UserController();
     CasinoDAO casinoDAO;
 
@@ -41,7 +33,6 @@ public class LeaderboardsController extends ViewController {
      */
     public void initialize() {
         casinoDAO = new CasinoDAO();
-        stageManager = StageManager.getInstance();
         checkVolume();
         leaderboardTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
@@ -56,24 +47,6 @@ public class LeaderboardsController extends ViewController {
      */
     public void leaderboardsBackButton () throws IOException {
         showMainMenu();
-        /*
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
-         */
     }
 
     /**
@@ -109,34 +82,5 @@ public class LeaderboardsController extends ViewController {
         return leaderboards;
     }
 
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF () {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
 
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON () {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
 }

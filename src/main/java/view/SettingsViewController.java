@@ -24,8 +24,6 @@ public class SettingsViewController extends ViewController {
     public Text volumeText;
     public Button finnishButton;
     public Button englishButton;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
     private boolean isSelected = true;
     private SettingsController settingsController = SettingsController.getInstance();
     MainMenuController mainMenuController = null;
@@ -109,37 +107,6 @@ public class SettingsViewController extends ViewController {
     }
 
     /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
-
-    /**
      * Changes language to English
      */
     public void selectEnglish() {
@@ -165,4 +132,5 @@ public class SettingsViewController extends ViewController {
         finnishButton.setEffect(new DropShadow());
         englishButton.setEffect(null);
     }
+
 }

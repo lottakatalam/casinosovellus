@@ -54,8 +54,6 @@ public class InGameViewController extends ViewController {
     public Button evenMoneyButton;
     public Text instructionsText;
     public VBox instructionsBox;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
     private BlackjackController gameController;
     private int bet;
     boolean instructionsOn;
@@ -868,36 +866,6 @@ public class InGameViewController extends ViewController {
         evenMoneyButton.setTooltip(evenMoneyTip);
     }
 
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
 
     /**
      * Updates the balance shown in the UI

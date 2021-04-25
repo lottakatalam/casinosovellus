@@ -32,14 +32,7 @@ public class LoginController extends ViewController {
      * Text used for telling the user the login was successful. Text is defined in the fxml-file
      */
     public Text loginText;
-    /**
-     * Button which turns the music off when pressed
-     */
-    public Button volumeOFFbutton;
-    /**
-     * Button which turns the music on when pressed
-     */
-    public Button volumeONbutton;
+
     /**
      * Textfield where the user inputs their username
      */
@@ -109,34 +102,4 @@ public class LoginController extends ViewController {
         okButton.setVisible(false);
     }
 
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
 }
