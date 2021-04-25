@@ -128,45 +128,7 @@ public class InGameViewController extends ViewController {
      */
     public void instructionsButton() {
         instructionsOn = true;
-        playerCardImage1.setVisible(false);
-        playerCardImage2.setVisible(false);
-        playerCardImage3.setVisible(false);
-        playerCardImage4.setVisible(false);
-        playerCardImage5.setVisible(false);
-        playerCardImage6.setVisible(false);
-        dealerCardImage1.setVisible(false);
-        dealerCardImage2.setVisible(false);
-        dealerCardImage3.setVisible(false);
-        dealerCardImage4.setVisible(false);
-        dealerCardImage5.setVisible(false);
-        dealerCardImage6.setVisible(false);
-        playerSplit1.setVisible(false);
-        playerSplit2.setVisible(false);
-        playerSplit3.setVisible(false);
-        playerSplit4.setVisible(false);
-        playerSplit5.setVisible(false);
-        playerSplit6.setVisible(false);
-        playerCurrency.setVisible(false);
-        playerTotal.setVisible(false);
-        dealerTotal.setVisible(false);
-        currentBet.setVisible(false);
-        betField.setVisible(false);
-        splitButton.setVisible(false);
-        standButton.setVisible(false);
-        hitButton.setVisible(false);
-        dealButton.setVisible(false);
-        instructionsButton.setVisible(false);
-        menuButton.setVisible(false);
-        currencyText.setVisible(false);
-        yourHandText.setVisible(false);
-        dealersHandText.setVisible(false);
-        doubleButton.setVisible(false);
-        surrenderButton.setVisible(false);
-        insuranceButton.setVisible(false);
-        evenMoneyButton.setVisible(false);
-        instructionsText.setVisible(true);
-        instructionsBox.setVisible(true);
-        closebutton.setVisible(true);
+        hideOrShowContent(false);
     }
 
     /**
@@ -174,45 +136,49 @@ public class InGameViewController extends ViewController {
      */
     public void closeButton() {
         instructionsOn = false;
-        playerCardImage1.setVisible(true);
-        playerCardImage2.setVisible(true);
-        playerCardImage3.setVisible(true);
-        playerCardImage4.setVisible(true);
-        playerCardImage5.setVisible(true);
-        playerCardImage6.setVisible(true);
-        dealerCardImage1.setVisible(true);
-        dealerCardImage2.setVisible(true);
-        dealerCardImage3.setVisible(true);
-        dealerCardImage4.setVisible(true);
-        dealerCardImage5.setVisible(true);
-        dealerCardImage6.setVisible(true);
-        playerSplit1.setVisible(true);
-        playerSplit2.setVisible(true);
-        playerSplit3.setVisible(true);
-        playerSplit4.setVisible(true);
-        playerSplit5.setVisible(true);
-        playerSplit6.setVisible(true);
-        playerCurrency.setVisible(true);
-        playerTotal.setVisible(true);
-        dealerTotal.setVisible(true);
-        currentBet.setVisible(true);
-        betField.setVisible(true);
-        splitButton.setVisible(true);
-        standButton.setVisible(true);
-        hitButton.setVisible(true);
-        dealButton.setVisible(true);
-        instructionsButton.setVisible(true);
-        menuButton.setVisible(true);
-        currencyText.setVisible(true);
-        yourHandText.setVisible(true);
-        dealersHandText.setVisible(true);
-        doubleButton.setVisible(true);
-        surrenderButton.setVisible(true);
-        insuranceButton.setVisible(true);
-        evenMoneyButton.setVisible(true);
-        instructionsText.setVisible(false);
-        instructionsBox.setVisible(false);
-        closebutton.setVisible(false);
+        hideOrShowContent(true);
+    }
+
+    public void hideOrShowContent(boolean show) {
+        playerCardImage1.setVisible(show);
+        playerCardImage2.setVisible(show);
+        playerCardImage3.setVisible(show);
+        playerCardImage4.setVisible(show);
+        playerCardImage5.setVisible(show);
+        playerCardImage6.setVisible(show);
+        dealerCardImage1.setVisible(show);
+        dealerCardImage2.setVisible(show);
+        dealerCardImage3.setVisible(show);
+        dealerCardImage4.setVisible(show);
+        dealerCardImage5.setVisible(show);
+        dealerCardImage6.setVisible(show);
+        playerSplit1.setVisible(show);
+        playerSplit2.setVisible(show);
+        playerSplit3.setVisible(show);
+        playerSplit4.setVisible(show);
+        playerSplit5.setVisible(show);
+        playerSplit6.setVisible(show);
+        playerCurrency.setVisible(show);
+        playerTotal.setVisible(show);
+        dealerTotal.setVisible(show);
+        currentBet.setVisible(show);
+        betField.setVisible(show);
+        splitButton.setVisible(show);
+        standButton.setVisible(show);
+        hitButton.setVisible(show);
+        dealButton.setVisible(show);
+        instructionsButton.setVisible(show);
+        menuButton.setVisible(show);
+        currencyText.setVisible(show);
+        yourHandText.setVisible(show);
+        dealersHandText.setVisible(show);
+        doubleButton.setVisible(show);
+        surrenderButton.setVisible(show);
+        insuranceButton.setVisible(show);
+        evenMoneyButton.setVisible(show);
+        instructionsText.setVisible(!show);
+        instructionsBox.setVisible(!show);
+        closebutton.setVisible(!show);
     }
 
     /**
@@ -220,16 +186,12 @@ public class InGameViewController extends ViewController {
      *
      */
     public void hit() {
-        splitButton.setDisable(true);
-        insuranceButton.setDisable(true);
-        surrenderButton.setDisable(true);
-        evenMoneyButton.setDisable(true);
+        disableSpecialRules();
         if (gameController.getSplitStatus()) {
             gameController.hitToSplittedHand();
         } else {
             gameController.hit();
         }
-        disableDouble();
         updateTotalResult();
     }
 
@@ -393,10 +355,7 @@ public class InGameViewController extends ViewController {
      * Player stands and updates the total counter
      */
     public void stand() {
-        splitButton.setDisable(true);
-        insuranceButton.setDisable(true);
-        surrenderButton.setDisable(true);
-        evenMoneyButton.setDisable(true);
+        disableSpecialRules();
         if (gameController.getSplitStatus() && splitted) {
             disableHit();
             disableStand();
@@ -447,11 +406,7 @@ public class InGameViewController extends ViewController {
             gameController.playerSplit();
             splitHandInUI();
             updateTotalResult();
-            insuranceButton.setDisable(true);
-            splitButton.setDisable(true);
-            surrenderButton.setDisable(true);
-            evenMoneyButton.setDisable(true);
-            disableDouble();
+            disableSpecialRules();
         } else {
             setValidBetView("Insufficient balance to split the hand");
         }
@@ -466,11 +421,7 @@ public class InGameViewController extends ViewController {
             currentBet.setText(formatBet() + "(" + formatInsurance(insurance) + ")");
             gameController.playerInsure();
             updateBalance();
-            splitButton.setDisable(true);
-            insuranceButton.setDisable(true);
-            surrenderButton.setDisable(true);
-            evenMoneyButton.setDisable(true);
-            disableDouble();
+            disableSpecialRules();
         }
     }
 
@@ -478,13 +429,9 @@ public class InGameViewController extends ViewController {
      * Player surrenders
      */
     public void surrender() {
-            splitButton.setDisable(true);
-            surrenderButton.setDisable(true);
-            insuranceButton.setDisable(true);
-            evenMoneyButton.setDisable(true);
+            disableSpecialRules();
             gameController.playerSurrender();
             updateBalance();
-            disableDouble();
     }
 
     /**
@@ -494,14 +441,6 @@ public class InGameViewController extends ViewController {
         gameController.playerEvenMoney();
         evenMoneyButton.setDisable(true);
     }
-
-    public void checkForBlackJack() {
-        if (gameController.getPlayer().getHand().calculateTotal() == 21) {
-            disableHit();
-            disableStand();
-        }
-    }
-
 
     /**
      * Sets splitted hand to UI when player has splitted
@@ -670,14 +609,6 @@ public class InGameViewController extends ViewController {
      */
     public void disableStand() {
         standButton.setDisable(true);
-        disableDouble();
-    }
-
-    /**
-     * Disables 'Double' button
-     */
-    public void disableDouble() {
-        doubleButton.setDisable(true);
     }
 
     /**
@@ -686,10 +617,7 @@ public class InGameViewController extends ViewController {
      * Updates the player's balance
      */
     public void doublePressed() {
-        splitButton.setDisable(true);
-        doubleButton.setDisable(true);
-        hitButton.setDisable(true);
-        standButton.setDisable(true);
+        disableSpecialRules();
         gameController.playerDouble();
         currentBet.setText(formatBet() + " + " + formatBet());
         updateBalance();
@@ -746,10 +674,13 @@ public class InGameViewController extends ViewController {
     public boolean setBet() {
         try {
             bet = Integer.parseInt(betField.getText());
-            if (gameController.setBet(bet)) {
+            if (gameController.setBet(bet) && bet > 0) {
                 currentBet.setText(formatBet());
                 updateBalance();
                 return true;
+            } else if (bet < 0) {
+                String message = texts.getString("PlaceAValidBet");
+                setValidBetView(message);
             } else {
                 String message = texts.getString("BetGreaterThanBalance");
                 setValidBetView(message);
@@ -783,87 +714,19 @@ public class InGameViewController extends ViewController {
     }
 
     /**
-     * Shows a tip to the player that recommends to hit
+     * Shows a strategical tip on buttons depending on the game situation
+     * @param tipType is defined in class BlackjackRound and decides what kind of tip is given to the player
      */
-    public void showHitTip() {
-        Tooltip hitTip = new Tooltip();
-        hitTip.setText(texts.getString("HitTip"));
-        hitButton.setTooltip(hitTip);
-        standButton.setTooltip(hitTip);
-        doubleButton.setTooltip(hitTip);
-        splitButton.setTooltip(hitTip);
-        insuranceButton.setTooltip(hitTip);
-        evenMoneyButton.setTooltip(hitTip);
-    }
 
-    /**
-     * Shows a tip to the player that recommends to stand
-     */
-    public void showStandTip() {
-        Tooltip standTip = new Tooltip();
-        standTip.setText(texts.getString("StandTip"));
-        hitButton.setTooltip(standTip);
-        standButton.setTooltip(standTip);
-        doubleButton.setTooltip(standTip);
-        splitButton.setTooltip(standTip);
-        insuranceButton.setTooltip(standTip);
-        evenMoneyButton.setTooltip(standTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to double
-     */
-    public void showDoubleTip() {
-        Tooltip doubleTip = new Tooltip();
-        doubleTip.setText(texts.getString("DoubleTip"));
-        hitButton.setTooltip(doubleTip);
-        standButton.setTooltip(doubleTip);
-        doubleButton.setTooltip(doubleTip);
-        splitButton.setTooltip(doubleTip);
-        insuranceButton.setTooltip(doubleTip);
-        evenMoneyButton.setTooltip(doubleTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to split
-     */
-    public void showSplitTip() {
-        Tooltip splitTip = new Tooltip();
-        splitTip.setText(texts.getString("SplitTip"));
-        hitButton.setTooltip(splitTip);
-        standButton.setTooltip(splitTip);
-        doubleButton.setTooltip(splitTip);
-        splitButton.setTooltip(splitTip);
-        insuranceButton.setTooltip(splitTip);
-        evenMoneyButton.setTooltip(splitTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to insure
-     */
-    public void showInsuranceTip() {
-        Tooltip insuranceTip = new Tooltip();
-        insuranceTip.setText(texts.getString("InsuranceTip"));
-        hitButton.setTooltip(insuranceTip);
-        standButton.setTooltip(insuranceTip);
-        doubleButton.setTooltip(insuranceTip);
-        splitButton.setTooltip(insuranceTip);
-        insuranceButton.setTooltip(insuranceTip);
-        evenMoneyButton.setTooltip(insuranceTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to take even money
-     */
-    public void showEvenMoneyTip() {
-        Tooltip evenMoneyTip = new Tooltip();
-        evenMoneyTip.setText(texts.getString("EvenMoneyTip"));
-        hitButton.setTooltip(evenMoneyTip);
-        standButton.setTooltip(evenMoneyTip);
-        doubleButton.setTooltip(evenMoneyTip);
-        splitButton.setTooltip(evenMoneyTip);
-        insuranceButton.setTooltip(evenMoneyTip);
-        evenMoneyButton.setTooltip(evenMoneyTip);
+    public void showTip(String tipType) {
+        Tooltip toolTip = new Tooltip();
+        toolTip.setText((texts.getString(tipType)));
+        hitButton.setTooltip(toolTip);
+        standButton.setTooltip(toolTip);
+        doubleButton.setTooltip(toolTip);
+        splitButton.setTooltip(toolTip);
+        insuranceButton.setTooltip(toolTip);
+        evenMoneyButton.setTooltip(toolTip);
     }
 
 
@@ -1006,6 +869,18 @@ public class InGameViewController extends ViewController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Method to disable all the special rule buttons at once
+     */
+
+    public void disableSpecialRules() {
+        doubleButton.setDisable(true);
+        splitButton.setDisable(true);
+        insuranceButton.setDisable(true);
+        surrenderButton.setDisable(true);
+        evenMoneyButton.setDisable(true);
     }
 
     /**

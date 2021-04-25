@@ -107,7 +107,7 @@ public class BlackjackRound extends Thread {
     public void checkSpecialRulePossibilities() {
         int total = this.player.getHand().calculateTotal();
         doublePossibility = (total >= 9 && total <= 11 && gameController.getPlayer().getCurrency() > player.getBet());
-        splitPossibility = checkSplitPossibility();
+        splitPossibility = player.getHand().getHand().get(0).getRankString().equals(player.getHand().getHand().get(1).getRankString());
         insurancePossibility = dealer.getHand().getHand().get(0).getRankString().equals("Ace") && gameController.getPlayer().getCurrency() > player.getBet() / 2;
         evenMoneyPossibility = dealer.getHand().getHand().get(0).getRankString().equals("Ace") && player.getHand().calculateTotal() == 21;
 
@@ -140,9 +140,9 @@ public class BlackjackRound extends Thread {
         this.gameController.setPlayersCardsToUI(player.getHand().getHand());
         player.getHand().printHand();
         if (settingsController.getSelected() && player.getHand().calculateTotal() < 17) {
-            gameController.showHitTip();
+            gameController.showTip("HitTip");
         } else if (settingsController.getSelected() && player.getHand().calculateTotal() > 16) {
-            gameController.showStandTip();
+            gameController.showTip("StandTip");
         }
         int total = player.getHand().calculateTotal();
         if (total > 21 && !splitted) {
@@ -166,9 +166,9 @@ public class BlackjackRound extends Thread {
         this.player.getHand().addCardToSplittedHand(deck.nextCard());
         this.gameController.setPlayersSplittedCardsToUI(player.getHand().getSplittedHand());
         if (settingsController.getSelected() && player.getHand().calculateSplittedTotal() < 17) {
-            gameController.showHitTip();
+            gameController.showTip("HitTip");
         } else if (settingsController.getSelected() && player.getHand().calculateSplittedTotal() > 16) {
-            gameController.showStandTip();
+            gameController.showTip("StandTip");
         }
         int splittedTotal = player.getHand().calculateSplittedTotal();
 
@@ -203,14 +203,6 @@ public class BlackjackRound extends Thread {
         this.player.insure();
     }
 
-    public void checkForBlackJack() {
-        if (player.getHand().calculateTotal() == 21) {
-            gameController.disableHit();
-            gameController.disableStand();
-            this.start();
-        }
-    }
-
     /**
      * Player splits the hand to two hands
      */
@@ -218,9 +210,9 @@ public class BlackjackRound extends Thread {
         splitted = true;
         this.player.getHand().splitHand();
         if (settingsController.getSelected() && player.getHand().calculateTotal() < 17) {
-            gameController.showHitTip();
+            gameController.showTip("HitTip");
         } else if (settingsController.getSelected() && player.getHand().calculateTotal() > 16) {
-            gameController.showStandTip();
+            gameController.showTip("StandTip");
         }
     }
 
@@ -240,14 +232,6 @@ public class BlackjackRound extends Thread {
         this.start();
     }
 
-    /**
-     * Checks if splitting is possible in game
-     * @return
-     */
-    public boolean checkSplitPossibility() {
-        return player.getHand().getHand().get(0).getRankString().equals(player.getHand().getHand().get(1).getRankString());
-    }
-
 
     /**
      * Called from the UI and controller when player presses "Stand". Sets 'busted' status to false and starts the main thread.
@@ -264,17 +248,17 @@ public class BlackjackRound extends Thread {
         settingsController = SettingsController.getInstance();
 
         if (settingsController.getSelected() && player.getHand().calculateTotal() < 17 && !doublePossibility && !splitPossibility && !insurancePossibility && !evenMoneyPossibility) {
-            gameController.showHitTip();
+            gameController.showTip("HitTip");
         } else if (settingsController.getSelected() && player.getHand().calculateTotal() > 16 && !splitPossibility && !insurancePossibility && !evenMoneyPossibility) {
-            gameController.showStandTip();
+            gameController.showTip("StandTip");
         } else if (settingsController.getSelected() && doublePossibility) {
-            gameController.showDoubleTip();
+            gameController.showTip("DoubleTip");
         } else if (settingsController.getSelected() && splitPossibility) {
-            gameController.showSplitTip();
+            gameController.showTip("SplitTip");
         } else if(settingsController.getSelected() && insurancePossibility && !evenMoneyPossibility) {
-            gameController.showInsuranceTip();
+            gameController.showTip("InsuranceTip");
         }else if(settingsController.getSelected() && evenMoneyPossibility) {
-            gameController.showEvenMoneyTip();
+            gameController.showTip("EvenMoneyTip");
         }
     }
 
@@ -291,8 +275,6 @@ public class BlackjackRound extends Thread {
 
         int dealerTotal = dealer.getHand().calculateTotal();
         boolean playerWins = false;
-
-
 
         if (surrendered){
             this.winner = "surrender";
