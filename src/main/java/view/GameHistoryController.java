@@ -1,12 +1,7 @@
 package view;
 
-import controller.SettingsController;
-import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -47,9 +42,9 @@ public class GameHistoryController extends ViewController {
 
     /**
      * Loads back to MainMenu
-     * @throws IOException - if .fxml file is not found
+     *
      */
-    public void gameHistoryBackButton() throws IOException {
+    public void gameHistoryBackButton() {
         showMainMenu();
     }
 

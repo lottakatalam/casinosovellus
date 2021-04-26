@@ -38,14 +38,19 @@ public abstract class ViewController {
     /**
      * Loads Mainmenu view
      *
-     * @throws IOException - if .fxml file is not found
+     *
      */
     @FXML
-    void showMainMenu() throws IOException {
+    void showMainMenu() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
+        Parent menuParent = null;
+        try {
+            menuParent = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         MainMenuController controller = loader.getController();
         if (userController.isUserLoggedIn()) {
             controller.loginButton.setVisible(false);

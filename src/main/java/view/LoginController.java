@@ -1,8 +1,5 @@
 package view;
 
-import java.io.IOException;
-
-import controller.SettingsController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -61,10 +58,11 @@ public class LoginController extends ViewController {
     }
 
 
-    @FXML
+
     /**
      * Login button action that logs user in
      */
+    @FXML
     public void logInButton() {
 
         Window owner = logInButton.getScene().getWindow();
@@ -90,9 +88,9 @@ public class LoginController extends ViewController {
 
     /**
      * Closes pop up screen and if log in is successful it loads back to Main menu as a logged in user
-     * @throws IOException
+     *
      */
-    public void okButton() throws IOException {
+    public void okButton() {
         if (loginText.isVisible()) {
             showMainMenu();
         }

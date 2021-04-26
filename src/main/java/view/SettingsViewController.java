@@ -1,7 +1,6 @@
 package view;
 
 import controller.SettingsController;
-import controller.UserController;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -10,7 +9,6 @@ import javafx.scene.text.Text;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
 
-import java.io.IOException;
 
 /**
  * Controller class for Settings.fxml
@@ -25,16 +23,15 @@ public class SettingsViewController extends ViewController {
     public Button finnishButton;
     public Button englishButton;
     private boolean isSelected = true;
-    private SettingsController settingsController = SettingsController.getInstance();
+    private SettingsController settingsController;
     MainMenuController mainMenuController = null;
-    private UserController userController = new UserController();
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
      *
-     * @throws IOException - if .fxml file is not found
+     *
      */
-    public void settingsBackButton() throws IOException {
+    public void settingsBackButton() {
         showMainMenu();
     }
 
@@ -44,6 +41,7 @@ public class SettingsViewController extends ViewController {
      * Initializes settings
      */
     public void initialize() {
+        settingsController = SettingsController.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText(LanguageLoader.getInstance().getString("LoggedInUser") + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
@@ -91,7 +89,7 @@ public class SettingsViewController extends ViewController {
             stageManager.getMediaPlayer().setVolume(((Double) newValue) / 100);
             SettingsController.getInstance().setVolume(Math.floor((Double) newValue) / 100);
         });
-        if (LanguageLoader.getInstance().getLocale().getLanguage() == "fi") {
+        if (LanguageLoader.getInstance().getLocale().getLanguage().equals("fi")) {
             selectFinnish();
         }else {
             selectEnglish();

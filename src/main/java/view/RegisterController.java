@@ -1,7 +1,5 @@
 package view;
 
-import java.io.IOException;
-import controller.SettingsController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -71,13 +69,13 @@ public class RegisterController extends ViewController {
     private Button changePasswordButton;
 
 
-    @FXML
+
     /**
      * Registers a new user if the user input meets the requirements
      * If all fields have input, asks the controller to pass on the information to validation
      * and informs the user if the registration was successful or not. If not, tells more specific information
      */
-
+    @FXML
     public void register() {
 
         Window owner = usernameTextField.getScene().getWindow();
@@ -117,7 +115,7 @@ public class RegisterController extends ViewController {
 
     /**
      * Set's an error message on display in UI
-     * @param message
+     * @param message Errormessage
      */
     public void setErrorMessage(String message) {
         errorText.setText(message);
@@ -129,9 +127,9 @@ public class RegisterController extends ViewController {
 
     /**
      * Button closes pop up screen and loads to MainMenu if registeration is successed
-     * @throws IOException
+     *
      */
-    public void okButton() throws IOException {
+    public void okButton() {
         if (registerText.isVisible()) {
             showMainMenu();
         }

@@ -1,7 +1,6 @@
 package view;
 
 import controller.SettingsController;
-import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -27,7 +26,7 @@ public class StageManager {
     /**
      * Gets the instance of StageManager
      *
-     * @return
+     * @return instance of StageManager
      */
     public static StageManager getInstance() {
         if (myInstance == null) {

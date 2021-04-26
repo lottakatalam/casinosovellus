@@ -1,14 +1,10 @@
 package view;
 
-import controller.SettingsController;
-import controller.UserController;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import model.LanguageLoader;
-
-import java.io.IOException;
 
 public class ChangePasswordController extends ViewController {
 
@@ -32,11 +28,6 @@ public class ChangePasswordController extends ViewController {
      */
     public Text succesfulText;
 
-
-    /**
-     * userController is used for passing on information between the model-package class UserCredentialHandler and this viewController
-     */
-    private UserController userController = new UserController();
 
     /**
      * Textfield where the user inputs the old password
@@ -118,9 +109,8 @@ public class ChangePasswordController extends ViewController {
     /**
      * Button closes pop up screen and loads to MainMenu if registeration is successed
      *
-     * @throws IOException
      */
-    public void okButton() throws IOException {
+    public void okButton() {
         if (succesfulText.isVisible()) {
             showMainMenu();
         }

@@ -1,8 +1,6 @@
 package view;
 
 import controller.BlackjackController;
-import controller.SettingsController;
-import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,8 +30,7 @@ public class MainMenuController extends ViewController {
     public Button registerButton;
     public Button changePasswordButton;
     public Button leaderboardsButton;
-    private BlackjackController gameController;
-    private static UserController userController;
+
     private StageManager stageManager;
 
     /** Menu's Play-Button loads to InGameView.fxml
@@ -151,7 +148,6 @@ public class MainMenuController extends ViewController {
         loader.setLocation(getClass().getResource("/FXML/RegisterView.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent registerParent = loader.load();
-        RegisterController controller = loader.getController();
 
         Scene registerScene = new Scene(registerParent);
         stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("registerSceneTitle"));
@@ -169,7 +165,6 @@ public class MainMenuController extends ViewController {
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
 
         Parent leaderboardsParent = loader.load();
-        LeaderboardsController controller = loader.getController();
 
         Scene leaderboardsScene = new Scene(leaderboardsParent);
         stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("LeaderboardsText"));
@@ -186,7 +181,6 @@ public class MainMenuController extends ViewController {
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent changePasswordView = loader.load();
-        ChangePasswordController controller = loader.getController();
 
         Scene changePasswordScene = new Scene(changePasswordView);
         stageManager = StageManager.getInstance();
@@ -213,21 +207,7 @@ public class MainMenuController extends ViewController {
         noButton.setVisible(false);
     }
 
-    /**
-     * Sets gameController as the object of class BlackjackController
-     * @param blackjackController object of the BlackjackController
-     */
-    public void setGameController(BlackjackController blackjackController) {
-        gameController = blackjackController;
-    }
 
-    /**
-     * Sets userController as the object of class UserController
-     * @param userController object of the UserController
-     */
-    public void setUserController(UserController userController) {
-        this.userController = userController;
-    }
 
     /**
      * Sets stageManager as the object of class StageManager

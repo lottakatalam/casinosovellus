@@ -1,8 +1,6 @@
 package view;
 
 import controller.BlackjackController;
-import controller.SettingsController;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -13,11 +11,7 @@ import javafx.scene.text.Text;
 import model.Card;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
-
-
-import java.io.IOException;
 import java.util.ArrayList;
-
 import static java.lang.Thread.sleep;
 
 /**
@@ -96,10 +90,9 @@ public class InGameViewController extends ViewController {
     /**
      * Loads to MainMenu
      *
-     * @param actionEvent
-     * @throws IOException - if .fxml file is not found
+     *
      */
-    public void yesAction(ActionEvent actionEvent) throws IOException {
+    public void yesAction() {
         showMainMenu();
     }
 
@@ -124,7 +117,7 @@ public class InGameViewController extends ViewController {
     /**
      * Game screen's Instructions-Button makes instructions visible top of the game screen
      *
-     * @throws IOException
+     *
      */
     public void instructionsButton() {
         instructionsOn = true;
@@ -316,7 +309,7 @@ public class InGameViewController extends ViewController {
     /**
      * Gets the image of card
      * @param card - The card
-     * @return
+     * @return filename of image
      */
     public String getImage(Card card) {
         String suit = "";
@@ -457,7 +450,7 @@ public class InGameViewController extends ViewController {
      * Clears the table
      *
      * @param winner - Winner of the round
-     * @throws InterruptedException
+     * @throws InterruptedException sleep
      */
     public void declareWinner(String winner) throws InterruptedException {
         if (!instructionsOn) {
@@ -782,7 +775,7 @@ public class InGameViewController extends ViewController {
 
     /**
      * Sets players' splitted cards to the UI based on the amount of cards.
-     * @param playersSplittedCards
+     * @param playersSplittedCards splitted cards
      */
     public void setPlayersSplittedCards(ArrayList<Card> playersSplittedCards) {
         switch (playersSplittedCards.size()) {
@@ -916,4 +909,3 @@ public class InGameViewController extends ViewController {
         dealerTotal.setText("");
     }
 }
-

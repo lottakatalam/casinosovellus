@@ -3,13 +3,11 @@ import controller.SettingsController;
 import controller.UserController;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.LanguageLoader;
 
 import java.io.IOException;
@@ -25,7 +23,7 @@ public class GUImain extends Application {
 
     /**
      * main function to launch the app
-     * @param args
+     * @param args program arguments
      */
     public static void main(String[] args) {
         launch(args);
@@ -45,12 +43,9 @@ public class GUImain extends Application {
     public void start(Stage primaryStage) {
         try {
 
-            primaryStage.setOnCloseRequest(new EventHandler<>() {
-                @Override
-                public void handle(WindowEvent t) {
-                    Platform.exit();
-                    System.exit(0);
-                }
+            primaryStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
             });
             this.primaryStage = primaryStage;
             this.primaryStage.setTitle("The Grand Myllypuro");

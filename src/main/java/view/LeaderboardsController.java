@@ -1,6 +1,5 @@
 package view;
 
-import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -12,7 +11,6 @@ import model.CasinoDAO;
 import model.LanguageLoader;
 import model.User;
 import model.UserCredentialHandler;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -23,7 +21,6 @@ public class LeaderboardsController extends ViewController {
     public TableColumn usernameColumn;
     public TableColumn balanceColumn;
     public TableColumn roundColumn;
-    private UserController userController = new UserController();
     CasinoDAO casinoDAO;
 
     /**
@@ -43,9 +40,9 @@ public class LeaderboardsController extends ViewController {
 
     /**
      * Loads back to Main menu
-     * @throws IOException - if .fxml file is not found
+     *
      */
-    public void leaderboardsBackButton () throws IOException {
+    public void leaderboardsBackButton () {
         showMainMenu();
     }
 
