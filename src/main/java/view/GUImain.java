@@ -71,8 +71,6 @@ public class GUImain extends Application {
             loader.setResources(LanguageLoader.getInstance().getResourceBundle());
             rootLayout = loader.load();
             MainMenuController controller = loader.getController();
-            userController = new UserController();
-            controller.setUserController(userController);
             controller.setStageManager(this.stageManager);
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
