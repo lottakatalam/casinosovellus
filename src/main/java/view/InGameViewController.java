@@ -7,7 +7,10 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import model.Card;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
@@ -73,6 +76,7 @@ public class InGameViewController extends ViewController {
     public Button yesMoneyButton;
     public Button noMoneyButton;
     public Text outOfMoney;
+    private MediaPlayer mediaPlayer;
     LanguageLoader texts = LanguageLoader.getInstance();
 
     /**
@@ -185,6 +189,7 @@ public class InGameViewController extends ViewController {
         } else {
             gameController.hit();
         }
+        //playSFX("dealingCard");
         updateTotalResult();
     }
 
@@ -209,6 +214,7 @@ public class InGameViewController extends ViewController {
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
                 //checkForBlackJack();
+                playSFX("chips");
                 checkSpecialRules();
             }
         }
@@ -253,7 +259,6 @@ public class InGameViewController extends ViewController {
      */
     public void setSplittedCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
-
         switch(cardNumber) {
             case 1:
                 playerSplit1.setImage(cardImage);
@@ -283,7 +288,6 @@ public class InGameViewController extends ViewController {
      */
     public void setDealerCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
-
         switch(cardNumber) {
             case 1:
                 dealerCardImage1.setImage(cardImage);
@@ -398,6 +402,7 @@ public class InGameViewController extends ViewController {
             this.splitted = true;
             gameController.playerSplit();
             splitHandInUI();
+            playSFX("split");
             updateTotalResult();
             disableSpecialRules();
         } else {
@@ -460,27 +465,36 @@ public class InGameViewController extends ViewController {
         switch (winner) {
             case "player":
                 declareWinner.setText(texts.getString("YouWin"));
+                playSFX("youWin");
                 break;
             case "dealer":
                 declareWinner.setText(texts.getString("DealerWins"));
+                playSFX("lose");
                 break;
             case "nobody":
                 declareWinner.setText(texts.getString("Draw"));
+                playSFX("lose");
                 break;
             case "Blackjack":
                 declareWinner.setText("BLACKJACK!");
+                playSFX("trumpet");
                 break;
             case "busted":
                 declareWinner.setText(texts.getString("Busted"));
+                playSFX("lose");
                 break;
             case "insured":
                 declareWinner.setText(texts.getString("InsurancePayback"));
+                playSFX("youWin");
                 break;
             case "surrender":
                 declareWinner.setText(texts.getString("Surrendered"));
+                playSFX("lose");
                 break;
             case "EvenMoney":
                 declareWinner.setText(texts.getString("EvenMoney"));
+                playSFX("lose");
+                break;
 
         }
         updateBalance();
@@ -566,6 +580,17 @@ public class InGameViewController extends ViewController {
 
     public void showCurrency() {
         playerCurrency.setText(formatBalance());
+    }
+
+    /**
+     * Method to play SFX sounds
+     * @param file determines the file path of the SFX sound
+     */
+    public void playSFX(String file) {
+        Media sound = new Media(getClass().getResource("/SFX/" + file + ".mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.play();
     }
 
     /**
@@ -736,6 +761,7 @@ public class InGameViewController extends ViewController {
      * @param playersCards is an array that contains objects of the player's cards
      */
     public void setPlayersCards(ArrayList<Card> playersCards) {
+        playSFX("dealingCard");
         switch (playersCards.size()) {
             case 1:
                 setCardImage(getImage(playersCards.get(0)), 1);
@@ -778,6 +804,7 @@ public class InGameViewController extends ViewController {
      * @param playersSplittedCards splitted cards
      */
     public void setPlayersSplittedCards(ArrayList<Card> playersSplittedCards) {
+        playSFX("dealingCard");
         switch (playersSplittedCards.size()) {
             case 1:
                 setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
@@ -821,6 +848,7 @@ public class InGameViewController extends ViewController {
      * @param dealerCards is an array that contains objects of the dealer's cards
      */
     public void setDealersCards(ArrayList<Card> dealerCards) {
+        playSFX("dealingCard");
         switch (dealerCards.size()) {
             case 1:
                 setDealerCardImage(getImage(dealerCards.get(0)), 1);
