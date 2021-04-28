@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public abstract class ViewController {
 
-
     /**
      * userController is used for passing on information between the model-package class UserCredentialHandler and this viewController
      */
@@ -37,8 +36,6 @@ public abstract class ViewController {
 
     /**
      * Loads Mainmenu view
-     *
-     *
      */
     @FXML
     void showMainMenu() {
@@ -71,7 +68,6 @@ public abstract class ViewController {
         this.volumeOFFbutton.setVisible(false);
         this.volumeONbutton.setVisible(true);
         stageManager.getMediaPlayer().setVolume(0);
-
     }
 
     /**
@@ -95,5 +91,4 @@ public abstract class ViewController {
             this.volumeOFFbutton.setVisible(true);
         }
     }
-
 }

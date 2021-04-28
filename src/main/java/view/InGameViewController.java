@@ -1,6 +1,7 @@
 package view;
 
 import controller.BlackjackController;
+import controller.SettingsController;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -88,13 +89,10 @@ public class InGameViewController extends ViewController {
         yesButton.setVisible(true);
         noButton.setVisible(true);
         areYouSure.setVisible(true);
-
     }
 
     /**
      * Loads to MainMenu
-     *
-     *
      */
     public void yesAction() {
         showMainMenu();
@@ -120,8 +118,6 @@ public class InGameViewController extends ViewController {
 
     /**
      * Game screen's Instructions-Button makes instructions visible top of the game screen
-     *
-     *
      */
     public void instructionsButton() {
         instructionsOn = true;
@@ -180,7 +176,6 @@ public class InGameViewController extends ViewController {
 
     /**
      * Player hits and updates the total counter
-     *
      */
     public void hit() {
         disableSpecialRules();
@@ -189,7 +184,6 @@ public class InGameViewController extends ViewController {
         } else {
             gameController.hit();
         }
-        //playSFX("dealingCard");
         updateTotalResult();
     }
 
@@ -213,7 +207,6 @@ public class InGameViewController extends ViewController {
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
-                //checkForBlackJack();
                 playSFX("chips");
                 checkSpecialRules();
             }
@@ -589,7 +582,7 @@ public class InGameViewController extends ViewController {
     public void playSFX(String file) {
         Media sound = new Media(getClass().getResource("/SFX/" + file + ".mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setVolume(0.5);
+        mediaPlayer.setVolume(0.25);
         mediaPlayer.play();
     }
 
@@ -735,7 +728,6 @@ public class InGameViewController extends ViewController {
      * Shows a strategical tip on buttons depending on the game situation
      * @param tipType is defined in class BlackjackRound and decides what kind of tip is given to the player
      */
-
     public void showTip(String tipType) {
         Tooltip toolTip = new Tooltip();
         toolTip.setText((texts.getString(tipType)));
@@ -757,7 +749,6 @@ public class InGameViewController extends ViewController {
 
     /**
      * Sets players cards to the UI based on the amount of cards.
-     *
      * @param playersCards is an array that contains objects of the player's cards
      */
     public void setPlayersCards(ArrayList<Card> playersCards) {
@@ -844,7 +835,6 @@ public class InGameViewController extends ViewController {
 
     /**
      * Sets dealers cards to the UI based on the amount of cards.
-     *
      * @param dealerCards is an array that contains objects of the dealer's cards
      */
     public void setDealersCards(ArrayList<Card> dealerCards) {
