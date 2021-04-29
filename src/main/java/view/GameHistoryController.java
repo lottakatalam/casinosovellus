@@ -15,6 +15,7 @@ import model.LanguageLoader;
 import model.UserCredentialHandler;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Controller class for Game History
@@ -104,7 +105,10 @@ public class GameHistoryController extends ViewController {
         for (int i = 0; i < h.length; i++) {
 
             if (h[i].getUserID() == UserCredentialHandler.getInstance().getLoggedInUser().getUserID()) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                System.out.println(h[i].getDate().format(formatter));
 
+                h[i].setDateString("päivämäärä");
                 history.add(h[i]);
             }
         }
@@ -122,12 +126,11 @@ public class GameHistoryController extends ViewController {
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateString"));
 
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
 
             historyTable.setItems(getHistory());
-
         }else {
             errorText.setText(LanguageLoader.getInstance().getString("GamehistoryEntryError"));
             blackScreen.setVisible(true);
