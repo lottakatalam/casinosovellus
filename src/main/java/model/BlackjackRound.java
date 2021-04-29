@@ -351,20 +351,8 @@ public class BlackjackRound extends Thread {
             h.setUserID(UserCredentialHandler.getInstance().getLoggedInUser().getUserID());
         }
 
-        /* Date formating to history table */
         LocalDateTime date = LocalDateTime.now();
-        if(LanguageLoader.getInstance().getLocale().toString().equals("fi_FI")) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-            String formattedDate = date.format(formatter);
-            LocalDateTime parsedDate = LocalDateTime.parse(formattedDate, formatter);
-            h.setDate(parsedDate);
-        }else if(LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
-            String formattedDate = date.format(formatter);
-            LocalDateTime parsedDate = LocalDateTime.parse(formattedDate, formatter);
-            h.setDate(parsedDate);
-        }
-
+        h.setDate(date);
         h.setBet(player.getBet());
         h.setBalance(player.getCurrency());
         casinoDAO.addHistoryRow(h);

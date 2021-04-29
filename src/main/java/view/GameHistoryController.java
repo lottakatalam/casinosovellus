@@ -105,10 +105,17 @@ public class GameHistoryController extends ViewController {
         for (int i = 0; i < h.length; i++) {
 
             if (h[i].getUserID() == UserCredentialHandler.getInstance().getLoggedInUser().getUserID()) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-                System.out.println(h[i].getDate().format(formatter));
 
-                h[i].setDateString("päivämäärä");
+                /* Date formating for both languages*/
+                if (LanguageLoader.getInstance().getLocale().toString().equals("fi_FI")) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH.mm.ss");
+                    String date = h[i].getDate().format(formatter);
+                    h[i].setDateString(date);
+                }else if(LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+                    String date = h[i].getDate().format(formatter);
+                    h[i].setDateString(date);
+                }
                 history.add(h[i]);
             }
         }
