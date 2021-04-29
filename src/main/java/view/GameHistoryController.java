@@ -42,7 +42,6 @@ public class GameHistoryController extends ViewController {
 
     /**
      * Loads back to MainMenu
-     *
      */
     public void gameHistoryBackButton() {
         showMainMenu();
@@ -109,7 +108,6 @@ public class GameHistoryController extends ViewController {
                 history.add(h[i]);
             }
         }
-
         return history;
     }
 
@@ -136,7 +134,6 @@ public class GameHistoryController extends ViewController {
             errorText.setVisible(true);
             okButton.setVisible(true);
         }
-
     }
 
     /**
@@ -165,5 +162,4 @@ public class GameHistoryController extends ViewController {
         okButton.setVisible(false);
         gameHistoryBackButton();
     }
-
 }

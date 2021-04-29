@@ -4,6 +4,7 @@ import controller.BlackjackController;
 import controller.SettingsController;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Logic of Blackjack single round
@@ -349,7 +350,21 @@ public class BlackjackRound extends Thread {
                 getLoggedInUser() != null) {
             h.setUserID(UserCredentialHandler.getInstance().getLoggedInUser().getUserID());
         }
-        h.setDate(LocalDateTime.now());
+
+        /* Date formating to history table */
+        LocalDateTime date = LocalDateTime.now();
+        if(LanguageLoader.getInstance().getLocale().toString().equals("fi_FI")) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            String formattedDate = date.format(formatter);
+            LocalDateTime parsedDate = LocalDateTime.parse(formattedDate, formatter);
+            h.setDate(parsedDate);
+        }else if(LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+            String formattedDate = date.format(formatter);
+            LocalDateTime parsedDate = LocalDateTime.parse(formattedDate, formatter);
+            h.setDate(parsedDate);
+        }
+
         h.setBet(player.getBet());
         h.setBalance(player.getCurrency());
         casinoDAO.addHistoryRow(h);
@@ -407,6 +422,4 @@ public class BlackjackRound extends Thread {
 
         Logger.log(Logger.LogLevel.PROD, "The amount of wins: " + player.getWins());
     }
-
-
 }
