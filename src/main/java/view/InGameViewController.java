@@ -2,35 +2,27 @@ package view;
 
 import controller.BlackjackController;
 import controller.SettingsController;
-import controller.UserController;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Card;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
-
-
-import java.io.IOException;
 import java.util.ArrayList;
-
 import static java.lang.Thread.sleep;
 
 /**
  * Controller class for the InGameView.fxml and Settings.fxml
  */
 
-public class InGameViewController {
+public class InGameViewController extends ViewController {
 
     public Text playerCurrency;
     public Text playerTotal;
@@ -60,11 +52,8 @@ public class InGameViewController {
     public Button evenMoneyButton;
     public Text instructionsText;
     public VBox instructionsBox;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
     private BlackjackController gameController;
     private int bet;
-    private StageManager stageManager;
     boolean instructionsOn;
     public ImageView playerCardImage1;
     public ImageView playerCardImage2;
@@ -88,7 +77,7 @@ public class InGameViewController {
     public Button yesMoneyButton;
     public Button noMoneyButton;
     public Text outOfMoney;
-    private final UserController userController = new UserController();
+    private MediaPlayer mediaPlayer;
     LanguageLoader texts = LanguageLoader.getInstance();
 
     /**
@@ -100,32 +89,13 @@ public class InGameViewController {
         yesButton.setVisible(true);
         noButton.setVisible(true);
         areYouSure.setVisible(true);
-
     }
 
     /**
      * Loads to MainMenu
-     *
-     * @param actionEvent
-     * @throws IOException - if .fxml file is not found
      */
-    public void yesAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        window.setTitle("The Grand Myllypuro");
-        window.setScene(menuScene);
-        window.show();
+    public void yesAction() {
+        showMainMenu();
     }
 
     /**
@@ -143,56 +113,15 @@ public class InGameViewController {
      * Check the current volume state
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
 
     /**
      * Game screen's Instructions-Button makes instructions visible top of the game screen
-     *
-     * @throws IOException
      */
     public void instructionsButton() {
         instructionsOn = true;
-        playerCardImage1.setVisible(false);
-        playerCardImage2.setVisible(false);
-        playerCardImage3.setVisible(false);
-        playerCardImage4.setVisible(false);
-        playerCardImage5.setVisible(false);
-        playerCardImage6.setVisible(false);
-        dealerCardImage1.setVisible(false);
-        dealerCardImage2.setVisible(false);
-        dealerCardImage3.setVisible(false);
-        dealerCardImage4.setVisible(false);
-        dealerCardImage5.setVisible(false);
-        dealerCardImage6.setVisible(false);
-        playerSplit1.setVisible(false);
-        playerSplit2.setVisible(false);
-        playerSplit3.setVisible(false);
-        playerSplit4.setVisible(false);
-        playerSplit5.setVisible(false);
-        playerSplit6.setVisible(false);
-        playerCurrency.setVisible(false);
-        playerTotal.setVisible(false);
-        dealerTotal.setVisible(false);
-        currentBet.setVisible(false);
-        betField.setVisible(false);
-        splitButton.setVisible(false);
-        standButton.setVisible(false);
-        hitButton.setVisible(false);
-        dealButton.setVisible(false);
-        instructionsButton.setVisible(false);
-        menuButton.setVisible(false);
-        currencyText.setVisible(false);
-        yourHandText.setVisible(false);
-        dealersHandText.setVisible(false);
-        doubleButton.setVisible(false);
-        surrenderButton.setVisible(false);
-        insuranceButton.setVisible(false);
-        evenMoneyButton.setVisible(false);
-        instructionsText.setVisible(true);
-        instructionsBox.setVisible(true);
-        closebutton.setVisible(true);
+        hideOrShowContent(false);
     }
 
     /**
@@ -200,62 +129,61 @@ public class InGameViewController {
      */
     public void closeButton() {
         instructionsOn = false;
-        playerCardImage1.setVisible(true);
-        playerCardImage2.setVisible(true);
-        playerCardImage3.setVisible(true);
-        playerCardImage4.setVisible(true);
-        playerCardImage5.setVisible(true);
-        playerCardImage6.setVisible(true);
-        dealerCardImage1.setVisible(true);
-        dealerCardImage2.setVisible(true);
-        dealerCardImage3.setVisible(true);
-        dealerCardImage4.setVisible(true);
-        dealerCardImage5.setVisible(true);
-        dealerCardImage6.setVisible(true);
-        playerSplit1.setVisible(true);
-        playerSplit2.setVisible(true);
-        playerSplit3.setVisible(true);
-        playerSplit4.setVisible(true);
-        playerSplit5.setVisible(true);
-        playerSplit6.setVisible(true);
-        playerCurrency.setVisible(true);
-        playerTotal.setVisible(true);
-        dealerTotal.setVisible(true);
-        currentBet.setVisible(true);
-        betField.setVisible(true);
-        splitButton.setVisible(true);
-        standButton.setVisible(true);
-        hitButton.setVisible(true);
-        dealButton.setVisible(true);
-        instructionsButton.setVisible(true);
-        menuButton.setVisible(true);
-        currencyText.setVisible(true);
-        yourHandText.setVisible(true);
-        dealersHandText.setVisible(true);
-        doubleButton.setVisible(true);
-        surrenderButton.setVisible(true);
-        insuranceButton.setVisible(true);
-        evenMoneyButton.setVisible(true);
-        instructionsText.setVisible(false);
-        instructionsBox.setVisible(false);
-        closebutton.setVisible(false);
+        hideOrShowContent(true);
+    }
+
+    public void hideOrShowContent(boolean show) {
+        playerCardImage1.setVisible(show);
+        playerCardImage2.setVisible(show);
+        playerCardImage3.setVisible(show);
+        playerCardImage4.setVisible(show);
+        playerCardImage5.setVisible(show);
+        playerCardImage6.setVisible(show);
+        dealerCardImage1.setVisible(show);
+        dealerCardImage2.setVisible(show);
+        dealerCardImage3.setVisible(show);
+        dealerCardImage4.setVisible(show);
+        dealerCardImage5.setVisible(show);
+        dealerCardImage6.setVisible(show);
+        playerSplit1.setVisible(show);
+        playerSplit2.setVisible(show);
+        playerSplit3.setVisible(show);
+        playerSplit4.setVisible(show);
+        playerSplit5.setVisible(show);
+        playerSplit6.setVisible(show);
+        playerCurrency.setVisible(show);
+        playerTotal.setVisible(show);
+        dealerTotal.setVisible(show);
+        currentBet.setVisible(show);
+        betField.setVisible(show);
+        splitButton.setVisible(show);
+        standButton.setVisible(show);
+        hitButton.setVisible(show);
+        dealButton.setVisible(show);
+        instructionsButton.setVisible(show);
+        menuButton.setVisible(show);
+        currencyText.setVisible(show);
+        yourHandText.setVisible(show);
+        dealersHandText.setVisible(show);
+        doubleButton.setVisible(show);
+        surrenderButton.setVisible(show);
+        insuranceButton.setVisible(show);
+        evenMoneyButton.setVisible(show);
+        instructionsText.setVisible(!show);
+        instructionsBox.setVisible(!show);
+        closebutton.setVisible(!show);
     }
 
     /**
      * Player hits and updates the total counter
-     *
      */
     public void hit() {
-        splitButton.setDisable(true);
-        insuranceButton.setDisable(true);
-        surrenderButton.setDisable(true);
-        evenMoneyButton.setDisable(true);
+        disableSpecialRules();
         if (gameController.getSplitStatus()) {
             gameController.hitToSplittedHand();
         } else {
             gameController.hit();
         }
-        disableDouble();
         updateTotalResult();
     }
 
@@ -279,7 +207,7 @@ public class InGameViewController {
                 Image cardImage= new Image(getClass().getResource("/Cards/red_back.png").toExternalForm());
                 dealerCardImage2.setImage(cardImage);
                 updateTotalResult();
-                //checkForBlackJack();
+                playSFX("chips");
                 checkSpecialRules();
             }
         }
@@ -324,7 +252,6 @@ public class InGameViewController {
      */
     public void setSplittedCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
-
         switch(cardNumber) {
             case 1:
                 playerSplit1.setImage(cardImage);
@@ -354,7 +281,6 @@ public class InGameViewController {
      */
     public void setDealerCardImage(String card, int cardNumber) {
         Image cardImage= new Image(getClass().getResource("/Cards/"+card).toExternalForm());
-
         switch(cardNumber) {
             case 1:
                 dealerCardImage1.setImage(cardImage);
@@ -380,7 +306,7 @@ public class InGameViewController {
     /**
      * Gets the image of card
      * @param card - The card
-     * @return
+     * @return filename of image
      */
     public String getImage(Card card) {
         String suit = "";
@@ -419,10 +345,7 @@ public class InGameViewController {
      * Player stands and updates the total counter
      */
     public void stand() {
-        splitButton.setDisable(true);
-        insuranceButton.setDisable(true);
-        surrenderButton.setDisable(true);
-        evenMoneyButton.setDisable(true);
+        disableSpecialRules();
         if (gameController.getSplitStatus() && splitted) {
             disableHit();
             disableStand();
@@ -472,12 +395,9 @@ public class InGameViewController {
             this.splitted = true;
             gameController.playerSplit();
             splitHandInUI();
+            playSFX("split");
             updateTotalResult();
-            insuranceButton.setDisable(true);
-            splitButton.setDisable(true);
-            surrenderButton.setDisable(true);
-            evenMoneyButton.setDisable(true);
-            disableDouble();
+            disableSpecialRules();
         } else {
             setValidBetView("Insufficient balance to split the hand");
         }
@@ -492,11 +412,7 @@ public class InGameViewController {
             currentBet.setText(formatBet() + "(" + formatInsurance(insurance) + ")");
             gameController.playerInsure();
             updateBalance();
-            splitButton.setDisable(true);
-            insuranceButton.setDisable(true);
-            surrenderButton.setDisable(true);
-            evenMoneyButton.setDisable(true);
-            disableDouble();
+            disableSpecialRules();
         }
     }
 
@@ -504,13 +420,9 @@ public class InGameViewController {
      * Player surrenders
      */
     public void surrender() {
-            splitButton.setDisable(true);
-            surrenderButton.setDisable(true);
-            insuranceButton.setDisable(true);
-            evenMoneyButton.setDisable(true);
+            disableSpecialRules();
             gameController.playerSurrender();
             updateBalance();
-            disableDouble();
     }
 
     /**
@@ -520,14 +432,6 @@ public class InGameViewController {
         gameController.playerEvenMoney();
         evenMoneyButton.setDisable(true);
     }
-
-    public void checkForBlackJack() {
-        if (gameController.getPlayer().getHand().calculateTotal() == 21) {
-            disableHit();
-            disableStand();
-        }
-    }
-
 
     /**
      * Sets splitted hand to UI when player has splitted
@@ -544,7 +448,7 @@ public class InGameViewController {
      * Clears the table
      *
      * @param winner - Winner of the round
-     * @throws InterruptedException
+     * @throws InterruptedException sleep
      */
     public void declareWinner(String winner) throws InterruptedException {
         if (!instructionsOn) {
@@ -554,27 +458,36 @@ public class InGameViewController {
         switch (winner) {
             case "player":
                 declareWinner.setText(texts.getString("YouWin"));
+                playSFX("youWin");
                 break;
             case "dealer":
                 declareWinner.setText(texts.getString("DealerWins"));
+                playSFX("lose");
                 break;
             case "nobody":
                 declareWinner.setText(texts.getString("Draw"));
+                playSFX("lose");
                 break;
             case "Blackjack":
                 declareWinner.setText("BLACKJACK!");
+                playSFX("trumpet");
                 break;
             case "busted":
                 declareWinner.setText(texts.getString("Busted"));
+                playSFX("lose");
                 break;
             case "insured":
                 declareWinner.setText(texts.getString("InsurancePayback"));
+                playSFX("youWin");
                 break;
             case "surrender":
                 declareWinner.setText(texts.getString("Surrendered"));
+                playSFX("lose");
                 break;
             case "EvenMoney":
                 declareWinner.setText(texts.getString("EvenMoney"));
+                playSFX("lose");
+                break;
 
         }
         updateBalance();
@@ -663,6 +576,17 @@ public class InGameViewController {
     }
 
     /**
+     * Method to play SFX sounds
+     * @param file determines the file path of the SFX sound
+     */
+    public void playSFX(String file) {
+        Media sound = new Media(getClass().getResource("/SFX/" + file + ".mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.25);
+        mediaPlayer.play();
+    }
+
+    /**
      * Set's the format of the player's balance in the UI by the choice of language
      * @return the String which is used to show the balance in the UI
      */
@@ -696,14 +620,6 @@ public class InGameViewController {
      */
     public void disableStand() {
         standButton.setDisable(true);
-        disableDouble();
-    }
-
-    /**
-     * Disables 'Double' button
-     */
-    public void disableDouble() {
-        doubleButton.setDisable(true);
     }
 
     /**
@@ -712,10 +628,7 @@ public class InGameViewController {
      * Updates the player's balance
      */
     public void doublePressed() {
-        splitButton.setDisable(true);
-        doubleButton.setDisable(true);
-        hitButton.setDisable(true);
-        standButton.setDisable(true);
+        disableSpecialRules();
         gameController.playerDouble();
         currentBet.setText(formatBet() + " + " + formatBet());
         updateBalance();
@@ -772,10 +685,13 @@ public class InGameViewController {
     public boolean setBet() {
         try {
             bet = Integer.parseInt(betField.getText());
-            if (gameController.setBet(bet)) {
+            if (gameController.setBet(bet) && bet > 0) {
                 currentBet.setText(formatBet());
                 updateBalance();
                 return true;
+            } else if (bet < 0) {
+                String message = texts.getString("PlaceAValidBet");
+                setValidBetView(message);
             } else {
                 String message = texts.getString("BetGreaterThanBalance");
                 setValidBetView(message);
@@ -809,119 +725,20 @@ public class InGameViewController {
     }
 
     /**
-     * Shows a tip to the player that recommends to hit
+     * Shows a strategical tip on buttons depending on the game situation
+     * @param tipType is defined in class BlackjackRound and decides what kind of tip is given to the player
      */
-    public void showHitTip() {
-        Tooltip hitTip = new Tooltip();
-        hitTip.setText(texts.getString("HitTip"));
-        hitButton.setTooltip(hitTip);
-        standButton.setTooltip(hitTip);
-        doubleButton.setTooltip(hitTip);
-        splitButton.setTooltip(hitTip);
-        insuranceButton.setTooltip(hitTip);
-        evenMoneyButton.setTooltip(hitTip);
+    public void showTip(String tipType) {
+        Tooltip toolTip = new Tooltip();
+        toolTip.setText((texts.getString(tipType)));
+        hitButton.setTooltip(toolTip);
+        standButton.setTooltip(toolTip);
+        doubleButton.setTooltip(toolTip);
+        splitButton.setTooltip(toolTip);
+        insuranceButton.setTooltip(toolTip);
+        evenMoneyButton.setTooltip(toolTip);
     }
 
-    /**
-     * Shows a tip to the player that recommends to stand
-     */
-    public void showStandTip() {
-        Tooltip standTip = new Tooltip();
-        standTip.setText(texts.getString("StandTip"));
-        hitButton.setTooltip(standTip);
-        standButton.setTooltip(standTip);
-        doubleButton.setTooltip(standTip);
-        splitButton.setTooltip(standTip);
-        insuranceButton.setTooltip(standTip);
-        evenMoneyButton.setTooltip(standTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to double
-     */
-    public void showDoubleTip() {
-        Tooltip doubleTip = new Tooltip();
-        doubleTip.setText(texts.getString("DoubleTip"));
-        hitButton.setTooltip(doubleTip);
-        standButton.setTooltip(doubleTip);
-        doubleButton.setTooltip(doubleTip);
-        splitButton.setTooltip(doubleTip);
-        insuranceButton.setTooltip(doubleTip);
-        evenMoneyButton.setTooltip(doubleTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to split
-     */
-    public void showSplitTip() {
-        Tooltip splitTip = new Tooltip();
-        splitTip.setText(texts.getString("SplitTip"));
-        hitButton.setTooltip(splitTip);
-        standButton.setTooltip(splitTip);
-        doubleButton.setTooltip(splitTip);
-        splitButton.setTooltip(splitTip);
-        insuranceButton.setTooltip(splitTip);
-        evenMoneyButton.setTooltip(splitTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to insure
-     */
-    public void showInsuranceTip() {
-        Tooltip insuranceTip = new Tooltip();
-        insuranceTip.setText(texts.getString("InsuranceTip"));
-        hitButton.setTooltip(insuranceTip);
-        standButton.setTooltip(insuranceTip);
-        doubleButton.setTooltip(insuranceTip);
-        splitButton.setTooltip(insuranceTip);
-        insuranceButton.setTooltip(insuranceTip);
-        evenMoneyButton.setTooltip(insuranceTip);
-    }
-
-    /**
-     * Shows a tip to the player that recommends to take even money
-     */
-    public void showEvenMoneyTip() {
-        Tooltip evenMoneyTip = new Tooltip();
-        evenMoneyTip.setText(texts.getString("EvenMoneyTip"));
-        hitButton.setTooltip(evenMoneyTip);
-        standButton.setTooltip(evenMoneyTip);
-        doubleButton.setTooltip(evenMoneyTip);
-        splitButton.setTooltip(evenMoneyTip);
-        insuranceButton.setTooltip(evenMoneyTip);
-        evenMoneyButton.setTooltip(evenMoneyTip);
-    }
-
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
 
     /**
      * Updates the balance shown in the UI
@@ -932,10 +749,10 @@ public class InGameViewController {
 
     /**
      * Sets players cards to the UI based on the amount of cards.
-     *
      * @param playersCards is an array that contains objects of the player's cards
      */
     public void setPlayersCards(ArrayList<Card> playersCards) {
+        playSFX("dealingCard");
         switch (playersCards.size()) {
             case 1:
                 setCardImage(getImage(playersCards.get(0)), 1);
@@ -975,9 +792,10 @@ public class InGameViewController {
 
     /**
      * Sets players' splitted cards to the UI based on the amount of cards.
-     * @param playersSplittedCards
+     * @param playersSplittedCards splitted cards
      */
     public void setPlayersSplittedCards(ArrayList<Card> playersSplittedCards) {
+        playSFX("dealingCard");
         switch (playersSplittedCards.size()) {
             case 1:
                 setSplittedCardImage(getImage(playersSplittedCards.get(0)), 1);
@@ -1017,10 +835,10 @@ public class InGameViewController {
 
     /**
      * Sets dealers cards to the UI based on the amount of cards.
-     *
      * @param dealerCards is an array that contains objects of the dealer's cards
      */
     public void setDealersCards(ArrayList<Card> dealerCards) {
+        playSFX("dealingCard");
         switch (dealerCards.size()) {
             case 1:
                 setDealerCardImage(getImage(dealerCards.get(0)), 1);
@@ -1065,6 +883,18 @@ public class InGameViewController {
     }
 
     /**
+     * Method to disable all the special rule buttons at once
+     */
+
+    public void disableSpecialRules() {
+        doubleButton.setDisable(true);
+        splitButton.setDisable(true);
+        insuranceButton.setDisable(true);
+        surrenderButton.setDisable(true);
+        evenMoneyButton.setDisable(true);
+    }
+
+    /**
      * Clears the table to end the round
      * TODO: nappien disablointi
      */
@@ -1097,4 +927,3 @@ public class InGameViewController {
         dealerTotal.setText("");
     }
 }
-

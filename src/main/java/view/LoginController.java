@@ -1,26 +1,17 @@
 package view;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import controller.SettingsController;
-import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
-import model.LanguageLoader;
+
 
 /**
  * Login Controller for fxml ui
  */
-public class LoginController {
+public class LoginController extends ViewController {
 
     /**
      * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
@@ -38,14 +29,7 @@ public class LoginController {
      * Text used for telling the user the login was successful. Text is defined in the fxml-file
      */
     public Text loginText;
-    /**
-     * Button which turns the music off when pressed
-     */
-    public Button volumeOFFbutton;
-    /**
-     * Button which turns the music on when pressed
-     */
-    public Button volumeONbutton;
+
     /**
      * Textfield where the user inputs their username
      */
@@ -63,23 +47,22 @@ public class LoginController {
      */
     @FXML
     private Button logInButton;
-    private StageManager stageManager;
-    private UserController userController = new UserController();
+
 
     /**
      * Initialized stageManager
      * Checks the current volume state
      */
     public void initialize(){
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
 
 
-    @FXML
+
     /**
      * Login button action that logs user in
      */
+    @FXML
     public void logInButton() {
 
         Window owner = logInButton.getScene().getWindow();
@@ -101,36 +84,15 @@ public class LoginController {
 
     }
 
-    /**
-     * Loads back to MainMenu
-     * @throws IOException - if .fxml file is not found
-     */
-    public void backToMainMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
 
-    }
 
     /**
      * Closes pop up screen and if log in is successful it loads back to Main menu as a logged in user
-     * @throws IOException
+     *
      */
-    public void okButton() throws IOException {
+    public void okButton() {
         if (loginText.isVisible()) {
-            backToMainMenu();
+            showMainMenu();
         }
         blackScreen.setVisible(false);
         errorText.setVisible(false);
@@ -138,34 +100,4 @@ public class LoginController {
         okButton.setVisible(false);
     }
 
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
 }

@@ -45,7 +45,7 @@
             <Font name="Cooper Black" size="35.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="446.0" layoutY="617.0" mnemonicParsing="false" onAction="#backToMainMenu" prefWidth="130.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackButton">
+      <Button fx:id="backButton" layoutX="446.0" layoutY="617.0" mnemonicParsing="false" onAction="#showMainMenu" prefWidth="130.0" style="-fx-background-radius: 15; -fx-background-insets: -1.4; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-color: dimgrey;" text="%BackButton">
          <font>
             <Font name="Cooper Black" size="20.0" />
          </font>

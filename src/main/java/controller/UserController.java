@@ -2,9 +2,8 @@ package controller;
 
 
 
-import model.User;
 import model.UserCredentialHandler;
-import view.RegisterController;
+
 
 /**
  * Used to control User information
@@ -16,6 +15,9 @@ public class UserController {
      * This controller forwards the errormessage to viewController to use the message in UI
      */
     private String errorMessage;
+
+    public UserController() {}
+
 
 
     /**

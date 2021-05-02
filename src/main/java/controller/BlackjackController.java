@@ -298,47 +298,7 @@ public class BlackjackController {
      */
     public void playerEvenMoney() {this.blackJackGame.playerEvenMoney();}
 
-    /**
-     * Shows a tip that player should hit
-     */
-    public void showHitTip() {
-        inGameViewController.showHitTip();
-    }
-
-    /**
-     * Shows a tip that player should stand
-     */
-    public void showStandTip() {
-        inGameViewController.showStandTip();
-    }
-
-    /**
-     * Shows a tip that player should double
-     */
-    public void showDoubleTip() {
-        inGameViewController.showDoubleTip();
-    }
-
-    /**
-     * Shows a tip that player should split
-     */
-    public void showSplitTip() {
-        inGameViewController.showSplitTip();
-    }
-
-    /**
-     * Shows a tip that player should insure
-     */
-    public void showInsuranceTip() {
-        inGameViewController.showInsuranceTip();
-    }
-
-    /**
-     * Shows a tip that player should take even money
-     */
-    public void showEvenMoneyTip() {
-        inGameViewController.showEvenMoneyTip();
-    }
+    public void showTip(String tipType) { inGameViewController.showTip(tipType); }
 
 
 }

@@ -1,15 +1,6 @@
 package view;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import controller.SettingsController;
-import controller.UserController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -22,7 +13,7 @@ import model.LanguageLoader;
  *
  */
 
-public class RegisterController {
+public class RegisterController extends ViewController {
 
     /**
      * A dark, slightly see-through ImageView which is used when the user is informed and their attention is needed
@@ -40,18 +31,6 @@ public class RegisterController {
      * Text used for telling the user the registration was successful. Text is defined in the fxml-file
      */
     public Text registerText;
-    /**
-     * Button which turns the music off when pressed
-     */
-    public Button volumeOFFbutton;
-    /**
-     * Button which turns the music on when pressed
-     */
-    public Button volumeONbutton;
-    /**
-     * userController is used for passing on information between the model-package class UserCredentialHandler and this viewController
-     */
-    private UserController userController = new UserController();
 
     /**
      * Textfield where the user inputs their username
@@ -75,14 +54,12 @@ public class RegisterController {
     @FXML
     public Button submitButton;
 
-    private StageManager stageManager;
 
     /**
      * Initializes stageManager
      * Checks the current volume state
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
         checkVolume();
     }
     /**
@@ -92,13 +69,13 @@ public class RegisterController {
     private Button changePasswordButton;
 
 
-    @FXML
+
     /**
      * Registers a new user if the user input meets the requirements
      * If all fields have input, asks the controller to pass on the information to validation
      * and informs the user if the registration was successful or not. If not, tells more specific information
      */
-
+    @FXML
     public void register() {
 
         Window owner = usernameTextField.getScene().getWindow();
@@ -138,7 +115,7 @@ public class RegisterController {
 
     /**
      * Set's an error message on display in UI
-     * @param message
+     * @param message Errormessage
      */
     public void setErrorMessage(String message) {
         errorText.setText(message);
@@ -147,72 +124,18 @@ public class RegisterController {
         okButton.setVisible(true);
     }
 
-    /**
-     * Loads back to Mainmenu
-     * @throws IOException - if .fxml file is not found
-     */
-    public void backToMainMenu() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
-    }
-
 
     /**
      * Button closes pop up screen and loads to MainMenu if registeration is successed
-     * @throws IOException
+     *
      */
-    public void okButton() throws IOException {
+    public void okButton() {
         if (registerText.isVisible()) {
-            backToMainMenu();
+            showMainMenu();
         }
         blackScreen.setVisible(false);
         errorText.setVisible(false);
         okButton.setVisible(false);
     }
 
-
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
 }

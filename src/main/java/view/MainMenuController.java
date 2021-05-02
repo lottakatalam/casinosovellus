@@ -1,8 +1,6 @@
 package view;
 
 import controller.BlackjackController;
-import controller.SettingsController;
-import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +18,7 @@ import java.io.IOException;
  * Controller class for MainMenu.fxml
  */
 
-public class MainMenuController {
+public class MainMenuController extends ViewController {
 
     public ImageView blackScreen;
     public Text areYouSure;
@@ -30,12 +28,9 @@ public class MainMenuController {
     public Button loginButton;
     public Button logoutButton;
     public Button registerButton;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
     public Button changePasswordButton;
     public Button leaderboardsButton;
-    private BlackjackController gameController;
-    private static UserController userController;
+
     private StageManager stageManager;
 
     /** Menu's Play-Button loads to InGameView.fxml
@@ -153,7 +148,6 @@ public class MainMenuController {
         loader.setLocation(getClass().getResource("/FXML/RegisterView.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent registerParent = loader.load();
-        RegisterController controller = loader.getController();
 
         Scene registerScene = new Scene(registerParent);
         stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("registerSceneTitle"));
@@ -171,7 +165,6 @@ public class MainMenuController {
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
 
         Parent leaderboardsParent = loader.load();
-        LeaderboardsController controller = loader.getController();
 
         Scene leaderboardsScene = new Scene(leaderboardsParent);
         stageManager.getPrimaryStage().setTitle(LanguageLoader.getInstance().getString("LeaderboardsText"));
@@ -188,7 +181,6 @@ public class MainMenuController {
         loader.setLocation(getClass().getResource("/FXML/ChangePassword.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
         Parent changePasswordView = loader.load();
-        ChangePasswordController controller = loader.getController();
 
         Scene changePasswordScene = new Scene(changePasswordView);
         stageManager = StageManager.getInstance();
@@ -215,53 +207,7 @@ public class MainMenuController {
         noButton.setVisible(false);
     }
 
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
 
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
-    }
-
-    /**
-     * Sets gameController as the object of class BlackjackController
-     * @param blackjackController object of the BlackjackController
-     */
-    public void setGameController(BlackjackController blackjackController) {
-        gameController = blackjackController;
-    }
-
-    /**
-     * Sets userController as the object of class UserController
-     * @param userController object of the UserController
-     */
-    public void setUserController(UserController userController) {
-        this.userController = userController;
-    }
 
     /**
      * Sets stageManager as the object of class StageManager

@@ -1,10 +1,6 @@
 package view;
 
 import controller.SettingsController;
-import controller.UserController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -13,12 +9,11 @@ import javafx.scene.text.Text;
 import model.LanguageLoader;
 import model.UserCredentialHandler;
 
-import java.io.IOException;
 
 /**
  * Controller class for Settings.fxml
  */
-public class SettingsViewController {
+public class SettingsViewController extends ViewController {
 
     public RadioButton onRadio;
     public RadioButton offRadio;
@@ -27,36 +22,17 @@ public class SettingsViewController {
     public Text volumeText;
     public Button finnishButton;
     public Button englishButton;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
-    private StageManager stageManager;
     private boolean isSelected = true;
-    private SettingsController settingsController = SettingsController.getInstance();
+    private SettingsController settingsController;
     MainMenuController mainMenuController = null;
-    private UserController userController = new UserController();
 
     /**
      * Setting screen's Back-Button loads to MainMenu.fxml
      *
-     * @throws IOException - if .fxml file is not found
+     *
      */
-    public void settingsBackButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
-
+    public void settingsBackButton() {
+        showMainMenu();
     }
 
     /**
@@ -65,7 +41,7 @@ public class SettingsViewController {
      * Initializes settings
      */
     public void initialize() {
-        stageManager = StageManager.getInstance();
+        settingsController = SettingsController.getInstance();
         checkVolume();
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
             loggedUser.setText(LanguageLoader.getInstance().getString("LoggedInUser") + UserCredentialHandler.getInstance().getLoggedInUser().getUsername());
@@ -113,7 +89,7 @@ public class SettingsViewController {
             stageManager.getMediaPlayer().setVolume(((Double) newValue) / 100);
             SettingsController.getInstance().setVolume(Math.floor((Double) newValue) / 100);
         });
-        if (LanguageLoader.getInstance().getLocale().getLanguage() == "fi") {
+        if (LanguageLoader.getInstance().getLocale().getLanguage().equals("fi")) {
             selectFinnish();
         }else {
             selectEnglish();
@@ -126,37 +102,6 @@ public class SettingsViewController {
      */
     public void setMainMenuController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
-    }
-
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
     }
 
     /**
@@ -185,4 +130,5 @@ public class SettingsViewController {
         finnishButton.setEffect(new DropShadow());
         englishButton.setEffect(null);
     }
+
 }

@@ -1,12 +1,7 @@
 package view;
 
-import controller.SettingsController;
-import controller.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -20,11 +15,12 @@ import model.LanguageLoader;
 import model.UserCredentialHandler;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Controller class for Game History
  */
-public class GameHistoryController {
+public class GameHistoryController extends ViewController {
 
     public Text areYouSure;
     public Button yesButton;
@@ -42,34 +38,14 @@ public class GameHistoryController {
     public Button okButton;
     public Text errorText;
     public Text loggedUser;
-    public Button volumeOFFbutton;
-    public Button volumeONbutton;
-    private StageManager stageManager;
-    private UserController userController = new UserController();
     CasinoDAO casinoDAO;
 
 
     /**
      * Loads back to MainMenu
-     * @throws IOException - if .fxml file is not found
      */
-    public void gameHistoryBackButton() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/FXML/MainMenu.fxml"));
-        loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent menuParent = loader.load();
-        MainMenuController controller = loader.getController();
-        if (userController.isUserLoggedIn()) {
-            controller.loginButton.setVisible(false);
-            controller.registerButton.setVisible(false);
-            controller.logoutButton.setVisible(true);
-            controller.changePasswordButton.setVisible(true);
-        }
-        Scene menuScene = new Scene(menuParent);
-        stageManager.getPrimaryStage().setTitle("The Grand Myllypuro");
-        stageManager.getPrimaryStage().setScene(menuScene);
-        stageManager.getPrimaryStage().show();
+    public void gameHistoryBackButton() {
+        showMainMenu();
     }
 
     /**
@@ -130,10 +106,19 @@ public class GameHistoryController {
 
             if (h[i].getUserID() == UserCredentialHandler.getInstance().getLoggedInUser().getUserID()) {
 
+                /* Date formating for both languages*/
+                if (LanguageLoader.getInstance().getLocale().toString().equals("fi_FI")) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH.mm.ss");
+                    String date = h[i].getDate().format(formatter);
+                    h[i].setDateString(date);
+                }else if(LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+                    String date = h[i].getDate().format(formatter);
+                    h[i].setDateString(date);
+                }
                 history.add(h[i]);
             }
         }
-
         return history;
     }
 
@@ -148,19 +133,17 @@ public class GameHistoryController {
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
         betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateString"));
 
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
 
             historyTable.setItems(getHistory());
-
         }else {
             errorText.setText(LanguageLoader.getInstance().getString("GamehistoryEntryError"));
             blackScreen.setVisible(true);
             errorText.setVisible(true);
             okButton.setVisible(true);
         }
-
     }
 
     /**
@@ -171,7 +154,6 @@ public class GameHistoryController {
      */
     public void initialize() {
         casinoDAO = new CasinoDAO();
-        stageManager = StageManager.getInstance();
         checkVolume();
         historyTable.setPlaceholder(new Label(LanguageLoader.getInstance().getString("TableViewText")));
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {
@@ -189,36 +171,5 @@ public class GameHistoryController {
         errorText.setVisible(false);
         okButton.setVisible(false);
         gameHistoryBackButton();
-    }
-
-    /**
-     * Mutes game music
-     */
-    public void volumeOFF() {
-        volumeOFFbutton.setVisible(false);
-        volumeONbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(0);
-    }
-
-    /**
-     * Turns game music back ON
-     */
-    public void volumeON() {
-        volumeONbutton.setVisible(false);
-        volumeOFFbutton.setVisible(true);
-        stageManager.getMediaPlayer().setVolume(SettingsController.getInstance().getVolume());
-    }
-
-    /**
-     * Checks is the volume ON or OFF
-     */
-    public void checkVolume() {
-        if(stageManager.getMediaPlayer().getVolume() == 0) {
-            volumeOFFbutton.setVisible(false);
-            volumeONbutton.setVisible(true);
-        }else {
-            volumeONbutton.setVisible(false);
-            volumeOFFbutton.setVisible(true);
-        }
     }
 }

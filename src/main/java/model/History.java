@@ -68,6 +68,11 @@ public class History {
      */
     private LocalDateTime date;
 
+    @Transient
+    /**
+     * dateString for Date formating in game history
+     */
+    private String dateString;
 
     //GETTERS
 
@@ -117,6 +122,14 @@ public class History {
      */
     public LocalDateTime getDate() {
         return date;
+    }
+
+    /**
+     * Gets the DateString
+     * @return - The DateString
+     */
+    public String getDateString() {
+        return dateString;
     }
 
     /**
@@ -183,5 +196,13 @@ public class History {
      */
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    /**
+     * Sets the dateString
+     * @param dateString - The dateString
+     */
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
     }
 }
