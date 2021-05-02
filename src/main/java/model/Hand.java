@@ -56,19 +56,21 @@ public class Hand {
     /**
      * Prints all of the card-objects (in their own rows) in a hand by calling the toString()-method in Card-class
      */
-    public void printHand() {
+    public boolean printHand() {
         for (Card card : hand) {
             System.out.println(card.toString());
         }
+        return true;
     }
 
     /**
      * Prints the splitted hand
      */
-    public void printSplittedHand() {
+    public boolean printSplittedHand() {
         for (Card card : splittedHand) {
             System.out.println(card.toString());
         }
+        return true;
     }
 
 

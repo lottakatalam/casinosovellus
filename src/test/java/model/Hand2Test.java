@@ -20,6 +20,11 @@ class Hand2Test {
     private static Hand hand3 = new Hand();
     private static Hand hand4 = new Hand();
 
+    private static Hand hand5 = new Hand();
+    private static Hand hand6 = new Hand();
+    private static Hand hand7 = new Hand();
+    private static Hand hand8 = new Hand();
+
     @BeforeAll
     static void addCards() {
         hand.addCard(new Card(1, 1));
@@ -39,12 +44,37 @@ class Hand2Test {
         hand4.addCard(new Card(11,1));
         hand4.addCard(new Card(7,1));
 
+        //////
+
+        hand5.addCardToSplittedHand(new Card(1, 1));
+        hand5.addCardToSplittedHand(new Card(12, 1));
+        hand5.addCardToSplittedHand(new Card(3, 1));
+
+        hand6.addCardToSplittedHand(new Card(1, 1));
+        hand6.addCardToSplittedHand(new Card(2, 1));
+        hand6.addCardToSplittedHand(new Card(7, 1));
+
+        hand7.addCardToSplittedHand(new Card(11, 1));
+        hand7.addCardToSplittedHand(new Card(12, 1));
+        hand7.addCardToSplittedHand(new Card(5, 1));
+
+        hand8.addCardToSplittedHand(new Card(5,1));
+        hand8.addCardToSplittedHand(new Card(6,1));
+        hand8.addCardToSplittedHand(new Card(11,1));
+        hand8.addCardToSplittedHand(new Card(7,1));
+
     }
 
     @ParameterizedTest
     @MethodSource("generateData")
     void TestCalculateTotal(int first, Hand second) {
         assertEquals(first, second.calculateTotal(), "The total value of Hand was not correct");
+
+    }
+    @ParameterizedTest
+    @MethodSource("generateSplittedData")
+    void TestCalculateSplittedTotal(int first, Hand second) {
+        assertEquals(first, second.calculateSplittedTotal(), "The total value of Hand was not correct");
 
     }
 
@@ -54,6 +84,14 @@ class Hand2Test {
                 Arguments.of(20, hand2),
                 Arguments.of(25, hand3),
                 Arguments.of(28, hand4)
+        );
+    }
+    static Stream<Arguments> generateSplittedData() {
+        return Stream.of(
+                Arguments.of(14, hand5),
+                Arguments.of(20, hand6),
+                Arguments.of(25, hand7),
+                Arguments.of(28, hand8)
         );
     }
 }
