@@ -5,8 +5,6 @@ import view.SettingsViewController;
 /**
  * Used to control Settings from model and model from GUI
  */
-
-
 public class SettingsController {
     /**
      * Boolean which describes are the automated instructions for play in the UI on
@@ -52,7 +50,7 @@ public class SettingsController {
 
     /**
      * Gets the current state of isSelected-boolean (which identifies are the tips ON or OFF)
-     * @return
+     * @return boolean which describes are the tips ON or OFF
      */
     public boolean getSelected() {
         return this.isSelected;
@@ -60,7 +58,7 @@ public class SettingsController {
 
     /**
      * Sets the state of isSelected-boolean (which identifies are the tips ON or OFF)
-     * @param isSelected
+     * @param isSelected boolean which describes are the tips ON or OFF
      */
     public void setSelected(boolean isSelected) {
         this.isSelected = isSelected;

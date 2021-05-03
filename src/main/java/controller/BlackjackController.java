@@ -57,7 +57,6 @@ public class BlackjackController {
     /**
      * Player stands and then it is Dealer's turn to play
      */
-
     public void stand() {
         this.blackJackGame.playerStay();
     }
@@ -67,7 +66,6 @@ public class BlackjackController {
      * @param b - Amount of the bet
      * @return - true if the bet is set, false if the player doesn't have enough online cash for setting the bet
      */
-
     public boolean setBet(int b) {
         return this.player.setBet(b);
     }
@@ -77,7 +75,6 @@ public class BlackjackController {
      * @param b - Amount of the bet
      * @return - Returns the splitted bet
      */
-
     public boolean setSplitBet(int b) {
         return this.player.setSplitBet(b);
     }
@@ -94,7 +91,6 @@ public class BlackjackController {
      * Gets player's splitted cards
      * @return - Returns splitted cards
      */
-
     public ArrayList<Card> getPlayersSplittedCards() { return this.splittedHandPlayer;}
 
     /**
@@ -109,7 +105,6 @@ public class BlackjackController {
      * Sets the player's cards to UI
      * @param playersCards - Cards that the player currently has
      */
-
     public void setPlayersCardsToUI(ArrayList<Card> playersCards) {
         inGameViewController.setPlayersCards(playersCards);
     }
@@ -118,7 +113,6 @@ public class BlackjackController {
      * Sets the player's splitted cards to UI
      * @param playersSplittedCards - Cards that player currently has in his splitted hand
      */
-
     public void setPlayersSplittedCardsToUI(ArrayList<Card> playersSplittedCards) {
         inGameViewController.setPlayersSplittedCards(playersSplittedCards);
     }
@@ -135,7 +129,6 @@ public class BlackjackController {
      * Gets the split status
      * @return - Returns current split status
      */
-
     public boolean getSplitStatus() {
         return this.splitIsOn;
     }
@@ -167,7 +160,6 @@ public class BlackjackController {
      * Returns the dealer
      * @return - the dealer
      */
-
     public Dealer getDealer() {
         return this.dealer;
     }
@@ -208,7 +200,6 @@ public class BlackjackController {
      * Gets double possibility
      * @return - Returns true or false/ is doubling possible or not
      */
-
     public boolean getDoublePossibility() {
         return this.doublePossibility;
     }
@@ -256,6 +247,9 @@ public class BlackjackController {
      */
     public boolean getInsurancePossibility() { return this.insurancePossibility; }
 
+    /**
+     * Asks the Game-class to insure the players round
+     */
     public void playerInsure() { this.blackJackGame.playerInsure(); }
 
 
@@ -298,6 +292,10 @@ public class BlackjackController {
      */
     public void playerEvenMoney() {this.blackJackGame.playerEvenMoney();}
 
+    /**
+     * Asks the views fx-controller to show the suitable tip for player
+     * @param tipType the type of the tip which is showcased in the UI when hoovering the mouse
+     */
     public void showTip(String tipType) { inGameViewController.showTip(tipType); }
 
 

@@ -75,12 +75,12 @@ public class UserController {
     }
 
     /**
-     * Asks the UserCredentialHandler to validate the user input for passwordchange
+     * Asks the UserCredentialHandler to validate the user input for password change
      * If input is valid, asks the UserCredentialHandler to change the users password
      * If input is not valid, gets an error message from UserCredentialHandler
-     * @param oldPassword
-     * @param newPassword
-     * @param newPasswordRepeated
+     * @param oldPassword users input for old password
+     * @param newPassword users input for new password
+     * @param newPasswordRepeated users input for repeating the new password
      * @return true, if the password change was successful
      */
     public boolean validatePasswordChange(String oldPassword, String newPassword, String newPasswordRepeated) {
