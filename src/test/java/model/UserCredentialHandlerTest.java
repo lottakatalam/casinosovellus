@@ -1,9 +1,6 @@
 package model;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,9 +12,29 @@ class UserCredentialHandlerTest {
     UserCredentialHandler UCH;
 
 
+    @BeforeAll
+    static void setTestDB(){
+        CasinoDAO.setTestmode(true);
+        UserCredentialHandler.getInstance().createNewUser("Katala","Katala1");
+        UserCredentialHandler.getInstance().createNewUser("loputa","Loputa1");
+        UserCredentialHandler.getInstance().createNewUser("lopita","Lopita1");
+        UserCredentialHandler.getInstance().createNewUser("Moikka","Lopita1");
+    }
+
     @BeforeEach
     void initTests() {
         UCH = UserCredentialHandler.getInstance();
+        //CasinoDAO.setTestmode(true);
+    }
+
+    @AfterEach
+    void logout(){
+        UCH.logout();
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
     }
 
     @ParameterizedTest
@@ -138,11 +155,6 @@ class UserCredentialHandlerTest {
 
     }
 
-
-    @AfterEach
-    void logout(){
-        UCH.logout();
-    }
 
 }
 
