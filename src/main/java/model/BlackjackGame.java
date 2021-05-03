@@ -31,8 +31,14 @@ public class BlackjackGame extends Thread {
      */
     private final BlackjackController gameController;
 
+    /**
+     * DAO object for the DB communication
+     */
     private CasinoDAO casinoDAO;
 
+    /**
+     * Boolean which is set true when testing
+     */
     private boolean testMode = false;
 
 
@@ -108,10 +114,19 @@ public class BlackjackGame extends Thread {
         round.playerStay();
     }
 
+    /**
+     * Passes call for player wanting to insure for ongoing roun
+     */
     public void playerInsure() { round.playerInsure(); }
 
+    /**
+     * Passes call for player wanting to surrender for ongoing round
+     */
     public void playerSurrender() { round.playerSurrender(); }
 
+    /**
+     * Passes call for player wanting to choose even money for ongoing round
+     */
     public void playerEvenMoney() { round.playerEvenMoney();}
 
     /**
@@ -129,6 +144,7 @@ public class BlackjackGame extends Thread {
     public Dealer getDealer() {
         return this.dealer;
     }
+
 
     public boolean toggleTestMode() {
         testMode = !testMode;

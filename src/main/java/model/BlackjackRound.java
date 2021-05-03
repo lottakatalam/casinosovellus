@@ -11,27 +11,96 @@ import java.time.format.DateTimeFormatter;
  */
 public class BlackjackRound extends Thread {
 
+    /**
+     * Describes the number of rounds played in one game session
+     */
     private static int roundNumber = 0;
 
+    /**
+     * Controller of game used to communicating with the UI
+     */
     private BlackjackController gameController;
+
+    /**
+     * Deck object for handling the cards
+     */
     private Deck deck;
+
+    /**
+     * Player of the round
+     */
     private Player player;
+
+    /**
+     * Dealer of the round
+     */
     private Dealer dealer;
+
+    /**
+     * Boolean which describes if the player busts or not
+     */
     private boolean playerBusted = false;
+
+    /**
+     * Boolean which describes if the player busts or not with a splitted hand
+     */
     private boolean playerBustedSplit = true;
+
+    /**
+     * The winner of the round in String
+     */
     private String winner;
+
+    /**
+     * Boolean which describes if there's a possibility to double or not
+     */
     boolean doublePossibility;
+
+    /**
+     * Boolean which describes if there's a possibility to split or not
+     */
     boolean splitPossibility;
+
+    /**
+     * Boolean which describes if there's a possibility to insurance or not
+     */
     boolean insurancePossibility;
+
+    /**
+     * Boolean which describes if there's a possibility to choose even money or not
+     */
     boolean evenMoneyPossibility;
+
+    /**
+     * Boolean which describes is the player's hand of cards splitted into two or not
+     */
     boolean splitted;
+
+    /**
+     * Boolean which describes is the player's bet is insured or not
+     */
     boolean insured;
+
     boolean insuranceHit;
+
+    /**
+     * Boolean which describes if the player chose even money or not
+     */
     boolean evenMoney;
+
+    /**
+     * Boolean which describes if the player surrenderd or not
+     */
     boolean surrendered;
+
+    /**
+     * Controller for communicating with the settings view
+     */
     private SettingsController settingsController;
 
-
+    /**
+     * DAO object for DB communication
+     */
     CasinoDAO casinoDAO;
 
 
@@ -75,9 +144,9 @@ public class BlackjackRound extends Thread {
 
     /**
      * Constructor for testing purposes only
-     * @param player
-     * @param dealer
-     * @param gameController
+     * @param player Player of the round
+     * @param dealer Dealer of the round
+     * @param gameController Controller for communicating with the UI
      */
     public BlackjackRound(Player player, Dealer dealer, BlackjackController gameController) {
         this.player = player;
