@@ -1,5 +1,7 @@
 package model;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,6 +15,16 @@ class PlayerTest {
 
     private static int currency;
     private static Player p;
+
+    @BeforeAll
+    static void setTestDB() {
+        CasinoDAO.setTestmode(true);
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
     @BeforeEach
     public void initializeTests() {

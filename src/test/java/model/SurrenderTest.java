@@ -2,6 +2,8 @@ package model;
 
 import model.Logger;
 import model.Player;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,6 +15,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SurrenderTest {
     private static int currency;
     private static Player p;
+
+    @BeforeAll
+    static void setTestDB() {
+        CasinoDAO.setTestmode(true);
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
 
     @BeforeEach
