@@ -64,10 +64,11 @@ public class Deck {
     /**
      * Prints all Card-objects in the deck by calling the toString()-method from the Card-class
      */
-    public void printCardsInDeck() {
+    public boolean printCardsInDeck() {
         for (Card card: deck) {
             System.out.println(card.toString());
         }
+        return true;
     }
 
     /**

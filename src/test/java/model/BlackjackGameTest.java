@@ -16,7 +16,12 @@ class BlackjackGameTest {
     @BeforeAll
     public static void initializeTests() {
         Logger.setLogLevel(Logger.LogLevel.ALL);
+
     }
+    /*@BeforeEach
+    public void setDB(){
+        CasinoDAO.setTestmode(true);
+    }*/
 
 
     @Test

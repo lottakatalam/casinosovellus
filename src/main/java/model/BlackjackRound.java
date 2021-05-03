@@ -86,6 +86,20 @@ public class BlackjackRound extends Thread {
     }
 
     /**
+     * Constructor for testing purposes only
+     * @param player
+     * @param dealer
+     * @param deck;
+     * @param gameController
+     */
+    public BlackjackRound(Player player, Dealer dealer, Deck deck, BlackjackController gameController) {
+        this.player = player;
+        this.dealer = dealer;
+        this.deck = deck;
+        this.gameController = gameController;
+    }
+
+    /**
      * Player draws 2 cards and Dealer draws one at the start of the round
      */
     public void addFirstCards() {

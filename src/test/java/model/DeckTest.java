@@ -42,6 +42,9 @@ class DeckTest {
     }
 
     @Test
-    void printCardsInDeck() {
+    void printCardsInDeckTest() {
+        assertTrue(deck.printCardsInDeck());
     }
+
+
 }
