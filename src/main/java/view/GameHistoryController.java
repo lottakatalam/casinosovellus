@@ -15,7 +15,9 @@ import model.LanguageLoader;
 import model.UserCredentialHandler;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * Controller class for Game History
@@ -111,10 +113,14 @@ public class GameHistoryController extends ViewController {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH.mm.ss");
                     String date = h[i].getDate().format(formatter);
                     h[i].setDateString(date);
+                    h[i].setBalanceString(String.format("%,d",h[i].getBalance()));
+                    h[i].setBetString(String.format("%,d",h[i].getBet()));
                 }else if(LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
                     String date = h[i].getDate().format(formatter);
                     h[i].setDateString(date);
+                    h[i].setBalanceString(String.format(Locale.UK, "%,d",h[i].getBalance()));
+                    h[i].setBetString(String.format(Locale.UK,"%,d",h[i].getBet()));
                 }
                 history.add(h[i]);
             }
@@ -131,8 +137,8 @@ public class GameHistoryController extends ViewController {
         gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameNumber"));
         resultColumn.setCellValueFactory(new PropertyValueFactory<>("result"));
         methodColumn.setCellValueFactory(new PropertyValueFactory<>("method"));
-        betColumn.setCellValueFactory(new PropertyValueFactory<>("bet"));
-        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        betColumn.setCellValueFactory(new PropertyValueFactory<>("betString"));
+        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balanceString"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateString"));
 
         if (UserCredentialHandler.getInstance().getLoggedInUser() != null) {

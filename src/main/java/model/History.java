@@ -74,6 +74,17 @@ public class History {
      */
     private String dateString;
 
+    @Transient
+    /**
+     * betString for Bet formating in game history
+     */
+    private String betString;
+
+    @Transient
+    /**
+     * balanceString for Balance formating in game history
+     */
+    private String balanceString;
     //GETTERS
 
     /**
@@ -204,5 +215,22 @@ public class History {
      */
     public void setDateString(String dateString) {
         this.dateString = dateString;
+    }
+
+
+    public String getBetString() {
+        return betString;
+    }
+
+    public void setBetString(String betString) {
+        this.betString = betString;
+    }
+
+    public String getBalanceString() {
+        return balanceString;
+    }
+
+    public void setBalanceString(String balanceString) {
+        this.balanceString = balanceString;
     }
 }

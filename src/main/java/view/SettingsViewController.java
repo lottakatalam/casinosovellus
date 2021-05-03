@@ -90,9 +90,9 @@ public class SettingsViewController extends ViewController {
             SettingsController.getInstance().setVolume(Math.floor((Double) newValue) / 100);
         });
         if (LanguageLoader.getInstance().getLocale().getLanguage().equals("fi")) {
-            selectFinnish();
+            finnishSelected();
         }else {
-            selectEnglish();
+            englishSelected();
         }
     }
 
@@ -110,12 +110,7 @@ public class SettingsViewController extends ViewController {
     public void selectEnglish() {
 
         LanguageLoader.getInstance().setLocale("en","GB");
-        englishButton.setScaleX(1.2);
-        englishButton.setScaleY(1.2);
-        finnishButton.setScaleX(0.8);
-        finnishButton.setScaleY(0.8);
-        englishButton.setEffect(new DropShadow());
-        finnishButton.setEffect(null);
+        mainMenuController.settingsButton();
     }
 
     /**
@@ -123,12 +118,25 @@ public class SettingsViewController extends ViewController {
      */
     public void selectFinnish() {
         LanguageLoader.getInstance().setLocale("fi", "FI");
+        mainMenuController.settingsButton();
+    }
+
+    private void finnishSelected() {
         englishButton.setScaleX(0.8);
         englishButton.setScaleY(0.8);
         finnishButton.setScaleX(1.2);
         finnishButton.setScaleY(1.2);
         finnishButton.setEffect(new DropShadow());
         englishButton.setEffect(null);
+    }
+
+    private void englishSelected() {
+        englishButton.setScaleX(1.2);
+        englishButton.setScaleY(1.2);
+        finnishButton.setScaleX(0.8);
+        finnishButton.setScaleY(0.8);
+        englishButton.setEffect(new DropShadow());
+        finnishButton.setEffect(null);
     }
 
 }

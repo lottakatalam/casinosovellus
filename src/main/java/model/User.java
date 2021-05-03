@@ -49,6 +49,16 @@ public class User {
      */
     private Integer ranking;
 
+    @Transient
+    private String balanceString;
+
+    public String getBalanceString() {
+        return balanceString;
+    }
+
+    public void setBalanceString(String balanceString) {
+        this.balanceString = balanceString;
+    }
 
     /**
      * Gets the userID

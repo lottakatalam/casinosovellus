@@ -87,11 +87,16 @@ public class MainMenuController extends ViewController {
     /** Menu's Settings-Button loads to Settings.fxml
      * @throws IOException - if .fxml file is not found
      */
-    public void settingsButton() throws IOException {
+    public void settingsButton() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/FXML/Settings.fxml"));
         loader.setResources(LanguageLoader.getInstance().getResourceBundle());
-        Parent settingsParent = loader.load();
+        Parent settingsParent = null;
+        try {
+            settingsParent = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SettingsViewController settingsViewController = loader.getController();
         settingsViewController.setMainMenuController(this);
         Scene settingsScene = new Scene(settingsParent);

@@ -11,8 +11,11 @@ import model.CasinoDAO;
 import model.LanguageLoader;
 import model.User;
 import model.UserCredentialHandler;
+
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class LeaderboardsController extends ViewController {
     public Text loggedUser;
@@ -52,7 +55,7 @@ public class LeaderboardsController extends ViewController {
     public void setTable() {
         rankingColumn.setCellValueFactory(new PropertyValueFactory<>("ranking"));
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balanceString"));
         roundColumn.setCellValueFactory(new PropertyValueFactory<>("rounds"));
 
         leaderboardTable.setItems(getLeaderboards());
@@ -74,6 +77,13 @@ public class LeaderboardsController extends ViewController {
         for (int i=0; i<leaderboards.size(); i++ ) {
             leaderboards.get(i).setRanking(i+1);
             casinoDAO.updateUser(leaderboards.get(i));
+            /* Date formating for both languages*/
+            if (LanguageLoader.getInstance().getLocale().toString().equals("fi_FI")) {
+                leaderboards.get(i).setBalanceString(String.format("%,d", leaderboards.get(i).getBalance()));
+            }else if(LanguageLoader.getInstance().getLocale().toString().equals("en_GB")) {
+                leaderboards.get(i).setBalanceString(String.format(Locale.UK, "%,d", leaderboards.get(i).getBalance()));
+            }
+
         }
 
         return leaderboards;
