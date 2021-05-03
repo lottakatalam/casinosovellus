@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,6 +25,16 @@ class Hand2Test {
     private static Hand hand6 = new Hand();
     private static Hand hand7 = new Hand();
     private static Hand hand8 = new Hand();
+
+    @BeforeAll
+    static void setTestDB() {
+        CasinoDAO.setTestmode(true);
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
     @BeforeAll
     static void addCards() {

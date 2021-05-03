@@ -3,6 +3,8 @@ package model;
 import controller.BlackjackController;
 import model.Logger;
 import model.Player;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,6 +21,16 @@ class InsuranceTest {
     private static Dealer d;
     private static BlackjackRound round;
     private static BlackjackController ctrl;
+
+    @BeforeAll
+    static void setTestDB() {
+        CasinoDAO.setTestmode(true);
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
     @BeforeEach
     public void initializeTests() {

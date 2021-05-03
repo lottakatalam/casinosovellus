@@ -1,6 +1,7 @@
 package model;
 
 import controller.BlackjackController;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,16 @@ class BlackjackRoundTest {
     private static Deck deck;
     private static BlackjackRound round;
     private static BlackjackController ctrl;
+
+    @BeforeAll
+    static void setTestDB() {
+        CasinoDAO.setTestmode(true);
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
     @BeforeEach
     public void initializeTests() {

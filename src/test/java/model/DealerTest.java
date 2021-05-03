@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,16 @@ class DealerTest {
 
 
     Dealer d = new Dealer();
+
+    @BeforeAll
+    static void setTestDB() {
+        CasinoDAO.setTestmode(true);
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
     @Test
     void testIsBlackJack() {

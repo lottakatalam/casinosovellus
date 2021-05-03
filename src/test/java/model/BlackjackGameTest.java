@@ -1,6 +1,7 @@
 package model;
 
 import controller.BlackjackController;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,10 +19,17 @@ class BlackjackGameTest {
         Logger.setLogLevel(Logger.LogLevel.ALL);
 
     }
-    /*@BeforeEach
-    public void setDB(){
+
+
+    @BeforeAll
+    static void setTestDB() {
         CasinoDAO.setTestmode(true);
-    }*/
+    }
+
+    @AfterAll
+    static void setTestDBOFF(){
+        CasinoDAO.setTestmode(false);
+    }
 
 
     @Test
