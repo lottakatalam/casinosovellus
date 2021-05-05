@@ -275,7 +275,7 @@ public class UserCredentialHandler {
      * Method to hash the users' password in the Database
      *
      * @param password - The password to hash
-     * @return
+     * @return the hashed password
      */
     private String hashPassword(String password) {
         int iterations = 1000;

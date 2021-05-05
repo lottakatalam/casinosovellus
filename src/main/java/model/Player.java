@@ -160,6 +160,9 @@ public class Player {
         this.bet = bet * 2;
     }
 
+    /**
+     * Method to calculate the amount of insurance pay
+     */
     public void insure() {
         this.currency -= bet / 2;
     }

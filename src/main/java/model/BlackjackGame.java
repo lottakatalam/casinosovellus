@@ -146,6 +146,10 @@ public class BlackjackGame extends Thread {
     }
 
 
+    /**
+     * Method to toggle test mode for debugging
+     * @return boolean to determine is the test mode on or off
+     */
     public boolean toggleTestMode() {
         testMode = !testMode;
         return testMode;

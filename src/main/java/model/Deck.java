@@ -80,8 +80,8 @@ public class Deck {
 
     /**
      * Used for JUnit tests
-     * @param o
-     * @return
+     * @param o to compare the Decks
+     * @return boolean to determine whether or not the Decks are the same
      */
     public boolean equals(Object o) {
         Deck d = (Deck) o;
@@ -99,9 +99,9 @@ public class Deck {
 
     /**
      * Used only for debugging to set first three cards
-     * @param card1
-     * @param card2
-     * @param card3
+     * @param card1 First card to be added
+     * @param card2 Second card to be added
+     * @param card3 Third card to be added
      */
     public void manipulateDeck(Card card1, Card card2, Card card3) {
         deck.add(0, card3);

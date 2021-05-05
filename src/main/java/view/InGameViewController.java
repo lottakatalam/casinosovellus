@@ -132,6 +132,11 @@ public class InGameViewController extends ViewController {
         hideOrShowContent(true);
     }
 
+    /**
+     * Method to hide or show game/Instructions content
+     * @param show to determine whether to show or hide the game content
+     */
+
     public void hideOrShowContent(boolean show) {
         playerCardImage1.setVisible(show);
         playerCardImage2.setVisible(show);
@@ -896,7 +901,6 @@ public class InGameViewController extends ViewController {
 
     /**
      * Clears the table to end the round
-     * TODO: nappien disablointi
      */
     public void clearTable() {
         hitButton.setDisable(true);

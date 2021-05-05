@@ -90,7 +90,7 @@ public class CasinoDAO {
     /**
      * Adds a row to the historyTable
      *
-     * @param history
+     * @param history object
      * @return - Returns true if successed and false if not
      */
     public boolean addHistoryRow(History history) {
@@ -167,7 +167,7 @@ public class CasinoDAO {
     /**
      * Updates specific historyRow from historyTable
      *
-     * @param historyData
+     * @param historyData to set the data to the Row
      * @return - Returns true if successed and false if not
      */
     public boolean updateHistoryRow(History historyData) {
@@ -264,7 +264,7 @@ public class CasinoDAO {
      * Gets the user by username
      *
      * @param username - Username of the user wanted to find
-     * @return
+     * @return the User object
      */
     public User getUserByUsername(String username) {
         Criteria criteria = sessionFactory.openSession().createCriteria(User.class);

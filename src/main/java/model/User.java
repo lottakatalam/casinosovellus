@@ -141,14 +141,25 @@ public class User {
         this.rounds = rounds;
     }
 
+    /**
+     * Method to get the player's leaderboard ranking
+     * @return player's ranking
+     */
     public Integer getRanking() {
         return ranking;
     }
 
+    /**
+     * Method to set the player's leaderboard ranking
+     * @param ranking of the player
+     */
     public void setRanking(Integer ranking) {
         this.ranking = ranking;
     }
 
+    /**
+     * Add rounds to be shown in leaderboards
+     */
     public void addRound() {
         this.rounds++;
     }

@@ -84,8 +84,8 @@ public class Card {
 
     /**
      * Used for JUnit tests
-     * @param o
-     * @return
+     * @param o to compare the Cards
+     * @return boolean whether or not the Cards are the same
      */
     public boolean equals(Object o) {
         Card anotherCard = (Card) o;
