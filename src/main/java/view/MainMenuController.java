@@ -85,7 +85,7 @@ public class MainMenuController extends ViewController {
     }
 
     /** Menu's Settings-Button loads to Settings.fxml
-     * @throws IOException - if .fxml file is not found
+     *
      */
     public void settingsButton() {
         FXMLLoader loader = new FXMLLoader();

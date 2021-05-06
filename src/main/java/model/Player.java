@@ -38,6 +38,8 @@ public class Player {
 
     /**
      * Initializes new Player-object
+     * @param currency ammount of currency
+     * @param casinoDAO casinoDAO instance
      */
     public Player(int currency, CasinoDAO casinoDAO) {
         this.hand = new Hand();
@@ -48,7 +50,7 @@ public class Player {
     /**
      * Gets the hand of the player
      *
-     * @return
+     * @return players hand
      */
     public Hand getHand() {
         return this.hand;
@@ -56,6 +58,7 @@ public class Player {
 
     /**
      * Adds one win to players amountOfWins-attribute and increases the amount of online cash the player has
+     * @param method win-method
      */
     public void win(String method) {
         amountOfWins++;
@@ -85,6 +88,7 @@ public class Player {
 
     /**
      * Decreases the amount of online cash the player has
+     * @param method lose-method
      */
     public void lose(String method) {
         if (method.equals("Insurance")) {

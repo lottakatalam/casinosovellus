@@ -4,11 +4,11 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "users")
 /**
  * A class for userTable in Database
  */
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id

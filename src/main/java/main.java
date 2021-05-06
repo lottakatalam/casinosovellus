@@ -11,7 +11,7 @@ public class main {
 
     /**
      * main function to launch the app
-     * @param args
+     * @param args program arguments
      */
     public static void main(String[] args) {
         Logger.setLogLevel(Logger.LogLevel.PROD);

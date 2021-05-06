@@ -44,6 +44,7 @@ public class BlackjackGame extends Thread {
 
     /**
      * Initializes new Blackjack game
+     * @param gameController instance of gamecontroller
      */
     public BlackjackGame(BlackjackController gameController) {
         this.casinoDAO = new CasinoDAO();

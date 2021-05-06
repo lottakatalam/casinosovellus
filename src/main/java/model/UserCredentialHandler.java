@@ -84,7 +84,7 @@ public class UserCredentialHandler {
      *
      * @param username - Username of added user
      * @param password - Password of added user
-     * @return - True if user creation is successed
+     *
      */
     public void createNewUser(String username, String password) {
         setCasinoDAO();
@@ -205,8 +205,8 @@ public class UserCredentialHandler {
 
     /**
      * Checks the user credentials and if correct, logs the user in
-     * @param username
-     * @param password
+     * @param username given username
+     * @param password given password
      * @return true, if the login was successful
      */
     public boolean login(String username, String password) {
@@ -229,9 +229,9 @@ public class UserCredentialHandler {
      * 1. the old password given as input matches the users password
      * 2. the new password given as input is valid for use
      * 3. the new password and repeated new password match with one another
-     * @param oldPassword
-     * @param newPassword
-     * @param newPasswordRepeated
+     * @param oldPassword  the old password given
+     * @param newPassword the new password given
+     * @param newPasswordRepeated repeated new password
      * @return true, if all three inputs are valid
      */
     public boolean validatePassWordChange(String oldPassword, String newPassword, String newPasswordRepeated) {
@@ -255,7 +255,7 @@ public class UserCredentialHandler {
 
     /**
      * Changes the users password and gives an errormessage if something goes wrong with the change
-     * @param newPassword
+     * @param newPassword the new password given
      * @return true, if the password was changed successfully
      */
     public boolean changePassword(String newPassword) {

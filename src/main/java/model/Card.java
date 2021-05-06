@@ -2,8 +2,6 @@ package model;
 /**
  * Represents a playing card
  *
- * @author
- * @version
  */
 
 public class Card {

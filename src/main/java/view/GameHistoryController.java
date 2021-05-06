@@ -171,6 +171,7 @@ public class GameHistoryController extends ViewController {
     /**
      * okButton disables "error" message, that you should log in to view game history
      * and puts user back to main menu
+     * @throws IOException if .fxml file is not found
      */
     public void okButton() throws IOException {
         blackScreen.setVisible(false);

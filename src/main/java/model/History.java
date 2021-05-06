@@ -1,18 +1,15 @@
 package model;
 
 
-import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-
-@Entity
-@Table(name="history")
 /**
  * A class for historyTable in Database
  */
+@Entity
+@Table(name="history")
 public class History {
     /**
      * Enum for gameResult (Who won the round)
