@@ -1,7 +1,7 @@
-# Casino-sovellus - OTP1&2 / R02 / K2021
+# Casino-sovellus - Metropolia AMK:n ohjelmistotuotantoprojekti
 
 ## Kehitysympäristö
-Projekti on rakennettu Javalla maven projektina.
+Projekti on rakennettu Javalla Maven-projektina.
 ### IDE
 Sovelluskehittimenä on käytetty IntelliJ IDEAa.
 
